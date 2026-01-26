@@ -1,13 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Moon, Calendar, ArrowLeft } from "lucide-react"; // Using ArrowLeft instead of ChevronRight to go back
+import { Moon, Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
 
 export const runtime = "edge";
-
-const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "600"] });
-const zenGothic = Zen_Kaku_Gothic_New({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default async function Dashboard() {
   const supabase = await createClient();
@@ -35,12 +31,12 @@ export default async function Dashboard() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#0f172a] text-white p-4 pt-24 ${zenGothic.className}`}>
+    <div className="min-h-screen text-white p-4 pt-24 bg-[#0f172a]">
         <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between mb-8">
                 <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
                     <Moon className="w-8 h-8 text-purple-300" />
-                    <span className={`bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 ${fredoka.className}`}>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
                         Dream Journal
                     </span>
                 </h1>
@@ -60,7 +56,7 @@ export default async function Dashboard() {
             ) : (
                 <div className="grid gap-6">
                     {dreams.map((dream) => {
-                         const result = dream.diagnosis_result; // JSONB is returned as object
+                         const result = dream.diagnosis_result;
                          
                          return (
                             <div key={dream.id} className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-colors group shadow-lg shadow-black/20">
@@ -89,7 +85,7 @@ export default async function Dashboard() {
                                         <p className="font-bold text-indigo-300">Advice</p>
                                         <div className="flex gap-4 text-xs">
                                             <span className="text-amber-200">★ {result.lucky_item}</span>
-                                            <span className="text-pink-200">Testing {result.lucky_color}</span>
+                                            <span className="text-pink-200">Lucky Color {result.lucky_color}</span>
                                         </div>
                                     </div>
                                     <p className="leading-relaxed">{result.advice}</p>

@@ -4,11 +4,6 @@ export const runtime = 'edge';
 
 import { useState } from 'react';
 import { Sparkles, Moon, ArrowRight, Loader2, Star, Palette, Share2 } from 'lucide-react';
-import { Fredoka, Zen_Kaku_Gothic_New } from 'next/font/google';
-
-// Re-defining fonts here as this is the file I am writing.
-const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '600'] });
-const zenGothic = Zen_Kaku_Gothic_New({ subsets: ['latin'], weight: ['400', '700'] });
 
 interface AnalysisResult {
   keywords: string[];
@@ -54,20 +49,26 @@ export default function Home() {
   };
 
   return (
-    <main className={`min-h-screen bg-[#0f172a] text-white selection:bg-purple-500/30 ${zenGothic.className}`}>
-      {/* Background Gradients */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full bg-purple-900/20 blur-[100px]" />
-        <div className="absolute top-[40%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-indigo-900/20 blur-[100px]" />
-        <div className="absolute -bottom-[20%] left-[20%] w-[50vw] h-[50vw] rounded-full bg-blue-900/10 blur-[120px]" />
-      </div>
+    <main className="min-h-screen text-white selection:bg-purple-500/30">
+      {/* Optimized Background */}
+      <div 
+        className="fixed inset-0 z-0 pointer-events-none" 
+        style={{
+          background: `
+            radial-gradient(circle at 10% 10%, rgba(88, 28, 135, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 90% 40%, rgba(49, 46, 129, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 30% 80%, rgba(30, 58, 138, 0.1) 0%, transparent 40%),
+            #0f172a
+          `
+        }}
+      />
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         {/* Header */}
         <header className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center justify-center p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 shadow-lg shadow-purple-500/10">
             <Moon className="w-8 h-8 text-purple-300 mr-3" />
-            <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 ${fredoka.className}`}>
+            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
               Dream Oracle
             </h1>
           </div>
@@ -78,7 +79,7 @@ export default function Home() {
         </header>
 
         {/* Input Section */}
-        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl transition-all duration-500 hover:shadow-purple-500/10 hover:border-white/20">
+        <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20">
           <label htmlFor="dream-input" className="block text-lg font-medium text-purple-200 mb-4 flex items-center">
             <Sparkles className="w-5 h-5 mr-2" />
             どんな夢を見ましたか？
@@ -173,7 +174,7 @@ export default function Home() {
                    <div className="flex items-center gap-3">
                      <div 
                        className="w-8 h-8 rounded-full border border-white/20 shadow-inner" 
-                       style={{ backgroundColor: 'currentColor', color: result.lucky_color === 'オレンジ' ? 'orange' : result.lucky_color }} // This is a simple fallback, real color mapping would be better but this works for simple names or hex codes if Gemini returns them. Gemini often returns names "Orange".
+                       style={{ backgroundColor: 'currentColor', color: result.lucky_color === 'オレンジ' ? 'orange' : result.lucky_color }}
                      />
                      <p className="text-pink-100 font-medium text-lg">
                        {result.lucky_color}
