@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     // 使用モデルは gemini-1.5-flash を推奨（高速・安価）
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const prompt = `
       あなたは経験豊富で、優しく、神秘的な雰囲気を持つ夢占い師です。
