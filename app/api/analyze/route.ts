@@ -1,5 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextResponse } from "next/server";
+import { createClient } from "@/lib/supabase/server";
 
 export async function POST(req: Request) {
   try {
@@ -53,15 +54,24 @@ export async function POST(req: Request) {
     // 万が一Markdownが含まれていた場合のクリーニング
     const cleanText = text.replace(/```json/g, "").replace(/```/g, "").trim();
     
-    let analysis;
-    try {
-      analysis = JSON.parse(cleanText);
-    } catch (e) {
-      console.error("Failed to parse JSON response:", text);
-      return NextResponse.json(
-        { error: "診断結果の解析に失敗しました。" },
-        { status: 500 }
-      );
+    const analysis = JSON.parse(cleanText);
+
+    // ログインユーザーの場合はDBに保存
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (user) {
+      const { error: dbError } = await supabase
+        .from('dreams')
+        .insert({
+          user_id: user.id,
+          content: dream,
+          diagnosis_result: analysis,
+        });
+
+      if (dbError) {
+        console.error('Failed to save to Supabase:', dbError);
+      }
     }
 
     return NextResponse.json(analysis);

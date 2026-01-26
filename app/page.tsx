@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Sparkles, Moon, ArrowRight, Loader2, Star, Palette } from 'lucide-react';
+import { Sparkles, Moon, ArrowRight, Loader2, Star, Palette, Share2 } from 'lucide-react';
 import { Fredoka, Zen_Kaku_Gothic_New } from 'next/font/google';
 import { GoogleGenerativeAI } from "@google/generative-ai"; // Import added to avoid error if I mistakenly imported it here? No, it's used in API. Not here. Wait, checking if I need it here. No.
 
@@ -178,6 +178,21 @@ export default function Home() {
                      </p>
                    </div>
                 </div>
+              </div>
+
+              {/* Share Button */}
+              <div className="md:col-span-3 flex justify-center mt-4">
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                    `【夢診断】今日の夢は『${result.summary}』でした！ラッキーアイテムは${result.lucky_item} #夢診断アプリ`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl border border-white/10"
+                >
+                  <Share2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  X (Twitter) でシェア
+                </a>
               </div>
 
             </div>
