@@ -61,8 +61,9 @@ export default function AuthButton() {
               if (error) throw error
               setMessage('確認メールを送信しました。メールボックスを確認してください。')
           }
-      } catch (err: any) {
-          setMessage(err.message)
+      } catch (err: unknown) {
+          const errorMessage = err instanceof Error ? err.message : 'エラーが発生しました';
+          setMessage(errorMessage)
       } finally {
           setLoading(false)
       }

@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { Sparkles, Moon, ArrowRight, Loader2, Star, Palette, Share2 } from 'lucide-react';
 import { Fredoka, Zen_Kaku_Gothic_New } from 'next/font/google';
-import { GoogleGenerativeAI } from "@google/generative-ai"; // Import added to avoid error if I mistakenly imported it here? No, it's used in API. Not here. Wait, checking if I need it here. No.
 
 // Re-defining fonts here as this is the file I am writing.
 const fredoka = Fredoka({ subsets: ['latin'], weight: ['400', '600'] });
@@ -44,8 +43,9 @@ export default function Home() {
       }
 
       setResult(data);
-    } catch (err: any) {
-      setError(err.message || '予期せぬエラーが発生しました');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : '予期せぬエラーが発生しました';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

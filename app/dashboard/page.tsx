@@ -4,6 +4,8 @@ import { Moon, Calendar, ArrowLeft } from "lucide-react"; // Using ArrowLeft ins
 import Link from "next/link";
 import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
 
+export const runtime = "edge";
+
 const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "600"] });
 const zenGothic = Zen_Kaku_Gothic_New({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -79,7 +81,7 @@ export default async function Dashboard() {
                                 <h3 className="text-xl font-bold text-indigo-200 mb-3">{result.summary}</h3>
                                 
                                 <div className="bg-black/30 rounded-xl p-4 mb-4">
-                                     <p className="text-gray-400 text-sm italic line-clamp-3">"{dream.content}"</p>
+                                     <p className="text-gray-400 text-sm italic line-clamp-3">&quot;{dream.content}&quot;</p>
                                 </div>
                                 
                                 <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-xl p-4 text-sm text-gray-300">
