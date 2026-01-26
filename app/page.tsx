@@ -3,14 +3,14 @@
 export const runtime = 'edge';
 
 import { useState } from 'react';
-import { Sparkles, Moon, ArrowRight, Loader2, Star, Palette, Share2 } from 'lucide-react';
+import { Sparkles, Moon, ArrowRight, Loader2, Star, MapPin, Share2 } from 'lucide-react';
 
 interface AnalysisResult {
   keywords: string[];
   summary: string;
   advice: string;
   lucky_item: string;
-  lucky_color: string;
+  lucky_place: string;
 }
 
 export default function Home() {
@@ -166,20 +166,14 @@ export default function Home() {
                    </p>
                 </div>
 
-                <div className="bg-gradient-to-br from-pink-500/10 to-rose-500/10 backdrop-blur-md rounded-2xl p-6 border border-pink-500/20">
-                   <h3 className="text-lg font-bold text-pink-200 mb-3 flex items-center">
-                    <Palette className="w-5 h-5 mr-2" />
-                    Lucky Color
+                <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20">
+                   <h3 className="text-lg font-bold text-blue-200 mb-3 flex items-center">
+                    <MapPin className="w-5 h-5 mr-2" />
+                    Lucky Place
                    </h3>
-                   <div className="flex items-center gap-3">
-                     <div 
-                       className="w-8 h-8 rounded-full border border-white/20 shadow-inner" 
-                       style={{ backgroundColor: 'currentColor', color: result.lucky_color === 'オレンジ' ? 'orange' : result.lucky_color }}
-                     />
-                     <p className="text-pink-100 font-medium text-lg">
-                       {result.lucky_color}
-                     </p>
-                   </div>
+                   <p className="text-blue-100 font-medium text-lg">
+                     {result.lucky_place}
+                   </p>
                 </div>
               </div>
 
@@ -187,7 +181,7 @@ export default function Home() {
               <div className="md:col-span-3 flex justify-center mt-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    `【夢診断】今日の夢は『${result.summary}』でした！ラッキーアイテムは${result.lucky_item} #夢診断アプリ`
+                    `【夢診断】今日の夢は『${result.summary}』でした！ラッキーアイテムは${result.lucky_item}、おすすめの場所は${result.lucky_place}です ✨ #夢診断アプリ`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -203,7 +197,7 @@ export default function Home() {
         )}
         
         <footer className="text-center text-gray-600 text-sm mt-20 pb-8">
-           <p>© 2024 Dream Oracle. Powered by Gemini.</p>
+           <p>© 2026 Dream Oracle. Powered by Gemini.</p>
         </footer>
       </div>
     </main>
