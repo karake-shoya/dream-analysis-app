@@ -19,17 +19,15 @@ export default function AuthButton() {
   const router = useRouter()
 
   useEffect(() => {
-    const checkUser = async () => {
-        const { data: { user } } = await supabase.auth.getUser()
-        setUser(user)
-    }
-    checkUser()
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
         setUser(session?.user ?? null)
+        if (event === 'SIGNED_IN') {
+          router.refresh()
+        }
         if (event === 'SIGNED_OUT') {
-             router.refresh()
+          router.push('/')
+          router.refresh()
         }
       }
     )
