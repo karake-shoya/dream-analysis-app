@@ -169,43 +169,6 @@ export default function Home() {
           </div>
         )}
         
-        <footer className="mt-20 border-t border-white/5 pt-8 pb-12">
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm mb-12">
-              <div className="col-span-2 md:col-span-1">
-                <h4 className="font-bold text-white mb-4">yume insight</h4>
-                <p className="text-gray-500">
-                  AIがあなたの夢を分析し、<br/>潜在意識からのメッセージをお届けします。
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="font-bold text-white mb-4">コンテンツ</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="/" className="hover:text-purple-300 transition-colors">ホーム</Link></li>
-                  <li><Link href="/dictionary" className="hover:text-purple-300 transition-colors">夢占い辞典</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-white mb-4">運営情報</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="/about" className="hover:text-purple-300 transition-colors">運営者情報</Link></li>
-                  <li><Link href="/contact" className="hover:text-purple-300 transition-colors">お問い合わせ</Link></li>
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="font-bold text-white mb-4">規約・ポリシー</h4>
-                <ul className="space-y-2 text-gray-400">
-                  <li><Link href="/terms" className="hover:text-purple-300 transition-colors">利用規約</Link></li>
-                  <li><Link href="/privacy" className="hover:text-purple-300 transition-colors">プライバシーポリシー</Link></li>
-                </ul>
-              </div>
-           </div>
-           <div className="text-center text-gray-600 text-sm">
-             <p>© 2026 yume insight. Powered by Gemini.</p>
-           </div>
-        </footer>
       </div>
     </main>
   );

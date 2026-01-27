@@ -3,6 +3,7 @@ import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
 
 const fredoka = Fredoka({ 
@@ -66,10 +67,13 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${fredoka.variable} ${zenGothic.variable} antialiased font-sans bg-[#0f172a]`}
+        className={`${fredoka.variable} ${zenGothic.variable} antialiased font-sans bg-[#0f172a] min-h-screen flex flex-col`}
       >
         <Header />
-        {children}
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
         <Toaster />
       </body>
     </html>

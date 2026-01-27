@@ -5,7 +5,7 @@ import { SiQiita } from "react-icons/si";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#0f172a] text-gray-300 font-sans selection:bg-purple-500/30">
+    <div className="relative">
       {/* Optimized Background */}
       <div 
         className="fixed inset-0 z-0 pointer-events-none" 
@@ -160,19 +160,6 @@ export default function AboutPage() {
             </div>
           </div>
         </main>
-
-        <footer className="py-12 border-t border-white/10 bg-black/20 mt-20">
-          <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 max-w-5xl">
-            <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} yume insight. All rights reserved.
-            </p>
-            <div className="flex gap-8 text-sm font-medium text-gray-400">
-              <Link href="/about" className="hover:text-purple-300 transition-colors">About</Link>
-              <Link href="/terms" className="hover:text-purple-300 transition-colors">利用規約</Link>
-              <Link href="/contact" className="hover:text-purple-300 transition-colors">お問い合わせ</Link>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );

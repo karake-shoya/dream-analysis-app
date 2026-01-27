@@ -61,7 +61,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="relative">
       {/* Background Decorative Elements */}
       <div className="fixed inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,var(--tw-gradient-stops))] from-purple-900/20 via-background to-background" />
       <div className="fixed inset-0 -z-10 opacity-[0.04]" 
@@ -71,8 +71,7 @@ export default function ContactPage() {
            }}
       />
 
-
-      <main className="flex-1 container mx-auto px-6 py-12 flex flex-col items-center">
+      <main className="container mx-auto px-6 py-12 flex flex-col items-center">
         <div className="w-full max-w-2xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="text-center space-y-4">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm border border-primary/20">
@@ -192,19 +191,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-
-      <footer className="py-12 border-t border-border/40 bg-slate-900/50 mt-auto">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} yume insight. All rights reserved.
-          </p>
-          <div className="flex gap-6 text-sm font-medium text-muted-foreground">
-            <Link href="/about" className="hover:text-primary transition-colors">About</Link>
-            <Link href="/privacy" className="hover:text-primary transition-colors">プライバシーポリシー</Link>
-            <Link href="/contact" className="hover:text-primary transition-colors">お問い合わせ</Link>
-          </div>
-        </div>
-      </footer>
     </div>
   )
 }
