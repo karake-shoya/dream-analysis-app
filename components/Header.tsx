@@ -87,8 +87,8 @@ export default function Header() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
-              <Moon className="h-5 w-5" />
+            <div className="w-9 h-9 flex items-center justify-center group-hover:scale-110 transition-transform">
+              <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-bold text-xl tracking-tighter text-white font-display">yume insight</span>
           </Link>

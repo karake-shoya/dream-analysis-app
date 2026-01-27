@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'yume insight - AI夢診断',
     description: 'あなたの夢をAIが優しく紐解きます。',
-    url: 'https://dream-oracle-app.vercel.app', // TODO: 実際のドメインに適宜変更
+    url: 'https://yume-insight.com',
     siteName: 'yume insight',
     locale: 'ja_JP',
     type: 'website',
