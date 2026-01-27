@@ -3,6 +3,7 @@ import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
+import { Toaster } from "sonner";
 
 const fredoka = Fredoka({ 
   subsets: ["latin"], 
@@ -69,6 +70,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Toaster />
       </body>
     </html>
   );
