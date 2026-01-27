@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2 } from 'lucide-react';
+import { Share2, Check } from 'lucide-react';
 
 interface ShareButtonsProps {
   shareUrl: string;
@@ -11,10 +11,41 @@ interface ShareButtonsProps {
 export function ShareButtons({ shareUrl, shareText }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(shareUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopyLink = async () => {
+    try {
+      // clipbord API を安全に取得
+      const clipboard = typeof navigator !== 'undefined' ? navigator.clipboard : undefined;
+      const isSecure = typeof window !== 'undefined' && window.isSecureContext;
+
+      // セキュアコンテキストかつ Clipboard API が存在する場合のみ使用
+      if (clipboard && typeof clipboard.writeText === 'function' && isSecure) {
+        await clipboard.writeText(shareUrl);
+      } else {
+        // フォールバック: textarea を使用した従来の方法
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        
+        try {
+          const successful = document.execCommand('copy');
+          if (!successful) throw new Error('copy command failed');
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+      
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Copy failed:', err);
+      // フォールバックも失敗した場合はアラート
+      alert('コピーに失敗しました。URLを手動でコピーしてください。');
+    }
   };
 
   return (
@@ -23,8 +54,17 @@ export function ShareButtons({ shareUrl, shareText }: ShareButtonsProps) {
         onClick={handleCopyLink}
         className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-full font-bold transition-all border border-white/10"
       >
-        <Share2 className="w-5 h-5" />
-        {copied ? 'コピーしました！' : 'URLをコピー'}
+        {copied ? (
+          <>
+            <Check className="w-5 h-5 text-green-400" />
+            コピーしました！
+          </>
+        ) : (
+          <>
+            <Share2 className="w-5 h-5" />
+            URLをコピー
+          </>
+        )}
       </button>
 
       <a
