@@ -83,14 +83,6 @@ export default async function Dashboard() {
                                 <div className="bg-indigo-900/20 border border-indigo-500/20 rounded-xl p-4 text-sm text-gray-300">
                                     <div className="flex items-center justify-between mb-2">
                                          <p className="font-bold text-indigo-300">Advice</p>
-                                         <div className="flex gap-4 text-xs">
-                                             <span className="text-amber-200">★ {result.lucky_item}</span>
-                                             {result.lucky_place ? (
-                                               <span className="text-blue-200">📍 {result.lucky_place}</span>
-                                             ) : (
-                                               <span className="text-pink-200">🎨 {result.lucky_color}</span>
-                                             )}
-                                         </div>
                                      </div>
                                      <p className="leading-relaxed">{result.advice}</p>
                                 </div>

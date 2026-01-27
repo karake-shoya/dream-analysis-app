@@ -9,8 +9,6 @@ interface AnalysisResult {
   keywords: string[];
   summary: string;
   advice: string;
-  lucky_item: string;
-  lucky_place: string;
 }
 
 export default function Home() {
@@ -136,7 +134,7 @@ export default function Home() {
               </div>
 
               {/* Summary & Advice */}
-              <div className="md:col-span-2 space-y-6">
+              <div className="md:col-span-3 space-y-6">
                 <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 h-full">
                   <h3 className="text-xl font-bold text-indigo-200 mb-4 flex items-center">
                     <Moon className="w-5 h-5 mr-2" />
@@ -154,34 +152,11 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Lucky Items */}
-              <div className="space-y-6">
-                <div className="bg-gradient-to-br from-amber-500/10 to-orange-500/10 backdrop-blur-md rounded-2xl p-6 border border-amber-500/20">
-                   <h3 className="text-lg font-bold text-amber-200 mb-3 flex items-center">
-                    <Star className="w-5 h-5 mr-2" />
-                    Lucky Item
-                   </h3>
-                   <p className="text-amber-100 font-medium text-lg">
-                     {result.lucky_item}
-                   </p>
-                </div>
-
-                <div className="bg-gradient-to-br from-blue-500/10 to-indigo-500/10 backdrop-blur-md rounded-2xl p-6 border border-blue-500/20">
-                   <h3 className="text-lg font-bold text-blue-200 mb-3 flex items-center">
-                    <MapPin className="w-5 h-5 mr-2" />
-                    Lucky Place
-                   </h3>
-                   <p className="text-blue-100 font-medium text-lg">
-                     {result.lucky_place}
-                   </p>
-                </div>
-              </div>
-
               {/* Share Button */}
               <div className="md:col-span-3 flex justify-center mt-4">
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    `【夢診断】今日の夢は『${result.summary}』でした！ラッキーアイテムは${result.lucky_item}、おすすめの場所は${result.lucky_place}です ✨ #夢診断アプリ`
+                    `【夢診断】今日の夢は『${result.summary}』でした！ ✨ #夢診断アプリ`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
