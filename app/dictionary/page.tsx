@@ -6,6 +6,7 @@ const DICTIONARY_CATEGORIES = [
   { name: '自然・天候', slug: 'nature', emojis: '⛈️' },
   { name: '場所・建物', slug: 'places', emojis: '🏰' },
   { name: '行動・出来事', slug: 'actions', emojis: '🏃' },
+  { name: '感情・心理', slug: 'emotions', emojis: '💓' },
 ];
 
 export default function Dictionary() {
@@ -81,6 +82,10 @@ export default function Dictionary() {
               { label: '家', href: '/dictionary/category/places/house' },
               { label: '蛇', href: '/dictionary/category/animals/snake' },
               { label: '学校', href: '/dictionary/category/places/school' },
+              { label: '雨', href: '/dictionary/category/nature/rain' },
+              { label: '走る', href: '/dictionary/category/actions/running' },
+              { label: '駅', href: '/dictionary/category/places/station' },
+              { label: '安心する', href: '/dictionary/category/emotions/relief' },
             ].map((item) => (
               <Link 
                 href={item.href} 
