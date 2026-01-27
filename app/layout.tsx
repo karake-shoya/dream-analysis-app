@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 
@@ -48,6 +49,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-TQDLXX30ZH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-TQDLXX30ZH');
+          `}
+        </Script>
+      </head>
       <body
         className={`${fredoka.variable} ${zenGothic.variable} antialiased font-sans bg-[#0f172a]`}
       >
