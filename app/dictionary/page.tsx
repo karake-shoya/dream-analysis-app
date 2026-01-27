@@ -5,9 +5,7 @@ const DICTIONARY_CATEGORIES = [
   { name: '動物・生き物', slug: 'animals', emojis: '🦊' },
   { name: '自然・天候', slug: 'nature', emojis: '⛈️' },
   { name: '場所・建物', slug: 'places', emojis: '🏰' },
-  { name: '人物・関係', slug: 'people', emojis: '👥' },
   { name: '行動・出来事', slug: 'actions', emojis: '🏃' },
-  { name: '感情・感覚', slug: 'feelings', emojis: '💭' },
 ];
 
 export default function Dictionary() {
@@ -74,13 +72,22 @@ export default function Dictionary() {
             人気の夢キーワード
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['追いかけられる', '落ちる', '空を飛ぶ', '歯が抜ける', '遅刻する', '迷子になる', 'お金', '元彼・元カノ'].map((keyword) => (
+            {[
+              { label: '追いかけられる', href: '/dictionary/category/actions/chased' },
+              { label: '犬', href: '/dictionary/category/animals/dog' },
+              { label: '空を飛ぶ', href: '/dictionary/category/nature/flying' },
+              { label: '猫', href: '/dictionary/category/animals/cat' },
+              { label: '海', href: '/dictionary/category/nature/sea' },
+              { label: '家', href: '/dictionary/category/places/house' },
+              { label: '蛇', href: '/dictionary/category/animals/snake' },
+              { label: '学校', href: '/dictionary/category/places/school' },
+            ].map((item) => (
               <Link 
-                href={`/dictionary/search?q=${keyword}`} 
-                key={keyword}
-                className="text-center p-4 rounded-xl bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-white transition-all cursor-pointer"
+                href={item.href} 
+                key={item.label}
+                className="text-center p-4 rounded-xl bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-white transition-all cursor-pointer border border-white/5"
               >
-                {keyword}
+                {item.label}
               </Link>
             ))}
           </div>
