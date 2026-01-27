@@ -62,7 +62,7 @@ export default function Home() {
 
         {/* Input Section */}
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20">
-          <label htmlFor="dream-input" className="block text-lg font-medium text-purple-200 mb-4 flex items-center">
+          <label htmlFor="dream-input" className="text-lg font-medium text-purple-200 mb-4 flex items-center">
             <Sparkles className="w-5 h-5 mr-2" />
             どんな夢を見ましたか？
           </label>
@@ -78,7 +78,7 @@ export default function Home() {
             <button
               onClick={handleAnalyze}
               disabled={loading || !dream.trim()}
-              className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full hover:from-purple-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-600/30 overflow-hidden"
+              className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 ease-in-out bg-linear-to-r from-purple-600 to-indigo-600 rounded-full hover:from-purple-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-purple-600/30 overflow-hidden"
             >
               <span className="w-full h-full absolute inset-0 bg-white/20 skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
               {loading ? (
