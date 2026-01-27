@@ -48,9 +48,11 @@ export async function POST(req: Request) {
 
       {
         "keywords": ["象徴的な言葉1", "象徴的な言葉2"],
+        "title": "夢を象徴するキャッチーな一言（例：「未知への扉が開く予感」）",
         "summary": "この夢が教えてくれる、今のあなたの状態、この夢は「〜」を表しています。（アドバイスは含めない）",
         "advice": "夢の表す意味を踏まえた簡潔で前向きなアドバイス（200文字程度）"
       }
+
     `;
 
     const result = await model.generateContent(prompt);
@@ -61,26 +63,29 @@ export async function POST(req: Request) {
     const cleanText = text.replace(/```json/g, "").replace(/```/g, "").trim();
     
     const analysis = JSON.parse(cleanText);
+    let dreamId = null;
 
-    // ログインユーザーの場合はDBに保存
+    // Supabaseに保存（ログインしていればuser_idを紐付け、そうでなければ匿名で保存）
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    if (user) {
-      const { error: dbError } = await supabase
-        .from('dreams')
-        .insert({
-          user_id: user.id,
-          content: dream,
-          diagnosis_result: analysis,
-        });
+    const { data: insertedData, error: dbError } = await supabase
+      .from('dreams')
+      .insert({
+        user_id: user?.id || null,
+        content: dream,
+        diagnosis_result: analysis,
+      })
+      .select('id')
+      .single();
 
-      if (dbError) {
-        console.error('Failed to save to Supabase:', dbError);
-      }
+    if (dbError) {
+      console.error('Failed to save to Supabase:', dbError);
+    } else if (insertedData) {
+      dreamId = insertedData.id;
     }
 
-    return NextResponse.json(analysis);
+    return NextResponse.json({ ...analysis, id: dreamId });
   } catch (error) {
     console.error("Analysis Error:", error);
     return NextResponse.json(

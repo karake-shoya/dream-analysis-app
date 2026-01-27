@@ -6,15 +6,18 @@ import { useState } from 'react';
 import { Sparkles, Moon, ArrowRight, Loader2, Share2 } from 'lucide-react';
 import Link from 'next/link';
 
+import { useRouter } from 'next/navigation';
+
 interface AnalysisResult {
+  id?: string;
   keywords: string[];
   summary: string;
   advice: string;
 }
 
 export default function Home() {
+  const router = useRouter();
   const [dream, setDream] = useState('');
-  const [result, setResult] = useState<AnalysisResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -23,7 +26,6 @@ export default function Home() {
 
     setLoading(true);
     setError('');
-    setResult(null);
 
     try {
       const res = await fetch('/api/analyze', {
@@ -38,7 +40,9 @@ export default function Home() {
         throw new Error(data.error || '解析に失敗しました');
       }
 
-      setResult(data);
+      if (data.id) {
+        router.push(`/result/${data.id}`);
+      }
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : '予期せぬエラーが発生しました';
       setError(errorMessage);
@@ -115,61 +119,9 @@ export default function Home() {
              </div>
           )}
         </div>
-
-        {/* Result Section */}
-        {result && (
-          <div className="mt-12 space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
-            <div className="grid md:grid-cols-3 gap-6">
-              {/* Keywords */}
-              <div className="md:col-span-3">
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {result.keywords.map((keyword, i) => (
-                    <span key={i} className="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-200 text-sm font-medium">
-                      #{keyword}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Summary & Advice */}
-              <div className="md:col-span-3 space-y-6">
-                <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10 h-full">
-                  <h3 className="text-xl font-bold text-indigo-200 mb-4 flex items-center">
-                    <Moon className="w-5 h-5 mr-2" />
-                    夢からのメッセージ
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed mb-6">
-                    {result.summary}
-                  </p>
-                  <div className="bg-indigo-500/10 rounded-xl p-4 border border-indigo-500/20">
-                    <h4 className="font-semibold text-indigo-200 mb-2 text-sm">Advice</h4>
-                    <p className="text-indigo-100 text-sm leading-relaxed">
-                      {result.advice}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Share Button */}
-              <div className="md:col-span-3 flex justify-center mt-4">
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                    `【夢診断】今日の夢は『${result.summary}』でした！ ✨ #夢診断アプリ`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl border border-white/10"
-                >
-                  <Share2 className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  X (Twitter) でシェア
-                </a>
-              </div>
-
-            </div>
-          </div>
-        )}
-        
       </div>
     </main>
   );
 }
+
+

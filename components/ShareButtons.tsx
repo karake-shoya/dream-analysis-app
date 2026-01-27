@@ -1,0 +1,43 @@
+'use client';
+
+import { useState } from 'react';
+import { Share2 } from 'lucide-react';
+
+interface ShareButtonsProps {
+  shareUrl: string;
+  shareText: string;
+}
+
+export function ShareButtons({ shareUrl, shareText }: ShareButtonsProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="md:col-span-3 flex flex-col sm:flex-row justify-center items-center gap-4 mt-8">
+      <button
+        onClick={handleCopyLink}
+        className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-full font-bold transition-all border border-white/10"
+      >
+        <Share2 className="w-5 h-5" />
+        {copied ? 'コピーしました！' : 'URLをコピー'}
+      </button>
+
+      <a
+        href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 bg-black text-white rounded-full font-bold hover:bg-gray-900 transition-all shadow-lg hover:shadow-xl border border-white/10 text-center"
+      >
+        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+        </svg>
+        X でシェアする
+      </a>
+    </div>
+  );
+}
