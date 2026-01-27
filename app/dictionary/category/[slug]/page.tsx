@@ -1,5 +1,5 @@
 import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 

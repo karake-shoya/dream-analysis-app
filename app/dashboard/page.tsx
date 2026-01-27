@@ -1,7 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
-import { Moon, Calendar, ArrowLeft } from "lucide-react";
+import { Moon, Calendar } from "lucide-react";
 import Link from "next/link";
+import { formatDate } from "@/lib/utils";
+import type { DreamRecord } from "@/lib/types";
 
 export const runtime = "edge";
 
@@ -19,24 +21,13 @@ export default async function Dashboard() {
     .eq("user_id", user.id)
     .order("created_at", { ascending: false });
 
-  // Format date helper
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
   return (
     <div className="min-h-screen text-white p-4 pt-24 bg-[#0f172a]">
         <div className="max-w-4xl mx-auto">
             <div className="flex items-center justify-between mb-8">
                 <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
                     <Moon className="w-8 h-8 text-purple-300" />
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
+                    <span className="bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
                         Dream Journal
                     </span>
                 </h1>
@@ -51,7 +42,7 @@ export default async function Dashboard() {
                 </div>
             ) : (
                 <div className="grid gap-6">
-                    {dreams.map((dream) => {
+                    {(dreams as DreamRecord[]).map((dream) => {
                          const result = dream.diagnosis_result;
                          
                          return (

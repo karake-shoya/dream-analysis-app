@@ -1,4 +1,4 @@
-import { ArrowLeft, BookOpen, Search } from 'lucide-react';
+import { BookOpen, Search } from 'lucide-react';
 import Link from 'next/link';
 
 const DICTIONARY_CATEGORIES = [

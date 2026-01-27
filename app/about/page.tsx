@@ -1,22 +1,13 @@
 import Link from "next/link";
-import { Moon, ArrowLeft, ExternalLink, User, Code2, Heart, Sparkles } from "lucide-react";
+import { ExternalLink, User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { SiQiita } from "react-icons/si";
+import GradientBackground from "@/components/GradientBackground";
 
 export default function AboutPage() {
   return (
     <div className="relative">
-      {/* Optimized Background */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none" 
-        style={{
-          background: `
-            radial-gradient(circle at 10% 10%, rgba(88, 28, 135, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 90% 40%, rgba(49, 46, 129, 0.15) 0%, transparent 40%),
-            #0f172a
-          `
-        }}
-      />
+      <GradientBackground />
 
       <div className="relative z-10">
         {/* About Content */}
@@ -86,7 +77,7 @@ export default function AboutPage() {
                         </div>
                         <div>
                           <p className="font-bold text-white">GitHub</p>
-                          <p className="text-xs text-gray-500">OSSプロジェクト & コード</p>
+                          <p className="text-xs text-gray-500">OSSプロジェクト &amp; コード</p>
                         </div>
                       </div>
                       <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />

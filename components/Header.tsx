@@ -2,7 +2,7 @@
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
-import { LogOut, X, Moon, Menu } from 'lucide-react'
+import { LogOut, X, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 

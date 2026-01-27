@@ -3,17 +3,10 @@
 export const runtime = 'edge';
 
 import { useState } from 'react';
-import { Sparkles, Moon, ArrowRight, Loader2, Share2 } from 'lucide-react';
-import Link from 'next/link';
-
+import { Sparkles, ArrowRight, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-
-interface AnalysisResult {
-  id?: string;
-  keywords: string[];
-  summary: string;
-  advice: string;
-}
+import GradientBackground from '@/components/GradientBackground';
+import { ERROR_MESSAGES } from '@/lib/constants';
 
 export default function Home() {
   const router = useRouter();
@@ -37,14 +30,14 @@ export default function Home() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || '解析に失敗しました');
+        throw new Error(data.error || ERROR_MESSAGES.ANALYSIS_FAILED);
       }
 
       if (data.id) {
         router.push(`/result/${data.id}`);
       }
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : '予期せぬエラーが発生しました';
+      const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.UNEXPECTED_ERROR;
       setError(errorMessage);
     } finally {
       setLoading(false);
@@ -53,18 +46,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-white selection:bg-purple-500/30">
-      {/* Optimized Background */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none" 
-        style={{
-          background: `
-            radial-gradient(circle at 10% 10%, rgba(88, 28, 135, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 90% 40%, rgba(49, 46, 129, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 30% 80%, rgba(30, 58, 138, 0.1) 0%, transparent 40%),
-            #0f172a
-          `
-        }}
-      />
+      <GradientBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         {/* Hero Section */}
@@ -123,5 +105,3 @@ export default function Home() {
     </main>
   );
 }
-
-

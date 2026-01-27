@@ -1,18 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
-import { Moon, Sparkles, Share2, ArrowLeft } from "lucide-react";
+import { Moon, Sparkles, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from 'next';
 import { headers } from "next/headers";
-
+import GradientBackground from "@/components/GradientBackground";
 import { ShareButtons } from "@/components/ShareButtons";
-
-interface AnalysisResult {
-  keywords: string[];
-  title?: string;
-  summary: string;
-  advice: string;
-}
+import type { AnalysisResult } from "@/lib/types";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -67,18 +61,7 @@ export default async function ResultPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen text-white selection:bg-purple-500/30">
-      {/* Optimized Background */}
-      <div 
-        className="fixed inset-0 z-0 pointer-events-none" 
-        style={{
-          background: `
-            radial-gradient(circle at 10% 10%, rgba(88, 28, 135, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 90% 40%, rgba(49, 46, 129, 0.15) 0%, transparent 40%),
-            radial-gradient(circle at 30% 80%, rgba(30, 58, 138, 0.1) 0%, transparent 40%),
-            #0f172a
-          `
-        }}
-      />
+      <GradientBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         <div className="mb-8">
