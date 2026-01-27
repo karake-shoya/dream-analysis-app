@@ -22,7 +22,7 @@ export default function Contact() {
           <div className="bg-white/5 p-6 rounded-xl border border-white/10 inline-block">
              <div className="flex items-center space-x-3 text-purple-200">
                 <Mail className="w-6 h-6" />
-                <span className="text-lg">support@example.com</span>
+                <span className="text-lg">karake.shoya@gmail.com</span>
              </div>
              <p className="text-sm text-gray-400 mt-2">
                ※ 返信にはお時間をいただく場合がございます。
