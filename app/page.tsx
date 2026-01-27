@@ -172,7 +172,7 @@ export default function Home() {
         <footer className="mt-20 border-t border-white/5 pt-8 pb-12">
            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm mb-12">
               <div className="col-span-2 md:col-span-1">
-                <h4 className="font-bold text-white mb-4">Dream Oracle</h4>
+                <h4 className="font-bold text-white mb-4">yume insight</h4>
                 <p className="text-gray-500">
                   AIがあなたの夢を分析し、<br/>潜在意識からのメッセージをお届けします。
                 </p>
@@ -203,7 +203,7 @@ export default function Home() {
               </div>
            </div>
            <div className="text-center text-gray-600 text-sm">
-             <p>© 2026 Dream Oracle. Powered by Gemini.</p>
+             <p>© 2026 yume insight. Powered by Gemini.</p>
            </div>
         </footer>
       </div>

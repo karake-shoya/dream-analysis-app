@@ -18,22 +18,22 @@ const zenGothic = Zen_Kaku_Gothic_New({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Dream Oracle',
-    default: 'Dream Oracle - AI夢診断・夢占い',
+    template: '%s | yume insight',
+    default: 'yume insight - AI夢診断・夢占い',
   },
   description: "あなたの夢をAIが優しく紐解きます。夢占いや心理学の観点から、潜在意識からのメッセージを受け取りましょう。会員登録不要で無料で使えます。",
   keywords: ["夢占い", "夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理"],
   openGraph: {
-    title: 'Dream Oracle - AI夢診断',
+    title: 'yume insight - AI夢診断',
     description: 'あなたの夢をAIが優しく紐解きます。',
     url: 'https://dream-oracle-app.vercel.app', // TODO: 実際のドメインに適宜変更
-    siteName: 'Dream Oracle',
+    siteName: 'yume insight',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dream Oracle - AI夢診断',
+    title: 'yume insight - AI夢診断',
     description: '夢の意味を知りたいですか？AIがあなたの夢を分析します。',
   },
   robots: {

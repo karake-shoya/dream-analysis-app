@@ -90,7 +90,7 @@ export default function Header() {
             <div className="w-9 h-9 rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
               <Moon className="h-5 w-5" />
             </div>
-            <span className="font-bold text-xl tracking-tighter text-white font-display">Dream Oracle</span>
+            <span className="font-bold text-xl tracking-tighter text-white font-display">yume insight</span>
           </Link>
 
           {/* Desktop Navigation */}

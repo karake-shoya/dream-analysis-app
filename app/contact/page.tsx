@@ -23,7 +23,7 @@ export default function Contact() {
           </div>
           
           <div className="mt-8 text-sm text-gray-400">
-             <p>運営：Dream Oracle 運営事務局</p>
+             <p>運営：yume insight 運営事務局</p>
           </div>
         </div>
       </div>

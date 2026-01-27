@@ -70,11 +70,11 @@ export default function AboutPage() {
                     <div className="p-2 rounded-lg bg-purple-500/10">
                       <Sparkles className="w-5 h-5" />
                     </div>
-                    <h2>Dream Oracle について</h2>
+                    <h2>yume insight について</h2>
                   </div>
-                  <div className="space-y-4 text-gray-300 leading-relaxed text-lg">
+                  <div className="prose prose-invert max-w-none text-gray-400 leading-relaxed space-y-4">
                     <p>
-                      Dream Oracleは、「夢からのメッセージ」をゆるっと読み解くツールです。
+                      yume insightは、「夢からのメッセージ」をゆるっと読み解くツールです。
                     </p>
                     <p>
                       AIが夢のメッセージを読み解き、新しい視点や気づきを届けてくれます。
@@ -153,7 +153,7 @@ export default function AboutPage() {
         <footer className="py-12 border-t border-white/10 bg-black/20 mt-20">
           <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 max-w-5xl">
             <p className="text-sm text-gray-500">
-              © {new Date().getFullYear()} Dream Oracle. All rights reserved.
+              © {new Date().getFullYear()} yume insight. All rights reserved.
             </p>
             <div className="flex gap-8 text-sm font-medium text-gray-400">
               <Link href="/about" className="hover:text-purple-300 transition-colors">About</Link>

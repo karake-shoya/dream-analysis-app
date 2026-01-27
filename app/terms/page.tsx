@@ -11,7 +11,7 @@ export default function Terms() {
           <section>
             <h2 className="text-xl font-semibold text-purple-200 mb-4">1. 規約への同意</h2>
             <p className="mb-4">
-              当サイト（Dream Oracle）を利用される方は、本規約に同意したものとみなします。
+              当サイト（yume insight）を利用される方は、本規約に同意したものとみなします。
             </p>
           </section>
 
