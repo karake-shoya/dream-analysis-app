@@ -50,7 +50,6 @@ export default function AboutPage() {
                 開発者について
               </h1>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                「技術で、日常に小さな魔法を。」<br />
                 エンジニアと教育者、2つの視点を持って活動しています。
               </p>
             </div>
@@ -92,8 +91,13 @@ export default function AboutPage() {
                   </div>
                   <div className="space-y-4 text-gray-300 leading-relaxed text-lg">
                     <p>
-                      Dream Oracleは、最新のAI技術を活用して、私たちの潜在意識が送っているかもしれないメッセージを優しく紐解くツールです。
-                      エンジニアとしての技術力を、日々の生活に「癒やし」と「気づき」を与えることに役立てたいという願いから生まれました。
+                      Dream Oracleは、「夢からのメッセージ」をゆるっと読み解くツールです。
+                    </p>
+                    <p>
+                      AIが夢のメッセージを読み解き、新しい視点や気づきを届けてくれます。
+                    </p>
+                    <p>
+                      まずは気軽に「こんな夢を見たよ」と話しかけてみてください。
                     </p>
                   </div>
                 </section>
