@@ -24,13 +24,6 @@ export default function Dictionary() {
       />
       
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
-        <div className="mb-8 flex justify-between items-center">
-          <Link href="/" className="inline-flex items-center text-purple-300 hover:text-purple-200 transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            トップページに戻る
-          </Link>
-        </div>
-
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 text-purple-300">
             <BookOpen className="w-6 h-6 mr-2" />

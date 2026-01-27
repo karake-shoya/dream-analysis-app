@@ -19,24 +19,7 @@ export default function AboutPage() {
       />
 
       <div className="relative z-10">
-        {/* Header */}
-        <header className="border-b border-white/10 bg-black/20 backdrop-blur-md sticky top-0 z-50">
-          <div className="container mx-auto px-6 h-16 flex items-center justify-between max-w-5xl">
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-9 h-9 rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
-                <Moon className="h-5 w-5" />
-              </div>
-              <span className="font-bold text-xl tracking-tighter text-white">Dream Oracle</span>
-            </Link>
-            <Link href="/">
-              <button className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors px-3 py-1.5 rounded-lg hover:bg-white/5">
-                <ArrowLeft className="h-4 w-4" />
-                トップに戻る
-              </button>
-            </Link>
-          </div>
-        </header>
-
+        {/* About Content */}
         <main className="container mx-auto px-6 py-16 max-w-5xl">
           <div className="space-y-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             

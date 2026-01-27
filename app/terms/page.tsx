@@ -5,13 +5,6 @@ export default function Terms() {
   return (
     <div className="min-h-screen bg-[#0f172a] text-gray-300 font-sans">
       <div className="container mx-auto px-4 py-12 max-w-3xl">
-        <div className="mb-8">
-          <Link href="/" className="inline-flex items-center text-purple-300 hover:text-purple-200 transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            トップページに戻る
-          </Link>
-        </div>
-
         <h1 className="text-3xl font-bold text-white mb-8 border-b border-white/10 pb-4">利用規約</h1>
 
         <div className="space-y-8 leading-relaxed">

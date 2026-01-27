@@ -2,14 +2,15 @@
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
 import { User } from '@supabase/supabase-js'
-import { LogOut, X } from 'lucide-react'
+import { LogOut, X, Moon, Menu } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
-export default function AuthButton() {
+export default function Header() {
   const [user, setUser] = useState<User | null>(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [isLoginMode, setIsLoginMode] = useState(true) // Login vs Signup
+  const [isOpen, setIsOpen] = useState(false) // Auth Modal
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLoginMode, setIsLoginMode] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -17,6 +18,7 @@ export default function AuthButton() {
   
   const supabase = createClient()
   const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
@@ -73,36 +75,111 @@ export default function AuthButton() {
     router.refresh()
   }
 
-  if (user) {
-      return (
-          <div className="fixed top-4 right-4 z-50 flex items-center gap-4">
-              <Link href="/dashboard" className="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-medium transition-colors border border-white/10 shadow-lg">
-                  マイページ
-              </Link>
-              <button onClick={handleLogout} className="p-2 bg-white/10 hover:bg-red-500/20 hover:text-red-200 backdrop-blur-md rounded-full text-white transition-colors border border-white/10 shadow-lg" title="ログアウト">
-                  <LogOut className="w-5 h-5" />
-              </button>
-          </div>
-      )
-  }
+  const navLinks = [
+    { name: 'ホーム', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: '夢占い辞典', href: '/dictionary' },
+  ]
 
   return (
     <>
-      <button 
-        onClick={() => setIsOpen(true)}
-        className="fixed top-4 right-4 z-50 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full font-medium shadow-lg shadow-purple-900/20 transition-all hover:shadow-purple-900/40 border border-white/10"
-      >
-        ログイン
-      </button>
+      <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0f172a]/80 backdrop-blur-md">
+        <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-9 h-9 rounded-lg bg-linear-to-br from-purple-600 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-purple-500/20 group-hover:scale-110 transition-transform">
+              <Moon className="h-5 w-5" />
+            </div>
+            <span className="font-bold text-xl tracking-tighter text-white font-display">Dream Oracle</span>
+          </Link>
 
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href}
+                className={`text-sm font-medium transition-colors hover:text-purple-300 ${pathname === link.href ? 'text-purple-300' : 'text-gray-400'}`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Auth/Actions */}
+          <div className="flex items-center gap-4">
+            {user ? (
+              <div className="flex items-center gap-3">
+                <Link 
+                  href="/dashboard" 
+                  className="hidden sm:block px-4 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium transition-all border border-white/10 shadow-sm"
+                >
+                  マイページ
+                </Link>
+                <button 
+                  onClick={handleLogout} 
+                  className="p-2 bg-white/5 hover:bg-red-500/20 hover:text-red-200 backdrop-blur-md rounded-full text-white transition-all border border-white/10 shadow-sm" 
+                  title="ログアウト"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </div>
+            ) : (
+              <button 
+                onClick={() => setIsOpen(true)}
+                className="px-6 py-2 bg-linear-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/20 transition-all hover:scale-105"
+              >
+                ログイン
+              </button>
+            )}
+
+            {/* Mobile Menu Toggle */}
+            <button 
+              className="md:hidden p-2 text-gray-400 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <Menu className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-[#0f172a] border-b border-white/10 animate-in slide-in-from-top duration-300">
+            <div className="px-4 py-6 space-y-4">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.href} 
+                  href={link.href}
+                  className="block text-lg font-medium text-gray-300 hover:text-purple-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              {user && (
+                <Link 
+                  href="/dashboard"
+                  className="block text-lg font-medium text-purple-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  マイページ
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
+      </header>
+
+      {/* Auth Modal (Same as AuthButton) */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 text-gray-300">
            <div className="bg-[#1e293b] border border-white/10 rounded-2xl p-6 w-full max-w-md shadow-2xl relative">
               <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
                   <X className="w-5 h-5" />
               </button>
               
-              <h2 className="text-2xl font-bold text-white mb-6 text-center font-sans">{isLoginMode ? 'ログイン' : '新規登録'}</h2>
+              <h2 className="text-2xl font-bold text-white mb-6 text-center">{isLoginMode ? 'ログイン' : '新規登録'}</h2>
               
               <button
                 onClick={handleGoogleLogin}

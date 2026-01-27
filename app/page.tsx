@@ -63,19 +63,16 @@ export default function Home() {
       />
 
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
-        {/* Header */}
-        <header className="text-center mb-16 space-y-4">
-          <div className="inline-flex items-center justify-center p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 shadow-lg shadow-purple-500/10">
-            <Moon className="w-8 h-8 text-purple-300 mr-3" />
-            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
-              Dream Oracle
-            </h1>
-          </div>
+        {/* Hero Section */}
+        <div className="text-center mb-16 space-y-6 pt-8">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
+            Your Dreams, Decoded.
+          </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
             あなたの夢には、潜在意識からのメッセージが隠されています。<br className="hidden md:block"/>
             その不思議な物語を教えてください。AIが優しく紐解きます。
           </p>
-        </header>
+        </div>
 
         {/* Input Section */}
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20">

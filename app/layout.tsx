@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
-import AuthButton from "@/components/AuthButton";
+import Header from "@/components/Header";
 
 const fredoka = Fredoka({ 
   subsets: ["latin"], 
@@ -51,7 +51,7 @@ export default function RootLayout({
       <body
         className={`${fredoka.variable} ${zenGothic.variable} antialiased font-sans bg-[#0f172a]`}
       >
-        <AuthButton />
+        <Header />
         {children}
       </body>
     </html>

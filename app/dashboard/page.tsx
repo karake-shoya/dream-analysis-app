@@ -40,10 +40,6 @@ export default async function Dashboard() {
                         Dream Journal
                     </span>
                 </h1>
-                <Link href="/" className="flex items-center text-sm text-gray-400 hover:text-white transition-colors">
-                    <ArrowLeft className="w-4 h-4 mr-1" />
-                    トップへ戻る
-                </Link>
             </div>
 
             {!dreams || dreams.length === 0 ? (
