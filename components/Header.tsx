@@ -78,6 +78,7 @@ export default function Header() {
   const navLinks = [
     { name: 'ホーム', href: '/' },
     { name: 'About', href: '/about' },
+    { name: '夢診断の考え方', href: '/approach' },
     { name: '夢占い辞典', href: '/dictionary' },
   ]
 

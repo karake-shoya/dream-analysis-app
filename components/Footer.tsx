@@ -17,6 +17,7 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/" className="hover:text-purple-300 transition-colors">ホーム</Link></li>
               <li><Link href="/about" className="hover:text-purple-300 transition-colors">About</Link></li>
+              <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢診断の考え方</Link></li>
               <li><Link href="/dictionary" className="hover:text-purple-300 transition-colors">夢占い辞典</Link></li>
             </ul>
           </div>
