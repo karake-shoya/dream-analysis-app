@@ -8,9 +8,12 @@ import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
 import { ERROR_MESSAGES } from '@/lib/constants';
 
+import VoiceInput from '@/components/VoiceInput';
+
 export default function Home() {
   const router = useRouter();
   const [dream, setDream] = useState('');
+  const [baseText, setBaseText] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -62,17 +65,27 @@ export default function Home() {
 
         {/* Input Section */}
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 shadow-2xl transition-all duration-300 hover:border-white/20">
-          <label htmlFor="dream-input" className="text-lg font-medium text-purple-200 mb-4 flex items-center">
-            <Sparkles className="w-5 h-5 mr-2" />
-            どんな夢を見ましたか？
+          <label htmlFor="dream-input" className="text-lg font-medium text-purple-200 mb-4 flex items-center justify-between">
+            <span className="flex items-center">
+              <Sparkles className="w-5 h-5 mr-2" />
+              どんな夢を見ましたか？
+            </span>
           </label>
-          <textarea
-            id="dream-input"
-            value={dream}
-            onChange={(e) => setDream(e.target.value)}
-            className="w-full h-40 bg-black/20 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all resize-none"
-            placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
-          />
+          
+          <div className="relative">
+            <textarea
+              id="dream-input"
+              value={dream}
+              onChange={(e) => setDream(e.target.value)}
+              className="w-full h-48 bg-black/20 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all resize-none pr-14"
+              placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
+            />
+            <VoiceInput 
+              onStart={() => setBaseText(dream)}
+              onTranscript={(transcript) => setDream(baseText + (baseText ? ' ' : '') + transcript)}
+              className="absolute bottom-4 right-4"
+            />
+          </div>
           
           <div className="mt-6 flex justify-end">
             <button
