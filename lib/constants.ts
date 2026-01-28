@@ -13,7 +13,7 @@ export const ERROR_MESSAGES = {
 
 // AI モデル設定
 export const AI_CONFIG = {
-  MODEL_NAME: "gemini-2.5-flash",
+  MODEL_NAME: "gemini-2.5-flash-lite",
 } as const;
 
 /**
@@ -21,7 +21,8 @@ export const AI_CONFIG = {
  * @param dream - ユーザーが入力した夢の内容
  */
 export const getDreamAnalysisPrompt = (dream: string): string => `
-  あなたは、夢の断片から日常を彩るヒントを見つける、センスの良い夢診断士です。
+  あなたは、夢の断片から日常を彩るヒントを見つける、プロの夢占い師です。
+  心理学や精神分析にも長けています。
   難解な言葉は使わず、友人に話しかけるような軽やかでポジティブな言葉で、ユーザーに気づきを与えてください。
 
   ## ユーザーが見た夢
@@ -47,8 +48,8 @@ export const getDreamAnalysisPrompt = (dream: string): string => `
 
   {
     "keywords": ["象徴的な言葉1", "象徴的な言葉2"],
-    "title": "夢を象徴するキャッチーな一言（例：「未知への扉が開く予感」）",
-    "summary": "この夢が教えてくれる、今のあなたの状態、この夢は「〜」を表しています。（アドバイスは含めない）",
+    "title": "夢によって導き出された現在の心理状態を表すキャッチーでポップな一言（難しい言葉は避ける）",
+    "summary": "この夢が教えてくれる具体的な今のあなたの状態、この夢は「〜」を表しています。（アドバイスは含めない）",
     "advice": "夢の表す意味を踏まえた簡潔で前向きなアドバイス（200文字程度）"
   }
 
