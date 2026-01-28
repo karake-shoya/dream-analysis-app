@@ -5,6 +5,32 @@ import { Mic, MicOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
+/**
+ * Web Speech API の型定義
+ */
+interface SpeechRecognitionEvent extends Event {
+  results: SpeechRecognitionResultList;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+}
+
+interface SpeechRecognitionResultList {
+  readonly length: number;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionResult {
+  readonly length: number;
+  [index: number]: SpeechRecognitionAlternative;
+  isFinal: boolean;
+}
+
+interface SpeechRecognitionAlternative {
+  readonly transcript: string;
+}
+
 interface VoiceInputProps {
   onTranscript: (text: string) => void;
   onStart?: () => void;
@@ -14,14 +40,16 @@ interface VoiceInputProps {
 export default function VoiceInput({ onTranscript, onStart, className }: VoiceInputProps) {
   const [isListening, setIsListening] = useState(false);
   const [supported, setSupported] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        setSupported(true);
-      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const win = window as any;
+      const isSpeechSupported = !!(win.SpeechRecognition || win.webkitSpeechRecognition);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setSupported(isSpeechSupported);
     }
     
     return () => {
@@ -45,7 +73,9 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       return;
     }
 
-    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const win = window as any;
+    const SpeechRecognition = win.SpeechRecognition || win.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
 
     recognition.lang = 'ja-JP';
@@ -57,41 +87,29 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       if (onStart) onStart();
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     recognition.onresult = (event: any) => {
-      let finalTranscript = '';
-      let interimTranscript = '';
-
-      for (let i = event.resultIndex; i < event.results.length; ++i) {
-        if (event.results[i].isFinal) {
-          finalTranscript += event.results[i][0].transcript;
-        } else {
-          interimTranscript += event.results[i][0].transcript;
-        }
-      }
-
-      // We send back the total transcript of this session
-      // Wait, if it's continuous, we need to accumulate
-      // speechRecognition doesn't store the whole history in results easily for long sessions
-      // but event.results contains everything if we don't restart.
-      
+      const e = event as SpeechRecognitionEvent;
       let totalTranscript = '';
-      for (let i = 0; i < event.results.length; i++) {
-        totalTranscript += event.results[i][0].transcript;
+      for (let i = 0; i < e.results.length; i++) {
+        totalTranscript += e.results[i][0].transcript;
       }
       
       onTranscript(totalTranscript);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     recognition.onerror = (event: any) => {
-      if (event.error !== 'no-speech') {
-        console.error('Speech recognition error:', event.error);
+      const e = event as SpeechRecognitionErrorEvent;
+      if (e.error !== 'no-speech') {
+        console.error('Speech recognition error:', e.error);
       }
       
       setIsListening(false);
 
-      if (event.error === 'not-allowed') {
+      if (e.error === 'not-allowed') {
         toast.error('マイクの使用が許可されていません。設定を確認してください。');
-      } else if (event.error === 'no-speech') {
+      } else if (e.error === 'no-speech') {
         // Ignore silent timeout
       } else {
         toast.error('音声入力中にエラーが発生しました。');
