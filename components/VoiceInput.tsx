@@ -131,7 +131,7 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       console.error('Recognition start failed:', e);
       setIsListening(false);
     }
-  }, [isListening, supported]); // dependencyを最小化
+  }, [isListening]); // dependencyを最小化
 
   if (!supported) return null;
 
