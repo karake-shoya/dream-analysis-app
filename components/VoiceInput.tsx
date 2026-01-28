@@ -69,11 +69,6 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
   }, []);
 
   const toggleListening = useCallback(() => {
-    if (!supported) {
-      toast.error('お使いのブラウザは音声入力に対応していません。');
-      return;
-    }
-
     if (isListening) {
       if (recognitionRef.current) {
         recognitionRef.current.stop();
