@@ -43,6 +43,15 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
 
+  // ステールクロージャ対策: callbackをRefで保持する
+  const onTranscriptRef = useRef(onTranscript);
+  const onStartRef = useRef(onStart);
+
+  useEffect(() => {
+    onTranscriptRef.current = onTranscript;
+    onStartRef.current = onStart;
+  }, [onTranscript, onStart]);
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -84,7 +93,7 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
 
     recognition.onstart = () => {
       setIsListening(true);
-      if (onStart) onStart();
+      if (onStartRef.current) onStartRef.current();
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,7 +104,7 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
         totalTranscript += e.results[i][0].transcript;
       }
       
-      onTranscript(totalTranscript);
+      onTranscriptRef.current(totalTranscript);
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -127,7 +136,7 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       console.error('Recognition start failed:', e);
       setIsListening(false);
     }
-  }, [isListening, supported, onTranscript, onStart]);
+  }, [isListening, supported]); // dependencyを最小化
 
   if (!supported) return null;
 

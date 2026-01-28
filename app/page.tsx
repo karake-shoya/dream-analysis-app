@@ -2,7 +2,7 @@
 
 export const runtime = 'edge';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Sparkles, ArrowRight, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
@@ -13,7 +13,7 @@ import VoiceInput from '@/components/VoiceInput';
 export default function Home() {
   const router = useRouter();
   const [dream, setDream] = useState('');
-  const [baseText, setBaseText] = useState('');
+  const baseTextRef = useRef('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -81,8 +81,10 @@ export default function Home() {
               placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
             />
             <VoiceInput 
-              onStart={() => setBaseText(dream)}
-              onTranscript={(transcript) => setDream(baseText + (baseText ? ' ' : '') + transcript)}
+              onStart={() => {
+                baseTextRef.current = dream;
+              }}
+              onTranscript={(transcript) => setDream(baseTextRef.current + (baseTextRef.current ? ' ' : '') + transcript)}
               className="absolute bottom-4 right-4"
             />
           </div>
