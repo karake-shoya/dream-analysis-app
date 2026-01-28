@@ -92,7 +92,6 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
     recognition.continuous = true;
 
     recognition.onstart = () => {
-      setIsListening(true);
       if (onStartRef.current) onStartRef.current();
     };
 
@@ -129,6 +128,7 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       setIsListening(false);
     };
 
+    setIsListening(true);
     try {
       recognition.start();
       recognitionRef.current = recognition;
