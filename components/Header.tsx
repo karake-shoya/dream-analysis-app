@@ -1,22 +1,25 @@
 'use client'
 import { createClient } from '@/lib/supabase/client'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { User } from '@supabase/supabase-js'
-import { LogOut, X, Menu } from 'lucide-react'
+import { LogOut, X, Menu, User as UserIcon, Settings, ChevronDown, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Logo } from '@/components/Logo'
+import { getDisplayName, getAvatarUrl } from '@/lib/user'
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null)
   const [isOpen, setIsOpen] = useState(false) // Auth Modal
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const [isLoginMode, setIsLoginMode] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   
+  const userMenuRef = useRef<HTMLDivElement>(null)
   const supabase = createClient()
   const router = useRouter()
   const pathname = usePathname()
@@ -36,6 +39,20 @@ export default function Header() {
     )
     return () => subscription.unsubscribe()
   }, [supabase, router])
+
+  // ユーザーメニュー外クリックで閉じる
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false)
+      }
+    }
+    
+    if (isUserMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isUserMenuOpen])
 
   const handleGoogleLogin = async () => {
     setLoading(true)
@@ -71,10 +88,14 @@ export default function Header() {
   }
 
   const handleLogout = async () => {
+    setIsUserMenuOpen(false)
     await supabase.auth.signOut()
     router.push('/')
     router.refresh()
   }
+
+  const displayName = getDisplayName(user)
+  const avatarUrl = getAvatarUrl(user)
 
   const navLinks = [
     { name: 'ホーム', href: '/' },
@@ -108,20 +129,70 @@ export default function Header() {
           {/* Auth/Actions */}
           <div className="flex items-center gap-4">
             {user ? (
-              <div className="flex items-center gap-3">
-                <Link 
-                  href="/dashboard" 
-                  className="hidden sm:block px-4 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium transition-all border border-white/10 shadow-sm"
-                >
-                  マイページ
-                </Link>
+              <div className="relative" ref={userMenuRef}>
+                {/* ユーザーボタン */}
                 <button 
-                  onClick={handleLogout} 
-                  className="p-2 bg-white/5 hover:bg-red-500/20 hover:text-red-200 backdrop-blur-md rounded-full text-white transition-all border border-white/10 shadow-sm" 
-                  title="ログアウト"
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium transition-all border border-white/10 shadow-sm"
                 >
-                  <LogOut className="w-5 h-5" />
+                  {avatarUrl ? (
+                    <img 
+                      src={avatarUrl} 
+                      alt={displayName}
+                      className="w-6 h-6 rounded-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-6 h-6 rounded-full bg-purple-500/30 flex items-center justify-center">
+                      <UserIcon className="w-4 h-4 text-purple-300" />
+                    </div>
+                  )}
+                  <span className="hidden sm:inline max-w-[100px] truncate">{displayName}</span>
+                  <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${isUserMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
+
+                {/* ドロップダウンメニュー */}
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-[#1e293b] border border-white/10 rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                    {/* ユーザー情報 */}
+                    <div className="px-4 py-3 border-b border-white/10">
+                      <p className="text-sm font-medium text-white truncate">{displayName}</p>
+                      <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                    </div>
+
+                    {/* メニュー項目 */}
+                    <div className="py-1">
+                      <Link
+                        href="/dashboard"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
+                      >
+                        <BookOpen className="w-4 h-4 text-purple-400" />
+                        マイページ
+                        <span className="ml-auto text-xs text-gray-500">記録の確認</span>
+                      </Link>
+                      
+                      <Link
+                        href="/settings"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-300 hover:bg-white/5 hover:text-white transition-colors"
+                      >
+                        <Settings className="w-4 h-4 text-purple-400" />
+                        セキュリティ設定
+                      </Link>
+                    </div>
+
+                    {/* ログアウト */}
+                    <div className="border-t border-white/10 py-1">
+                      <button
+                        onClick={handleLogout}
+                        className="flex items-center gap-3 w-full px-4 py-2.5 text-sm text-red-300 hover:bg-red-500/10 hover:text-red-200 transition-colors"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        ログアウト
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <button 
@@ -157,13 +228,22 @@ export default function Header() {
                 </Link>
               ))}
               {user && (
-                <Link 
-                  href="/dashboard"
-                  className="block text-lg font-medium text-purple-300"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  マイページ
-                </Link>
+                <>
+                  <Link 
+                    href="/dashboard"
+                    className="block text-lg font-medium text-purple-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    マイページ
+                  </Link>
+                  <Link 
+                    href="/settings"
+                    className="block text-lg font-medium text-gray-300 hover:text-purple-300"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    セキュリティ設定
+                  </Link>
+                </>
               )}
             </div>
           </div>
