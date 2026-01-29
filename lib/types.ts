@@ -6,8 +6,13 @@ export interface AnalysisResult {
   isDiagnosable: boolean;
   /** 追加情報が必要かどうか */
   needsMoreInfo: boolean;
-  /** 追加で確認したい質問（最大3つ） */
-  missingInfoQuestions: string[];
+  /** 追加で確認したい質問（最大4つまで）とその回答ヒント（ボタン用） */
+  missingInfoQuestions: {
+    question: string;
+    options: string[];
+  }[];
+  /** 解析に関する補足事項（情報不足時の注意点など） */
+  analysisNote?: string;
   /** 夢を象徴するキーワード */
   keywords: string[];
   /** 夢を象徴するキャッチーなタイトル */
@@ -27,9 +32,9 @@ export interface AnalysisResult {
     confidence: number;
     evidence: string[];
   }[];
-  /** 前向きなアドバイス */
+  /** 前向きなアドバイス（夢の内容に対する助言） */
   advice: string;
-  /** 具体的な行動提案 */
+  /** 具体的な行動提案（夢のメッセージを活かすための日常のアクション） */
   nextActions: string[];
 }
 

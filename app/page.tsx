@@ -19,10 +19,11 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [needsMoreInfo, setNeedsMoreInfo] = useState(false);
-  const [questions, setQuestions] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<{ question: string, options: string[] }[]>([]);
   const [moreInfo, setMoreInfo] = useState('');
   const [moreInfoBaseTextRef] = useState({ current: '' }); // Ref for moreInfo voice input
   const [resultId, setResultId] = useState<string | null>(null);
+  const questionsSectionRef = useRef<HTMLDivElement>(null);
 
   const handleAnalyze = async (isFollowUp = false) => {
     const inputText = isFollowUp ? `${dream}\n\n【追加情報】\n${moreInfo}` : dream;
@@ -49,10 +50,18 @@ export default function Home() {
         setNeedsMoreInfo(true);
         setQuestions(data.missingInfoQuestions || []);
         setResultId(data.id);
-        // スクロールダウン
+        
+        // 追加質問セクションの開始位置までスクロール
         setTimeout(() => {
-          window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }, 100);
+          if (questionsSectionRef.current) {
+            // offsetTop を使用して、親要素からの相対位置（静的な位置）を取得
+            const yOffset = -80; // カードの上部に十分な余白を持たせる
+            const element = questionsSectionRef.current;
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }, 150); // アニメーション開始直後のタイミングで実行
         return;
       }
 
@@ -65,6 +74,16 @@ export default function Home() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleAddOption = (option: string) => {
+    setMoreInfo(prev => {
+      const trimmed = prev.trim();
+      if (!trimmed) return option;
+      // 句読点やスペースで繋ぐ
+      if (/[、。]$/.test(trimmed)) return trimmed + option;
+      return trimmed + '、' + option;
+    });
   };
 
   return (
@@ -98,6 +117,12 @@ export default function Home() {
                 id="dream-input"
                 value={dream}
                 onChange={(e) => setDream(e.target.value)}
+                onKeyDown={(e) => {
+                  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAnalyze(false);
+                  }
+                }}
                 className="w-full h-48 bg-black/20 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all resize-none pr-14"
                 placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
               />
@@ -142,24 +167,42 @@ export default function Home() {
 
           {/* Additional Questions Section */}
           {needsMoreInfo && (
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl animate-in fade-in slide-in-from-top-8 duration-700">
+            <div 
+              ref={questionsSectionRef}
+              className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl animate-in fade-in slide-in-from-top-8 duration-700"
+            >
               <div className="flex items-center text-indigo-200 font-bold mb-4 text-xl">
                 <MessageCircleQuestion className="w-6 h-6 mr-3 text-indigo-400" />
-                より詳しく診断するためのヒント
+                詳細診断のためのヒント
               </div>
               
               <p className="text-gray-300 mb-6 leading-relaxed">
                 AIがあなたの夢をさらに深く紐解くために、いくつか気になる点を見つけました。
-                以下の内容について、覚えている範囲で教えていただけますか？
+                当てはまるものを選んだり、自由に書き足してみてください。
               </p>
 
-              <div className="space-y-4 mb-8">
-                {questions.map((question, index) => (
-                  <div key={index} className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
-                    <div className="shrink-0 w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-300 text-xs font-bold mt-0.5">
-                      {index + 1}
+              <div className="space-y-6 mb-8">
+                {questions.map((q, index) => (
+                  <div key={index} className="space-y-3">
+                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                      <div className="shrink-0 w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-300 text-xs font-bold mt-0.5">
+                        {index + 1}
+                      </div>
+                      <p className="text-gray-200 text-sm">{q.question}</p>
                     </div>
-                    <p className="text-gray-200">{question}</p>
+                    {q.options && q.options.length > 0 && (
+                      <div className="flex flex-wrap gap-2 pl-10">
+                        {q.options.map((option, i) => (
+                          <button
+                            key={i}
+                            onClick={() => handleAddOption(option)}
+                            className="px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs hover:bg-indigo-500/20 hover:border-indigo-500/40 transition-all active:scale-95"
+                          >
+                            {option}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -168,8 +211,14 @@ export default function Home() {
                 <textarea
                   value={moreInfo}
                   onChange={(e) => setMoreInfo(e.target.value)}
+                  onKeyDown={(e) => {
+                    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                      e.preventDefault();
+                      handleAnalyze(true);
+                    }
+                  }}
                   className="w-full h-32 bg-black/40 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all resize-none pr-14"
-                  placeholder="追加で思い出したことや、上の質問への答えを入力してください（任意）"
+                  placeholder="追加の内容をこちらに入力（ボタンで選択した内容もここに反映されます）"
                 />
                 <VoiceInput 
                   onStart={() => {
@@ -192,7 +241,7 @@ export default function Home() {
                   className="flex items-center justify-center px-6 py-3 font-medium text-gray-400 hover:text-white transition-colors border border-white/10 rounded-full hover:bg-white/5"
                 >
                   <SkipForward className="w-4 h-4 mr-2" />
-                  このままの結果を見る
+                  このままの結果を表示
                 </button>
 
                 <button
@@ -205,7 +254,7 @@ export default function Home() {
                   ) : (
                     <Sparkles className="w-5 h-5 mr-2" />
                   )}
-                  {loading ? '再診断中...' : '追加情報でさらに詳しく診断'}
+                  {loading ? '再診断中...' : '追加情報でさらに精度を高める'}
                 </button>
               </div>
             </div>

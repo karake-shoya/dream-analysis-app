@@ -146,8 +146,18 @@ export default async function ResultPage({ params }: PageProps) {
             </div>
           </div>
 
-          {/* Symbols Section */}
-          <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10">
+            {/* Analysis Note (if exists) */}
+            {result.analysisNote && (
+              <div className="md:col-span-3 bg-indigo-500/5 backdrop-blur-sm rounded-2xl p-4 border border-indigo-500/10 flex items-start gap-3">
+                <Info className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
+                <p className="text-sm text-gray-400 leading-relaxed italic">
+                  {result.analysisNote}
+                </p>
+              </div>
+            )}
+
+            {/* Symbols Section */}
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10 md:col-span-3">
             <h3 className="text-sm font-bold text-gray-400 mb-6 flex items-center uppercase tracking-widest">
               <MapPin className="w-4 h-4 mr-2 text-amber-400" />
               夢の中の象徴
