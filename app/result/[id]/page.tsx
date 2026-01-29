@@ -100,8 +100,8 @@ export default async function ResultPage({ params }: PageProps) {
         {!dream.user_id && (
           <div className="mb-10 max-w-2xl mx-auto p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex items-center justify-center gap-3 animate-in fade-in slide-in-from-top-4 duration-1000">
             <Clock className="w-4 h-4 text-amber-400 shrink-0" />
-            <p className="text-xs md:text-sm text-amber-200/70 font-medium">
-              ゲスト利用のため、この診断結果は3日後に自動的に削除されます。
+            <p className="text-xs md:text-sm text-amber-200/70 font-medium text-center">
+              ゲスト診断のため、<br className="md:hidden"/>この結果は3日後に自動削除されます。
             </p>
           </div>
         )}
@@ -194,13 +194,13 @@ export default async function ResultPage({ params }: PageProps) {
             {result.interpretations.map((interp, i) => (
               <div key={i} className={`relative overflow-hidden rounded-3xl p-6 md:p-8 border ${i === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'bg-white/5 border-white/10'}`}>
                 {i === 0 && <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white rounded-bl-xl">Most Likely</div>}
-                <div className="flex justify-between items-start mb-4">
-                  <div className="space-y-1 pr-12">
+                <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
+                  <div className="space-y-1 md:pr-12">
                     <p className="text-white text-lg font-medium leading-relaxed">
                       {interp.summary}
                     </p>
                   </div>
-                  <div className="flex flex-col items-end">
+                  <div className="flex flex-col items-start md:items-end shrink-0">
                     <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Confidence</span>
                     <span className="text-xl font-display font-black text-blue-400">{(interp.confidence * 100).toFixed(0)}%</span>
                   </div>

@@ -247,14 +247,14 @@ export default function Home() {
                 <button
                   onClick={() => handleAnalyze(true)}
                   disabled={loading}
-                  className="group relative inline-flex items-center justify-center px-10 py-3 font-semibold text-white transition-all bg-linear-to-r from-indigo-600 to-purple-600 rounded-full hover:from-indigo-500 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 shadow-lg shadow-indigo-600/20 overflow-hidden"
+                  className="group relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white transition-all bg-linear-to-r from-indigo-600 to-purple-600 rounded-full hover:from-indigo-500 hover:to-purple-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 shadow-lg shadow-indigo-600/20 overflow-hidden whitespace-nowrap text-sm md:text-base"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                   ) : (
                     <Sparkles className="w-5 h-5 mr-2" />
                   )}
-                  {loading ? '再診断中...' : '追加情報でさらに精度を高める'}
+                  {loading ? '再診断中...' : '精度を高めて再診断'}
                 </button>
               </div>
             </div>
