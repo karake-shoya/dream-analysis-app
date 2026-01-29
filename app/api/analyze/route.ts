@@ -38,9 +38,18 @@ export async function POST(req: Request) {
     const cleanText = cleanJsonText(text);
     
     const analysis = JSON.parse(cleanText);
+
+    // 診断不可の場合の処理
+    if (analysis.isDiagnosable === false) {
+      return NextResponse.json(
+        { error: analysis.errorReason || ERROR_MESSAGES.NOT_A_DREAM },
+        { status: 400 }
+      );
+    }
+
     let dreamId = null;
 
-    // Supabase に保存（ログインしていれば user_id を紐付け、そうでなければ匿名で保存）
+    // Supabase に保存（診断可能な場合のみ）
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
