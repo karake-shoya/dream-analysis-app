@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from 'next';
-import { headers } from "next/headers";
 import GradientBackground from "@/components/GradientBackground";
 import { ShareButtons } from "@/components/ShareButtons";
 import type { AnalysisResult } from "@/lib/types";
@@ -45,8 +44,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ResultPage({ params }: PageProps) {
   const { id } = await params;
-  const headerList = await headers();
-  const fullUrl = headerList.get("x-url") || "";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://yume-insight.com";
+  const fullUrl = `${baseUrl}/result/${id}`;
 
   const supabase = await createClient();
   const { data: dream, error } = await supabase
