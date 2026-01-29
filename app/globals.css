@@ -46,6 +46,7 @@
 
   --font-sans: var(--font-zen-gothic), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fredoka), system-ui, sans-serif;
+  --font-inter: var(--font-inter-base), ui-sans-serif, system-ui, sans-serif;
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);

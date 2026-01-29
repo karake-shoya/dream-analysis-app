@@ -20,7 +20,7 @@ const zenGothic = Zen_Kaku_Gothic_New({
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-inter"
+  variable: "--font-inter-base"
 });
 
 export const metadata: Metadata = {
