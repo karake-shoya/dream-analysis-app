@@ -240,7 +240,10 @@ export default async function ResultPage({ params }: PageProps) {
 
           {/* Share Section */}
           <div className="pt-8 border-t border-white/10">
-            <ShareButtons shareUrl={fullUrl} shareText={result.title || "夢診断結果"} />
+            <ShareButtons 
+              shareUrl={fullUrl} 
+              shareText={result.title ? `今日の私の夢診断は「${result.title}」でした！` : "AIによる夢診断の結果です！"} 
+            />
           </div>
         </div>
       </div>
