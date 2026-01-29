@@ -1,8 +1,34 @@
 import Link from "next/link";
-import { ExternalLink, User, Heart, Sparkles } from "lucide-react";
+import { User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import { SiQiita } from "react-icons/si";
 import GradientBackground from "@/components/GradientBackground";
+import SectionHeader from "@/components/SectionHeader";
+import ExternalLinkCard from "@/components/ExternalLinkCard";
+
+const SOCIAL_LINKS = [
+  {
+    href: "https://github.com/karake-shoya",
+    icon: <FaGithub className="w-5 h-5" />,
+    iconBgClass: "bg-black/40 text-white",
+    title: "GitHub",
+    description: "OSSプロジェクト & コード",
+  },
+  {
+    href: "https://x.com/naiawa1026",
+    icon: <FaXTwitter className="w-5 h-5" />,
+    iconBgClass: "bg-black/40 text-white",
+    title: "X (Twitter)",
+    description: "日々の制作状況",
+  },
+  {
+    href: "https://qiita.com/shoya_u",
+    icon: <SiQiita className="w-5 h-5" />,
+    iconBgClass: "bg-[#55C500]/20 text-[#55C500]",
+    title: "Qiita",
+    description: "技術記事の投稿",
+  },
+];
 
 export default function AboutPage() {
   return (
@@ -10,7 +36,6 @@ export default function AboutPage() {
       <GradientBackground />
 
       <div className="relative z-10">
-        {/* About Content */}
         <main className="container mx-auto px-6 py-16 max-w-5xl">
           <div className="space-y-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             
@@ -38,12 +63,7 @@ export default function AboutPage() {
               {/* Main Content */}
               <div className="md:col-span-8 space-y-16">
                 <section className="space-y-8">
-                  <div className="flex items-center gap-3 text-purple-300 font-bold text-2xl">
-                    <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                      <Sparkles className="w-6 h-6" />
-                    </div>
-                    <h2>このWebサイトについて</h2>
-                  </div>
+                  <SectionHeader icon={Sparkles}>このWebサイトについて</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-6">
                     <p>
                       「昨日の夢にはどんな意味があったんだろう？」<br/>
@@ -59,63 +79,11 @@ export default function AboutPage() {
                 </section>
 
                 <section className="space-y-8">
-                  <div className="flex items-center gap-3 text-purple-300 font-bold text-2xl">
-                    <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/20">
-                      <Heart className="w-6 h-6" />
-                    </div>
-                    <h2>リンク集</h2>
-                  </div>
+                  <SectionHeader icon={Heart}>リンク集</SectionHeader>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Link 
-                      href="https://github.com/karake-shoya" 
-                      target="_blank"
-                      className="flex items-center justify-between p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-purple-500/50 hover:bg-white/10 transition-all group shadow-sm"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="p-2.5 rounded-xl bg-black/40 text-white">
-                          <FaGithub className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="font-bold text-white">GitHub</p>
-                          <p className="text-xs text-gray-500">OSSプロジェクト &amp; コード</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
-                    </Link>
-
-                    <Link 
-                      href="https://x.com/naiawa1026" 
-                      target="_blank"
-                      className="flex items-center justify-between p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-purple-500/50 hover:bg-white/10 transition-all group shadow-sm"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="p-2.5 rounded-xl bg-black/40 text-white">
-                          <FaXTwitter className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="font-bold text-white">X (Twitter)</p>
-                          <p className="text-xs text-gray-500">日々の制作状況</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
-                    </Link>
-
-                    <Link 
-                      href="https://qiita.com/shoya_u" 
-                      target="_blank"
-                      className="flex items-center justify-between p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-purple-500/50 hover:bg-white/10 transition-all group shadow-sm"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className="p-2.5 rounded-xl bg-[#55C500]/20 text-[#55C500]">
-                          <SiQiita className="w-5 h-5" />
-                        </div>
-                        <div>
-                          <p className="font-bold text-white">Qiita</p>
-                          <p className="text-xs text-gray-500">技術記事の投稿</p>
-                        </div>
-                      </div>
-                      <ExternalLink className="w-4 h-4 text-gray-500 group-hover:text-purple-300 transition-colors" />
-                    </Link>
+                    {SOCIAL_LINKS.map((link) => (
+                      <ExternalLinkCard key={link.href} {...link} />
+                    ))}
                   </div>
                 </section>
               </div>
