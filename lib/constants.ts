@@ -14,7 +14,7 @@ export const ERROR_MESSAGES = {
 
 // AI モデル設定
 export const AI_CONFIG = {
-  MODEL_NAME: "gemini-2.0-flash",
+  MODEL_NAME: "gemini-2.5-flash-lite",
 } as const;
 
 /**
