@@ -35,9 +35,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!dream) return { title: '夢診断結果' };
 
   const result = dream.diagnosis_result as AnalysisResult;
+  const summary = result.interpretations?.[0]?.summary || result.summary;
+
   return {
     title: result.title ? `${result.title} | Yume Insight` : '夢診断結果 | Yume Insight',
-    description: result.interpretations?.[0]?.summary || 'AIによる深層心理の解析結果です。',
+    description: summary || 'AIによる深層心理の解析結果です。',
   };
 }
 
@@ -58,6 +60,16 @@ export default async function ResultPage({ params }: PageProps) {
   }
 
   const result = dream.diagnosis_result as AnalysisResult;
+  const legacySummary = result.summary || result.interpretations?.[0]?.summary;
+  const interpretations = result.interpretations?.length
+    ? result.interpretations
+    : legacySummary
+      ? [{ summary: legacySummary, confidence: 1, evidence: [] }]
+      : [];
+  const facts = result.facts ?? [];
+  const emotions = result.emotions ?? [];
+  const symbols = result.symbols ?? [];
+  const nextActions = result.nextActions ?? [];
 
   return (
     <main className="min-h-screen text-white selection:bg-purple-500/30">
@@ -111,38 +123,44 @@ export default async function ResultPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Facts Section */}
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-              <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
-                <ClipboardCheck className="w-4 h-4 mr-2 text-indigo-400" />
-                夢の事実
-              </h3>
-              <ul className="space-y-3">
-                {result.facts?.map((fact, i) => (
-                  <li key={i} className="text-gray-200 text-sm flex items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 mr-3 shrink-0" />
-                    {fact}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {(facts.length > 0 || emotions.length > 0) && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Facts Section */}
+              {facts.length > 0 && (
+                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
+                    <ClipboardCheck className="w-4 h-4 mr-2 text-indigo-400" />
+                    夢の事実
+                  </h3>
+                  <ul className="space-y-3">
+                    {facts.map((fact, i) => (
+                      <li key={i} className="text-gray-200 text-sm flex items-start">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 mr-3 shrink-0" />
+                        {fact}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-            {/* Emotions Section */}
-            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-              <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
-                <Heart className="w-4 h-4 mr-2 text-rose-400" />
-                感じた感情
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {result.emotions?.map((emotion, i) => (
-                  <span key={i} className="px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-200 text-sm">
-                    {emotion}
-                  </span>
-                ))}
-              </div>
+              {/* Emotions Section */}
+              {emotions.length > 0 && (
+                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
+                    <Heart className="w-4 h-4 mr-2 text-rose-400" />
+                    感じた感情
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {emotions.map((emotion, i) => (
+                      <span key={i} className="px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-200 text-sm">
+                        {emotion}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
+          )}
 
           {/* Analysis Note (if exists) */}
           {result.analysisNote && (
@@ -155,88 +173,100 @@ export default async function ResultPage({ params }: PageProps) {
           )}
 
           {/* Symbols Section */}
-          <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10">
-            <h3 className="text-sm font-bold text-gray-400 mb-6 flex items-center uppercase tracking-widest">
-              <MapPin className="w-4 h-4 mr-2 text-amber-400" />
-              夢の中の象徴
-            </h3>
-            <div className="grid sm:grid-cols-2 gap-4">
-              {result.symbols?.map((symbol, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                  <div className="font-bold text-amber-200 mb-1">{symbol.symbol}</div>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    {symbol.meaningCandidates?.join(' / ')}
-                  </p>
+          {symbols.length > 0 && (
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10">
+              <h3 className="text-sm font-bold text-gray-400 mb-6 flex items-center uppercase tracking-widest">
+                <MapPin className="w-4 h-4 mr-2 text-amber-400" />
+                夢の中の象徴
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {symbols.map((symbol, i) => (
+                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <div className="font-bold text-amber-200 mb-1">{symbol.symbol}</div>
+                    <p className="text-xs text-gray-400 leading-relaxed">
+                      {symbol.meaningCandidates?.join(' / ')}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Interpretations Section */}
+          {interpretations.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-gray-400 px-2 flex items-center uppercase tracking-widest">
+                <Gauge className="w-4 h-4 mr-2 text-blue-400" />
+                深層心理の解釈
+              </h3>
+              {interpretations.map((interp, i) => (
+                <div key={i} className={`relative overflow-hidden rounded-3xl p-6 md:p-8 border ${i === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'bg-white/5 border-white/10'}`}>
+                  {i === 0 && <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white rounded-bl-xl">Most Likely</div>}
+                  <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
+                    <div className="space-y-1 md:pr-12">
+                      <p className="text-white text-lg font-medium leading-relaxed">
+                        {interp.summary}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start md:items-end shrink-0">
+                      <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Confidence</span>
+                      <span className="text-xl font-display font-black text-blue-400">{(interp.confidence * 100).toFixed(0)}%</span>
+                    </div>
+                  </div>
+                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-6">
+                    <div 
+                      className={`h-full rounded-full ${i === 0 ? 'bg-blue-500' : 'bg-blue-400/50'}`}
+                      style={{ width: `${interp.confidence * 100}%` }}
+                    />
+                  </div>
+                  {interp.evidence?.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {interp.evidence?.map((ev, j) => (
+                        <span key={j} className="text-[10px] px-2 py-1 rounded bg-black/30 text-gray-400 border border-white/5">
+                          {ev}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Interpretations Section */}
-          <div className="space-y-4">
-            <h3 className="text-sm font-bold text-gray-400 px-2 flex items-center uppercase tracking-widest">
-              <Gauge className="w-4 h-4 mr-2 text-blue-400" />
-              深層心理の解釈
-            </h3>
-            {result.interpretations?.map((interp, i) => (
-              <div key={i} className={`relative overflow-hidden rounded-3xl p-6 md:p-8 border ${i === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'bg-white/5 border-white/10'}`}>
-                {i === 0 && <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white rounded-bl-xl">Most Likely</div>}
-                <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
-                  <div className="space-y-1 md:pr-12">
-                    <p className="text-white text-lg font-medium leading-relaxed">
-                      {interp.summary}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-start md:items-end shrink-0">
-                    <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Confidence</span>
-                    <span className="text-xl font-display font-black text-blue-400">{(interp.confidence * 100).toFixed(0)}%</span>
-                  </div>
-                </div>
-                <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-6">
-                  <div 
-                    className={`h-full rounded-full ${i === 0 ? 'bg-blue-500' : 'bg-blue-400/50'}`}
-                    style={{ width: `${interp.confidence * 100}%` }}
-                  />
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {interp.evidence?.map((ev, j) => (
-                    <span key={j} className="text-[10px] px-2 py-1 rounded bg-black/30 text-gray-400 border border-white/5">
-                      {ev}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          )}
 
           {/* Advice & Actions */}
-          <div className="bg-linear-to-br from-purple-600/20 to-indigo-600/20 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-white/10 shadow-2xl">
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="space-y-6">
-                <h3 className="text-lg font-bold text-purple-200 flex items-center">
-                  <Sparkles className="w-5 h-5 mr-3" />
-                  解析者からのメッセージ
-                </h3>
-                <p className="text-gray-200 leading-relaxed italic border-l-2 border-purple-500/30 pl-6 py-2">
-                  {result.advice}
-                </p>
-              </div>
-              <div className="space-y-6">
-                <h3 className="text-lg font-bold text-indigo-200 flex items-center">
-                  <Lightbulb className="w-5 h-5 mr-3" />
-                  次の一歩
-                </h3>
-                <div className="space-y-3">
-                  {result.nextActions?.map((action, i) => (
-                    <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
-                      <CheckCircle2 className="w-5 h-5 text-indigo-400 shrink-0" />
-                      <span className="text-sm text-gray-100">{action}</span>
+          {(result.advice || nextActions.length > 0) && (
+            <div className="bg-linear-to-br from-purple-600/20 to-indigo-600/20 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-white/10 shadow-2xl">
+              <div className="grid md:grid-cols-2 gap-10">
+                {result.advice && (
+                  <div className="space-y-6">
+                    <h3 className="text-lg font-bold text-purple-200 flex items-center">
+                      <Sparkles className="w-5 h-5 mr-3" />
+                      解析者からのメッセージ
+                    </h3>
+                    <p className="text-gray-200 leading-relaxed italic border-l-2 border-purple-500/30 pl-6 py-2">
+                      {result.advice}
+                    </p>
+                  </div>
+                )}
+                {nextActions.length > 0 && (
+                  <div className="space-y-6">
+                    <h3 className="text-lg font-bold text-indigo-200 flex items-center">
+                      <Lightbulb className="w-5 h-5 mr-3" />
+                      次の一歩
+                    </h3>
+                    <div className="space-y-3">
+                      {nextActions.map((action, i) => (
+                        <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                          <CheckCircle2 className="w-5 h-5 text-indigo-400 shrink-0" />
+                          <span className="text-sm text-gray-100">{action}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
-          </div>
+          )}
 
           {/* Share Section */}
           <div className="pt-8 border-t border-white/10">

@@ -17,6 +17,8 @@ export interface AnalysisResult {
   keywords: string[];
   /** 夢を象徴するキャッチーなタイトル */
   title?: string;
+  /** 旧スキーマの要約文（互換対応） */
+  summary?: string;
   /** 夢の事実（解釈抜き） */
   facts: string[];
   /** 夢の中での感情 */
