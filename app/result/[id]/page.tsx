@@ -16,6 +16,7 @@ import Link from "next/link";
 import { Metadata } from 'next';
 import GradientBackground from "@/components/GradientBackground";
 import { ShareButtons } from "@/components/ShareButtons";
+import ResultSectionCard from "@/components/ResultSectionCard";
 import type { AnalysisResult } from "@/lib/types";
 
 interface PageProps {
@@ -65,10 +66,7 @@ export default async function ResultPage({ params }: PageProps) {
     : summary
       ? [{ summary, confidence: 1, evidence: [] }]
       : [];
-  const facts = result.facts ?? [];
-  const emotions = result.emotions ?? [];
-  const symbols = result.symbols ?? [];
-  const nextActions = result.nextActions ?? [];
+  const { facts = [], emotions = [], symbols = [], nextActions = [] } = result;
 
   return (
     <main className="min-h-screen text-white selection:bg-purple-500/30">
@@ -124,13 +122,8 @@ export default async function ResultPage({ params }: PageProps) {
 
           {(facts.length > 0 || emotions.length > 0) && (
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Facts Section */}
               {facts.length > 0 && (
-                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
-                    <ClipboardCheck className="w-4 h-4 mr-2 text-indigo-400" />
-                    夢の事実
-                  </h3>
+                <ResultSectionCard icon={ClipboardCheck} iconColorClass="text-indigo-400" title="夢の事実">
                   <ul className="space-y-3">
                     {facts.map((fact, i) => (
                       <li key={i} className="text-gray-200 text-sm flex items-start">
@@ -139,16 +132,11 @@ export default async function ResultPage({ params }: PageProps) {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </ResultSectionCard>
               )}
 
-              {/* Emotions Section */}
               {emotions.length > 0 && (
-                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
-                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
-                    <Heart className="w-4 h-4 mr-2 text-rose-400" />
-                    感じた感情
-                  </h3>
+                <ResultSectionCard icon={Heart} iconColorClass="text-rose-400" title="感じた感情">
                   <div className="flex flex-wrap gap-2">
                     {emotions.map((emotion, i) => (
                       <span key={i} className="px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-200 text-sm">
@@ -156,12 +144,12 @@ export default async function ResultPage({ params }: PageProps) {
                       </span>
                     ))}
                   </div>
-                </div>
+                </ResultSectionCard>
               )}
             </div>
           )}
 
-          {/* Analysis Note (if exists) */}
+          {/* Analysis Note */}
           {result.analysisNote && (
             <div className="bg-indigo-500/5 backdrop-blur-sm rounded-2xl p-4 border border-indigo-500/10 flex items-start gap-3">
               <Info className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
@@ -202,11 +190,9 @@ export default async function ResultPage({ params }: PageProps) {
                 <div key={i} className={`relative overflow-hidden rounded-3xl p-6 md:p-8 border ${i === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'bg-white/5 border-white/10'}`}>
                   {i === 0 && <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white rounded-bl-xl">Most Likely</div>}
                   <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
-                    <div className="space-y-1 md:pr-12">
-                      <p className="text-white text-lg font-medium leading-relaxed">
-                        {interp.summary}
-                      </p>
-                    </div>
+                    <p className="text-white text-lg font-medium leading-relaxed md:pr-12">
+                      {interp.summary}
+                    </p>
                     <div className="flex flex-col items-start md:items-end shrink-0">
                       <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Confidence</span>
                       <span className="text-xl font-display font-black text-blue-400">{(interp.confidence * 100).toFixed(0)}%</span>
@@ -220,7 +206,7 @@ export default async function ResultPage({ params }: PageProps) {
                   </div>
                   {interp.evidence?.length > 0 && (
                     <div className="flex flex-wrap gap-2">
-                      {interp.evidence?.map((ev, j) => (
+                      {interp.evidence.map((ev, j) => (
                         <span key={j} className="text-[10px] px-2 py-1 rounded bg-black/30 text-gray-400 border border-white/5">
                           {ev}
                         </span>

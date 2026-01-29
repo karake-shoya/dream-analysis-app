@@ -1,27 +1,30 @@
 'use client';
 
-export const runtime = 'edge';
-
 import { useState, useRef } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
+import VoiceInput from '@/components/VoiceInput';
 import { ERROR_MESSAGES } from '@/lib/constants';
 
-import VoiceInput from '@/components/VoiceInput';
+export const runtime = 'edge';
+
+interface Question {
+  question: string;
+  options: string[];
+}
 
 export default function Home() {
   const router = useRouter();
   const [dream, setDream] = useState('');
   const baseTextRef = useRef('');
   
-  // 追加質問用のステート
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [needsMoreInfo, setNeedsMoreInfo] = useState(false);
-  const [questions, setQuestions] = useState<{ question: string, options: string[] }[]>([]);
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [moreInfo, setMoreInfo] = useState('');
-  const moreInfoBaseTextRef = useRef(''); // Standard useRef
+  const moreInfoBaseTextRef = useRef('');
   const [resultId, setResultId] = useState<string | null>(null);
   const questionsSectionRef = useRef<HTMLDivElement>(null);
 
@@ -45,30 +48,25 @@ export default function Home() {
         throw new Error(data.error || ERROR_MESSAGES.ANALYSIS_FAILED);
       }
 
-      // 追加情報が必要な場合
       if (data.needsMoreInfo && !isFollowUp) {
         setNeedsMoreInfo(true);
         setQuestions(data.missingInfoQuestions || []);
-        // API側で保存が失敗していても、IDがあればセットする
         if (data.id) setResultId(data.id);
         
-        // 追加質問セクションの開始位置までスクロール
         setTimeout(() => {
           if (questionsSectionRef.current) {
-            const yOffset = -80; // カードの上部に十分な余白を持たせる
+            const yOffset = -80;
             const element = questionsSectionRef.current;
             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
-        }, 150); // アニメーション開始直後のタイミングで実行
+        }, 150);
         return;
       }
 
       if (data.id) {
         router.push(`/result/${data.id}`);
       } else {
-        // 保存に失敗したが解析結果はある場合のエラー表示
         setError('解析は完了しましたが、結果の保存に失敗しました。もう一度お試しください。');
       }
     } catch (err: unknown) {
@@ -83,10 +81,17 @@ export default function Home() {
     setMoreInfo(prev => {
       const trimmed = prev.trim();
       if (!trimmed) return option;
-      // 句読点やスペースで繋ぐ
       if (/[、。]$/.test(trimmed)) return trimmed + option;
       return trimmed + '、' + option;
     });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent, isFollowUp: boolean) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+      if (!isFollowUp && needsMoreInfo) return;
+      e.preventDefault();
+      handleAnalyze(isFollowUp);
+    }
   };
 
   return (
@@ -103,7 +108,7 @@ export default function Home() {
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
               夢を入力するだけで、今のあなたの深層心理をAIが読み解きます
             </p>
-            <p className="text-indigo-100 text-base md:text-lg font-bold tracking-[0.1em] font-inter">
+            <p className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
               AI夢診断サービス「Yume Insight」
             </p>
           </div>
@@ -124,20 +129,12 @@ export default function Home() {
                 id="dream-input"
                 value={dream}
                 onChange={(e) => setDream(e.target.value)}
-                onKeyDown={(e) => {
-                  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
-                    if (needsMoreInfo) return;
-                    e.preventDefault();
-                    handleAnalyze(false);
-                  }
-                }}
+                onKeyDown={(e) => handleKeyDown(e, false)}
                 className="w-full h-48 bg-black/20 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all resize-none pr-14"
                 placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
               />
               <VoiceInput 
-                onStart={() => {
-                  baseTextRef.current = dream;
-                }}
+                onStart={() => { baseTextRef.current = dream; }}
                 onTranscript={(transcript) => setDream(baseTextRef.current + (baseTextRef.current ? ' ' : '') + transcript)}
                 className="absolute bottom-4 right-4"
               />
@@ -201,7 +198,7 @@ export default function Home() {
                       </div>
                       <p className="text-gray-200 text-sm">{q.question}</p>
                     </div>
-                    {q.options && q.options.length > 0 && (
+                    {q.options?.length > 0 && (
                       <div className="flex flex-wrap gap-2 pl-10">
                         {q.options.map((option, i) => (
                           <button
@@ -222,19 +219,12 @@ export default function Home() {
                 <textarea
                   value={moreInfo}
                   onChange={(e) => setMoreInfo(e.target.value)}
-                  onKeyDown={(e) => {
-                    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
-                      e.preventDefault();
-                      handleAnalyze(true);
-                    }
-                  }}
+                  onKeyDown={(e) => handleKeyDown(e, true)}
                   className="w-full h-32 bg-black/40 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all resize-none pr-14"
                   placeholder="追加の内容をこちらに入力（ボタンで選択した内容もここに反映されます）"
                 />
                 <VoiceInput 
-                  onStart={() => {
-                    moreInfoBaseTextRef.current = moreInfo;
-                  }}
+                  onStart={() => { moreInfoBaseTextRef.current = moreInfo; }}
                   onTranscript={(transcript) => setMoreInfo(moreInfoBaseTextRef.current + (moreInfoBaseTextRef.current ? ' ' : '') + transcript)}
                   className="absolute bottom-4 right-4"
                 />

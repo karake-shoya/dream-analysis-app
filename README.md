@@ -1,4 +1,4 @@
-# 🌙 yume insight - AI 夢診断アプリ
+# 🌙 Yume Insight - AI 夢診断アプリ
 
 AI（Google Gemini）を活用した、神秘的で心温まる夢診断アプリケーションです。
 見た夢の内容を記録し、深層心理の分析やアドバイスを受け取ることができます。
@@ -7,12 +7,14 @@ AI（Google Gemini）を活用した、神秘的で心温まる夢診断アプ�
 
 ## ✨ 特徴
 
-- **AI 夢診断**: Google Gemini による高精度な夢分析。
-- **ユーザー認証**: Supabase Auth による Google / メールアドレスログイン。
-- **夢日記（履歴保存）**: ログインユーザーは過去の診断結果をマイページからいつでも振り返れます。
-- **お問い合わせ機能**: バリデーション付きのコンタクトフォーム。
-- **モダンな UI**: Tailwind CSS と shadcn/ui スタイルの洗練されたレスポンシブデザイン。
-- **共通レイアウト**: ヘッダー・フッターの共通化による高いメンテナンス性。
+- **AI 夢診断**: Google Gemini による高精度な夢分析
+- **追加質問機能**: AIが夢の詳細を質問し、より精度の高い診断を実現
+- **音声入力**: Web Speech API を使った日本語音声入力対応
+- **夢占い辞典**: カテゴリ別のシンボル辞典（動物・自然・場所・行動・感情）
+- **SNSシェア機能**: X（Twitter）シェア、URLコピー対応
+- **ユーザー認証**: Supabase Auth による Google / メールアドレスログイン
+- **夢日記（履歴保存）**: ログインユーザーは過去の診断結果をマイページからいつでも振り返れる
+- **お問い合わせ機能**: バリデーション付きのコンタクトフォーム
 
 ## 🛠️ 技術スタック
 
@@ -22,7 +24,8 @@ AI（Google Gemini）を活用した、神秘的で心温まる夢診断アプ�
 - **Forms**: React Hook Form, Zod
 - **Email**: Resend
 - **Styling**: Tailwind CSS v4
-- **Icons**: Lucide React, React Icons
+- **UI Components**: shadcn/ui, Lucide React, React Icons
+- **Toast**: Sonner
 
 ## 📁 プロジェクト構成
 
@@ -32,11 +35,21 @@ dream-analysis-app/
 │   ├── api/analyze/        # 夢診断 API エンドポイント
 │   ├── dashboard/          # マイページ（夢の履歴）
 │   ├── result/[id]/        # 診断結果ページ
-│   └── ...
+│   ├── dictionary/         # 夢占い辞典
+│   │   └── category/       # カテゴリ別辞典ページ
+│   ├── approach/           # 診断アプローチの解説ページ
+│   ├── about/              # サイト紹介ページ
+│   ├── contact/            # お問い合わせページ
+│   ├── privacy/            # プライバシーポリシー
+│   ├── terms/              # 利用規約
+│   └── auth/callback/      # 認証コールバック
 ├── components/             # 共通コンポーネント
 │   ├── GradientBackground.tsx  # 共通グラデーション背景
 │   ├── Header.tsx          # ヘッダー
 │   ├── Footer.tsx          # フッター
+│   ├── VoiceInput.tsx      # 音声入力コンポーネント
+│   ├── ShareButtons.tsx    # SNSシェアボタン
+│   ├── Logo.tsx            # ロゴコンポーネント
 │   └── ui/                 # shadcn/ui コンポーネント
 ├── lib/                    # ユーティリティ・設定
 │   ├── constants.ts        # 定数・プロンプトテンプレート
@@ -44,6 +57,8 @@ dream-analysis-app/
 │   ├── utils.ts            # ユーティリティ関数
 │   ├── supabase/           # Supabase クライアント
 │   └── data/               # 夢占い辞典データ
+├── supabase/               # Supabase設定
+│   └── schema.sql          # データベーススキーマ
 └── public/                 # 静的ファイル
 ```
 
@@ -109,4 +124,4 @@ npm run dev
 
 ## 📄 ライセンス
 
-© 2026 yume insight. All rights reserved. Powered by Gemini.
+© 2026 Yume Insight. All rights reserved. Powered by Gemini.
