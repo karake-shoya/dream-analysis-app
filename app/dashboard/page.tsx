@@ -62,7 +62,7 @@ export default async function Dashboard() {
                                 </div>
                                 
                                 <h3 className="text-xl font-bold text-indigo-200 mb-3">
-                                    {result.title || result.interpretations?.[0]?.summary || "夢診断結果"}
+                                    {result.title || result.interpretations?.[0]?.summary || result.summary || "夢診断結果"}
                                 </h3>
                                 
                                 <div className="bg-black/30 rounded-xl p-4 mb-4">
