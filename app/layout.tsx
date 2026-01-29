@@ -30,6 +30,10 @@ export const metadata: Metadata = {
   },
   description: "夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。",
   keywords: ["夢占い", "夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/icon.png',
+  },
   openGraph: {
     title: 'Yume Insight｜AI夢診断・深層心理分析',
     description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',

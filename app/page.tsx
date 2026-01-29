@@ -103,6 +103,16 @@ export default function Home() {
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         {/* Hero Section */}
         <div className="text-center mb-16 space-y-6 pt-8">
+          {/* Logo */}
+          <div className="relative inline-block">
+            <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
+            <img 
+              src="/icon.png" 
+              alt="Yume Insight Logo" 
+              className="relative w-28 h-28 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
+            />
+          </div>
+          
           <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
             Your Dreams, Decoded.
           </h2>
