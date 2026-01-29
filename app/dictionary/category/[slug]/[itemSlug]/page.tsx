@@ -2,6 +2,11 @@ import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
 import { ArrowLeft, Sparkles, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import AdsenseAd from '@/components/AdsenseAd';
+
+// 広告スロットID
+const AD_SLOT_ARTICLE_TOP = "6378422969";    // 記事上広告
+const AD_SLOT_ARTICLE_MIDDLE = "6378422969"; // 記事中広告
 
 export default async function ItemPage({ params }: { params: Promise<{ slug: string; itemSlug: string }> }) {
   const { slug, itemSlug } = await params;
@@ -51,6 +56,11 @@ export default async function ItemPage({ params }: { params: Promise<{ slug: str
             </div>
           </header>
 
+          {/* 記事上広告 */}
+          <div className="mb-10 bg-white/5 rounded-2xl p-4 border border-white/10">
+            <AdsenseAd slot={AD_SLOT_ARTICLE_TOP} />
+          </div>
+
           <div className="space-y-10 leading-relaxed text-lg text-gray-300">
             <section>
               <h2 className="text-2xl font-bold text-white mb-4 border-l-4 border-purple-500 pl-4">
@@ -60,6 +70,11 @@ export default async function ItemPage({ params }: { params: Promise<{ slug: str
                 {item.description}
               </p>
             </section>
+
+            {/* 記事中広告 */}
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <AdsenseAd slot={AD_SLOT_ARTICLE_MIDDLE} />
+            </div>
 
             <section className="p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-gray-400 leading-relaxed">
               <div className="flex items-center gap-2 mb-3 text-purple-400 not-italic font-bold">
