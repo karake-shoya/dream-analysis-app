@@ -41,13 +41,6 @@ export interface AnalysisResult {
 }
 
 /**
- * 夢診断結果（API レスポンス用、IDを含む）
- */
-export interface AnalysisResultWithId extends AnalysisResult {
-  id?: string;
-}
-
-/**
  * 夢の記録データ（Supabase からの取得用）
  */
 export interface DreamRecord {
