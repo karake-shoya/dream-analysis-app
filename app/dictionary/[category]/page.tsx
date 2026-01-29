@@ -2,12 +2,37 @@ import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const category = DREAM_DICTIONARY[slug];
+type Props = {
+  params: Promise<{ category: string }>;
+};
 
-  if (!category) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category } = await params;
+  const categoryData = DREAM_DICTIONARY[category];
+  
+  if (!categoryData) {
+    return {};
+  }
+
+  return {
+    title: `${categoryData.name}の夢占い一覧`,
+    description: `${categoryData.name}に関連する夢の意味を詳しく解説。${categoryData.items.map(i => i.keyword).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
+  };
+}
+
+export async function generateStaticParams() {
+  return Object.keys(DREAM_DICTIONARY).map((category) => ({
+    category,
+  }));
+}
+
+export default async function CategoryPage({ params }: Props) {
+  const { category } = await params;
+  const categoryData = DREAM_DICTIONARY[category];
+
+  if (!categoryData) {
     notFound();
   }
 
@@ -33,19 +58,19 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 text-purple-300">
-            <span className="text-2xl mr-2">{category.emojis}</span>
-            <span className="font-semibold">{category.name}</span>
+            <span className="text-2xl mr-2">{categoryData.emojis}</span>
+            <span className="font-semibold">{categoryData.name}</span>
           </div>
-          <h1 className="text-4xl font-bold text-white mb-4">{category.name}の夢占い一覧</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">{categoryData.name}の夢占い一覧</h1>
           <p className="text-gray-400">
-            {category.name}に関連するキーワードの意味を詳しく解説します。
+            {categoryData.name}に関連するキーワードの意味を詳しく解説します。
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {category.items.map((item) => (
+          {categoryData.items.map((item) => (
             <Link 
-              href={`/dictionary/category/${category.slug}/${item.slug}`} 
+              href={`/dictionary/${categoryData.slug}/${item.slug}`} 
               key={item.slug}
               className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300"
             >
