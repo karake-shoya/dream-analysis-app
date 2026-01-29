@@ -1,7 +1,8 @@
-import { BookOpen, Search, TrendingUp, Clock } from 'lucide-react';
+import { BookOpen, TrendingUp, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
 import { Metadata } from 'next';
+import DictionarySearch from '@/components/DictionarySearch';
 
 export const metadata: Metadata = {
   title: '夢占い辞典',
@@ -74,17 +75,8 @@ export default function Dictionary() {
           </p>
         </div>
 
-        {/* Search Mock - To be implemented */}
-        <div className="max-w-xl mx-auto mb-16">
-           <div className="relative">
-             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-             <input 
-               type="text" 
-               placeholder="キーワードで検索 (例: 猫, 飛ぶ, 泣く...)" 
-               className="w-full bg-white/5 border border-white/10 rounded-full py-4 pl-12 pr-6 text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-             />
-           </div>
-        </div>
+        {/* キーワード検索 */}
+        <DictionarySearch />
 
         {/* よく検索される夢TOP10 */}
         <div className="mb-16">
