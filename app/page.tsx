@@ -21,7 +21,7 @@ export default function Home() {
   const [needsMoreInfo, setNeedsMoreInfo] = useState(false);
   const [questions, setQuestions] = useState<{ question: string, options: string[] }[]>([]);
   const [moreInfo, setMoreInfo] = useState('');
-  const [moreInfoBaseTextRef] = useState({ current: '' }); // Ref for moreInfo voice input
+  const moreInfoBaseTextRef = useRef(''); // Standard useRef
   const [resultId, setResultId] = useState<string | null>(null);
   const questionsSectionRef = useRef<HTMLDivElement>(null);
 
@@ -49,12 +49,12 @@ export default function Home() {
       if (data.needsMoreInfo && !isFollowUp) {
         setNeedsMoreInfo(true);
         setQuestions(data.missingInfoQuestions || []);
-        setResultId(data.id);
+        // API側で保存が失敗していても、IDがあればセットする
+        if (data.id) setResultId(data.id);
         
         // 追加質問セクションの開始位置までスクロール
         setTimeout(() => {
           if (questionsSectionRef.current) {
-            // offsetTop を使用して、親要素からの相対位置（静的な位置）を取得
             const yOffset = -80; // カードの上部に十分な余白を持たせる
             const element = questionsSectionRef.current;
             const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -67,6 +67,9 @@ export default function Home() {
 
       if (data.id) {
         router.push(`/result/${data.id}`);
+      } else {
+        // 保存に失敗したが解析結果はある場合のエラー表示
+        setError('解析は完了しましたが、結果の保存に失敗しました。もう一度お試しください。');
       }
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.UNEXPECTED_ERROR;
