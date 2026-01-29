@@ -52,6 +52,7 @@ export default function Home() {
         setNeedsMoreInfo(true);
         setQuestions(data.missingInfoQuestions || []);
         if (data.id) setResultId(data.id);
+        setLoading(false);
         
         setTimeout(() => {
           if (questionsSectionRef.current) {
@@ -65,15 +66,16 @@ export default function Home() {
       }
 
       if (data.id) {
+        // ページ遷移するまでローディング状態を維持
         router.push(`/result/${data.id}`);
       } else {
+        setLoading(false);
         setError('解析は完了しましたが、結果の保存に失敗しました。もう一度お試しください。');
       }
     } catch (err: unknown) {
+      setLoading(false);
       const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.UNEXPECTED_ERROR;
       setError(errorMessage);
-    } finally {
-      setLoading(false);
     }
   };
 
