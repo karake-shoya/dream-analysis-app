@@ -154,6 +154,9 @@ export default function Home() {
                   ) : (
                     <>
                       診断する
+                      <kbd className="hidden md:inline-flex ml-2 px-1.5 py-0.5 text-[10px] rounded border border-white/20 bg-white/5 text-gray-400 font-sans group-hover:border-white/40 transition-colors">
+                        ⌘Enter
+                      </kbd>
                       <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
@@ -257,7 +260,14 @@ export default function Home() {
                   ) : (
                     <Sparkles className="w-5 h-5 mr-2" />
                   )}
-                  {loading ? '再診断中...' : '精度を高めて再診断'}
+                  {loading ? '再診断中...' : (
+                    <>
+                      精度を高めて再診断
+                      <kbd className="hidden md:inline-flex ml-2 px-1.5 py-0.5 text-[10px] rounded border border-white/20 bg-white/5 text-indigo-300 font-sans group-hover:border-white/40 transition-colors">
+                        ⌘Enter
+                      </kbd>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
