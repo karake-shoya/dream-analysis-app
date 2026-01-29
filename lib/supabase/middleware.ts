@@ -33,5 +33,8 @@ export async function updateSession(request: NextRequest) {
 
   await supabase.auth.getUser()
 
+  // Share用のURLをヘッダーにセット
+  supabaseResponse.headers.set('x-url', request.url)
+
   return supabaseResponse
 }
