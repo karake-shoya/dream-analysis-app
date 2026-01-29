@@ -156,7 +156,7 @@ export default function Home() {
               <div className="space-y-4 mb-8">
                 {questions.map((question, index) => (
                   <div key={index} className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-300 text-xs font-bold mt-0.5">
+                    <div className="shrink-0 w-6 h-6 rounded-full bg-indigo-500/20 flex items-center justify-center text-indigo-300 text-xs font-bold mt-0.5">
                       {index + 1}
                     </div>
                     <p className="text-gray-200">{question}</p>

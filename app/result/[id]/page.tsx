@@ -123,7 +123,7 @@ export default async function ResultPage({ params }: PageProps) {
               <ul className="space-y-3">
                 {result.facts.map((fact, i) => (
                   <li key={i} className="text-gray-200 text-sm flex items-start">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 mr-3 flex-shrink-0" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 mr-3 shrink-0" />
                     {fact}
                   </li>
                 ))}
