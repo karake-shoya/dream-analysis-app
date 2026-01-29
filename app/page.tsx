@@ -126,6 +126,7 @@ export default function Home() {
                 onChange={(e) => setDream(e.target.value)}
                 onKeyDown={(e) => {
                   if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+                    if (needsMoreInfo) return;
                     e.preventDefault();
                     handleAnalyze(false);
                   }

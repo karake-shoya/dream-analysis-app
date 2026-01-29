@@ -21,13 +21,6 @@
   --input: rgba(255, 255, 255, 0.04);
   --ring: #a855f7;
   --radius: 1rem;
-
-  /* Custom Branding Tokens */
-  --color-bg-0: #0B0B10;
-  --color-bg-1: #101018;
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #B5B5C0;
-  --color-border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 @theme inline {
