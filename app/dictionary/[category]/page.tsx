@@ -1,8 +1,9 @@
-import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { getIndexByCategory } from '@/lib/data/dictionaryIndex';
+import { getCategoryBySlug, DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -10,7 +11,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category } = await params;
-  const categoryData = DREAM_DICTIONARY[category];
+  const categoryData = getCategoryBySlug(category);
+  const items = getIndexByCategory(category);
   
   if (!categoryData) {
     return {};
@@ -18,19 +20,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${categoryData.name}の夢占い一覧`,
-    description: `${categoryData.name}に関連する夢の意味を詳しく解説。${categoryData.items.map(i => i.keyword).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
+    description: `${categoryData.name}に関連する夢の意味を詳しく解説。${items.map(i => i.keyword).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
   };
 }
 
 export async function generateStaticParams() {
-  return Object.keys(DREAM_DICTIONARY).map((category) => ({
-    category,
+  return DICTIONARY_CATEGORIES.map((category) => ({
+    category: category.slug,
   }));
 }
 
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params;
-  const categoryData = DREAM_DICTIONARY[category];
+  const categoryData = getCategoryBySlug(category);
+  const items = getIndexByCategory(category);
 
   if (!categoryData) {
     notFound();
@@ -68,7 +71,7 @@ export default async function CategoryPage({ params }: Props) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {categoryData.items.map((item) => (
+          {items.map((item) => (
             <Link 
               href={`/dictionary/${categoryData.slug}/${item.slug}`} 
               key={item.slug}
@@ -79,9 +82,6 @@ export default async function CategoryPage({ params }: Props) {
               </h3>
               <p className="text-purple-300/80 text-sm font-medium mb-4">
                 キーワード暗示：{item.summary}
-              </p>
-              <p className="text-sm text-gray-400 leading-relaxed line-clamp-2">
-                {item.description}
               </p>
               <div className="mt-4 flex justify-end">
                 <span className="text-xs text-purple-400 border-b border-purple-400/30 group-hover:text-purple-300 transition-colors">

@@ -3,12 +3,13 @@
 import { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
 import Link from 'next/link';
-import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
+import { DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 type SearchResult = {
   keyword: string;
   slug: string;
-  categorySlug: string;
+  category: string;
   categoryName: string;
   summary: string;
 };
@@ -16,22 +17,25 @@ type SearchResult = {
 export default function DictionarySearch() {
   const [query, setQuery] = useState('');
 
-  // 全記事をフラット化
-  const allItems: SearchResult[] = useMemo(() => {
-    const items: SearchResult[] = [];
-    Object.values(DREAM_DICTIONARY).forEach((category) => {
-      category.items.forEach((item) => {
-        items.push({
-          keyword: item.keyword,
-          slug: item.slug,
-          categorySlug: category.slug,
-          categoryName: category.name,
-          summary: item.summary,
-        });
-      });
+  // カテゴリ名のマップを作成
+  const categoryNameMap = useMemo(() => {
+    const map: Record<string, string> = {};
+    DICTIONARY_CATEGORIES.forEach((cat) => {
+      map[cat.slug] = cat.name;
     });
-    return items;
+    return map;
   }, []);
+
+  // 全記事をフラット化（カテゴリ名を追加）
+  const allItems: SearchResult[] = useMemo(() => {
+    return DICTIONARY_INDEX.map((item) => ({
+      keyword: item.keyword,
+      slug: item.slug,
+      category: item.category,
+      categoryName: categoryNameMap[item.category] || item.category,
+      summary: item.summary,
+    }));
+  }, [categoryNameMap]);
 
   // 検索結果をフィルタリング
   const searchResults = useMemo(() => {
@@ -77,8 +81,8 @@ export default function DictionarySearch() {
             <div className="divide-y divide-white/10">
               {searchResults.map((item) => (
                 <Link
-                  key={`${item.categorySlug}-${item.slug}`}
-                  href={`/dictionary/${item.categorySlug}/${item.slug}`}
+                  key={`${item.category}-${item.slug}`}
+                  href={`/dictionary/${item.category}/${item.slug}`}
                   className="block p-4 hover:bg-purple-500/20 transition-colors"
                 >
                   <div className="flex items-center justify-between">

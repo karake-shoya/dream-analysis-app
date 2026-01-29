@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
-import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
+import { DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://dream-analysis-app.netlify.app/'; // TODO: 実際のドメインに変更
@@ -20,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // 辞典カテゴリページ
-  const categoryRoutes = Object.values(DREAM_DICTIONARY).map((category) => ({
+  const categoryRoutes = DICTIONARY_CATEGORIES.map((category) => ({
     url: `${baseUrl}/dictionary/${category.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -28,14 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // 辞典記事ページ
-  const articleRoutes = Object.values(DREAM_DICTIONARY).flatMap((category) =>
-    category.items.map((item) => ({
-      url: `${baseUrl}/dictionary/${category.slug}/${item.slug}`,
-      lastModified: item.createdAt ? new Date(item.createdAt) : new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    }))
-  );
+  const articleRoutes = DICTIONARY_INDEX.map((item) => ({
+    url: `${baseUrl}/dictionary/${item.category}/${item.slug}`,
+    lastModified: item.createdAt ? new Date(item.createdAt) : new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.6,
+  }));
 
   return [...staticRoutes, ...categoryRoutes, ...articleRoutes];
 }

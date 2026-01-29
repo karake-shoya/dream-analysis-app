@@ -1,4 +1,7 @@
-import { FAQ } from '@/lib/data/dreamDictionary';
+type FAQ = {
+  question: string;
+  answer: string;
+};
 
 type Props = {
   faqs: FAQ[];

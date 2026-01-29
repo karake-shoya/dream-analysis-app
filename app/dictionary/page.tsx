@@ -1,8 +1,9 @@
 import { BookOpen, TrendingUp, Clock } from 'lucide-react';
 import Link from 'next/link';
-import { DREAM_DICTIONARY } from '@/lib/data/dreamDictionary';
 import { Metadata } from 'next';
 import DictionarySearch from '@/components/DictionarySearch';
+import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
+import { getIndexByCategory, getRecentItems } from '@/lib/data/dictionaryIndex';
 
 export const metadata: Metadata = {
   title: '夢占い辞典',
@@ -23,33 +24,9 @@ const POPULAR_KEYWORDS = [
   { label: '走る', href: '/dictionary/actions/running' },
 ];
 
-// 最近追加された記事を取得
-function getRecentArticles(limit: number = 6) {
-  const allItems: { keyword: string; slug: string; categorySlug: string; createdAt?: string }[] = [];
-  
-  Object.values(DREAM_DICTIONARY).forEach((category) => {
-    category.items.forEach((item) => {
-      allItems.push({
-        keyword: item.keyword,
-        slug: item.slug,
-        categorySlug: category.slug,
-        createdAt: item.createdAt,
-      });
-    });
-  });
-
-  return allItems
-    .filter((item) => item.createdAt)
-    .sort((a, b) => {
-      if (!a.createdAt || !b.createdAt) return 0;
-      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    })
-    .slice(0, limit);
-}
-
 export default function Dictionary() {
-  const recentArticles = getRecentArticles();
-  const categories = Object.values(DREAM_DICTIONARY);
+  const recentArticles = getRecentItems(6);
+
   return (
     <div className="min-h-screen bg-[#0f172a] text-gray-300 font-sans">
       <div className="fixed inset-0 z-0 pointer-events-none" 
@@ -106,23 +83,26 @@ export default function Dictionary() {
             カテゴリから探す
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category) => (
-              <Link 
-                href={`/dictionary/${category.slug}`} 
-                key={category.slug}
-                className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-                  {category.emojis}
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
-                  {category.name}
-                </h3>
-                <p className="text-sm text-gray-500 group-hover:text-gray-400">
-                  {category.items.length}件の夢占い
-                </p>
-              </Link>
-            ))}
+            {DICTIONARY_CATEGORIES.map((category) => {
+              const itemCount = getIndexByCategory(category.slug).length;
+              return (
+                <Link 
+                  href={`/dictionary/${category.slug}`} 
+                  key={category.slug}
+                  className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300"
+                >
+                  <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
+                    {category.emojis}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                    {category.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 group-hover:text-gray-400">
+                    {itemCount}件の夢占い
+                  </p>
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -136,8 +116,8 @@ export default function Dictionary() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {recentArticles.map((item) => (
                 <Link 
-                  href={`/dictionary/${item.categorySlug}/${item.slug}`} 
-                  key={`${item.categorySlug}-${item.slug}`}
+                  href={`/dictionary/${item.category}/${item.slug}`} 
+                  key={`${item.category}-${item.slug}`}
                   className="group p-4 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/5 hover:border-purple-500/30 transition-all"
                 >
                   <p className="font-bold text-white group-hover:text-purple-300 transition-colors">
