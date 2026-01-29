@@ -60,11 +60,11 @@ export default async function ResultPage({ params }: PageProps) {
   }
 
   const result = dream.diagnosis_result as AnalysisResult;
-  const legacySummary = result.summary || result.interpretations?.[0]?.summary;
+  const summary = result.interpretations?.[0]?.summary || result.summary;
   const interpretations = result.interpretations?.length
     ? result.interpretations
-    : legacySummary
-      ? [{ summary: legacySummary, confidence: 1, evidence: [] }]
+    : summary
+      ? [{ summary, confidence: 1, evidence: [] }]
       : [];
   const facts = result.facts ?? [];
   const emotions = result.emotions ?? [];
