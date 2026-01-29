@@ -10,7 +10,8 @@ import {
   Gauge, 
   ClipboardCheck, 
   Lightbulb,
-  CheckCircle2
+  CheckCircle2,
+  Clock
 } from "lucide-react";
 import Link from "next/link";
 import { Metadata } from 'next';
@@ -94,6 +95,16 @@ export default async function ResultPage({ params }: PageProps) {
             AIが精緻に紐解いた、あなたの深層心理の地図
           </p>
         </div>
+
+        {/* Guest Storage Period Notice */}
+        {!dream.user_id && (
+          <div className="mb-10 max-w-2xl mx-auto p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex items-center justify-center gap-3 animate-in fade-in slide-in-from-top-4 duration-1000">
+            <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+            <p className="text-xs md:text-sm text-amber-200/70 font-medium">
+              ゲスト利用のため、この診断結果は3日後に自動的に削除されます。
+            </p>
+          </div>
+        )}
 
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
           
