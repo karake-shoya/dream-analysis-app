@@ -17,12 +17,16 @@ export default function PrivacyPolicy() {
           当サイトでは、第三者配信の広告サービス（Googleアドセンス）を利用しています。
           このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報 『Cookie』(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。
         </p>
-        <p>
+        <p className="mb-4">
           またGoogleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、
           <a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline">
             Googleのポリシーと規約
           </a>
           をご覧ください。
+        </p>
+        <p>
+          当サイトでは、Googleを含む第三者配信事業者がCookieを使用し、ユーザーの興味に基づいた広告を表示することがあります。
+          ユーザーは広告設定により、パーソナライズ広告を無効にすることができます。
         </p>
       </Section>
 

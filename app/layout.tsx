@@ -58,6 +58,11 @@ export default function RootLayout({
     <html lang="ja">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1350480293009797" />
+        {/* Funding Choices */}
+        <script
+          async
+          src="https://fundingchoicesmessages.google.com/i/pub-1350480293009797?ers=1"
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1350480293009797"

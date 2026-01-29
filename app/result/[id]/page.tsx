@@ -17,7 +17,13 @@ import { Metadata } from 'next';
 import GradientBackground from "@/components/GradientBackground";
 import { ShareButtons } from "@/components/ShareButtons";
 import ResultSectionCard from "@/components/ResultSectionCard";
+import AdModal from "@/components/AdModal";
+import AdsenseAd from "@/components/AdsenseAd";
 import type { AnalysisResult } from "@/lib/types";
+
+// 広告スロットID
+const AD_SLOT_RESULT_BEFORE = "6378422969"; // 結果直前広告
+const AD_SLOT_RESULT_AFTER = "6378422969";  // 結果末尾広告
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -69,19 +75,20 @@ export default async function ResultPage({ params }: PageProps) {
   const { facts = [], emotions = [], symbols = [], nextActions = [] } = result;
 
   return (
-    <main className="min-h-screen text-white selection:bg-purple-500/30">
-      <GradientBackground />
+    <AdModal slot={AD_SLOT_RESULT_BEFORE}>
+      <main className="min-h-screen text-white selection:bg-purple-500/30">
+        <GradientBackground />
 
-      <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
-        <div className="mb-8">
-          <Link 
-            href="/"
-            className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors group"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            トップへ戻る
-          </Link>
-        </div>
+        <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
+          <div className="mb-8">
+            <Link 
+              href="/"
+              className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors group"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+              トップへ戻る
+            </Link>
+          </div>
 
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-3xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display py-2">
@@ -262,8 +269,14 @@ export default async function ResultPage({ params }: PageProps) {
                 : "AIによる夢診断の結果です！ #yumeinsight #夢診断"} 
             />
           </div>
+
+          {/* 結果末尾広告 */}
+          <div className="mt-12 bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
+            <AdsenseAd slot={AD_SLOT_RESULT_AFTER} />
+          </div>
         </div>
       </div>
     </main>
+    </AdModal>
   );
 }
