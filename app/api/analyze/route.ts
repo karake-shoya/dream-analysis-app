@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { cleanJsonText } from "@/lib/utils";
@@ -27,7 +27,27 @@ export async function POST(req: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: AI_CONFIG.MODEL_NAME });
+    const model = genAI.getGenerativeModel({ 
+      model: AI_CONFIG.MODEL_NAME,
+      safetySettings: [
+        {
+          category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+          threshold: HarmBlockThreshold.BLOCK_NONE,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        },
+        {
+          category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+          threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        },
+      ],
+    });
 
     const prompt = getDreamAnalysisPrompt(dream);
     const result = await model.generateContent(prompt);
@@ -38,9 +58,18 @@ export async function POST(req: Request) {
     const cleanText = cleanJsonText(text);
     
     const analysis = JSON.parse(cleanText);
+
+    // 診断不可の場合の処理
+    if (analysis.isDiagnosable === false) {
+      return NextResponse.json(
+        { error: analysis.errorReason || ERROR_MESSAGES.NOT_A_DREAM },
+        { status: 400 }
+      );
+    }
+
     let dreamId = null;
 
-    // Supabase に保存（ログインしていれば user_id を紐付け、そうでなければ匿名で保存）
+    // Supabase に保存（診断可能な場合のみ）
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 

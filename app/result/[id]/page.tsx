@@ -1,9 +1,19 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
-import { Moon, Sparkles, ArrowLeft } from "lucide-react";
+import { 
+  Sparkles, 
+  ArrowLeft, 
+  Info, 
+  Heart, 
+  MapPin, 
+  Gauge, 
+  ClipboardCheck, 
+  Lightbulb,
+  CheckCircle2,
+  Clock
+} from "lucide-react";
 import Link from "next/link";
 import { Metadata } from 'next';
-import { headers } from "next/headers";
 import GradientBackground from "@/components/GradientBackground";
 import { ShareButtons } from "@/components/ShareButtons";
 import type { AnalysisResult } from "@/lib/types";
@@ -24,21 +34,20 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!dream) return { title: '夢診断結果' };
 
   const result = dream.diagnosis_result as AnalysisResult;
-  const title = result.title ? `「${result.title}」` : `「${result.keywords[0]}」`;
+  const summary = result.interpretations?.[0]?.summary || result.summary;
+
   return {
-    title: `【夢診断】今日の夢は${title}でした ✨`,
-    description: result.summary,
-    openGraph: {
-      title: 'AI夢診断 - あなたの夢を紐解きます',
-      description: result.summary,
-    },
+    title: result.title ? `${result.title} | Yume Insight` : '夢診断結果 | Yume Insight',
+    description: summary || 'AIによる深層心理の解析結果です。',
   };
 }
 
 export default async function ResultPage({ params }: PageProps) {
   const { id } = await params;
-  const supabase = await createClient();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://yume-insight.com";
+  const fullUrl = `${baseUrl}/result/${id}`;
 
+  const supabase = await createClient();
   const { data: dream, error } = await supabase
     .from('dreams')
     .select('*')
@@ -50,14 +59,16 @@ export default async function ResultPage({ params }: PageProps) {
   }
 
   const result = dream.diagnosis_result as AnalysisResult;
-  
-  const headersList = await headers();
-  const host = headersList.get("host");
-  const protocol = headersList.get("x-forwarded-proto") || "http";
-  const shareUrl = `${protocol}://${host}/result/${id}`;
-  const displayTitle = result.title ? `「${result.title}」` : '';
-  const shareText = `【夢診断】今日の夢は${displayTitle || result.summary.slice(0, 50)}でした！ ✨ #夢診断アプリ`;
-
+  const summary = result.interpretations?.[0]?.summary || result.summary;
+  const interpretations = result.interpretations?.length
+    ? result.interpretations
+    : summary
+      ? [{ summary, confidence: 1, evidence: [] }]
+      : [];
+  const facts = result.facts ?? [];
+  const emotions = result.emotions ?? [];
+  const symbols = result.symbols ?? [];
+  const nextActions = result.nextActions ?? [];
 
   return (
     <main className="min-h-screen text-white selection:bg-purple-500/30">
@@ -66,11 +77,11 @@ export default async function ResultPage({ params }: PageProps) {
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-4xl">
         <div className="mb-8">
           <Link 
-            href="/" 
-            className="inline-flex items-center text-gray-400 hover:text-white transition-colors"
+            href="/"
+            className="inline-flex items-center text-sm text-gray-400 hover:text-white transition-colors group"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            トップに戻る
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+            トップへ戻る
           </Link>
         </div>
 
@@ -79,76 +90,193 @@ export default async function ResultPage({ params }: PageProps) {
             Diagnosis Result
           </h1>
           <p className="text-gray-400">
-            AIが紐解いたあなたの夢のメッセージ
+            AIが精緻に紐解いた、あなたの深層心理の地図
           </p>
         </div>
 
-        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-700">
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Catchy Title */}
-            {result.title && (
-              <div className="md:col-span-3 text-center mb-4">
-                <h2 className="text-2xl md:text-3xl font-bold text-purple-200 leading-relaxed px-4">
-                  「{result.title}」
-                </h2>
-              </div>
-            )}
+        {/* Guest Storage Period Notice */}
+        {!dream.user_id && (
+          <div className="mb-10 max-w-2xl mx-auto p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 flex items-center justify-center gap-3 animate-in fade-in slide-in-from-top-4 duration-1000">
+            <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+            <p className="text-xs md:text-sm text-amber-200/70 font-medium text-center">
+              ゲスト診断のため、<br className="md:hidden"/>この結果は3日後に自動削除されます。
+            </p>
+          </div>
+        )}
 
-            {/* Keywords */}
-            <div className="md:col-span-3">
-              <div className="flex flex-wrap gap-2 justify-center">
-                {result.keywords.map((keyword: string, i: number) => (
-                  <span key={i} className="px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-200 text-sm font-medium">
-                    #{keyword}
-                  </span>
+        <div className="space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+          
+          {/* Main Title & Keywords */}
+          <div className="text-center space-y-6">
+            {result.title && (
+              <h2 className="text-2xl md:text-4xl font-bold text-white leading-relaxed px-4">
+                「{result.title}」
+              </h2>
+            )}
+            <div className="flex flex-wrap gap-2 justify-center">
+              {result.keywords?.map((keyword, i) => (
+                <span key={i} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-purple-200 text-sm font-medium backdrop-blur-sm">
+                  #{keyword}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {(facts.length > 0 || emotions.length > 0) && (
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Facts Section */}
+              {facts.length > 0 && (
+                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
+                    <ClipboardCheck className="w-4 h-4 mr-2 text-indigo-400" />
+                    夢の事実
+                  </h3>
+                  <ul className="space-y-3">
+                    {facts.map((fact, i) => (
+                      <li key={i} className="text-gray-200 text-sm flex items-start">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 mr-3 shrink-0" />
+                        {fact}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Emotions Section */}
+              {emotions.length > 0 && (
+                <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 border border-white/10">
+                  <h3 className="text-sm font-bold text-gray-400 mb-4 flex items-center uppercase tracking-widest">
+                    <Heart className="w-4 h-4 mr-2 text-rose-400" />
+                    感じた感情
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {emotions.map((emotion, i) => (
+                      <span key={i} className="px-3 py-1 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-200 text-sm">
+                        {emotion}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Analysis Note (if exists) */}
+          {result.analysisNote && (
+            <div className="bg-indigo-500/5 backdrop-blur-sm rounded-2xl p-4 border border-indigo-500/10 flex items-start gap-3">
+              <Info className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
+              <p className="text-sm text-gray-400 leading-relaxed italic">
+                {result.analysisNote}
+              </p>
+            </div>
+          )}
+
+          {/* Symbols Section */}
+          {symbols.length > 0 && (
+            <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10">
+              <h3 className="text-sm font-bold text-gray-400 mb-6 flex items-center uppercase tracking-widest">
+                <MapPin className="w-4 h-4 mr-2 text-amber-400" />
+                夢の中の象徴
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {symbols.map((symbol, i) => (
+                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                    <div className="font-bold text-amber-200 mb-1">{symbol.symbol}</div>
+                    <p className="text-xs text-gray-400 leading-relaxed">
+                      {symbol.meaningCandidates?.join(' / ')}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
+          )}
 
-            {/* Content Section */}
-            <div className="md:col-span-3 space-y-6">
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 md:p-10 border border-white/10 h-full">
-                {/* Summary Section */}
-                <div className="mb-10 text-center md:text-left">
-                  <h3 className="text-lg font-bold text-indigo-200 mb-6 flex items-center justify-center md:justify-start uppercase tracking-widest border-b border-white/10 pb-2">
-                    <Moon className="w-5 h-5 mr-2" />
-                    メッセージ
-                  </h3>
-                  <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-wrap">
-                    {result.summary}
-                  </p>
+          {/* Interpretations Section */}
+          {interpretations.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-sm font-bold text-gray-400 px-2 flex items-center uppercase tracking-widest">
+                <Gauge className="w-4 h-4 mr-2 text-blue-400" />
+                深層心理の解釈
+              </h3>
+              {interpretations.map((interp, i) => (
+                <div key={i} className={`relative overflow-hidden rounded-3xl p-6 md:p-8 border ${i === 0 ? 'bg-blue-600/10 border-blue-500/30' : 'bg-white/5 border-white/10'}`}>
+                  {i === 0 && <div className="absolute top-0 right-0 px-4 py-1 bg-blue-500 text-[10px] font-black uppercase tracking-tighter text-white rounded-bl-xl">Most Likely</div>}
+                  <div className="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
+                    <div className="space-y-1 md:pr-12">
+                      <p className="text-white text-lg font-medium leading-relaxed">
+                        {interp.summary}
+                      </p>
+                    </div>
+                    <div className="flex flex-col items-start md:items-end shrink-0">
+                      <span className="text-[10px] text-gray-400 uppercase font-bold tracking-widest mb-1">Confidence</span>
+                      <span className="text-xl font-display font-black text-blue-400">{(interp.confidence * 100).toFixed(0)}%</span>
+                    </div>
+                  </div>
+                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-6">
+                    <div 
+                      className={`h-full rounded-full ${i === 0 ? 'bg-blue-500' : 'bg-blue-400/50'}`}
+                      style={{ width: `${interp.confidence * 100}%` }}
+                    />
+                  </div>
+                  {interp.evidence?.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {interp.evidence?.map((ev, j) => (
+                        <span key={j} className="text-[10px] px-2 py-1 rounded bg-black/30 text-gray-400 border border-white/5">
+                          {ev}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
+              ))}
+            </div>
+          )}
 
-                {/* Advice Section */}
-                <div className="bg-indigo-500/10 rounded-2xl p-6 border border-indigo-500/20">
-                  <h4 className="font-semibold text-indigo-200 mb-3 flex items-center text-sm uppercase tracking-wider">
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    アドバイス
-                  </h4>
-                  <p className="text-indigo-100 leading-relaxed">
-                    {result.advice}
-                  </p>
-                </div>
+          {/* Advice & Actions */}
+          {(result.advice || nextActions.length > 0) && (
+            <div className="bg-linear-to-br from-purple-600/20 to-indigo-600/20 backdrop-blur-xl rounded-3xl p-6 md:p-10 border border-white/10 shadow-2xl">
+              <div className="grid md:grid-cols-2 gap-10">
+                {result.advice && (
+                  <div className="space-y-6">
+                    <h3 className="text-lg font-bold text-purple-200 flex items-center">
+                      <Sparkles className="w-5 h-5 mr-3" />
+                      解析者からのメッセージ
+                    </h3>
+                    <p className="text-gray-200 leading-relaxed italic border-l-2 border-purple-500/30 pl-6 py-2">
+                      {result.advice}
+                    </p>
+                  </div>
+                )}
+                {nextActions.length > 0 && (
+                  <div className="space-y-6">
+                    <h3 className="text-lg font-bold text-indigo-200 flex items-center">
+                      <Lightbulb className="w-5 h-5 mr-3" />
+                      次の一歩
+                    </h3>
+                    <div className="space-y-3">
+                      {nextActions.map((action, i) => (
+                        <div key={i} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5">
+                          <CheckCircle2 className="w-5 h-5 text-indigo-400 shrink-0" />
+                          <span className="text-sm text-gray-100">{action}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
+          )}
 
-
-            {/* Actions */}
-            <div className="md:col-span-3 flex flex-col items-center gap-6 mt-8">
-              <ShareButtons shareUrl={shareUrl} shareText={shareText} />
-              
-              <Link
-                href="/"
-                className="inline-flex items-center text-gray-400 hover:text-white transition-colors text-sm font-medium"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                もう一度診断する
-              </Link>
-            </div>
+          {/* Share Section */}
+          <div className="pt-8 border-t border-white/10">
+            <ShareButtons 
+              shareUrl={fullUrl} 
+              shareText={result.title 
+                ? `今日の私の夢診断は「${result.title}」でした！ #yumeinsight #夢診断` 
+                : "AIによる夢診断の結果です！ #yumeinsight #夢診断"} 
+            />
           </div>
         </div>
-
-
       </div>
     </main>
   );
