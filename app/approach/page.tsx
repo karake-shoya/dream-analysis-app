@@ -13,12 +13,11 @@ export default function ApproachPage() {
                 研究に基づく読み解き方
               </div>
               <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white">
-                この夢診断の考え方（研究に基づく読み解き方）
+                夢診断の考え方
               </h1>
               <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                当サイトは「夢＝未来の予言」として断定するものではありません。
-                夢研究でよく扱われる考え方（例：日中の関心や感情が夢に反映される、ストレスや脅威に関する夢が増えることがある、など）を参考に、
-                いまの心身状態を振り返るヒントとして夢を読み解きます。
+                当サイトは「夢＝未来の予言」として断定するものではありません。<br/>
+                夢研究で扱われる考え方を参考に、心身状態を振り返るヒントとして夢を読み解きます。
               </p>
             </section>
 
@@ -37,7 +36,7 @@ export default function ApproachPage() {
                     たとえば「職場の締切が続いた週に、追われる夢を見た」など、現実の負荷や関心が形を変えて夢に出ることがあります。
                   </p>
                   <div className="rounded-2xl bg-purple-500/10 border border-purple-500/20 p-4 text-purple-100">
-                    例え話：夢は「現実の録画」ではなく「現実の素材を使った自動編集ダイジェスト」。素材は現実由来でも、編集（変形・混合）は脳内で起きます。
+                    夢は「現実の録画」ではなく「現実の素材を使った自動編集ダイジェスト」。素材は現実由来でも、編集（変形・混合）は脳内で起きます。
                   </div>
                 </div>
 
@@ -50,7 +49,7 @@ export default function ApproachPage() {
                     当サイトでは、こうした夢を「悪い予兆」と断定せず、ストレス・睡眠不足・緊張の継続などを点検する入り口として扱います。
                   </p>
                   <div className="rounded-2xl bg-indigo-500/10 border border-indigo-500/20 p-4 text-indigo-100">
-                    例え話：夢は「避難訓練シミュレーター」。怖い映像＝不吉、ではなく、心身のアラートの可能性もある、という見方です。
+                    夢は「避難訓練シミュレーター」。怖い映像＝不吉、ではなく、心身のアラートの可能性もある、という見方です。
                   </div>
                 </div>
 
