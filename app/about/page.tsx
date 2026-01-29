@@ -20,13 +20,13 @@ export default function AboutPage() {
                 <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
                 <img 
                   src="/icon.png" 
-                  alt="yume insight Logo" 
+                  alt="Yume Insight Logo" 
                   className="relative w-32 h-32 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
                 />
               </div>
               <div className="space-y-4">
                 <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200">
-                  About yume insight
+                  About Yume Insight
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
                   あなたの夢をAIが優しく紐解き、潜在意識からのメッセージをお届けします。
@@ -47,7 +47,7 @@ export default function AboutPage() {
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-6">
                     <p>
                       「昨日の夢にはどんな意味があったんだろう？」<br/>
-                      そんなふとした疑問に応えるために、yume insightは生まれました。
+                      そんなふとした疑問に応えるために、Yume Insightは生まれました。
                     </p>
                     <p>
                       夢は私たちの心が映し出す鏡。AIの力を借りることで、自分でも気づかなかった心の声や、日々の生活へのヒントを「ゆるっと」読み解きます。

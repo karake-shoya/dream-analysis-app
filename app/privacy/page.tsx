@@ -10,7 +10,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-xl font-semibold text-purple-200 mb-4">1. 個人情報の収集について</h2>
             <p className="mb-4">
-              当サイト（yume insight）では、お問い合わせや夢診断の際、名前やメールアドレス等の個人情報をご登録いただく場合がございます。
+              当サイト（Yume Insight）では、お問い合わせや夢診断の際、名前やメールアドレス等の個人情報をご登録いただく場合がございます。
             </p>
             <p>
               これらの個人情報は、質問に対する回答や必要な情報を電子メールなどでご連絡する場合に利用させていただくものであり、個人情報をご提供いただく際の目的以外では利用いたしません。

@@ -1,4 +1,4 @@
-# 🌙 yume insight - AI 夢診断アプリ
+# 🌙 Yume Insight - AI 夢診断アプリ
 
 AI（Google Gemini）を活用した、神秘的で心温まる夢診断アプリケーションです。
 見た夢の内容を記録し、深層心理の分析やアドバイスを受け取ることができます。
@@ -109,4 +109,4 @@ npm run dev
 
 ## 📄 ライセンス
 
-© 2026 yume insight. All rights reserved. Powered by Gemini.
+© 2026 Yume Insight. All rights reserved. Powered by Gemini.
