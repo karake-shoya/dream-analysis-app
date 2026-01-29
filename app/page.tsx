@@ -99,10 +99,14 @@ export default function Home() {
           <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
             Your Dreams, Decoded.
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            あなたの夢には、潜在意識からのメッセージが隠されています。<br className="hidden md:block"/>
-            その不思議な物語を教えてください。AIが優しく紐解きます。
-          </p>
+          <div className="space-y-4">
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+              夢を入力するだけで、今のあなたの深層心理をAIが読み解きます
+            </p>
+            <p className="text-indigo-100 text-base md:text-lg font-bold tracking-[0.1em] font-inter">
+              AI夢診断サービス「Yume Insight」
+            </p>
+          </div>
         </div>
 
         {/* Input Section */}

@@ -5,6 +5,7 @@ import { User } from '@supabase/supabase-js'
 import { LogOut, X, Menu } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
+import { Logo } from '@/components/Logo'
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null)
@@ -87,11 +88,8 @@ export default function Header() {
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0f172a]/80 backdrop-blur-md">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between max-w-5xl">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-9 h-9 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <img src="/icon.png" alt="Logo" className="w-full h-full object-contain" />
-            </div>
-            <span className="font-bold text-xl tracking-tighter text-white font-display">yume insight</span>
+          <Link href="/" className="flex items-center group">
+            <Logo className="h-8 w-auto text-white group-hover:scale-105 transition-transform" />
           </Link>
 
           {/* Desktop Navigation */}

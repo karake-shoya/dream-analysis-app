@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const result = dream.diagnosis_result as AnalysisResult;
   return {
-    title: result.title ? `${result.title} | 夢診断AI` : '夢診断結果',
+    title: result.title ? `${result.title} | Yume Insight` : '夢診断結果 | Yume Insight',
     description: result.interpretations?.[0]?.summary || 'AIによる深層心理の解析結果です。',
   };
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fredoka, Zen_Kaku_Gothic_New } from "next/font/google";
+import { Fredoka, Zen_Kaku_Gothic_New, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -18,25 +18,30 @@ const zenGothic = Zen_Kaku_Gothic_New({
   variable: "--font-zen-gothic"
 });
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter"
+});
+
 export const metadata: Metadata = {
   title: {
-    template: '%s | yume insight',
-    default: 'yume insight - AI夢診断・夢占い',
+    template: '%s | Yume Insight',
+    default: 'Yume Insight｜AI夢診断・深層心理分析',
   },
-  description: "あなたの夢をAIが優しく紐解きます。夢占いや心理学の観点から、潜在意識からのメッセージを受け取りましょう。会員登録不要で無料で使えます。",
-  keywords: ["夢占い", "夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理"],
+  description: "夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。",
+  keywords: ["夢占い", "夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
   openGraph: {
-    title: 'yume insight - AI夢診断',
-    description: 'あなたの夢をAIが優しく紐解きます。',
+    title: 'Yume Insight｜AI夢診断・深層心理分析',
+    description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
     url: 'https://yume-insight.com',
-    siteName: 'yume insight',
+    siteName: 'Yume Insight',
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'yume insight - AI夢診断',
-    description: '夢の意味を知りたいですか？AIがあなたの夢を分析します。',
+    title: 'Yume Insight｜AI夢診断・深層心理分析',
+    description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
   },
   robots: {
     index: true,
@@ -74,7 +79,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body
-        className={`${fredoka.variable} ${zenGothic.variable} antialiased font-sans bg-[#0f172a] min-h-screen flex flex-col`}
+        className={`${fredoka.variable} ${zenGothic.variable} ${inter.variable} antialiased font-sans bg-[#0B0B10] min-h-screen flex flex-col`}
       >
         <Header />
         <div className="flex-1">

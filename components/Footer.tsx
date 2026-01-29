@@ -1,12 +1,13 @@
 import Link from 'next/link'
+import { Logo } from '@/components/Logo'
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 border-t border-white/5 bg-[#0f172a]/80 backdrop-blur-md pt-12 pb-12 mt-auto">
+    <footer className="relative z-10 border-t border-white/5 bg-[#0B0B10]/80 backdrop-blur-md pt-12 pb-12 mt-auto">
       <div className="container mx-auto px-4 max-w-5xl">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm mb-12">
           <div className="col-span-2 md:col-span-2">
-            <h4 className="font-bold text-white mb-4 font-display">yume insight</h4>
+            <Logo className="h-8 w-auto text-white mb-4" />
             <p className="text-gray-500 max-w-xs">
               AIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢診断アプリです。
             </p>
@@ -32,7 +33,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-white/5 pt-8 text-center text-gray-600 text-sm">
-          <p>© {new Date().getFullYear()} yume insight. All rights reserved. Powered by Gemini.</p>
+          <p>© {new Date().getFullYear()} Yume Insight. All rights reserved. Powered by Gemini.</p>
         </div>
       </div>
     </footer>
