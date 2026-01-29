@@ -1,11 +1,14 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
 import VoiceInput from '@/components/VoiceInput';
 import { ERROR_MESSAGES } from '@/lib/constants';
+import { createClient } from '@/lib/supabase/client';
+import { User } from '@supabase/supabase-js';
+import { getDisplayName } from '@/lib/user';
 
 export const runtime = 'edge';
 
@@ -27,6 +30,20 @@ export default function Home() {
   const moreInfoBaseTextRef = useRef('');
   const [resultId, setResultId] = useState<string | null>(null);
   const questionsSectionRef = useRef<HTMLDivElement>(null);
+  
+  const [user, setUser] = useState<User | null>(null);
+  const supabase = createClient();
+  
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null);
+      }
+    );
+    return () => subscription.unsubscribe();
+  }, [supabase]);
+  
+  const displayName = getDisplayName(user);
 
   const handleAnalyze = async (isFollowUp = false) => {
     const inputText = isFollowUp ? `${dream}\n\n【追加情報】\n${moreInfo}` : dream;
@@ -132,7 +149,11 @@ export default function Home() {
             <label htmlFor="dream-input" className="text-lg font-medium text-purple-200 mb-4 flex items-center justify-between">
               <span className="flex items-center">
                 <Sparkles className="w-5 h-5 mr-2" />
-                どんな夢を見ましたか？
+                {user ? (
+                  <span><span className="text-white font-bold">{displayName}</span>さん、どんな夢を見ましたか？</span>
+                ) : (
+                  <span>どんな夢を見ましたか？</span>
+                )}
               </span>
             </label>
             
