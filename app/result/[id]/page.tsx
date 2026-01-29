@@ -242,7 +242,9 @@ export default async function ResultPage({ params }: PageProps) {
           <div className="pt-8 border-t border-white/10">
             <ShareButtons 
               shareUrl={fullUrl} 
-              shareText={result.title ? `今日の私の夢診断は「${result.title}」でした！` : "AIによる夢診断の結果です！"} 
+              shareText={result.title 
+                ? `今日の私の夢診断は「${result.title}」でした！ #yumeinsight #夢診断` 
+                : "AIによる夢診断の結果です！ #yumeinsight #夢診断"} 
             />
           </div>
         </div>
