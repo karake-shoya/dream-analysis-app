@@ -8,17 +8,27 @@ export default function ApproachPage() {
       <div className="relative z-10">
         <main className="container mx-auto px-6 py-16 max-w-5xl">
           <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <section className="text-center space-y-6 pt-8">
-              <div className="inline-flex items-center gap-2 rounded-full border border-purple-300/30 bg-purple-500/10 px-4 py-2 text-sm font-semibold text-purple-200">
-                研究に基づく読み解き方
+            <section className="text-center space-y-8 pt-8 relative">
+              {/* 背景アイコン */}
+              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
+                  <img 
+                    src="/icon.png" 
+                    alt="" 
+                    className="w-40 h-40 opacity-10"
+                  />
+                </div>
               </div>
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white">
-                夢診断の考え方
-              </h1>
-              <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                当サイトは「夢＝未来の予言」として断定するものではありません。<br/>
-                夢研究で扱われる考え方を参考に、心身状態を振り返るヒントとして夢を読み解きます。
-              </p>
+              <div className="relative space-y-4">
+                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
+                  夢診断の考え方
+                </h1>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                  当サイトは「夢＝未来の予言」として断定するものではありません。<br/>
+                  夢研究の見解を参考に、心身状態を振り返るヒントとして夢を読み解きます。
+                </p>
+              </div>
             </section>
 
             <section className="space-y-6">

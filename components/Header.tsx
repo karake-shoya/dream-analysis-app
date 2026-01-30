@@ -221,7 +221,7 @@ export default function Header() {
                 <Link 
                   key={link.href} 
                   href={link.href}
-                  className="block text-lg font-medium text-gray-300 hover:text-purple-300"
+                  className={`block text-lg font-medium hover:text-purple-300 ${pathname === link.href ? 'text-purple-300' : 'text-gray-300'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
@@ -231,14 +231,14 @@ export default function Header() {
                 <>
                   <Link 
                     href="/dashboard"
-                    className="block text-lg font-medium text-purple-300"
+                    className={`block text-lg font-medium hover:text-purple-300 ${pathname === '/dashboard' ? 'text-purple-300' : 'text-gray-300'}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     マイページ
                   </Link>
                   <Link 
                     href="/settings"
-                    className="block text-lg font-medium text-gray-300 hover:text-purple-300"
+                    className={`block text-lg font-medium hover:text-purple-300 ${pathname === '/settings' ? 'text-purple-300' : 'text-gray-300'}`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     セキュリティ設定
