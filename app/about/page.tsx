@@ -40,16 +40,19 @@ export default function AboutPage() {
           <div className="space-y-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             
             {/* Hero Section */}
-            <div className="text-center space-y-8 pt-8">
-              <div className="relative inline-block">
-                <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
-                <img 
-                  src="/icon.png" 
-                  alt="Yume Insight Logo" 
-                  className="relative w-32 h-32 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
-                />
+            <div className="text-center space-y-8 pt-8 relative">
+              {/* 背景アイコン */}
+              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
+                  <img 
+                    src="/icon.png" 
+                    alt="" 
+                    className="w-40 h-40 opacity-10"
+                  />
+                </div>
               </div>
-              <div className="space-y-4">
+              <div className="relative space-y-4">
                 <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
                   Yume Insight について
                 </h1>

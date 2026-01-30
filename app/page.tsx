@@ -135,7 +135,7 @@ export default function Home() {
           </h2>
           <div className="space-y-4">
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              夢を入力するだけで、今のあなたの深層心理をAIが読み解きます
+              夢の内容を入力するだけで、<br/>あなたの深層心理をAIが読み解きます
             </p>
             <p className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
               AI夢診断サービス「Yume Insight」
