@@ -2,7 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getIndexByCategory } from '@/lib/data/dictionaryIndex';
+import { getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug, DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 type Props = {
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${categoryData.name}の夢占い一覧`,
-    description: `${categoryData.name}に関連する夢の意味を詳しく解説。${items.map(i => i.keyword).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
+    description: `${categoryData.name}に関連する夢の意味を詳しく解説。${items.map(i => i.title).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
   };
 }
 
@@ -78,7 +78,7 @@ export default async function CategoryPage({ params }: Props) {
               className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300"
             >
               <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">
-                {item.keyword}
+                {item.title}
               </h3>
               <p className="text-purple-300/80 text-sm font-medium mb-4">
                 キーワード暗示：{item.summary}

@@ -20,7 +20,7 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-purple-300 transition-colors">About</Link></li>
               <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢診断の考え方</Link></li>
               <li><Link href="/dictionary" className="hover:text-purple-300 transition-colors">夢占い辞典</Link></li>
-              <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">カップルの寝方</Link></li>
+              <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
             </ul>
           </div>
 

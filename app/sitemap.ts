@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
-import { DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { getAllIndexItems } from '@/lib/data/dreamDictionaryIndex';
+import { getArticleFrontmatter } from '@/lib/mdx';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -30,12 +31,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   // 辞典記事ページ
-  const articleRoutes = DICTIONARY_INDEX.map((item) => ({
-    url: `${baseUrl}/dictionary/${item.category}/${item.slug}`,
-    lastModified: item.createdAt ? new Date(item.createdAt) : new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.6,
-  }));
+  const articleRoutes = getAllIndexItems().map((item) => {
+    const frontmatter = getArticleFrontmatter(item.category, item.slug);
+    return {
+      url: `${baseUrl}/dictionary/${item.category}/${item.slug}`,
+      lastModified: frontmatter?.updatedAt ? new Date(frontmatter.updatedAt) : new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    };
+  });
 
   return [...staticRoutes, ...categoryRoutes, ...articleRoutes];
 }

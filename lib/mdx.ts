@@ -12,6 +12,7 @@ export type ArticleFrontmatter = {
   description: string;
   createdAt?: string;
   updatedAt?: string;
+  situations?: { title: string; meaning: string }[];
   faqs?: { q: string; a: string }[];
 };
 

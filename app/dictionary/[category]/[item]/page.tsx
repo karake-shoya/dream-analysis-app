@@ -1,12 +1,12 @@
-import { ArrowLeft, Sparkles, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
-import { getArticle } from '@/lib/mdx';
-import { getIndexItem, DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
+import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
 
 const AD_SLOT_ARTICLE_TOP = "6378422969";
@@ -18,22 +18,22 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, item } = await params;
-  const indexItem = getIndexItem(category, item);
-  if (!indexItem) return {};
+  const frontmatter = getArticleFrontmatter(category, item);
+  if (!frontmatter) return {};
 
   return {
-    title: `【夢占い】${indexItem.keyword}の夢の意味｜心理・暗示・状況別解釈`,
-    description: `${indexItem.keyword}の夢の意味を徹底解説。${indexItem.summary}。心理的な意味や状況別の解釈、よくある質問まで詳しく紹介します。`,
+    title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+    description: frontmatter.description,
     openGraph: {
-      title: `【夢占い】${indexItem.keyword}の夢の意味｜心理・暗示・状況別解釈`,
-      description: `${indexItem.keyword}の夢の意味を徹底解説。${indexItem.summary}。`,
+      title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+      description: frontmatter.description,
       type: 'article',
     },
   };
 }
 
 export async function generateStaticParams() {
-  return DICTIONARY_INDEX.map((item) => ({
+  return getAllIndexItems().map((item) => ({
     category: item.category,
     item: item.slug,
   }));
@@ -87,9 +87,9 @@ export default async function ItemPage({ params }: Props) {
                 <span>{categoryData.emojis}</span>
                 <span>{categoryData.name}の夢</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+              <p className="text-3xl md:text-4xl font-black text-white mb-6">
                 夢占い：{frontmatter.keyword}
-              </h1>
+              </p>
               <div className="p-6 rounded-2xl bg-linear-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-md shadow-xl">
                 <h2 className="text-lg font-bold text-purple-200 mb-2 flex items-center">
                   <Sparkles className="w-5 h-5 mr-2" />
@@ -110,6 +110,11 @@ export default async function ItemPage({ params }: Props) {
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
                 components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
+                      {children}
+                    </h1>
+                  ),
                   h2: ({ children }) => (
                     <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
                       {children}
@@ -143,33 +148,6 @@ export default async function ItemPage({ params }: Props) {
             <div className="my-10 bg-white/5 rounded-2xl p-4 border border-white/10">
               <AdsenseAd slot={AD_SLOT_ARTICLE_MIDDLE} />
             </div>
-
-            {/* よくある質問 */}
-            {faqs && faqs.length > 0 && (
-              <section className="mt-10">
-                <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
-                  よくある質問
-                </h2>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="p-5 rounded-xl bg-white/5 border border-white/10">
-                      <h3 className="text-lg font-bold text-white mb-2">Q. {faq.question}</h3>
-                      <p className="text-gray-300">A. {faq.answer}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* ワンポイントアドバイス */}
-            <section className="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-gray-400 leading-relaxed">
-              <div className="flex items-center gap-2 mb-3 text-purple-400 not-italic font-bold">
-                <AlertCircle className="w-4 h-4" />
-                <span>ワンポイントアドバイス</span>
-              </div>
-              夢占いの結果は、その時のあなたの感情やシチュエーションによっても変化します。
-              もっと詳しい意味を知りたい場合は、トップページのAI夢診断に具体的な内容を入力してみてくださいね。
-            </section>
 
             {/* AI夢診断CTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">
