@@ -18,8 +18,8 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400">
               <li><Link href="/" className="hover:text-purple-300 transition-colors">ホーム</Link></li>
               <li><Link href="/about" className="hover:text-purple-300 transition-colors">About</Link></li>
-              <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢診断の考え方</Link></li>
               <li><Link href="/dictionary" className="hover:text-purple-300 transition-colors">夢占い辞典</Link></li>
+              <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢診断の考え方</Link></li>
               <li><Link href="/prophetic-dream" className="hover:text-purple-300 transition-colors">正夢とは？</Link></li>
               <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
             </ul>
