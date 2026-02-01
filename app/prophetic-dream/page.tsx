@@ -119,7 +119,7 @@ export default function PropheticDreamPage() {
               <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
                 <p className="text-lg text-gray-300 mb-6">
                   あなたの夢にはどんな意味があるでしょうか？<br />
-                  <span className="text-white font-bold">AI夢診断で詳しく分析してみましょう。</span>
+                  <span className="text-white font-bold">AI夢占いで詳しく分析してみましょう。</span>
                 </p>
                 <Link 
                   href="/"

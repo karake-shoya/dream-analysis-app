@@ -138,7 +138,7 @@ export default function Home() {
               夢の内容を入力するだけで、<br/>あなたの深層心理をAIが読み解きます
             </p>
             <p className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
-              AI夢診断サービス「Yume Insight」
+              AI夢占いサービス「Yume Insight」
             </p>
           </div>
         </div>

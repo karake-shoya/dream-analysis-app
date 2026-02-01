@@ -22,7 +22,7 @@ export default function ApproachPage() {
               </div>
               <div className="relative space-y-4">
                 <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  夢診断の考え方
+                  夢占いの考え方
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
                   当サイトは「夢＝未来の予言」として断定するものではありません。<br/>

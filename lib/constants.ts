@@ -18,7 +18,7 @@ export const AI_CONFIG = {
 } as const;
 
 /**
- * 夢診断用のプロンプトテンプレート
+ * 夢占い用のプロンプトテンプレート
  * @param dream - ユーザーが入力した夢の内容
  */
 export const getDreamAnalysisPrompt = (dream: string): string => `

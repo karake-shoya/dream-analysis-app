@@ -8,7 +8,7 @@ import GradientBackground from '@/components/GradientBackground';
 
 export const metadata: Metadata = {
   title: '夢占い辞典',
-  description: '夢占いの意味を50音・カテゴリ別に検索。追いかけられる夢、落ちる夢、動物の夢など、よく見る夢のシンボルを詳しく解説。AI夢診断で個別分析も可能。',
+  description: '夢占いの意味を50音・カテゴリ別に検索。追いかけられる夢、落ちる夢、動物の夢など、よく見る夢のシンボルを詳しく解説。AI夢占いで個別分析も可能。',
 };
 
 export default function Dictionary() {
@@ -118,7 +118,7 @@ export default function Dictionary() {
             <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
               <p className="text-lg text-gray-300 mb-6">
                 辞典で見つからない夢や、もっと詳しく知りたい場合は<br />
-                <span className="text-white font-bold">AI夢診断で個別に分析できます。</span>
+                <span className="text-white font-bold">AI夢占いで個別に分析できます。</span>
               </p>
               <Link 
                 href="/"

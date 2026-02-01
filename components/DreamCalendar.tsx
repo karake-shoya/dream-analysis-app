@@ -222,7 +222,7 @@ export default function DreamCalendar({ dreams, selectedMonth }: Props) {
                   <Moon className="w-3 h-3 text-purple-300 mt-0.5" />
                   {/* ホバー時のツールチップ */}
                   <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 rounded-lg text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10">
-                    {dreamsOnDay[0].title || '夢診断結果'}
+                    {dreamsOnDay[0].title || '夢占い結果'}
                   </div>
                 </Link>
               );
@@ -318,7 +318,7 @@ export default function DreamCalendar({ dreams, selectedMonth }: Props) {
                 }}
               >
                 <p className="text-sm text-white font-medium line-clamp-1">
-                  {dream.title || `夢診断結果 ${index + 1}`}
+                  {dream.title || `夢占い結果 ${index + 1}`}
                 </p>
                 <p className="text-xs text-gray-400 mt-0.5">
                   {formatTime(dream.date)}
