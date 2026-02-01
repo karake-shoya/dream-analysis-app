@@ -20,6 +20,7 @@ import ResultSectionCard from "@/components/ResultSectionCard";
 import AdModal from "@/components/AdModal";
 import AdsenseAd from "@/components/AdsenseAd";
 import type { AnalysisResult } from "@/lib/types";
+import { siteConfig } from "@/lib/config";
 
 // 広告スロットID
 const AD_SLOT_RESULT_BEFORE = "6378422969"; // 結果直前広告
@@ -51,8 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ResultPage({ params }: PageProps) {
   const { id } = await params;
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://yume-insight.com";
-  const fullUrl = `${baseUrl}/result/${id}`;
+  const fullUrl = `${siteConfig.baseUrl}/result/${id}`;
 
   const supabase = await createClient();
   const { data: dream, error } = await supabase

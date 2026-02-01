@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
+import { siteConfig } from "@/lib/config";
 
 const fredoka = Fredoka({ 
   subsets: ["latin"], 
@@ -37,8 +38,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Yume Insight｜AI夢診断・深層心理分析',
     description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
-    url: 'https://yume-insight.com',
-    siteName: 'Yume Insight',
+    url: siteConfig.baseUrl,
+    siteName: siteConfig.siteName,
     locale: 'ja_JP',
     type: 'website',
   },
