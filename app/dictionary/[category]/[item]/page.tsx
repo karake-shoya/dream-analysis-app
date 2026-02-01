@@ -5,9 +5,11 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
+import RelatedArticles from '@/components/RelatedArticles';
 import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
+import { getRelatedArticles } from '@/lib/data/relatedArticles';
 
 const AD_SLOT_ARTICLE_TOP = "6378422969";
 const AD_SLOT_ARTICLE_MIDDLE = "6378422969";
@@ -52,6 +54,7 @@ export default async function ItemPage({ params }: Props) {
   if (!article) notFound();
 
   const { frontmatter, content } = article;
+  const relatedArticles = getRelatedArticles(category, item);
 
   // FAQをFaqSchema用に変換
   const faqs = frontmatter.faqs?.map((faq) => ({
@@ -148,6 +151,8 @@ export default async function ItemPage({ params }: Props) {
             <div className="my-10 bg-white/5 rounded-2xl p-4 border border-white/10">
               <AdsenseAd slot={AD_SLOT_ARTICLE_MIDDLE} />
             </div>
+
+            <RelatedArticles articles={relatedArticles} />
 
             {/* AI夢診断CTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">
