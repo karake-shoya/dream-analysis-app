@@ -3,8 +3,14 @@
 import { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
 import Link from 'next/link';
-import { getAllIndexItems } from '@/lib/data/dreamDictionaryIndex';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
+
+type DictionaryItem = {
+  slug: string;
+  title: string;
+  summary: string;
+  category: string;
+};
 
 type SearchResult = {
   title: string;
@@ -14,7 +20,11 @@ type SearchResult = {
   summary: string;
 };
 
-export default function DictionarySearch() {
+type Props = {
+  items: DictionaryItem[];
+};
+
+export default function DictionarySearch({ items }: Props) {
   const [query, setQuery] = useState('');
 
   // カテゴリ名のマップを作成
@@ -28,14 +38,14 @@ export default function DictionarySearch() {
 
   // 全記事をフラット化（カテゴリ名を追加）
   const allItems: SearchResult[] = useMemo(() => {
-    return getAllIndexItems().map((item) => ({
+    return items.map((item) => ({
       title: item.title,
       slug: item.slug,
       category: item.category,
       categoryName: categoryNameMap[item.category] || item.category,
       summary: item.summary,
     }));
-  }, [categoryNameMap]);
+  }, [items, categoryNameMap]);
 
   // 検索結果をフィルタリング
   const searchResults = useMemo(() => {

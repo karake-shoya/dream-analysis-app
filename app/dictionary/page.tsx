@@ -4,7 +4,6 @@ import { Metadata } from 'next';
 import DictionarySearch from '@/components/DictionarySearch';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 import { getAllIndexItems, getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
-import { getArticleFrontmatter } from '@/lib/mdx';
 import GradientBackground from '@/components/GradientBackground';
 
 export const metadata: Metadata = {
@@ -13,11 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default function Dictionary() {
-  const recentArticles = getAllIndexItems()
-    .map((item) => {
-      const frontmatter = getArticleFrontmatter(item.category, item.slug);
-      return { ...item, createdAt: frontmatter?.createdAt };
-    })
+  const allItems = getAllIndexItems();
+  const totalCount = allItems.length;
+
+  const recentArticles = allItems
     .filter((item) => item.createdAt)
     .sort((a, b) => {
       if (!a.createdAt || !b.createdAt) return 0;
@@ -56,12 +54,13 @@ export default function Dictionary() {
             </div>
 
             {/* キーワード検索 */}
-            <DictionarySearch />
+            <DictionarySearch items={allItems} />
 
             {/* カテゴリ別一覧 */}
             <div>
               <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
                 カテゴリから探す
+                <span className="ml-3 text-base font-normal text-purple-300">（全{totalCount}件）</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {DICTIONARY_CATEGORIES.map((category) => {

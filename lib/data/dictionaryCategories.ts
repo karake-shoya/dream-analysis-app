@@ -9,8 +9,7 @@ export const DICTIONARY_CATEGORIES: DictionaryCategory[] = [
   { slug: 'nature', name: '自然・天候', emojis: '⛈️' },
   { slug: 'places', name: '場所・建物', emojis: '🏰' },
   { slug: 'actions', name: '行動・出来事', emojis: '🏃' },
-  { slug: 'emotions', name: '感情・心理', emojis: '💓' },
-  { slug: 'emotion', name: '感情・気分', emojis: '💗' },
+  { slug: 'emotions', name: '感情', emojis: '💓' },
   { slug: 'person', name: '人物・関係', emojis: '🧑‍🤝‍🧑' },
   { slug: 'situation', name: '状況・イベント', emojis: '📝' },
 ];
