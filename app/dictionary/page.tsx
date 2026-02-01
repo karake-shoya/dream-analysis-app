@@ -1,4 +1,4 @@
-import { TrendingUp, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import DictionarySearch from '@/components/DictionarySearch';
@@ -11,20 +11,6 @@ export const metadata: Metadata = {
   title: '夢占い辞典',
   description: '夢占いの意味を50音・カテゴリ別に検索。追いかけられる夢、落ちる夢、動物の夢など、よく見る夢のシンボルを詳しく解説。AI夢診断で個別分析も可能。',
 };
-
-// 人気のキーワード（将来的にはアクセス数などで動的に）
-const POPULAR_KEYWORDS = [
-  { label: '追いかけられる', href: '/dictionary/actions/chased' },
-  { label: '落ちる', href: '/dictionary/actions/falling' },
-  { label: '犬', href: '/dictionary/animals/dog' },
-  { label: '空を飛ぶ', href: '/dictionary/nature/flying' },
-  { label: '猫', href: '/dictionary/animals/cat' },
-  { label: '海', href: '/dictionary/nature/sea' },
-  { label: '蛇', href: '/dictionary/animals/snake' },
-  { label: '家', href: '/dictionary/places/house' },
-  { label: '学校', href: '/dictionary/places/school' },
-  { label: '走る', href: '/dictionary/actions/running' },
-];
 
 export default function Dictionary() {
   const recentArticles = getAllIndexItems()
@@ -71,28 +57,6 @@ export default function Dictionary() {
 
             {/* キーワード検索 */}
             <DictionarySearch />
-
-            {/* よく検索される夢TOP10 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
-                <TrendingUp className="w-6 h-6 mr-3 text-purple-400" />
-                よく検索される夢TOP10
-              </h2>
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-                {POPULAR_KEYWORDS.map((item, index) => (
-                  <Link 
-                    href={item.href} 
-                    key={item.label}
-                    className="group relative text-center p-4 rounded-xl bg-white/5 hover:bg-purple-500/20 text-gray-300 hover:text-white transition-all cursor-pointer border border-white/5 hover:border-purple-500/30"
-                  >
-                    <span className="absolute top-2 left-3 text-xs font-bold text-purple-400/60">
-                      {index + 1}
-                    </span>
-                    <span className="font-medium">{item.label}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
 
             {/* カテゴリ別一覧 */}
             <div>
