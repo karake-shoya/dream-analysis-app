@@ -5,8 +5,8 @@ import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
-import { getArticle } from '@/lib/mdx';
-import { getIndexItem, DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
+import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
 
 const AD_SLOT_ARTICLE_TOP = "6378422969";
@@ -18,22 +18,22 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category, item } = await params;
-  const indexItem = getIndexItem(category, item);
-  if (!indexItem) return {};
+  const frontmatter = getArticleFrontmatter(category, item);
+  if (!frontmatter) return {};
 
   return {
-    title: `【夢占い】${indexItem.keyword}の夢の意味｜心理・暗示・状況別解釈`,
-    description: `${indexItem.keyword}の夢の意味を徹底解説。${indexItem.summary}。心理的な意味や状況別の解釈、よくある質問まで詳しく紹介します。`,
+    title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+    description: frontmatter.description,
     openGraph: {
-      title: `【夢占い】${indexItem.keyword}の夢の意味｜心理・暗示・状況別解釈`,
-      description: `${indexItem.keyword}の夢の意味を徹底解説。${indexItem.summary}。`,
+      title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+      description: frontmatter.description,
       type: 'article',
     },
   };
 }
 
 export async function generateStaticParams() {
-  return DICTIONARY_INDEX.map((item) => ({
+  return getAllIndexItems().map((item) => ({
     category: item.category,
     item: item.slug,
   }));
@@ -87,9 +87,9 @@ export default async function ItemPage({ params }: Props) {
                 <span>{categoryData.emojis}</span>
                 <span>{categoryData.name}の夢</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-black text-white mb-6">
+              <p className="text-3xl md:text-4xl font-black text-white mb-6">
                 夢占い：{frontmatter.keyword}
-              </h1>
+              </p>
               <div className="p-6 rounded-2xl bg-linear-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-md shadow-xl">
                 <h2 className="text-lg font-bold text-purple-200 mb-2 flex items-center">
                   <Sparkles className="w-5 h-5 mr-2" />
@@ -110,6 +110,11 @@ export default async function ItemPage({ params }: Props) {
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
                 components={{
+                  h1: ({ children }) => (
+                    <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
+                      {children}
+                    </h1>
+                  ),
                   h2: ({ children }) => (
                     <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
                       {children}

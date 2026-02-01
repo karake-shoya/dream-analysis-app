@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import DictionarySearch from '@/components/DictionarySearch';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
-import { getIndexByCategory, getRecentItems } from '@/lib/data/dictionaryIndex';
+import { getAllIndexItems, getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
+import { getArticleFrontmatter } from '@/lib/mdx';
 import GradientBackground from '@/components/GradientBackground';
 
 export const metadata: Metadata = {
@@ -26,7 +27,17 @@ const POPULAR_KEYWORDS = [
 ];
 
 export default function Dictionary() {
-  const recentArticles = getRecentItems(6);
+  const recentArticles = getAllIndexItems()
+    .map((item) => {
+      const frontmatter = getArticleFrontmatter(item.category, item.slug);
+      return { ...item, createdAt: frontmatter?.createdAt };
+    })
+    .filter((item) => item.createdAt)
+    .sort((a, b) => {
+      if (!a.createdAt || !b.createdAt) return 0;
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    })
+    .slice(0, 6);
 
   return (
     <div className="relative">
@@ -127,7 +138,7 @@ export default function Dictionary() {
                       className="group p-4 rounded-xl bg-white/5 hover:bg-purple-500/20 border border-white/5 hover:border-purple-500/30 transition-all"
                     >
                       <p className="font-bold text-white group-hover:text-purple-300 transition-colors">
-                        {item.keyword}
+                        {item.title}
                       </p>
                       {item.createdAt && (
                         <p className="text-xs text-gray-500 mt-1">

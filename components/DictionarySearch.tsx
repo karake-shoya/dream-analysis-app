@@ -3,11 +3,11 @@
 import { useState, useMemo } from 'react';
 import { Search, X } from 'lucide-react';
 import Link from 'next/link';
-import { DICTIONARY_INDEX } from '@/lib/data/dictionaryIndex';
+import { getAllIndexItems } from '@/lib/data/dreamDictionaryIndex';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 
 type SearchResult = {
-  keyword: string;
+  title: string;
   slug: string;
   category: string;
   categoryName: string;
@@ -28,8 +28,8 @@ export default function DictionarySearch() {
 
   // 全記事をフラット化（カテゴリ名を追加）
   const allItems: SearchResult[] = useMemo(() => {
-    return DICTIONARY_INDEX.map((item) => ({
-      keyword: item.keyword,
+    return getAllIndexItems().map((item) => ({
+      title: item.title,
       slug: item.slug,
       category: item.category,
       categoryName: categoryNameMap[item.category] || item.category,
@@ -44,7 +44,7 @@ export default function DictionarySearch() {
     const normalizedQuery = query.toLowerCase().trim();
     return allItems.filter(
       (item) =>
-        item.keyword.toLowerCase().includes(normalizedQuery) ||
+        item.title.toLowerCase().includes(normalizedQuery) ||
         item.summary.toLowerCase().includes(normalizedQuery)
     );
   }, [query, allItems]);
@@ -87,7 +87,7 @@ export default function DictionarySearch() {
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-bold text-white">{item.keyword}</p>
+                      <p className="font-bold text-white">{item.title}</p>
                       <p className="text-sm text-gray-400 mt-1">{item.summary}</p>
                     </div>
                     <span className="text-xs text-purple-400 bg-purple-500/10 px-2 py-1 rounded-full">
