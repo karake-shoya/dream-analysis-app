@@ -1,4 +1,4 @@
-import { ArrowLeft, Sparkles, AlertCircle } from 'lucide-react';
+import { ArrowLeft, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -148,33 +148,6 @@ export default async function ItemPage({ params }: Props) {
             <div className="my-10 bg-white/5 rounded-2xl p-4 border border-white/10">
               <AdsenseAd slot={AD_SLOT_ARTICLE_MIDDLE} />
             </div>
-
-            {/* よくある質問 */}
-            {faqs && faqs.length > 0 && (
-              <section className="mt-10">
-                <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
-                  よくある質問
-                </h2>
-                <div className="space-y-4">
-                  {faqs.map((faq, index) => (
-                    <div key={index} className="p-5 rounded-xl bg-white/5 border border-white/10">
-                      <h3 className="text-lg font-bold text-white mb-2">Q. {faq.question}</h3>
-                      <p className="text-gray-300">A. {faq.answer}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* ワンポイントアドバイス */}
-            <section className="mt-10 p-6 rounded-2xl bg-white/5 border border-white/10 italic text-sm text-gray-400 leading-relaxed">
-              <div className="flex items-center gap-2 mb-3 text-purple-400 not-italic font-bold">
-                <AlertCircle className="w-4 h-4" />
-                <span>ワンポイントアドバイス</span>
-              </div>
-              夢占いの結果は、その時のあなたの感情やシチュエーションによっても変化します。
-              もっと詳しい意味を知りたい場合は、トップページのAI夢診断に具体的な内容を入力してみてくださいね。
-            </section>
 
             {/* AI夢診断CTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">
