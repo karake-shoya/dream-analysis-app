@@ -27,16 +27,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: '%s | Yume Insight',
-    default: 'Yume Insight｜AI夢診断・深層心理分析',
+    default: 'Yume Insight｜AI夢占い・深層心理分析',
   },
   description: "夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。",
-  keywords: ["夢占い", "夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
+  keywords: ["夢占い", "夢占い", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
   icons: {
     icon: '/favicon.ico',
     apple: '/icon.png',
   },
   openGraph: {
-    title: 'Yume Insight｜AI夢診断・深層心理分析',
+    title: 'Yume Insight｜AI夢占い・深層心理分析',
     description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
     url: siteConfig.baseUrl,
     siteName: siteConfig.siteName,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Yume Insight｜AI夢診断・深層心理分析',
+    title: 'Yume Insight｜AI夢占い・深層心理分析',
     description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
   },
   robots: {

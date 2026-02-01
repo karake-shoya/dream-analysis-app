@@ -154,12 +154,12 @@ export default async function ItemPage({ params }: Props) {
 
             <RelatedArticles articles={relatedArticles} />
 
-            {/* AI夢診断CTA - 最重要導線 */}
+            {/* AI夢占いCTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">
               <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
                 <p className="text-lg text-gray-300 mb-6">
                   この夢を見た理由や、あなた個人の状況を踏まえた意味は<br />
-                  <span className="text-white font-bold">AI夢診断で詳しく分析できます。</span>
+                  <span className="text-white font-bold">AI夢占いで詳しく分析できます。</span>
                 </p>
                 <Link 
                   href="/"

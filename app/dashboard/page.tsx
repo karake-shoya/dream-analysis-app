@@ -55,7 +55,7 @@ export default async function Dashboard({ searchParams }: Props) {
   const calendarDreams = dreams.map((dream) => ({
     id: dream.id,
     date: dream.created_at,
-    title: dream.diagnosis_result?.title || dream.diagnosis_result?.interpretations?.[0]?.summary || '夢診断結果',
+    title: dream.diagnosis_result?.title || dream.diagnosis_result?.interpretations?.[0]?.summary || '夢占い結果',
   }));
 
   // ページネーションリンク生成
@@ -89,7 +89,7 @@ export default async function Dashboard({ searchParams }: Props) {
                 <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
                     <p className="text-gray-400 mb-6">まだ診断された夢の記録がありません。</p>
                     <Link href="/" className="px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-500 transition-colors inline-block font-medium">
-                        夢診断を始める
+                        夢占いを始める
                     </Link>
                 </div>
             ) : (
@@ -173,7 +173,7 @@ export default async function Dashboard({ searchParams }: Props) {
                                                 </div>
                                                 
                                                 <h3 className="text-lg font-bold text-indigo-200 mb-2 group-hover:text-purple-300 transition-colors">
-                                                    {result.title || result.interpretations?.[0]?.summary || result.summary || "夢診断結果"}
+                                                    {result.title || result.interpretations?.[0]?.summary || result.summary || "夢占い結果"}
                                                 </h3>
                                                 
                                                 <p className="text-gray-400 text-sm italic line-clamp-2">&quot;{dream.content}&quot;</p>

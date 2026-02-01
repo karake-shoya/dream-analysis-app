@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-2">
             <Logo className="h-8 w-auto text-white mb-4" />
             <p className="text-gray-500 max-w-xs">
-              AIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢診断アプリです。
+              AIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。
             </p>
           </div>
           
@@ -19,7 +19,7 @@ export default function Footer() {
               <li><Link href="/" className="hover:text-purple-300 transition-colors">ホーム</Link></li>
               <li><Link href="/about" className="hover:text-purple-300 transition-colors">About</Link></li>
               <li><Link href="/dictionary" className="hover:text-purple-300 transition-colors">夢占い辞典</Link></li>
-              <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢診断の考え方</Link></li>
+              <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢占いの考え方</Link></li>
               <li><Link href="/prophetic-dream" className="hover:text-purple-300 transition-colors">正夢とは？</Link></li>
               <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
             </ul>

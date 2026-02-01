@@ -1,5 +1,5 @@
 /**
- * 夢診断結果の型定義
+ * 夢占い結果の型定義
  */
 export interface AnalysisResult {
   /** 診断可能かどうか */

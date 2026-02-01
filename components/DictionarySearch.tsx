@@ -113,7 +113,7 @@ export default function DictionarySearch({ items }: Props) {
               <p className="text-sm mt-2">
                 見つからない場合は
                 <Link href="/" className="text-purple-400 hover:text-purple-300 ml-1">
-                  AI夢診断
+                  AI夢占い
                 </Link>
                 をお試しください
               </p>

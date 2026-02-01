@@ -39,13 +39,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     .eq('id', id)
     .single();
 
-  if (!dream) return { title: '夢診断結果' };
+  if (!dream) return { title: '夢占い結果' };
 
   const result = dream.diagnosis_result as AnalysisResult;
   const summary = result.interpretations?.[0]?.summary || result.summary;
 
   return {
-    title: result.title ? `${result.title} | Yume Insight` : '夢診断結果 | Yume Insight',
+    title: result.title ? `${result.title} | Yume Insight` : '夢占い結果 | Yume Insight',
     description: summary || 'AIによる深層心理の解析結果です。',
   };
 }
@@ -265,8 +265,8 @@ export default async function ResultPage({ params }: PageProps) {
             <ShareButtons 
               shareUrl={fullUrl} 
               shareText={result.title 
-                ? `今日の私の夢診断は「${result.title}」でした！ #yumeinsight #夢診断` 
-                : "AIによる夢診断の結果です！ #yumeinsight #夢診断"} 
+                ? `今日の私の夢占いは「${result.title}」でした！ #yumeinsight #夢占い` 
+                : "AIによる夢占いの結果です！ #yumeinsight #夢占い"} 
             />
           </div>
 
