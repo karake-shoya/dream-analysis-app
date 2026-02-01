@@ -2,14 +2,16 @@ import { MetadataRoute } from 'next';
 import { getAllIndexItems } from '@/lib/data/dreamDictionaryIndex';
 import { getArticleFrontmatter } from '@/lib/mdx';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
+import { siteConfig } from '@/lib/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://dream-analysis-app.netlify.app/'; // TODO: 実際のドメインに変更
+  const baseUrl = siteConfig.baseUrl;
 
   // 静的ページの定義
   const staticRoutes = [
     '',
     '/dictionary',
+    '/prophetic-dream',
     '/sleeping-positions',
     '/privacy',
     '/terms',
