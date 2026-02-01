@@ -2,82 +2,622 @@
   "links": [
     {
       "from": {
-        "category": "animals",
-        "slug": "dog",
-        "keyword": "犬"
+        "category": "actions",
+        "slug": "almost-killed",
+        "keyword": "殺されそうになる"
       },
       "related": [
         {
-          "category": "animals",
-          "slug": "cat",
-          "keyword": "猫",
-          "reason": "身近な関係性や距離感を見直すテーマが共通するため"
-        },
-        {
-          "category": "places",
-          "slug": "house",
-          "keyword": "家",
-          "reason": "安心感や守られたい気持ちの象徴として結びつくため"
+          "category": "actions",
+          "slug": "chased",
+          "keyword": "追いかけられる",
+          "summary": "追いかけられるが映す心の兆し"
         },
         {
           "category": "actions",
-          "slug": "running",
-          "keyword": "走る",
-          "reason": "前進したい気持ちやエネルギーの動きが似ているため"
+          "slug": "killing",
+          "keyword": "殺す",
+          "summary": "変化への強い意志と終わりを示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
         }
       ]
     },
     {
       "from": {
-        "category": "animals",
-        "slug": "cat",
-        "keyword": "鼠"
+        "category": "actions",
+        "slug": "cant-speak",
+        "keyword": "声が出ない"
       },
       "related": [
         {
-          "category": "animals",
-          "slug": "dog",
-          "keyword": "犬",
-          "reason": "人間関係の距離感や信頼を見直す点が近いため"
+          "category": "actions",
+          "slug": "cant-wake-up",
+          "keyword": "起きられない",
+          "summary": "疲労と現実逃避の気持ちを映す"
         },
         {
-          "category": "animals",
-          "slug": "bird",
-          "keyword": "鳥",
-          "reason": "自由や視野の広がりを求める気持ちが共通するため"
-        },
-        {
-          "category": "places",
-          "slug": "house",
-          "keyword": "家",
-          "reason": "安心できる居場所と自分らしさの両面が関係するため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "animals",
-        "slug": "snake",
-        "keyword": "牛"
-      },
-      "related": [
-        {
-          "category": "animals",
-          "slug": "fish",
-          "keyword": "魚",
-          "reason": "内面の変化や潜在意識への気づきが近いため"
+          "category": "actions",
+          "slug": "phone-broken",
+          "keyword": "スマホが壊れる",
+          "summary": "連絡不安を知らせるサイン"
         },
         {
           "category": "emotions",
           "slug": "anxiety",
           "keyword": "不安になる",
-          "reason": "変化への緊張や慎重さが共通するため"
+          "summary": "慎重さが増す時期のサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "cant-wake-up",
+        "keyword": "起きられない"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "lost",
+          "keyword": "迷子になる",
+          "summary": "方向性の迷いを示すサイン"
         },
         {
-          "category": "nature",
-          "slug": "mountain",
-          "keyword": "山",
-          "reason": "変化に向けた挑戦意識が似ているため"
+          "category": "actions",
+          "slug": "cant-speak",
+          "keyword": "声が出ない",
+          "summary": "伝えられない思いと無力感を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "chased",
+        "keyword": "追いかけられる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "die",
+          "keyword": "死ぬ",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "almost-killed",
+          "keyword": "殺されそうになる",
+          "summary": "殺されそうになるが映す心の兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "confess",
+        "keyword": "告白する"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "kiss",
+          "keyword": "キスする",
+          "summary": "親密さへの欲求が高まる兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-speak",
+          "keyword": "声が出ない",
+          "summary": "伝えられない思いと無力感を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "crying",
+        "keyword": "泣く"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "eating",
+          "keyword": "食べる",
+          "summary": "欲求の充足とエネルギー補給を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-speak",
+          "keyword": "声が出ない",
+          "summary": "伝えられない思いと無力感を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "die",
+        "keyword": "死ぬ"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "drowning",
+          "keyword": "溺れる",
+          "summary": "感情に飲み込まれる不安を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "chased",
+          "keyword": "追いかけられる",
+          "summary": "追いかけられるが映す心の兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "drowning",
+        "keyword": "溺れる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "escape",
+          "keyword": "逃げる",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "die",
+          "keyword": "死ぬ",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "eating",
+        "keyword": "食べる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "crying",
+          "keyword": "泣く",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-wake-up",
+          "keyword": "起きられない",
+          "summary": "疲労と現実逃避の気持ちを映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "escape",
+        "keyword": "逃げる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "falling",
+          "keyword": "落ちる",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "drowning",
+          "keyword": "溺れる",
+          "summary": "感情に飲み込まれる不安を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "falling",
+        "keyword": "落ちる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "falling-from-height",
+          "keyword": "高いところから落ちる",
+          "summary": "高いところから落ちるが映す心の兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "escape",
+          "keyword": "逃げる",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "falling-from-height",
+        "keyword": "高いところから落ちる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "falling-teeth",
+          "keyword": "歯が抜ける",
+          "summary": "自信の揺らぎに気づく兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "falling",
+          "keyword": "落ちる",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "falling-teeth",
+        "keyword": "歯が抜ける"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "fight",
+          "keyword": "喧嘩する",
+          "summary": "衝突の予兆と気づきを示す"
+        },
+        {
+          "category": "actions",
+          "slug": "falling-from-height",
+          "keyword": "高いところから落ちる",
+          "summary": "高いところから落ちるが映す心の兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "fight",
+        "keyword": "喧嘩する"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "fighting-battle",
+          "keyword": "戦う",
+          "summary": "困難への立ち向かいと闘志を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "falling-teeth",
+          "keyword": "歯が抜ける",
+          "summary": "自信の揺らぎに気づく兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "fighting-battle",
+        "keyword": "戦う"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "killing",
+          "keyword": "殺す",
+          "summary": "変化への強い意志と終わりを示す"
+        },
+        {
+          "category": "actions",
+          "slug": "fight",
+          "keyword": "喧嘩する",
+          "summary": "衝突の予兆と気づきを示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "flying",
+        "keyword": "空を飛ぶ"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "running",
+          "keyword": "走る",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "swimming",
+          "keyword": "泳ぐ",
+          "summary": "感情との向き合い方を映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "killing",
+        "keyword": "殺す"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "almost-killed",
+          "keyword": "殺されそうになる",
+          "summary": "殺されそうになるが映す心の兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "fighting-battle",
+          "keyword": "戦う",
+          "summary": "困難への立ち向かいと闘志を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "kiss",
+        "keyword": "キスする"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "confess",
+          "keyword": "告白する",
+          "summary": "気持ちを伝えたい願望を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-wake-up",
+          "keyword": "起きられない",
+          "summary": "疲労と現実逃避の気持ちを映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "lost",
+        "keyword": "迷子になる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "naked",
+          "keyword": "裸になる",
+          "summary": "無防備さを意識するサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-wake-up",
+          "keyword": "起きられない",
+          "summary": "疲労と現実逃避の気持ちを映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "naked",
+        "keyword": "裸になる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "phone-broken",
+          "keyword": "スマホが壊れる",
+          "summary": "連絡不安を知らせるサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "lost",
+          "keyword": "迷子になる",
+          "summary": "方向性の迷いを示すサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "phone-broken",
+        "keyword": "スマホが壊れる"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "cant-speak",
+          "keyword": "声が出ない",
+          "summary": "伝えられない思いと無力感を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "naked",
+          "keyword": "裸になる",
+          "summary": "無防備さを意識するサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "running",
+        "keyword": "走る"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "swimming",
+          "keyword": "泳ぐ",
+          "summary": "感情との向き合い方を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "flying",
+          "keyword": "空を飛ぶ",
+          "summary": "解放感と挑戦心が高まる時"
+        },
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "actions",
+        "slug": "swimming",
+        "keyword": "泳ぐ"
+      },
+      "related": [
+        {
+          "category": "actions",
+          "slug": "flying",
+          "keyword": "空を飛ぶ",
+          "summary": "解放感と挑戦心が高まる時"
+        },
+        {
+          "category": "actions",
+          "slug": "running",
+          "keyword": "走る",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
@@ -89,22 +629,130 @@
       },
       "related": [
         {
-          "category": "nature",
-          "slug": "flying",
-          "keyword": "空を飛ぶ",
-          "reason": "解放感や視野の拡大を示す点が共通するため"
-        },
-        {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "次のステージへ進む意識が近いため"
+          "category": "animals",
+          "slug": "cat",
+          "keyword": "猫",
+          "summary": "自由と直感が研ぎ澄まされる兆し"
         },
         {
           "category": "animals",
-          "slug": "fish",
-          "keyword": "魚",
-          "reason": "直感や内面の豊かさに目が向く点が似ているため"
+          "slug": "rabbit",
+          "keyword": "うさぎ",
+          "summary": "幸運と繊細さの象徴を示す"
+        },
+        {
+          "category": "person",
+          "slug": "ex-boyfriend",
+          "keyword": "元彼",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "cat",
+        "keyword": "猫"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "dog",
+          "keyword": "犬",
+          "summary": "信頼と支えが育つ心の兆し"
+        },
+        {
+          "category": "animals",
+          "slug": "bird",
+          "keyword": "鳥",
+          "summary": "視野が広がる自由への予感"
+        },
+        {
+          "category": "person",
+          "slug": "ex-boyfriend-appears",
+          "keyword": "元彼が出てくる",
+          "summary": "元彼が出てくるが映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "cockroach",
+        "keyword": "ゴキブリ"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "insect",
+          "keyword": "虫",
+          "summary": "小さな不満に気づく合図のサイン"
+        },
+        {
+          "category": "animals",
+          "slug": "spider",
+          "keyword": "蜘蛛",
+          "summary": "不安と集中が絡む兆しを示す"
+        },
+        {
+          "category": "person",
+          "slug": "family",
+          "keyword": "家族",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "cow",
+        "keyword": "牛"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "horse",
+          "keyword": "馬",
+          "summary": "前進する力と成功への意欲を示す"
+        },
+        {
+          "category": "animals",
+          "slug": "lion",
+          "keyword": "ライオン",
+          "summary": "強さと権威への意識を映す"
+        },
+        {
+          "category": "person",
+          "slug": "father",
+          "keyword": "父親",
+          "summary": "権威と保護への意識を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "dog",
+        "keyword": "犬"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "rabbit",
+          "keyword": "うさぎ",
+          "summary": "幸運と繊細さの象徴を示す"
+        },
+        {
+          "category": "animals",
+          "slug": "cat",
+          "keyword": "猫",
+          "summary": "自由と直感が研ぎ澄まされる兆し"
+        },
+        {
+          "category": "person",
+          "slug": "friend",
+          "keyword": "友達",
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
@@ -116,76 +764,589 @@
       },
       "related": [
         {
-          "category": "nature",
-          "slug": "sea",
-          "keyword": "海",
-          "reason": "感情の深さや潜在意識を扱うテーマが近いため"
-        },
-        {
           "category": "animals",
           "slug": "snake",
           "keyword": "蛇",
-          "reason": "内面の変化や再生のイメージが共通するため"
+          "summary": "変化と再生のエネルギーが高まる時"
         },
         {
-          "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "心の揺れが表面化しやすい点が近いため"
+          "category": "animals",
+          "slug": "cat",
+          "keyword": "猫",
+          "summary": "自由と直感が研ぎ澄まされる兆し"
+        },
+        {
+          "category": "person",
+          "slug": "mother",
+          "keyword": "母親",
+          "summary": "愛情と安心感への欲求を示す"
         }
       ]
     },
     {
       "from": {
-        "category": "nature",
-        "slug": "sea",
-        "keyword": "海"
+        "category": "animals",
+        "slug": "horse",
+        "keyword": "馬"
       },
       "related": [
         {
-          "category": "nature",
-          "slug": "rain",
-          "keyword": "雨",
-          "reason": "感情の浄化や整理という流れが共通するため"
+          "category": "animals",
+          "slug": "lion",
+          "keyword": "ライオン",
+          "summary": "強さと権威への意識を映す"
         },
         {
-          "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "感情を解放するテーマが重なるため"
+          "category": "animals",
+          "slug": "cow",
+          "keyword": "牛",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
-          "category": "emotions",
-          "slug": "relief",
-          "keyword": "安心する",
-          "reason": "心の回復や落ち着きに焦点が当たるため"
+          "category": "person",
+          "slug": "myself",
+          "keyword": "自分自身",
+          "summary": "自己認識と内面との対話を示す"
         }
       ]
     },
     {
       "from": {
-        "category": "nature",
-        "slug": "flying",
-        "keyword": "空を飛ぶ"
+        "category": "animals",
+        "slug": "insect",
+        "keyword": "虫"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "mouse",
+          "keyword": "鼠",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "animals",
+          "slug": "cockroach",
+          "keyword": "ゴキブリ",
+          "summary": "不快な状況や避けたい問題を示す"
+        },
+        {
+          "category": "person",
+          "slug": "partner",
+          "keyword": "恋人",
+          "summary": "パートナーシップと愛情の状態を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "lion",
+        "keyword": "ライオン"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "cow",
+          "keyword": "牛",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "animals",
+          "slug": "horse",
+          "keyword": "馬",
+          "summary": "前進する力と成功への意欲を示す"
+        },
+        {
+          "category": "person",
+          "slug": "stranger",
+          "keyword": "知らない人",
+          "summary": "知らない人が映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "mouse",
+        "keyword": "鼠"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "spider",
+          "keyword": "蜘蛛",
+          "summary": "不安と集中が絡む兆しを示す"
+        },
+        {
+          "category": "animals",
+          "slug": "insect",
+          "keyword": "虫",
+          "summary": "小さな不満に気づく合図のサイン"
+        },
+        {
+          "category": "person",
+          "slug": "teacher",
+          "keyword": "先生",
+          "summary": "学びと導きの必要性を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "rabbit",
+        "keyword": "うさぎ"
       },
       "related": [
         {
           "category": "animals",
           "slug": "bird",
           "keyword": "鳥",
-          "reason": "自由や視野の広がりを示す象徴が近いため"
+          "summary": "視野が広がる自由への予感"
+        },
+        {
+          "category": "animals",
+          "slug": "dog",
+          "keyword": "犬",
+          "summary": "信頼と支えが育つ心の兆し"
+        },
+        {
+          "category": "person",
+          "slug": "unknown-opposite-sex",
+          "keyword": "知らない異性",
+          "summary": "知らない異性が映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "snake",
+        "keyword": "蛇"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "fish",
+          "keyword": "魚",
+          "summary": "内面の豊かさに気づく兆し"
+        },
+        {
+          "category": "animals",
+          "slug": "cockroach",
+          "keyword": "ゴキブリ",
+          "summary": "不快な状況や避けたい問題を示す"
+        },
+        {
+          "category": "person",
+          "slug": "baby",
+          "keyword": "赤ちゃん",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "animals",
+        "slug": "spider",
+        "keyword": "蜘蛛"
+      },
+      "related": [
+        {
+          "category": "animals",
+          "slug": "cockroach",
+          "keyword": "ゴキブリ",
+          "summary": "不快な状況や避けたい問題を示す"
+        },
+        {
+          "category": "animals",
+          "slug": "mouse",
+          "keyword": "鼠",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "person",
+          "slug": "boss",
+          "keyword": "上司",
+          "summary": "仕事の評価と権威との関係を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "anger",
+        "keyword": "怒る"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "fight",
+          "keyword": "喧嘩する",
+          "summary": "衝突の予兆と気づきを示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "anxiety",
+        "keyword": "不安になる"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "fighting-battle",
+          "keyword": "戦う",
+          "summary": "困難への立ち向かいと闘志を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "happy",
+        "keyword": "嬉しい"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "flying",
+          "keyword": "空を飛ぶ",
+          "summary": "解放感と挑戦心が高まる時"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "jealousy",
+        "keyword": "嫉妬する"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "killing",
+          "keyword": "殺す",
+          "summary": "変化への強い意志と終わりを示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "lonely",
+        "keyword": "孤独を感じる"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "kiss",
+          "keyword": "キスする",
+          "summary": "親密さへの欲求が高まる兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "relief",
+        "keyword": "安心する"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "lost",
+          "keyword": "迷子になる",
+          "summary": "方向性の迷いを示すサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "sad",
+        "keyword": "悲しい"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "naked",
+          "keyword": "裸になる",
+          "summary": "無防備さを意識するサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "emotions",
+        "slug": "scared",
+        "keyword": "怖い"
+      },
+      "related": [
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "phone-broken",
+          "keyword": "スマホが壊れる",
+          "summary": "連絡不安を知らせるサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "earthquake",
+        "keyword": "地震"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "fire",
+          "keyword": "火",
+          "summary": "情熱と緊張の高まりを示す兆し"
+        },
+        {
+          "category": "nature",
+          "slug": "storm",
+          "keyword": "嵐",
+          "summary": "感情の揺れを知らせる兆し"
+        },
+        {
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "fire",
+        "keyword": "火"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "snow",
+          "keyword": "雪",
+          "summary": "心を冷静に整える合図です"
+        },
+        {
+          "category": "nature",
+          "slug": "earthquake",
+          "keyword": "地震",
+          "summary": "土台の揺らぎを示す警告サイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "flower",
+        "keyword": "花"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "forest",
+          "keyword": "森",
+          "summary": "無意識の探求と自己発見を示す"
         },
         {
           "category": "nature",
           "slug": "mountain",
           "keyword": "山",
-          "reason": "挑戦や成長意識が重なるため"
+          "summary": "目標へ進む意欲が高まる時"
         },
         {
-          "category": "actions",
-          "slug": "running",
-          "keyword": "走る",
-          "reason": "前進のエネルギーや意欲が共通するため"
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "forest",
+        "keyword": "森"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "mountain",
+          "keyword": "山",
+          "summary": "目標へ進む意欲が高まる時"
+        },
+        {
+          "category": "nature",
+          "slug": "flower",
+          "keyword": "花",
+          "summary": "美しさと成長の可能性を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "moon",
+        "keyword": "月"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "star",
+          "keyword": "星",
+          "summary": "希望と目標への道しるべを示す"
+        },
+        {
+          "category": "nature",
+          "slug": "sun",
+          "keyword": "太陽",
+          "summary": "活力と成功への意欲を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "mountain",
+        "keyword": "山"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "flower",
+          "keyword": "花",
+          "summary": "美しさと成長の可能性を示す"
+        },
+        {
+          "category": "nature",
+          "slug": "forest",
+          "keyword": "森",
+          "summary": "無意識の探求と自己発見を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
         }
       ]
     },
@@ -198,561 +1359,210 @@
       "related": [
         {
           "category": "nature",
-          "slug": "sea",
-          "keyword": "海",
-          "reason": "感情の深さと浄化の流れが近いため"
+          "slug": "river",
+          "keyword": "川",
+          "summary": "人生の流れと時間の経過を映す"
         },
         {
-          "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "感情の解放や整理を表す点が共通するため"
+          "category": "nature",
+          "slug": "water",
+          "keyword": "水",
+          "summary": "感情の流れと心の浄化を映す"
         },
         {
           "category": "emotions",
-          "slug": "relief",
-          "keyword": "安心する",
-          "reason": "回復や落ち着きへの移行が似ているため"
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
     {
       "from": {
         "category": "nature",
-        "slug": "mountain",
-        "keyword": "山"
-      },
-      "related": [
-        {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "転機や目標に向かう意識が近いため"
-        },
-        {
-          "category": "actions",
-          "slug": "running",
-          "keyword": "走る",
-          "reason": "前進の意欲や努力が共通するため"
-        },
-        {
-          "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "挑戦に伴う緊張が重なるため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "places",
-        "slug": "house",
-        "keyword": "家"
-      },
-      "related": [
-        {
-          "category": "places",
-          "slug": "workplace",
-          "keyword": "職場",
-          "reason": "生活基盤や日常の安定を見直す点が共通するため"
-        },
-        {
-          "category": "animals",
-          "slug": "dog",
-          "keyword": "犬",
-          "reason": "安心感や守られたい気持ちを象徴するため"
-        },
-        {
-          "category": "emotions",
-          "slug": "relief",
-          "keyword": "安心する",
-          "reason": "心の回復や落ち着きがテーマになるため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "places",
-        "slug": "school",
-        "keyword": "学校"
-      },
-      "related": [
-        {
-          "category": "places",
-          "slug": "workplace",
-          "keyword": "職場",
-          "reason": "評価や成長への意識が重なるため"
-        },
-        {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "次のステージを考えるテーマが近いため"
-        },
-        {
-          "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "評価への緊張や慎重さが共通するため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "places",
-        "slug": "workplace",
-        "keyword": "職場"
-      },
-      "related": [
-        {
-          "category": "places",
-          "slug": "school",
-          "keyword": "学校",
-          "reason": "評価や学びの意識が重なるため"
-        },
-        {
-          "category": "actions",
-          "slug": "running",
-          "keyword": "走る",
-          "reason": "忙しさや前進のエネルギーが似ているため"
-        },
-        {
-          "category": "emotions",
-          "slug": "anger",
-          "keyword": "怒る",
-          "reason": "プレッシャーによる感情の揺れが近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "places",
-        "slug": "station",
-        "keyword": "駅"
+        "slug": "river",
+        "keyword": "川"
       },
       "related": [
         {
           "category": "nature",
-          "slug": "mountain",
-          "keyword": "山",
-          "reason": "目標への挑戦や転機の意識が近いため"
-        },
-        {
-          "category": "places",
-          "slug": "school",
-          "keyword": "学校",
-          "reason": "進路や学び直しの選択が重なるため"
-        },
-        {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "選択への焦りが表れやすい点が共通するため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "chased",
-        "keyword": "追いかけられる"
-      },
-      "related": [
-        {
-          "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "緊張や不安の高まりが共通するため"
-        },
-        {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "不安定さを象徴する点が似ているため"
-        },
-        {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "追われるような焦りが選択の場面に重なるため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "falling",
-        "keyword": "落ちる"
-      },
-      "related": [
-        {
-          "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "不安や緊張が高まる点が共通するため"
-        },
-        {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "プレッシャーの表れとして近いため"
-        },
-        {
-          "category": "nature",
-          "slug": "mountain",
-          "keyword": "山",
-          "reason": "挑戦と不安定さが同時に現れやすいため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "running",
-        "keyword": "走る"
-      },
-      "related": [
-        {
-          "category": "nature",
-          "slug": "flying",
-          "keyword": "空を飛ぶ",
-          "reason": "前向きな挑戦意欲が重なるため"
-        },
-        {
-          "category": "places",
-          "slug": "workplace",
-          "keyword": "職場",
-          "reason": "忙しさや行動力の高まりが共通するため"
-        },
-        {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "焦りやスピード感が似ているため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "crying",
-        "keyword": "泣く"
-      },
-      "related": [
-        {
-          "category": "emotions",
-          "slug": "relief",
-          "keyword": "安心する",
-          "reason": "感情の回復や落ち着きへの流れが近いため"
+          "slug": "sea",
+          "keyword": "海",
+          "summary": "感情の深さに向き合う兆し"
         },
         {
           "category": "nature",
           "slug": "rain",
           "keyword": "雨",
-          "reason": "浄化や感情整理のテーマが共通するため"
+          "summary": "浄化と再出発へ向かう兆し"
         },
         {
           "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "感情の揺れが表面化する点が似ているため"
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
         }
       ]
     },
     {
       "from": {
-        "category": "emotions",
-        "slug": "anger",
-        "keyword": "怒る"
+        "category": "nature",
+        "slug": "sea",
+        "keyword": "海"
       },
       "related": [
         {
-          "category": "places",
-          "slug": "workplace",
-          "keyword": "職場",
-          "reason": "プレッシャーや評価への反応が重なるため"
+          "category": "nature",
+          "slug": "water",
+          "keyword": "水",
+          "summary": "感情の流れと心の浄化を映す"
         },
         {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "追い詰められる感覚が共通するため"
+          "category": "nature",
+          "slug": "river",
+          "keyword": "川",
+          "summary": "人生の流れと時間の経過を映す"
         },
         {
           "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "感情の揺れがつながるため"
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
         }
       ]
     },
     {
       "from": {
-        "category": "emotions",
-        "slug": "anxiety",
-        "keyword": "不安になる"
+        "category": "nature",
+        "slug": "snow",
+        "keyword": "雪"
       },
       "related": [
         {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "緊張やプレッシャーの感覚が近いため"
+          "category": "nature",
+          "slug": "storm",
+          "keyword": "嵐",
+          "summary": "感情の揺れを知らせる兆し"
         },
         {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "不安定さを象徴するため"
+          "category": "nature",
+          "slug": "fire",
+          "keyword": "火",
+          "summary": "情熱と緊張の高まりを示す兆し"
         },
         {
           "category": "emotions",
           "slug": "relief",
           "keyword": "安心する",
-          "reason": "不安の反動として安心感を求める流れがあるため"
+          "summary": "緊張がほどけ回復へ向かう"
         }
       ]
     },
     {
       "from": {
-        "category": "emotions",
-        "slug": "relief",
-        "keyword": "安心する"
+        "category": "nature",
+        "slug": "star",
+        "keyword": "星"
       },
       "related": [
         {
-          "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "感情の解放後に安心感が戻る流れが近いため"
+          "category": "nature",
+          "slug": "sun",
+          "keyword": "太陽",
+          "summary": "活力と成功への意欲を示す"
         },
         {
-          "category": "places",
-          "slug": "house",
-          "keyword": "家",
-          "reason": "安心できる居場所の象徴が共通するため"
+          "category": "nature",
+          "slug": "moon",
+          "keyword": "月",
+          "summary": "直感と感情の深みを映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "sad",
+          "keyword": "悲しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "storm",
+        "keyword": "嵐"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "earthquake",
+          "keyword": "地震",
+          "summary": "土台の揺らぎを示す警告サイン"
+        },
+        {
+          "category": "nature",
+          "slug": "snow",
+          "keyword": "雪",
+          "summary": "心を冷静に整える合図です"
+        },
+        {
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "sun",
+        "keyword": "太陽"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "moon",
+          "keyword": "月",
+          "summary": "直感と感情の深みを映す"
+        },
+        {
+          "category": "nature",
+          "slug": "star",
+          "keyword": "星",
+          "summary": "希望と目標への道しるべを示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "nature",
+        "slug": "water",
+        "keyword": "水"
+      },
+      "related": [
+        {
+          "category": "nature",
+          "slug": "rain",
+          "keyword": "雨",
+          "summary": "浄化と再出発へ向かう兆し"
         },
         {
           "category": "nature",
           "slug": "sea",
           "keyword": "海",
-          "reason": "心の回復や落ち着きのテーマが重なるため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "ex-boyfriend",
-        "keyword": "元彼"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "unknown-opposite-sex",
-          "keyword": "知らない異性",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "person",
-          "slug": "child",
-          "keyword": "子ども",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "nature",
-          "slug": "sea",
-          "keyword": "海",
-          "reason": "気持ちの揺れが共通しやすいため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "ex-boyfriend-appears",
-        "keyword": "元彼が出てくる"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "celebrity",
-          "keyword": "有名人",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "baby",
-          "keyword": "赤ちゃん",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "situation",
-          "slug": "pregnancy",
-          "keyword": "妊娠する",
-          "reason": "心理的なテーマが重なりやすいため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "crush",
-        "keyword": "好きな人"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "stranger",
-          "keyword": "知らない人",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "person",
-          "slug": "ex-boyfriend-appears",
-          "keyword": "元彼が出てくる",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "actions",
-          "slug": "running",
-          "keyword": "走る",
-          "reason": "生活場面での関心が似ているため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "stranger",
-        "keyword": "知らない人"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "child",
-          "keyword": "子ども",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "person",
-          "slug": "unknown-opposite-sex",
-          "keyword": "知らない異性",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "summary": "感情の深さに向き合う兆し"
         },
         {
           "category": "emotions",
           "slug": "anxiety",
           "keyword": "不安になる",
-          "reason": "感情の整理や向き合い方が近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "unknown-opposite-sex",
-        "keyword": "知らない異性"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "baby",
-          "keyword": "赤ちゃん",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "friend",
-          "keyword": "友達",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "emotion",
-          "slug": "happy",
-          "keyword": "嬉しい",
-          "reason": "気持ちの揺れが共通しやすいため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "friend",
-        "keyword": "友達"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "family",
-          "keyword": "家族",
-          "reason": "夢に表れやすい状況が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "unknown-opposite-sex",
-          "keyword": "知らない異性",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "感情の整理や向き合い方が近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "family",
-        "keyword": "家族"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "friend",
-          "keyword": "友達",
-          "reason": "夢に表れやすい状況が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "stranger",
-          "keyword": "知らない人",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "心理的なテーマが重なりやすいため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "person",
-        "slug": "child",
-        "keyword": "子ども"
-      },
-      "related": [
-        {
-          "category": "person",
-          "slug": "stranger",
-          "keyword": "知らない人",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "ex-boyfriend-appears",
-          "keyword": "元彼が出てくる",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "summary": "慎重さが増す時期のサイン"
         }
       ]
     },
@@ -767,19 +1577,46 @@
           "category": "person",
           "slug": "child",
           "keyword": "子ども",
-          "reason": "生活場面での関心が似ているため"
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "person",
-          "slug": "crush",
-          "keyword": "好きな人",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "mother",
+          "keyword": "母親",
+          "summary": "愛情と安心感への欲求を示す"
         },
         {
-          "category": "places",
-          "slug": "station",
-          "keyword": "駅",
-          "reason": "感情の整理や向き合い方が近いため"
+          "category": "actions",
+          "slug": "falling-teeth",
+          "keyword": "歯が抜ける",
+          "summary": "自信の揺らぎに気づく兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "boss",
+        "keyword": "上司"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "celebrity",
+          "keyword": "有名人",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "person",
+          "slug": "teacher",
+          "keyword": "先生",
+          "summary": "学びと導きの必要性を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "fight",
+          "keyword": "喧嘩する",
+          "summary": "衝突の予兆と気づきを示す"
         }
       ]
     },
@@ -792,129 +1629,723 @@
       "related": [
         {
           "category": "person",
-          "slug": "ex-boyfriend-appears",
-          "keyword": "元彼が出てくる",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "deceased",
+          "keyword": "亡くなった人",
+          "summary": "故人からのメッセージと心の整理を示す"
         },
+        {
+          "category": "person",
+          "slug": "boss",
+          "keyword": "上司",
+          "summary": "仕事の評価と権威との関係を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "fighting-battle",
+          "keyword": "戦う",
+          "summary": "困難への立ち向かいと闘志を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "child",
+        "keyword": "子ども"
+      },
+      "related": [
         {
           "category": "person",
           "slug": "family",
           "keyword": "家族",
-          "reason": "心理的なテーマが重なりやすいため"
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
-          "category": "emotion",
-          "slug": "scared",
-          "keyword": "怖い",
-          "reason": "夢に表れやすい状況が近いため"
+          "category": "person",
+          "slug": "baby",
+          "keyword": "赤ちゃん",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "flying",
+          "keyword": "空を飛ぶ",
+          "summary": "解放感と挑戦心が高まる時"
         }
       ]
     },
     {
       "from": {
-        "category": "actions",
-        "slug": "falling-from-height",
-        "keyword": "高いところから落ちる"
+        "category": "person",
+        "slug": "crush",
+        "keyword": "好きな人"
       },
       "related": [
         {
-          "category": "actions",
-          "slug": "almost-killed",
-          "keyword": "殺されそうになる",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "category": "person",
+          "slug": "ex-boyfriend",
+          "keyword": "元彼",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "person",
+          "slug": "unknown-opposite-sex",
+          "keyword": "知らない異性",
+          "summary": "知らない異性が映す心の兆し"
         },
         {
           "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "slug": "killing",
+          "keyword": "殺す",
+          "summary": "変化への強い意志と終わりを示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "deceased",
+        "keyword": "亡くなった人"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "friend",
+          "keyword": "友達",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
+        {
+          "category": "person",
+          "slug": "celebrity",
+          "keyword": "有名人",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "kiss",
+          "keyword": "キスする",
+          "summary": "親密さへの欲求が高まる兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "ex-boyfriend",
+        "keyword": "元彼"
+      },
+      "related": [
         {
           "category": "person",
           "slug": "ex-boyfriend-appears",
           "keyword": "元彼が出てくる",
-          "reason": "夢に表れやすい状況が近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "escape",
-        "keyword": "逃げる"
-      },
-      "related": [
-        {
-          "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "animals",
-          "slug": "dog",
-          "keyword": "犬",
-          "reason": "生活場面での関心が似ているため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "actions",
-        "slug": "almost-killed",
-        "keyword": "殺されそうになる"
-      },
-      "related": [
-        {
-          "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "夢に表れやすい状況が近いため"
+          "summary": "元彼が出てくるが映す心の兆し"
         },
         {
           "category": "person",
           "slug": "crush",
           "keyword": "好きな人",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "lost",
+          "keyword": "迷子になる",
+          "summary": "方向性の迷いを示すサイン"
         }
       ]
     },
     {
       "from": {
-        "category": "actions",
-        "slug": "die",
-        "keyword": "死ぬ"
+        "category": "person",
+        "slug": "ex-boyfriend-appears",
+        "keyword": "元彼が出てくる"
       },
       "related": [
         {
-          "category": "actions",
-          "slug": "chased",
-          "keyword": "追いかけられる",
-          "reason": "感情の整理や向き合い方が近いため"
+          "category": "person",
+          "slug": "partner",
+          "keyword": "恋人",
+          "summary": "パートナーシップと愛情の状態を映す"
+        },
+        {
+          "category": "person",
+          "slug": "ex-boyfriend",
+          "keyword": "元彼",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "actions",
-          "slug": "crying",
-          "keyword": "泣く",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "naked",
+          "keyword": "裸になる",
+          "summary": "無防備さを意識するサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "family",
+        "keyword": "家族"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "father",
+          "keyword": "父親",
+          "summary": "権威と保護への意識を映す"
+        },
+        {
+          "category": "person",
+          "slug": "child",
+          "keyword": "子ども",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "phone-broken",
+          "keyword": "スマホが壊れる",
+          "summary": "連絡不安を知らせるサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "father",
+        "keyword": "父親"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "mother",
+          "keyword": "母親",
+          "summary": "愛情と安心感への欲求を示す"
         },
         {
           "category": "person",
           "slug": "family",
           "keyword": "家族",
-          "reason": "生活場面での関心が似ているため"
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "running",
+          "keyword": "走る",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "friend",
+        "keyword": "友達"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "myself",
+          "keyword": "自分自身",
+          "summary": "自己認識と内面との対話を示す"
+        },
+        {
+          "category": "person",
+          "slug": "deceased",
+          "keyword": "亡くなった人",
+          "summary": "故人からのメッセージと心の整理を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "swimming",
+          "keyword": "泳ぐ",
+          "summary": "感情との向き合い方を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "mother",
+        "keyword": "母親"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "baby",
+          "keyword": "赤ちゃん",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "person",
+          "slug": "father",
+          "keyword": "父親",
+          "summary": "権威と保護への意識を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "almost-killed",
+          "keyword": "殺されそうになる",
+          "summary": "殺されそうになるが映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "myself",
+        "keyword": "自分自身"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "stranger",
+          "keyword": "知らない人",
+          "summary": "知らない人が映す心の兆し"
+        },
+        {
+          "category": "person",
+          "slug": "friend",
+          "keyword": "友達",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-speak",
+          "keyword": "声が出ない",
+          "summary": "伝えられない思いと無力感を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "partner",
+        "keyword": "恋人"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "unknown-opposite-sex",
+          "keyword": "知らない異性",
+          "summary": "知らない異性が映す心の兆し"
+        },
+        {
+          "category": "person",
+          "slug": "ex-boyfriend-appears",
+          "keyword": "元彼が出てくる",
+          "summary": "元彼が出てくるが映す心の兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "cant-wake-up",
+          "keyword": "起きられない",
+          "summary": "疲労と現実逃避の気持ちを映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "stranger",
+        "keyword": "知らない人"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "teacher",
+          "keyword": "先生",
+          "summary": "学びと導きの必要性を示す"
+        },
+        {
+          "category": "person",
+          "slug": "myself",
+          "keyword": "自分自身",
+          "summary": "自己認識と内面との対話を示す"
+        },
+        {
+          "category": "actions",
+          "slug": "chased",
+          "keyword": "追いかけられる",
+          "summary": "追いかけられるが映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "teacher",
+        "keyword": "先生"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "boss",
+          "keyword": "上司",
+          "summary": "仕事の評価と権威との関係を映す"
+        },
+        {
+          "category": "person",
+          "slug": "stranger",
+          "keyword": "知らない人",
+          "summary": "知らない人が映す心の兆し"
+        },
+        {
+          "category": "actions",
+          "slug": "confess",
+          "keyword": "告白する",
+          "summary": "気持ちを伝えたい願望を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "person",
+        "slug": "unknown-opposite-sex",
+        "keyword": "知らない異性"
+      },
+      "related": [
+        {
+          "category": "person",
+          "slug": "crush",
+          "keyword": "好きな人",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "person",
+          "slug": "partner",
+          "keyword": "恋人",
+          "summary": "パートナーシップと愛情の状態を映す"
+        },
+        {
+          "category": "actions",
+          "slug": "crying",
+          "keyword": "泣く",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "abroad",
+        "keyword": "海外"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "airport",
+          "keyword": "空港",
+          "summary": "新しい出発と可能性への期待を示す"
+        },
+        {
+          "category": "places",
+          "slug": "train",
+          "keyword": "電車",
+          "summary": "人生の進路と目的地への意識を示す"
+        },
+        {
+          "category": "person",
+          "slug": "ex-boyfriend-appears",
+          "keyword": "元彼が出てくる",
+          "summary": "元彼が出てくるが映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "airport",
+        "keyword": "空港"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "station",
+          "keyword": "駅",
+          "summary": "転機と選択が近づくサイン"
+        },
+        {
+          "category": "places",
+          "slug": "abroad",
+          "keyword": "海外",
+          "summary": "新しい世界と挑戦への期待を示す"
+        },
+        {
+          "category": "person",
+          "slug": "family",
+          "keyword": "家族",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "elevator",
+        "keyword": "エレベーター"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "grave",
+          "keyword": "お墓",
+          "summary": "先祖との繋がりと人生の振り返りを示す"
+        },
+        {
+          "category": "places",
+          "slug": "toilet",
+          "keyword": "トイレ",
+          "summary": "感情を浄化したい気持ちの表れ"
+        },
+        {
+          "category": "person",
+          "slug": "father",
+          "keyword": "父親",
+          "summary": "権威と保護への意識を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "grave",
+        "keyword": "お墓"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "hospital",
+          "keyword": "病院",
+          "summary": "回復への意識が高まる兆し"
+        },
+        {
+          "category": "places",
+          "slug": "elevator",
+          "keyword": "エレベーター",
+          "summary": "社会的地位と心理状態の変化を映す"
+        },
+        {
+          "category": "person",
+          "slug": "friend",
+          "keyword": "友達",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "hospital",
+        "keyword": "病院"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "toilet",
+          "keyword": "トイレ",
+          "summary": "感情を浄化したい気持ちの表れ"
+        },
+        {
+          "category": "places",
+          "slug": "grave",
+          "keyword": "お墓",
+          "summary": "先祖との繋がりと人生の振り返りを示す"
+        },
+        {
+          "category": "person",
+          "slug": "mother",
+          "keyword": "母親",
+          "summary": "愛情と安心感への欲求を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "house",
+        "keyword": "家"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "parents-home",
+          "keyword": "実家",
+          "summary": "ルーツと安心感への回帰を示す"
+        },
+        {
+          "category": "places",
+          "slug": "airport",
+          "keyword": "空港",
+          "summary": "新しい出発と可能性への期待を示す"
+        },
+        {
+          "category": "person",
+          "slug": "myself",
+          "keyword": "自分自身",
+          "summary": "自己認識と内面との対話を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "parents-home",
+        "keyword": "実家"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "house",
+          "keyword": "家",
+          "summary": "心身の土台を整えるサイン"
+        },
+        {
+          "category": "places",
+          "slug": "elevator",
+          "keyword": "エレベーター",
+          "summary": "社会的地位と心理状態の変化を映す"
+        },
+        {
+          "category": "person",
+          "slug": "partner",
+          "keyword": "恋人",
+          "summary": "パートナーシップと愛情の状態を映す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "school",
+        "keyword": "学校"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "workplace",
+          "keyword": "職場",
+          "summary": "評価と責任の揺らぎを示す"
+        },
+        {
+          "category": "places",
+          "slug": "airport",
+          "keyword": "空港",
+          "summary": "新しい出発と可能性への期待を示す"
+        },
+        {
+          "category": "person",
+          "slug": "stranger",
+          "keyword": "知らない人",
+          "summary": "知らない人が映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "station",
+        "keyword": "駅"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "train",
+          "keyword": "電車",
+          "summary": "人生の進路と目的地への意識を示す"
+        },
+        {
+          "category": "places",
+          "slug": "airport",
+          "keyword": "空港",
+          "summary": "新しい出発と可能性への期待を示す"
+        },
+        {
+          "category": "person",
+          "slug": "teacher",
+          "keyword": "先生",
+          "summary": "学びと導きの必要性を示す"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "toilet",
+        "keyword": "トイレ"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "elevator",
+          "keyword": "エレベーター",
+          "summary": "社会的地位と心理状態の変化を映す"
+        },
+        {
+          "category": "places",
+          "slug": "hospital",
+          "keyword": "病院",
+          "summary": "回復への意識が高まる兆し"
+        },
+        {
+          "category": "person",
+          "slug": "unknown-opposite-sex",
+          "keyword": "知らない異性",
+          "summary": "知らない異性が映す心の兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "train",
+        "keyword": "電車"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "abroad",
+          "keyword": "海外",
+          "summary": "新しい世界と挑戦への期待を示す"
+        },
+        {
+          "category": "places",
+          "slug": "station",
+          "keyword": "駅",
+          "summary": "転機と選択が近づくサイン"
+        },
+        {
+          "category": "person",
+          "slug": "baby",
+          "keyword": "赤ちゃん",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "places",
+        "slug": "workplace",
+        "keyword": "職場"
+      },
+      "related": [
+        {
+          "category": "places",
+          "slug": "school",
+          "keyword": "学校",
+          "summary": "学び直しへの意識が高まる"
+        },
+        {
+          "category": "places",
+          "slug": "elevator",
+          "keyword": "エレベーター",
+          "summary": "社会的地位と心理状態の変化を映す"
+        },
+        {
+          "category": "person",
+          "slug": "boss",
+          "keyword": "上司",
+          "summary": "仕事の評価と権威との関係を映す"
         }
       ]
     },
@@ -927,48 +2358,129 @@
       "related": [
         {
           "category": "situation",
-          "slug": "late",
-          "keyword": "遅刻",
-          "reason": "感情の整理や向き合い方が近いため"
+          "slug": "debt",
+          "keyword": "借金",
+          "summary": "心理的負担と責任感を映す"
         },
         {
           "category": "situation",
-          "slug": "pregnancy",
-          "keyword": "妊娠する",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "slug": "late",
+          "keyword": "遅刻",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
-          "category": "person",
-          "slug": "friend",
-          "keyword": "友達",
-          "reason": "感情の整理や向き合い方が近いため"
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
     {
       "from": {
         "category": "situation",
-        "slug": "fire",
-        "keyword": "火事"
+        "slug": "birthday",
+        "keyword": "誕生日"
       },
       "related": [
         {
           "category": "situation",
-          "slug": "pregnancy",
-          "keyword": "妊娠する",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "slug": "exam",
+          "keyword": "試験",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "situation",
-          "slug": "exam",
-          "keyword": "試験",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "slug": "travel",
+          "keyword": "旅行",
+          "summary": "人生の冒険と新しい経験への期待を示す"
         },
         {
-          "category": "actions",
-          "slug": "falling",
-          "keyword": "落ちる",
-          "reason": "夢に表れやすい状況が近いため"
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "breakup",
+        "keyword": "別れる"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "cheated-on",
+          "keyword": "浮気される",
+          "summary": "信頼と自信への揺らぎを示す"
+        },
+        {
+          "category": "situation",
+          "slug": "pregnancy",
+          "keyword": "妊娠する",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "cheated-on",
+        "keyword": "浮気される"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "marriage",
+          "keyword": "結婚する",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "situation",
+          "slug": "breakup",
+          "keyword": "別れる",
+          "summary": "終わりと新しい始まりの転機を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "happy",
+          "keyword": "嬉しい",
+          "summary": "心の整理がゆるやかに進むサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "debt",
+        "keyword": "借金"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "fire",
+          "keyword": "火事",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "situation",
+          "slug": "accident",
+          "keyword": "事故",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
         }
       ]
     },
@@ -981,21 +2493,75 @@
       "related": [
         {
           "category": "situation",
-          "slug": "accident",
-          "keyword": "事故",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "graduation",
+          "keyword": "卒業",
+          "summary": "終わりと新たな出発を示す"
         },
         {
           "category": "situation",
-          "slug": "marriage",
-          "keyword": "結婚する",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "birthday",
+          "keyword": "誕生日",
+          "summary": "成長と人生の節目を示す"
         },
         {
-          "category": "emotion",
+          "category": "emotions",
+          "slug": "lonely",
+          "keyword": "孤独を感じる",
+          "summary": "つながり不足への気づきのサイン"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "fire",
+        "keyword": "火事"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "late",
+          "keyword": "遅刻",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "situation",
+          "slug": "debt",
+          "keyword": "借金",
+          "summary": "心理的負担と責任感を映す"
+        },
+        {
+          "category": "emotions",
+          "slug": "relief",
+          "keyword": "安心する",
+          "summary": "緊張がほどけ回復へ向かう"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "graduation",
+        "keyword": "卒業"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "moving",
+          "keyword": "引っ越し",
+          "summary": "人生の変化と新しい始まりを示す"
+        },
+        {
+          "category": "situation",
+          "slug": "exam",
+          "keyword": "試験",
+          "summary": "心の整理がゆるやかに進むサイン"
+        },
+        {
+          "category": "emotions",
           "slug": "sad",
           "keyword": "悲しい",
-          "reason": "夢に表れやすい状況が近いため"
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
@@ -1008,21 +2574,21 @@
       "related": [
         {
           "category": "situation",
-          "slug": "marriage",
-          "keyword": "結婚する",
-          "reason": "感情の整理や向き合い方が近いため"
+          "slug": "accident",
+          "keyword": "事故",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "situation",
-          "slug": "exam",
-          "keyword": "試験",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "slug": "fire",
+          "keyword": "火事",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
-          "category": "nature",
-          "slug": "mountain",
-          "keyword": "山",
-          "reason": "心理的なテーマが重なりやすいため"
+          "category": "emotions",
+          "slug": "scared",
+          "keyword": "怖い",
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
@@ -1035,21 +2601,48 @@
       "related": [
         {
           "category": "situation",
-          "slug": "accident",
-          "keyword": "事故",
-          "reason": "感情の整理や向き合い方が近いため"
+          "slug": "pregnancy",
+          "keyword": "妊娠する",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "situation",
-          "slug": "fire",
-          "keyword": "火事",
-          "reason": "心理的なテーマが重なりやすいため"
+          "slug": "cheated-on",
+          "keyword": "浮気される",
+          "summary": "信頼と自信への揺らぎを示す"
         },
         {
-          "category": "animals",
-          "slug": "snake",
-          "keyword": "牛",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "category": "emotions",
+          "slug": "anger",
+          "keyword": "怒る",
+          "summary": "自己主張の目覚めが進む兆し"
+        }
+      ]
+    },
+    {
+      "from": {
+        "category": "situation",
+        "slug": "moving",
+        "keyword": "引っ越し"
+      },
+      "related": [
+        {
+          "category": "situation",
+          "slug": "travel",
+          "keyword": "旅行",
+          "summary": "人生の冒険と新しい経験への期待を示す"
+        },
+        {
+          "category": "situation",
+          "slug": "graduation",
+          "keyword": "卒業",
+          "summary": "終わりと新たな出発を示す"
+        },
+        {
+          "category": "emotions",
+          "slug": "anxiety",
+          "keyword": "不安になる",
+          "summary": "慎重さが増す時期のサイン"
         }
       ]
     },
@@ -1062,129 +2655,48 @@
       "related": [
         {
           "category": "situation",
-          "slug": "marriage",
-          "keyword": "結婚する",
-          "reason": "生活場面での関心が似ているため"
+          "slug": "breakup",
+          "keyword": "別れる",
+          "summary": "終わりと新しい始まりの転機を示す"
         },
         {
           "category": "situation",
-          "slug": "exam",
-          "keyword": "試験",
-          "reason": "心理的なテーマが重なりやすいため"
+          "slug": "marriage",
+          "keyword": "結婚する",
+          "summary": "心の整理がゆるやかに進むサイン"
         },
         {
           "category": "emotions",
-          "slug": "anxiety",
-          "keyword": "不安になる",
-          "reason": "感情の整理や向き合い方が近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "emotion",
-        "slug": "scared",
-        "keyword": "怖い"
-      },
-      "related": [
-        {
-          "category": "emotion",
-          "slug": "anxious",
-          "keyword": "不安",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "emotion",
           "slug": "happy",
           "keyword": "嬉しい",
-          "reason": "心理的なテーマが重なりやすいため"
-        },
-        {
-          "category": "nature",
-          "slug": "flying",
-          "keyword": "空を飛ぶ",
-          "reason": "感情の整理や向き合い方が近いため"
+          "summary": "心の整理がゆるやかに進むサイン"
         }
       ]
     },
     {
       "from": {
-        "category": "emotion",
-        "slug": "sad",
-        "keyword": "悲しい"
+        "category": "situation",
+        "slug": "travel",
+        "keyword": "旅行"
       },
       "related": [
         {
-          "category": "emotion",
-          "slug": "scared",
-          "keyword": "怖い",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "emotion",
-          "slug": "anxious",
-          "keyword": "不安",
-          "reason": "気持ちの揺れが共通しやすいため"
-        },
-        {
-          "category": "person",
-          "slug": "family",
-          "keyword": "家族",
-          "reason": "生活場面での関心が似ているため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "emotion",
-        "slug": "happy",
-        "keyword": "嬉しい"
-      },
-      "related": [
-        {
-          "category": "emotion",
-          "slug": "scared",
-          "keyword": "怖い",
-          "reason": "感情の整理や向き合い方が近いため"
-        },
-        {
-          "category": "emotion",
-          "slug": "sad",
-          "keyword": "悲しい",
-          "reason": "生活場面での関心が似ているため"
+          "category": "situation",
+          "slug": "birthday",
+          "keyword": "誕生日",
+          "summary": "成長と人生の節目を示す"
         },
         {
           "category": "situation",
-          "slug": "fire",
-          "keyword": "火事",
-          "reason": "夢に表れやすい状況が近いため"
-        }
-      ]
-    },
-    {
-      "from": {
-        "category": "emotion",
-        "slug": "anxious",
-        "keyword": "不安"
-      },
-      "related": [
-        {
-          "category": "emotion",
-          "slug": "sad",
-          "keyword": "悲しい",
-          "reason": "心理的なテーマが重なりやすいため"
+          "slug": "moving",
+          "keyword": "引っ越し",
+          "summary": "人生の変化と新しい始まりを示す"
         },
         {
-          "category": "emotion",
-          "slug": "scared",
-          "keyword": "怖い",
-          "reason": "夢に表れやすい状況が近いため"
-        },
-        {
-          "category": "person",
-          "slug": "friend",
-          "keyword": "友達",
-          "reason": "気持ちの揺れが共通しやすいため"
+          "category": "emotions",
+          "slug": "jealousy",
+          "keyword": "嫉妬する",
+          "summary": "自分の価値への不安と願望を映す"
         }
       ]
     }
