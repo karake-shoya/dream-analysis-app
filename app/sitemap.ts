@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
     '/dictionary',
+    '/prophetic-dream',
     '/sleeping-positions',
     '/privacy',
     '/terms',

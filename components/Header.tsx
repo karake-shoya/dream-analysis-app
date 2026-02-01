@@ -102,6 +102,7 @@ export default function Header() {
     { name: 'About', href: '/about' },
     { name: '夢診断の考え方', href: '/approach' },
     { name: '夢占い辞典', href: '/dictionary' },
+    { name: '正夢とは？', href: '/prophetic-dream' },
     { name: '寝相でわかる相性診断', href: '/sleeping-positions' },
   ]
 
