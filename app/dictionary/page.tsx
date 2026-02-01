@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function Dictionary() {
+  const totalCount = getAllIndexItems().length;
   const recentArticles = getAllIndexItems()
     .map((item) => {
       const frontmatter = getArticleFrontmatter(item.category, item.slug);
@@ -62,6 +63,7 @@ export default function Dictionary() {
             <div>
               <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
                 カテゴリから探す
+                <span className="ml-3 text-base font-normal text-purple-300">（全{totalCount}件）</span>
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {DICTIONARY_CATEGORIES.map((category) => {
