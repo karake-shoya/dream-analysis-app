@@ -1,0 +1,164 @@
+{
+  "links": [
+    {
+      "from": {"category":"animals","slug":"dog","keyword":"犬"},
+      "related": [
+        {"category":"animals","slug":"cat","keyword":"猫","reason":"身近な関係性や距離感を見直すテーマが共通するため"},
+        {"category":"places","slug":"house","keyword":"家","reason":"安心感や守られたい気持ちの象徴として結びつくため"},
+        {"category":"actions","slug":"running","keyword":"走る","reason":"前進したい気持ちやエネルギーの動きが似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"animals","slug":"cat","keyword":"猫"},
+      "related": [
+        {"category":"animals","slug":"dog","keyword":"犬","reason":"人間関係の距離感や信頼を見直す点が近いため"},
+        {"category":"animals","slug":"bird","keyword":"鳥","reason":"自由や視野の広がりを求める気持ちが共通するため"},
+        {"category":"places","slug":"house","keyword":"家","reason":"安心できる居場所と自分らしさの両面が関係するため"}
+      ]
+    },
+    {
+      "from": {"category":"animals","slug":"snake","keyword":"蛇"},
+      "related": [
+        {"category":"animals","slug":"fish","keyword":"魚","reason":"内面の変化や潜在意識への気づきが近いため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"変化への緊張や慎重さが共通するため"},
+        {"category":"nature","slug":"mountain","keyword":"山","reason":"変化に向けた挑戦意識が似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"animals","slug":"bird","keyword":"鳥"},
+      "related": [
+        {"category":"nature","slug":"flying","keyword":"空を飛ぶ","reason":"解放感や視野の拡大を示す点が共通するため"},
+        {"category":"places","slug":"station","keyword":"駅","reason":"次のステージへ進む意識が近いため"},
+        {"category":"animals","slug":"fish","keyword":"魚","reason":"直感や内面の豊かさに目が向く点が似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"animals","slug":"fish","keyword":"魚"},
+      "related": [
+        {"category":"nature","slug":"sea","keyword":"海","reason":"感情の深さや潜在意識を扱うテーマが近いため"},
+        {"category":"animals","slug":"snake","keyword":"蛇","reason":"内面の変化や再生のイメージが共通するため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"心の揺れが表面化しやすい点が近いため"}
+      ]
+    },
+    {
+      "from": {"category":"nature","slug":"sea","keyword":"海"},
+      "related": [
+        {"category":"nature","slug":"rain","keyword":"雨","reason":"感情の浄化や整理という流れが共通するため"},
+        {"category":"actions","slug":"crying","keyword":"泣く","reason":"感情を解放するテーマが重なるため"},
+        {"category":"emotions","slug":"relief","keyword":"安心する","reason":"心の回復や落ち着きに焦点が当たるため"}
+      ]
+    },
+    {
+      "from": {"category":"nature","slug":"flying","keyword":"空を飛ぶ"},
+      "related": [
+        {"category":"animals","slug":"bird","keyword":"鳥","reason":"自由や視野の広がりを示す象徴が近いため"},
+        {"category":"nature","slug":"mountain","keyword":"山","reason":"挑戦や成長意識が重なるため"},
+        {"category":"actions","slug":"running","keyword":"走る","reason":"前進のエネルギーや意欲が共通するため"}
+      ]
+    },
+    {
+      "from": {"category":"nature","slug":"rain","keyword":"雨"},
+      "related": [
+        {"category":"nature","slug":"sea","keyword":"海","reason":"感情の深さと浄化の流れが近いため"},
+        {"category":"actions","slug":"crying","keyword":"泣く","reason":"感情の解放や整理を表す点が共通するため"},
+        {"category":"emotions","slug":"relief","keyword":"安心する","reason":"回復や落ち着きへの移行が似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"nature","slug":"mountain","keyword":"山"},
+      "related": [
+        {"category":"places","slug":"station","keyword":"駅","reason":"転機や目標に向かう意識が近いため"},
+        {"category":"actions","slug":"running","keyword":"走る","reason":"前進の意欲や努力が共通するため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"挑戦に伴う緊張が重なるため"}
+      ]
+    },
+    {
+      "from": {"category":"places","slug":"house","keyword":"家"},
+      "related": [
+        {"category":"places","slug":"workplace","keyword":"職場","reason":"生活基盤や日常の安定を見直す点が共通するため"},
+        {"category":"animals","slug":"dog","keyword":"犬","reason":"安心感や守られたい気持ちを象徴するため"},
+        {"category":"emotions","slug":"relief","keyword":"安心する","reason":"心の回復や落ち着きがテーマになるため"}
+      ]
+    },
+    {
+      "from": {"category":"places","slug":"school","keyword":"学校"},
+      "related": [
+        {"category":"places","slug":"workplace","keyword":"職場","reason":"評価や成長への意識が重なるため"},
+        {"category":"places","slug":"station","keyword":"駅","reason":"次のステージを考えるテーマが近いため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"評価への緊張や慎重さが共通するため"}
+      ]
+    },
+    {
+      "from": {"category":"places","slug":"workplace","keyword":"職場"},
+      "related": [
+        {"category":"places","slug":"school","keyword":"学校","reason":"評価や学びの意識が重なるため"},
+        {"category":"actions","slug":"running","keyword":"走る","reason":"忙しさや前進のエネルギーが似ているため"},
+        {"category":"emotions","slug":"anger","keyword":"怒る","reason":"プレッシャーによる感情の揺れが近いため"}
+      ]
+    },
+    {
+      "from": {"category":"places","slug":"station","keyword":"駅"},
+      "related": [
+        {"category":"nature","slug":"mountain","keyword":"山","reason":"目標への挑戦や転機の意識が近いため"},
+        {"category":"places","slug":"school","keyword":"学校","reason":"進路や学び直しの選択が重なるため"},
+        {"category":"actions","slug":"chased","keyword":"追いかけられる","reason":"選択への焦りが表れやすい点が共通するため"}
+      ]
+    },
+    {
+      "from": {"category":"actions","slug":"chased","keyword":"追いかけられる"},
+      "related": [
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"緊張や不安の高まりが共通するため"},
+        {"category":"actions","slug":"falling","keyword":"落ちる","reason":"不安定さを象徴する点が似ているため"},
+        {"category":"places","slug":"station","keyword":"駅","reason":"追われるような焦りが選択の場面に重なるため"}
+      ]
+    },
+    {
+      "from": {"category":"actions","slug":"falling","keyword":"落ちる"},
+      "related": [
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"不安や緊張が高まる点が共通するため"},
+        {"category":"actions","slug":"chased","keyword":"追いかけられる","reason":"プレッシャーの表れとして近いため"},
+        {"category":"nature","slug":"mountain","keyword":"山","reason":"挑戦と不安定さが同時に現れやすいため"}
+      ]
+    },
+    {
+      "from": {"category":"actions","slug":"running","keyword":"走る"},
+      "related": [
+        {"category":"nature","slug":"flying","keyword":"空を飛ぶ","reason":"前向きな挑戦意欲が重なるため"},
+        {"category":"places","slug":"workplace","keyword":"職場","reason":"忙しさや行動力の高まりが共通するため"},
+        {"category":"actions","slug":"chased","keyword":"追いかけられる","reason":"焦りやスピード感が似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"actions","slug":"crying","keyword":"泣く"},
+      "related": [
+        {"category":"emotions","slug":"relief","keyword":"安心する","reason":"感情の回復や落ち着きへの流れが近いため"},
+        {"category":"nature","slug":"rain","keyword":"雨","reason":"浄化や感情整理のテーマが共通するため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"感情の揺れが表面化する点が似ているため"}
+      ]
+    },
+    {
+      "from": {"category":"emotions","slug":"anger","keyword":"怒る"},
+      "related": [
+        {"category":"places","slug":"workplace","keyword":"職場","reason":"プレッシャーや評価への反応が重なるため"},
+        {"category":"actions","slug":"chased","keyword":"追いかけられる","reason":"追い詰められる感覚が共通するため"},
+        {"category":"emotions","slug":"anxiety","keyword":"不安になる","reason":"感情の揺れがつながるため"}
+      ]
+    },
+    {
+      "from": {"category":"emotions","slug":"anxiety","keyword":"不安になる"},
+      "related": [
+        {"category":"actions","slug":"chased","keyword":"追いかけられる","reason":"緊張やプレッシャーの感覚が近いため"},
+        {"category":"actions","slug":"falling","keyword":"落ちる","reason":"不安定さを象徴するため"},
+        {"category":"emotions","slug":"relief","keyword":"安心する","reason":"不安の反動として安心感を求める流れがあるため"}
+      ]
+    },
+    {
+      "from": {"category":"emotions","slug":"relief","keyword":"安心する"},
+      "related": [
+        {"category":"actions","slug":"crying","keyword":"泣く","reason":"感情の解放後に安心感が戻る流れが近いため"},
+        {"category":"places","slug":"house","keyword":"家","reason":"安心できる居場所の象徴が共通するため"},
+        {"category":"nature","slug":"sea","keyword":"海","reason":"心の回復や落ち着きのテーマが重なるため"}
+      ]
+    }
+  ]
+}
