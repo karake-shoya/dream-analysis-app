@@ -54,7 +54,7 @@ export default function AboutPage() {
               </div>
               <div className="relative space-y-4">
                 <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  Yume Insight について
+                  About
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
                   あなたの夢をAIが優しく紐解き、潜在意識からのメッセージをお届けします。

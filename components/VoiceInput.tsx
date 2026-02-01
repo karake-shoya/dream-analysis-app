@@ -5,6 +5,8 @@ import { Mic, MicOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { toast } from 'sonner';
 
+const VOICE_HINT_STORAGE_KEY = 'voice-input-hint-shown';
+
 /**
  * Web Speech API の型定義
  */
@@ -40,6 +42,7 @@ interface VoiceInputProps {
 export default function VoiceInput({ onTranscript, onStart, className }: VoiceInputProps) {
   const [isListening, setIsListening] = useState(false);
   const [supported, setSupported] = useState(false);
+  const [showHint, setShowHint] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const recognitionRef = useRef<any>(null);
 
@@ -59,6 +62,14 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       const isSpeechSupported = !!(win.SpeechRecognition || win.webkitSpeechRecognition);
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setSupported(isSpeechSupported);
+      
+      // 初回訪問時はヒントを表示
+      if (isSpeechSupported) {
+        const hintShown = localStorage.getItem(VOICE_HINT_STORAGE_KEY);
+        if (!hintShown) {
+          setShowHint(true);
+        }
+      }
     }
     
     return () => {
@@ -68,7 +79,17 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
     };
   }, []);
 
+  const dismissHint = useCallback(() => {
+    setShowHint(false);
+    localStorage.setItem(VOICE_HINT_STORAGE_KEY, 'true');
+  }, []);
+
   const toggleListening = useCallback(() => {
+    // ヒントを閉じる
+    if (showHint) {
+      dismissHint();
+    }
+    
     if (isListening) {
       if (recognitionRef.current) {
         recognitionRef.current.stop();
@@ -131,31 +152,47 @@ export default function VoiceInput({ onTranscript, onStart, className }: VoiceIn
       console.error('Recognition start failed:', e);
       setIsListening(false);
     }
-  }, [isListening]); // dependencyを最小化
+  }, [isListening, showHint, dismissHint]); // dependencyを最小化
 
   if (!supported) return null;
 
   return (
-    <button
-      onClick={toggleListening}
-      type="button"
-      className={cn(
-        "p-2.5 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center gap-2 border shadow-lg",
-        isListening 
-          ? "bg-red-500/20 text-red-400 border-red-500/40 animate-pulse ring-4 ring-red-500/10 scale-110" 
-          : "bg-white/5 text-gray-400 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20 active:scale-95",
-        className
+    <div className={cn("relative", className)}>
+      {/* 初回ヒントバブル */}
+      {showHint && (
+        <div 
+          className="absolute bottom-full right-0 mb-2 animate-in fade-in slide-in-from-bottom-2 duration-300"
+          onClick={dismissHint}
+        >
+          <div className="relative bg-indigo-500/90 backdrop-blur-sm text-white text-xs font-medium px-3 py-2 rounded-lg shadow-lg whitespace-nowrap cursor-pointer hover:bg-indigo-500 transition-colors">
+            🎤 音声入力
+            {/* 吹き出しの矢印 */}
+            <div className="absolute -bottom-1.5 right-4 w-3 h-3 bg-indigo-500/90 rotate-45" />
+          </div>
+        </div>
       )}
-      title={isListening ? "音声入力を停止" : "音声入力"}
-    >
-      {isListening ? (
-        <>
-          <MicOff className="w-5 h-5" />
-          <span className="text-xs font-bold uppercase tracking-wider pr-1">Listening</span>
-        </>
-      ) : (
-        <Mic className="w-5 h-5" />
-      )}
-    </button>
+      
+      <button
+        onClick={toggleListening}
+        type="button"
+        className={cn(
+          "p-2.5 rounded-full transition-all duration-300 focus:outline-none flex items-center justify-center gap-2 border shadow-lg",
+          isListening 
+            ? "bg-red-500/20 text-red-400 border-red-500/40 animate-pulse ring-4 ring-red-500/10 scale-110" 
+            : "bg-white/5 text-gray-400 border-white/10 hover:text-white hover:bg-white/10 hover:border-white/20 active:scale-95",
+          showHint && !isListening && "ring-2 ring-indigo-400/50 animate-pulse"
+        )}
+        title={isListening ? "音声入力を停止" : "音声入力"}
+      >
+        {isListening ? (
+          <>
+            <MicOff className="w-5 h-5" />
+            <span className="text-xs font-bold uppercase tracking-wider pr-1">Listening</span>
+          </>
+        ) : (
+          <Mic className="w-5 h-5" />
+        )}
+      </button>
+    </div>
   );
 }
