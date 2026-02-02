@@ -1,4 +1,8 @@
 import GradientBackground from "@/components/GradientBackground";
+import AdsenseAd from "@/components/AdsenseAd";
+
+const AD_SLOT_TOP = "6378422969";
+const AD_SLOT_MIDDLE = "6378422969";
 
 export default function ApproachPage() {
   return (
@@ -30,6 +34,11 @@ export default function ApproachPage() {
                 </p>
               </div>
             </section>
+
+            {/* 広告（上部） */}
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <AdsenseAd slot={AD_SLOT_TOP} />
+            </div>
 
             <section className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold text-purple-200">
@@ -99,6 +108,11 @@ export default function ApproachPage() {
                 </ul>
               </div>
             </section>
+
+            {/* 広告（中部） */}
+            <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <AdsenseAd slot={AD_SLOT_MIDDLE} />
+            </div>
 
             <section className="space-y-4">
               <h2 className="text-2xl md:text-3xl font-bold text-red-200">免責・受診目安</h2>

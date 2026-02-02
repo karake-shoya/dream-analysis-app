@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles, Brain, Eye, Heart } from 'lucide-react';
+import { Brain, Eye, Heart } from 'lucide-react';
 import GradientBackground from '@/components/GradientBackground';
+import AdsenseAd from '@/components/AdsenseAd';
+
+const AD_SLOT_TOP = "6378422969";
+const AD_SLOT_MIDDLE = "6378422969";
 
 export const metadata: Metadata = {
   title: '正夢とは？｜夢が現実になる心理学的メカニズム',
@@ -14,27 +18,31 @@ export default function PropheticDreamPage() {
       <GradientBackground />
 
       <div className="relative z-10">
-        <main className="container mx-auto px-6 py-16 max-w-3xl">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-purple-300 hover:text-purple-200 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              ホームに戻る
-            </Link>
-          </div>
-
-          <article className="animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <header className="mb-12 text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-300 text-sm font-bold border border-purple-500/20 mb-6">
-                <Sparkles className="w-4 h-4" />
-                夢の知識
+        <main className="container mx-auto px-6 py-16 max-w-5xl">
+          <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+            <section className="text-center space-y-8 pt-8 relative">
+              {/* 背景アイコン */}
+              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
+                <div className="relative">
+                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
+                  <img 
+                    src="/icon.png" 
+                    alt="" 
+                    className="w-40 h-40 opacity-10"
+                  />
+                </div>
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">
-                正夢とは？
-              </h1>
-              <p className="text-lg text-gray-400">
-                夢が現実になる現象の心理学的メカニズム
-              </p>
-            </header>
+              <div className="relative space-y-4">
+                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
+                  正夢とは？
+                </h1>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                  夢が現実になる現象の心理学的メカニズム
+                </p>
+              </div>
+            </section>
+
+          <article>
 
             <div className="prose prose-invert prose-purple max-w-none space-y-8">
               {/* 導入 */}
@@ -42,6 +50,11 @@ export default function PropheticDreamPage() {
                 <p className="text-gray-300 leading-relaxed text-lg m-0">
                   正夢とは何か。この問いは古代から現代に至るまで、人間の想像力と心理への関心を刺激し続けてきたテーマのひとつです。多くの人が「夢で見たことが現実になった」と感じる体験を持ち、それを単なる偶然以上のものとして受け取ります。しかし心理学や精神分析の観点から見ると、正夢は超自然的現象というより、<span className="text-purple-300 font-medium">人間の認知の仕組みと深く関係した現象</span>として理解することができます。
                 </p>
+              </div>
+
+              {/* 広告（上部） */}
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <AdsenseAd slot={AD_SLOT_TOP} />
               </div>
 
               {/* セクション1: 脳の予測機能 */}
@@ -89,6 +102,11 @@ export default function PropheticDreamPage() {
                 </p>
               </section>
 
+              {/* 広告（中部） */}
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <AdsenseAd slot={AD_SLOT_MIDDLE} />
+              </div>
+
               {/* セクション4: 感情との結びつき */}
               <section>
                 <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
@@ -113,23 +131,22 @@ export default function PropheticDreamPage() {
                 </p>
               </section>
             </div>
+          </article>
 
             {/* CTA */}
-            <div className="mt-16 pt-12 border-t border-white/10">
-              <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
-                <p className="text-lg text-gray-300 mb-6">
-                  あなたの夢にはどんな意味があるでしょうか？<br />
-                  <span className="text-white font-bold">AI夢占いで詳しく分析してみましょう。</span>
-                </p>
-                <Link 
-                  href="/"
-                  className="inline-flex items-center px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-transform"
-                >
-                  AIで夢を診断する
-                </Link>
-              </div>
+            <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
+              <p className="text-lg text-gray-300 mb-6">
+                あなたの夢にはどんな意味があるでしょうか？<br />
+                <span className="text-white font-bold">AI夢占いで詳しく分析してみましょう。</span>
+              </p>
+              <Link 
+                href="/"
+                className="inline-flex items-center px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-transform"
+              >
+                AIで夢を診断する
+              </Link>
             </div>
-          </article>
+          </div>
         </main>
       </div>
     </div>
