@@ -11,12 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
     '/dictionary',
+    '/approach',
     '/prophetic-dream',
     '/sleeping-positions',
+    '/about',
+    '/contact',
     '/privacy',
     '/terms',
-    '/contact',
-    '/about',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

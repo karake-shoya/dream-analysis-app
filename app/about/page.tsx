@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
@@ -5,6 +6,11 @@ import { SiQiita } from "react-icons/si";
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
 import ExternalLinkCard from "@/components/ExternalLinkCard";
+
+export const metadata: Metadata = {
+  title: "About｜Yume Insightについて",
+  description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+};
 
 const SOCIAL_LINKS = [
   {
