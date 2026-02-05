@@ -113,11 +113,7 @@ export default async function ItemPage({ params }: Props) {
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
                 components={{
-                  h1: ({ children }) => (
-                    <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
-                      {children}
-                    </h1>
-                  ),
+                  h1: () => null,
                   h2: ({ children }) => (
                     <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
                       {children}
