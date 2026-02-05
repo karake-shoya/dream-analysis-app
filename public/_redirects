@@ -1,0 +1,6 @@
+# Force non-www (www -> apex)
+https://www.yume-insight.com/* https://yume-insight.com/:splat 301!
+
+# (Optional) Force HTTPS (usually Netlify handles this automatically)
+http://yume-insight.com/* https://yume-insight.com/:splat 301!
+http://www.yume-insight.com/* https://yume-insight.com/:splat 301!
