@@ -90,9 +90,9 @@ export default async function ItemPage({ params }: Props) {
                 <span>{categoryData.emojis}</span>
                 <span>{categoryData.name}の夢</span>
               </div>
-              <p className="text-3xl md:text-4xl font-black text-white mb-6">
+              <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
                 夢占い：{frontmatter.keyword}
-              </p>
+              </h1>
               <div className="p-6 rounded-2xl bg-linear-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-md shadow-xl">
                 <h2 className="text-lg font-bold text-purple-200 mb-2 flex items-center">
                   <Sparkles className="w-5 h-5 mr-2" />
@@ -113,11 +113,7 @@ export default async function ItemPage({ params }: Props) {
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
                 components={{
-                  h1: ({ children }) => (
-                    <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
-                      {children}
-                    </h1>
-                  ),
+                  h1: () => null,
                   h2: ({ children }) => (
                     <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
                       {children}
