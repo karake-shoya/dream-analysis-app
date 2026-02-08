@@ -43,93 +43,112 @@ export default function PropheticDreamPage() {
             </section>
 
           <article>
-
-            <div className="prose prose-invert prose-purple max-w-none space-y-8">
+            <div className="prose prose-invert prose-purple max-w-none space-y-12">
               {/* 導入 */}
-              <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                <p className="text-gray-300 leading-relaxed text-lg m-0">
-                  正夢とは何か。この問いは古代から現代に至るまで、人間の想像力と心理への関心を刺激し続けてきたテーマのひとつです。多くの人が「夢で見たことが現実になった」と感じる体験を持ち、それを単なる偶然以上のものとして受け取ります。しかし心理学や精神分析の観点から見ると、正夢は超自然的現象というより、<span className="text-purple-300 font-medium">人間の認知の仕組みと深く関係した現象</span>として理解することができます。
+              <div className="p-8 rounded-3xl bg-white/5 border border-white/10 leading-relaxed text-lg text-gray-300">
+                <p className="mb-6">
+                  「今のシーン、夢で見たことがある気がする…」
+                </p>
+                <p>
+                  そんな不思議な体験をしたことはありませんか？<br />
+                  夢で見た出来事がその後現実に起こる現象は「正夢（まさゆめ）」と呼ばれ、古くから多くの人を惹きつけてきました。
+                </p>
+                <p className="mt-4">
+                  予知能力のように感じられるかもしれませんが、心理学や脳科学の視点から見ると、これは私たちの<span className="text-purple-300 font-bold">脳の働きや心のメカニズム</span>として説明ができる、とても興味深い現象なんです。
+                </p>
+                <p className="mt-4">
+                  ここでは、なぜ正夢を見るのか、その不思議な仕組みを優しく紐解いていきましょう。
                 </p>
               </div>
 
               {/* 広告（上部） */}
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
                 <AdsenseAd slot={AD_SLOT_TOP} />
               </div>
 
               {/* セクション1: 脳の予測機能 */}
               <section>
-                <h2 className="text-2xl font-bold text-white mt-10 mb-4 flex items-center">
-                  <Brain className="w-6 h-6 mr-3 text-purple-400" />
-                  脳の予測シミュレーション
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+                  <Brain className="w-8 h-8 mr-3 text-purple-400" />
+                  脳が生み出す「未来のシミュレーション」
                 </h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  まず重要なのは、夢そのものが脳の情報処理の一部であるという点です。睡眠中、脳は日中に得た膨大な情報を整理し、記憶として再構成しています。この過程で、過去の経験、感情、未来への予測が混ざり合い、物語のような形で夢として現れます。
+                <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                  私たちは眠っている間、ただ休んでいるわけではありません。脳は起きている間に取り込んだ膨大な情報を整理整頓し、記憶として定着させる作業を行っています。
                 </p>
                 <p className="text-gray-300 leading-relaxed text-lg">
-                  つまり夢は、脳が未来を「予測するシミュレーション装置」として働いている結果とも言えます。人間の脳は常に次に起こりうる出来事を推測しており、その推測が偶然現実と一致したとき、私たちはそれを正夢として認識するのです。
+                  この時、脳は過去のデータをもとにして「これから何が起こるか？」という予測も行っています。まるで高度なシミュレーションを行っているような状態です。<br />
+                  この<span className="text-purple-300 font-bold">脳内シミュレーションの結果が、偶然現実の出来事とピタリと一致したとき</span>、私たちはそれを「正夢」として認識するのです。つまり、あなたの脳が優秀な予測器として働いた証拠とも言えるかもしれませんね。
                 </p>
               </section>
 
-              {/* セクション2: 選択的記憶 */}
+              {/* セクション2: 無意識の洞察 */}
               <section>
-                <h2 className="text-2xl font-bold text-white mt-10 mb-4 flex items-center">
-                  <Eye className="w-6 h-6 mr-3 text-purple-400" />
-                  選択的記憶という認知バイアス
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+                  <Heart className="w-8 h-8 mr-3 text-purple-400" />
+                  無意識がキャッチした「小さなサイン」
                 </h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  心理学では「選択的記憶」と呼ばれる現象も関係しています。人は当たった記憶を強く覚え、外れた記憶を忘れやすい傾向があります。
+                <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                  日々の生活の中で、私たちは意識していないけれど、無意識のうちに多くの情報を感じ取っています。<br />
+                  例えば、友人のわずかな表情の変化、季節の変わり目の空気感、体調の小さな違和感などです。
                 </p>
                 <p className="text-gray-300 leading-relaxed text-lg">
-                  たとえば、夢の中で何百もの出来事を見ていても、現実と一致した部分だけが強調され、「夢が当たった」という印象が残ります。この認知バイアスは人間の自然な心の働きであり、正夢体験を特別なものとして感じさせる一因になっています。
-                </p>
-              </section>
-
-              {/* セクション3: 無意識の洞察 */}
-              <section>
-                <h2 className="text-2xl font-bold text-white mt-10 mb-4 flex items-center">
-                  <Heart className="w-6 h-6 mr-3 text-purple-400" />
-                  無意識の洞察力
-                </h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  精神分析の視点から見ると、正夢は無意識の洞察とも解釈できます。フロイトやユングは、夢を無意識のメッセージとして捉えました。
-                </p>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  私たちは日常生活の中で、意識していない微細な変化や兆候を感じ取っています。人間関係の緊張、体調の変化、環境の違和感など、言葉にならない情報が無意識に蓄積され、それが夢として表現されることがあります。
-                </p>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  そして後になって現実が動いたとき、「予知していた」と感じるのです。これは未来を当てたというより、<span className="text-purple-300 font-medium">無意識が現在を鋭く読み取っていた結果</span>と言えるでしょう。
+                  こうした<span className="text-purple-300 font-bold">言葉にならない微細なサイン</span>が夢の中で統合され、具体的な形となって現れることがあります。その後、現実に変化が起きた時、「夢で見た通りになった！」と驚くことになりますが、実はあなたの無意識が現状を鋭く分析していた結果なのです。
                 </p>
               </section>
 
               {/* 広告（中部） */}
-              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
                 <AdsenseAd slot={AD_SLOT_MIDDLE} />
               </div>
 
-              {/* セクション4: 感情との結びつき */}
+              {/* セクション3: 選択的記憶 */}
               <section>
-                <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
-                  感情と意味づけの力
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+                  <Eye className="w-8 h-8 mr-3 text-purple-400" />
+                  「当たったこと」だけを覚えている？
                 </h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  また、正夢体験は感情とも強く結びついています。強い不安や期待を抱いているとき、人はそれに関連する夢を見やすくなります。そして現実がその方向に動くと、夢が予言的だったように感じます。
+                <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                  心理学には「選択的記憶」という言葉があります。人間は、<span className="text-purple-300 font-bold">印象に残ったことや都合の良いことだけを強く記憶し、それ以外を忘れてしまう</span>傾向があります。
                 </p>
                 <p className="text-gray-300 leading-relaxed text-lg">
-                  ここには人間の意味づけの欲求が働いています。私たちは偶然の一致に物語を与え、自分の経験に一貫性を見出そうとする存在なのです。
+                  私たちは毎晩たくさんの夢を見ていますが、そのほとんどは忘れてしまいます。しかし、たまたま現実と一致した夢だけは、「驚き」という感情とともに強烈に記憶に残ります。<br />
+                  「外れた夢」は忘れ去られ、「当たった夢」だけスポットライトが当たることで、まるで不思議な力で予知したかのように感じられるのです。
                 </p>
               </section>
 
-              {/* 結論 */}
-              <section className="p-6 rounded-2xl bg-linear-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20">
-                <h2 className="text-2xl font-bold text-white mb-4">結論</h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  結局のところ、正夢とは「未来を知る神秘」よりも、<span className="text-purple-300 font-medium">「人間の脳の予測力と意味づけの力」</span>を映し出した現象だと言えます。それは科学的に説明できる側面を持ちながらも、同時に人間の内面の豊かさを示す体験でもあります。
+              {/* セクション4: 感情と願望 */}
+              <section>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
+                  あなたの願いや不安が映し出される
+                </h2>
+                <p className="text-gray-300 leading-relaxed text-lg mb-4">
+                  また、正夢はあなたの強い「願い」や「不安」を反映していることもよくあります。<br />
+                  「試験に合格したい」「あの人に会いたい」といった強い思いや、「失敗したらどうしよう」という不安は、夢のシナリオを作り出す強力な材料になります。
                 </p>
-                <p className="text-gray-300 leading-relaxed text-lg mb-0">
-                  夢は単なる幻想ではなく、私たちの記憶、感情、直感が交差する場所です。正夢という感覚は、人間がいかに未来を想像し、世界を理解しようとしているかを物語る、心理的に非常に興味深い現象なのです。
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  その願いが叶ったり、心配事が現実になったりした時、それは予知というよりも、あなたの<span className="text-purple-300 font-bold">心の深層にある思いが現実に引き寄せられた</span>、あるいはその心の準備ができていた、と捉えることもできるでしょう。
                 </p>
               </section>
+
+              {/* 結論・まとめ */}
+              <section className="p-8 rounded-3xl bg-linear-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20">
+                <h2 className="text-2xl font-bold text-white mb-4">おわりに</h2>
+                <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                  正夢は、決して怖い現象や単なるオカルトではありません。<br />
+                  それは、あなたの脳が情報を処理する過程や、無意識が感じ取っている世界、そしてあなたの心の奥底にある願いが織りなす、とても人間らしい現象です。
+                </p>
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  もし正夢のような体験をしたら、それは自分の直感や観察力が冴えているサインかもしれませんし、自分の本当の気持ちに気づくチャンスかもしれません。<br />
+                  不思議な夢からのメッセージを、日常を見直すヒントとして大切に受け取ってみてくださいね。
+                </p>
+              </section>
+
+              {/* 免責事項 */}
+              <div className="mt-12 p-6 bg-gray-900/50 rounded-xl border border-gray-800 text-sm text-gray-500 leading-relaxed">
+                <p>
+                  ※本ページで扱う「正夢」は、心理的な体験や記憶の解釈として語られる概念であり、未来を予測・保証するものではありません。
+                </p>
+              </div>
             </div>
           </article>
 

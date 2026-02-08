@@ -19,6 +19,7 @@ interface SleepingPosition {
   description: string;
   psychology: string;
   relationship: string;
+  dreamTendency: string;
 }
 
 const SLEEPING_POSITIONS: SleepingPosition[] = [
@@ -28,6 +29,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "後ろから相手を包み込むように抱きしめる姿勢。伝統的で最もポピュラーな寝方のひとつ。",
     psychology: "保護欲が強く、パートナーを守りたいという気持ちの表れ。リーダーシップを取りたい傾向がある。",
     relationship: "安定した関係性で、信頼と愛情が深い状態。相手への独占欲も含まれることがある。",
+    dreamTendency: "責任感が夢にも表れやすく、誰かを助けたり、仕事を成し遂げたりする「達成型」の夢を見やすい傾向があります。",
   },
   {
     name: "スプーン（抱きしめられる側）",
@@ -35,6 +37,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "相手の腕の中で安心して眠る姿勢。受け入れる側の寝方。",
     psychology: "安心感を求めており、相手に信頼を寄せている。甘えたい気持ちや、守られたい願望。",
     relationship: "相手を信頼し、関係に安心感を感じている。心を開いている証拠。",
+    dreamTendency: "安心感から深い眠りにつきやすく、温かい雰囲気の夢や、子供の頃のような懐かしい夢を見ることが多いようです。",
   },
   {
     name: "向かい合って寝る",
@@ -42,6 +45,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "お互いの顔を見ながら眠る姿勢。手を繋いだり、足を絡めることも。",
     psychology: "相手への強い関心と愛情。コミュニケーションを大切にし、親密さを求めている。",
     relationship: "付き合い始めや情熱的な時期に多い。お互いをもっと知りたいという欲求の表れ。",
+    dreamTendency: "対人関係への関心が高まっているため、会話を楽しむ夢や、人と協力して何かをする夢を見やすい状態です。",
   },
   {
     name: "背中合わせ（触れ合って）",
@@ -49,6 +53,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "お互いの背中をくっつけて眠る姿勢。程よい距離感。",
     psychology: "お互いの存在を感じながらも、自立心を持っている。信頼があるからこそできる寝方。",
     relationship: "成熟した関係性の証。べったりしなくても繋がりを感じられる、安定したカップル。",
+    dreamTendency: "リラックスと自立のバランスが良く、現実に即した整理整頓の夢や、穏やかな日常の夢を見やすいでしょう。",
   },
   {
     name: "背中合わせ（離れて）",
@@ -56,6 +61,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "お互いに背を向け、距離を取って眠る姿勢。",
     psychology: "独立心が強く、自分の空間を大切にする。または、関係にストレスを感じている可能性も。",
     relationship: "自立したカップルの場合は健全。ただし、急にこの姿勢になった場合は要注意。",
+    dreamTendency: "自分の世界に没頭しやすく、趣味や仕事に集中する夢、あるいは孤独感を感じる夢を見るなど、両極端になりやすいかもしれません。",
   },
   {
     name: "絡み合い（タングル）",
@@ -63,6 +69,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "腕や足を絡め合い、体全体で密着して眠る姿勢。",
     psychology: "強い愛着と依存心。離れたくないという気持ちが強い。情熱的な感情。",
     relationship: "新しい関係や復縁後によく見られる。長期間続く場合は、過度な依存に注意。",
+    dreamTendency: "感情のエネルギーが強く、ドラマチックな展開の夢や、情熱的なロマンスの夢、あるいは束縛される夢を見ることも。",
   },
   {
     name: "仰向け＆頭を胸に",
@@ -70,6 +77,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "一方が仰向けになり、もう一方が胸に頭を乗せて眠る姿勢。",
     psychology: "胸を貸す側は保護者的な役割、寄りかかる側は安心と信頼を求めている。",
     relationship: "信頼関係がしっかり構築されている。ケアし合う気持ちが強いカップル。",
+    dreamTendency: "心身の安全が確保されているため、美しい風景の夢や、空を飛ぶような解放感のある夢を見やすいと言われています。",
   },
   {
     name: "手だけ繋いで",
@@ -77,6 +85,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     description: "体は離れているが、手だけを繋いで眠る姿勢。",
     psychology: "繋がりを感じたいが、個人の空間も大切にしたい。バランスの取れた考え方。",
     relationship: "お互いを尊重しながらも愛情を確認し合える、理想的な関係性。",
+    dreamTendency: "精神的な充足感が高く、直感的なメッセージ性の強い夢や、スピリチュアルな雰囲気の夢を見ることがあるかもしれません。",
   },
 ];
 
@@ -110,7 +119,7 @@ export default function SleepingPositionsPage() {
 
       <div className="relative z-10">
         <main className="container mx-auto px-6 py-16 max-w-5xl">
-          <div className="space-y-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <div className="space-y-16 animate-in fade-in slide-in-from-bottom-4 duration-1000">
             
             {/* Hero Section */}
             <div className="text-center space-y-8 pt-8 relative">
@@ -126,28 +135,25 @@ export default function SleepingPositionsPage() {
                 </div>
               </div>
               <div className="relative space-y-4">
-                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  寝相でわかる相性診断
+                <h1 className="text-3xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.2]">
+                  寝相でわかる相性診断と<br className="md:hidden" />夢の傾向
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                  睡眠中は無意識の状態。だからこそ、本当の気持ちが表れるとも言われています。<br />
-                  あなたとパートナーの寝方から、二人の関係性を読み解いてみましょう。
+                  睡眠中の姿勢は、二人の関係性だけでなく<br className="hidden md:inline" />
+                  「どんな夢を見やすいか」にも影響を与えています。
                 </p>
               </div>
             </div>
 
             {/* Introduction */}
-            <section className="space-y-8">
-              <SectionHeader icon={Heart}>寝方が語る無意識のメッセージ</SectionHeader>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
-                <p className="text-gray-300 leading-relaxed">
-                  私たちは起きている間、意識的に行動をコントロールしています。<br/>
-                  しかし、眠っている間は<span className="text-pink-300 font-medium">無意識が支配する時間</span>。<br/>
-                  そのため、寝方には普段隠している本当の気持ちや、相手への感情が自然と表れると考えられています。
+            <section className="space-y-6">
+              <SectionHeader icon={Heart}>寝相・深層心理・夢の関係</SectionHeader>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm shadow-xl">
+                <p className="text-gray-300 leading-relaxed text-lg">
+                  私たちは人生の約3分の1を睡眠に費やしています。意識のコントロールが外れる睡眠中は、<span className="text-purple-300 font-bold">無意識の本音や深層心理</span>が最も現れやすい時間です。
                 </p>
-                <p className="text-gray-300 leading-relaxed mt-4">
-                  ただし、これはあくまで心理学的な一つの見方。<br/>
-                  寝方だけで全てを判断するのではなく、<span className="text-pink-300 font-medium">参考程度に楽しんで</span>くださいね。
+                <p className="text-gray-300 leading-relaxed mt-4 text-lg">
+                  特にパートナーとの寝相は、言葉では伝えきれない信頼関係や心理的距離感を映し出す鏡のようなもの。さらに、体の姿勢や密着度は睡眠の質に影響し、それが<span className="text-indigo-300 font-bold">「どんな夢を見るか」</span>にも深く関わっているのです。
                 </p>
               </div>
             </section>
@@ -159,26 +165,46 @@ export default function SleepingPositionsPage() {
 
             {/* Sleeping Positions Grid */}
             <section className="space-y-8">
-              <SectionHeader icon={Users}>代表的な寝方とその意味</SectionHeader>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <SectionHeader icon={Users}>7つの寝相が教える相性と夢模様</SectionHeader>
+              <div className="grid grid-cols-1 gap-6">
                 {SLEEPING_POSITIONS.map((position, index) => (
                   <div
                     key={index}
-                    className="group relative bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/[0.07] transition-all duration-300"
+                    className="group relative bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm hover:bg-white/[0.07] transition-all duration-300"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="text-4xl shrink-0">{position.emoji}</div>
-                      <div className="space-y-3 flex-1">
-                        <h3 className="text-lg font-bold text-white">{position.name}</h3>
-                        <p className="text-sm text-gray-400">{position.description}</p>
-                        <div className="space-y-2 pt-2 border-t border-white/5">
-                          <div>
-                            <span className="text-xs font-medium text-purple-300">💭 心理状態</span>
-                            <p className="text-sm text-gray-300 mt-1">{position.psychology}</p>
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="flex items-center justify-center md:justify-start">
+                        <div className="text-6xl md:text-7xl bg-white/5 w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-inner">
+                          {position.emoji}
+                        </div>
+                      </div>
+                      
+                      <div className="flex-1 space-y-4">
+                        <div>
+                          <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{position.name}</h3>
+                          <p className="text-gray-400 leading-relaxed">{position.description}</p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                          <div className="space-y-2">
+                            <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-pink-500/10 text-pink-300 border border-pink-500/20">
+                              <Heart className="w-3 h-3 mr-1" />
+                              相性と心理
+                            </span>
+                            <p className="text-sm text-gray-300 leading-relaxed shadow-sm">
+                              {position.relationship}<br/>
+                              <span className="text-gray-400 text-xs mt-1 block">({position.psychology})</span>
+                            </p>
                           </div>
-                          <div>
-                            <span className="text-xs font-medium text-pink-300">💕 関係性</span>
-                            <p className="text-sm text-gray-300 mt-1">{position.relationship}</p>
+                          
+                          <div className="space-y-2">
+                            <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                              <Sparkles className="w-3 h-3 mr-1" />
+                              見やすい夢の傾向
+                            </span>
+                            <p className="text-sm text-gray-300 leading-relaxed shadow-sm">
+                              {position.dreamTendency}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -188,9 +214,37 @@ export default function SleepingPositionsPage() {
               </div>
             </section>
 
+            {/* Column Section */}
+            <section className="space-y-8 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 rounded-3xl border border-white/5">
+              <SectionHeader icon={Lightbulb}>睡眠姿勢と夢の不思議な関係</SectionHeader>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-300">
+                <div className="space-y-3">
+                  <h4 className="font-bold text-white text-lg flex items-center">
+                    <span className="w-2 h-8 bg-indigo-500 rounded-full mr-3"></span>
+                    右向き？左向き？
+                  </h4>
+                  <p className="leading-relaxed text-sm">
+                    一説によると、<span className="text-indigo-300 font-bold">左側を下にして寝ると悪夢を見やすい</span>という研究報告もあります。逆に右側を下にして寝ると、リラックスした夢を見やすいとも言われています。心臓への圧迫圧などが関係していると考えられています。
+                  </p>
+                </div>
+                <div className="space-y-3">
+                  <h4 className="font-bold text-white text-lg flex items-center">
+                    <span className="w-2 h-8 bg-purple-500 rounded-full mr-3"></span>
+                    うつ伏せ寝と夢の内容
+                  </h4>
+                  <p className="leading-relaxed text-sm">
+                    うつ伏せ寝の人は、<span className="text-purple-300 font-bold">エッチな夢や、何かに追われる夢</span>を見やすい傾向があると言われています。胸部が圧迫されることで呼吸が浅くなったり、身体的な刺激が夢に反映されやすいためです。
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-center text-gray-500 mt-4">
+                ※これらは一般的な傾向や俗説であり、個人差があります。
+              </p>
+            </section>
+
             {/* Tips Section */}
             <section className="space-y-8">
-              <SectionHeader icon={Sparkles}>寝方を見る際のポイント</SectionHeader>
+              <SectionHeader icon={Shield}>良好な関係と良い夢のために</SectionHeader>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {TIPS.map((tip, index) => (
                   <div
@@ -214,16 +268,26 @@ export default function SleepingPositionsPage() {
               <AdsenseAd slot={AD_SLOT_MIDDLE} />
             </div>
 
-            {/* Closing Note */}
-            <section className="text-center space-y-6 pb-8">
-              <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-pink-500/10 rounded-full">
-                <Heart className="w-4 h-4 text-pink-400" />
-                <span className="text-sm font-medium text-pink-300">大切なのは二人の気持ち</span>
+            {/* Closing Note & Disclaimer */}
+            <section className="space-y-6 pb-8">
+              <div className="text-center space-y-4">
+                <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-pink-500/10 rounded-full">
+                  <Heart className="w-4 h-4 text-pink-400" />
+                  <span className="text-sm font-medium text-pink-300">大切なのは二人の気持ち</span>
+                </div>
+                <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                  寝方はあくまで一つの指標です。一番大切なのは、お互いが安心して眠れているかどうか。<br />
+                  良い夢を見るためにも、リラックスできる環境作りを二人で話し合ってみてくださいね。
+                </p>
               </div>
-              <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                寝方はあくまで一つの指標。一番大切なのは、<span className="text-pink-300">お互いがどう感じているか</span>です。
-                気になることがあれば、相手に直接聞いてみることが、最も確実で健全なコミュニケーションですよ。
-              </p>
+
+              {/* Disclaimer */}
+              <div className="mt-12 p-6 bg-gray-900/50 rounded-xl border border-gray-800 text-sm text-gray-500 leading-relaxed">
+                <p>
+                  <span className="font-bold flex mb-2 text-gray-400 items-center"><AlertCircle className="w-4 h-4 mr-2"/> ご利用上の注意</span>
+                  本ページの情報は、一般的な心理学的解釈や睡眠に関する雑学に基づいたエンターテインメントコンテンツです。寝相による性格診断や関係性の分析は科学的に完全に断定されたものではありません。また、医学的なアドバイスを提供するものでもありません。睡眠障害や身体的な不調を感じる場合は、医療機関へご相談ください。
+                </p>
+              </div>
             </section>
 
           </div>

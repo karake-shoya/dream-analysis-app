@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-2">
             <Logo className="h-8 w-auto text-white mb-4" />
             <p className="text-gray-500 max-w-xs">
-              AIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。
+              Yume Insight は、夢占い辞典とAI分析を通して、日常を見直すヒントを提供する情報サイトです。
             </p>
           </div>
           

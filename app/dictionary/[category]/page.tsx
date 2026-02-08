@@ -65,9 +65,13 @@ export default async function CategoryPage({ params }: Props) {
             <span className="font-semibold">{categoryData.name}</span>
           </div>
           <h1 className="text-4xl font-bold text-white mb-4">{categoryData.name}の夢占い一覧</h1>
-          <p className="text-gray-400">
-            {categoryData.name}に関連するキーワードの意味を詳しく解説します。
-          </p>
+          <div className="text-gray-400 max-w-3xl mx-auto leading-relaxed text-left bg-white/5 p-6 rounded-2xl border border-white/5">
+            {categoryData.description ? (
+              <p>{categoryData.description}</p>
+            ) : (
+              <p>{categoryData.name}に関連するキーワードの意味を詳しく解説します。</p>
+            )}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

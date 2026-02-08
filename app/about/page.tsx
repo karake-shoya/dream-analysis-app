@@ -2,39 +2,14 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
-import { SiQiita } from "react-icons/si";
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
-import ExternalLinkCard from "@/components/ExternalLinkCard";
 
 export const metadata: Metadata = {
   title: "About｜Yume Insightについて",
   description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
 };
 
-const SOCIAL_LINKS = [
-  {
-    href: "https://github.com/karake-shoya",
-    icon: <FaGithub className="w-5 h-5" />,
-    iconBgClass: "bg-black/40 text-white",
-    title: "GitHub",
-    description: "OSSプロジェクト & コード",
-  },
-  {
-    href: "https://x.com/naiawa1026",
-    icon: <FaXTwitter className="w-5 h-5" />,
-    iconBgClass: "bg-black/40 text-white",
-    title: "X (Twitter)",
-    description: "日々の制作状況",
-  },
-  {
-    href: "https://qiita.com/shoya_u",
-    icon: <SiQiita className="w-5 h-5" />,
-    iconBgClass: "bg-[#55C500]/20 text-[#55C500]",
-    title: "Qiita",
-    description: "技術記事の投稿",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -59,42 +34,98 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="relative space-y-4">
-                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  About
+                <h1 className="text-3xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.2]">
+                  Yume Insightについて
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                  あなたの夢をAIが優しく紐解き、潜在意識からのメッセージをお届けします。
+                  このページでは、Yume Insight の考え方や運営方針についてご紹介します。
                 </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
               {/* Main Content */}
-              <div className="md:col-span-8 space-y-16">
-                <section className="space-y-8">
-                  <SectionHeader icon={Sparkles}>このWebサイトについて</SectionHeader>
-                  <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-6">
-                    <p>
-                      「昨日の夢にはどんな意味があったんだろう？」<br/>
-                      そんなふとした疑問に応えるために、Yume Insightは生まれました。
+              <div className="md:col-span-8 space-y-12">
+                
+                <section className="space-y-6">
+                  <SectionHeader icon={Sparkles}>Yume Insightとは</SectionHeader>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                      Yume Insight は、夢占い辞典とAI分析を通して、<br />
+                      自分の心理状態や感情の傾向を整理するための情報サイトです。
                     </p>
-                    <p>
-                      夢は私たちの心が映し出す鏡。AIの力を借りることで、自分でも気づかなかった心の声や、日々の生活へのヒントを「ゆるっと」読み解きます。
-                    </p>
-                    <p>
-                      学術的な診断ではありませんが、あなたの日常に少しの彩りと、自分を見つめ直す穏やかな時間を提供できれば幸いです。
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      夢を「当てる」「未来を予言する」ものとして扱うのではなく、<br />
+                      日常を振り返るヒントや、自分自身を理解するきっかけとして<br />
+                      夢の意味をやさしく解説しています。
                     </p>
                   </div>
                 </section>
 
-                <section className="space-y-8">
-                  <SectionHeader icon={Heart}>リンク集</SectionHeader>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {SOCIAL_LINKS.map((link) => (
-                      <ExternalLinkCard key={link.href} {...link} />
-                    ))}
+                <section className="space-y-6">
+                  <SectionHeader icon={Heart}>サイトの目的とスタンス</SectionHeader>
+                  <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
+                    <p>
+                      本サイトの目的は、夢に表れるイメージや感情を通して、<br />
+                      今の自分の状態を見つめ直す手助けをすることです。
+                    </p>
+                    <p>
+                      掲載している内容は、夢に関する一般的な考え方や心理的な視点をもとにした情報であり、<br />
+                      <span className="text-purple-300 font-bold">医療・診断・治療・予言などを行うものではありません。</span>
+                    </p>
+                    <p>
+                      不安を煽る表現や、断定的な判断はできる限り避け、<br />
+                      読み終えた後に少し気持ちが整理されるような内容を心がけています。
+                    </p>
                   </div>
                 </section>
+
+                <section className="space-y-6">
+                  <SectionHeader icon={Sparkles}>AIの活用について</SectionHeader>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                      Yume Insight では、一部の機能にAIを活用しています。
+                    </p>
+                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
+                      ただし、AIによる分析結果は参考情報として提供しており、<br />
+                      <span className="text-purple-300 font-bold">最終的な内容の確認や編集は、人の視点で行っています。</span>
+                    </p>
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      AIを「答えを出す存在」ではなく、<br />
+                      考えるきっかけを広げるための補助的なツールとして位置づけています。
+                    </p>
+                  </div>
+                </section>
+
+                <section className="space-y-6">
+                  <SectionHeader icon={User}>運営について</SectionHeader>
+                  <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
+                    <p>
+                      Yume Insight は、個人開発者によって運営されている情報サイトです。
+                    </p>
+                    <p>
+                      個人での運営ではありますが、<br />
+                      コンテンツの品質や表現には責任を持ち、<br />
+                      安心して利用できるサイトであることを大切にしています。
+                    </p>
+                    <p>
+                      ご意見・ご質問がある場合は、<Link href="/contact" className="text-purple-400 hover:text-purple-300 underline underline-offset-4">お問い合わせページ</Link>よりご連絡ください。
+                    </p>
+                  </div>
+                </section>
+
+                <section className="space-y-6">
+                  <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20 text-center">
+                    <h3 className="text-xl font-bold text-white mb-4">最後に</h3>
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      夢はとても個人的で、正解が一つに決まるものではありません。<br /><br />
+                      Yume Insight が、<br />
+                      「少し立ち止まって自分を振り返る場所」<br />
+                      として、あなたの日常に役立てば幸いです。
+                    </p>
+                  </div>
+                </section>
+
               </div>
 
               {/* Profile Sidebar */}

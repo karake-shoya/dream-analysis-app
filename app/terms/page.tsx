@@ -42,7 +42,14 @@ export default function Terms() {
         </p>
       </Section>
 
-      <Section title="5. 準拠法・裁判管轄">
+      <Section title="5. 免責事項">
+        <p className="mb-4">
+          本サイトは、夢に関する一般的な情報や考え方を提供するものであり、
+          特定の結果や効果を保証するものではありません。
+        </p>
+      </Section>
+
+      <Section title="6. 準拠法・裁判管轄">
         <p className="mb-4">
           本規約の解釈にあたっては、日本法を準拠法とします。
         </p>
