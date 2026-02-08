@@ -10,10 +10,11 @@ AI（Google Gemini）を活用した、神秘的で心温まる夢占いアプ�
 - **AI 夢占い**: Google Gemini による高精度な夢分析
 - **追加質問機能**: AIが夢の詳細を質問し、より精度の高い診断を実現
 - **音声入力**: Web Speech API を使った日本語音声入力対応
-- **夢占い辞典**: カテゴリ別のシンボル辞典（動物・自然・場所・行動・感情）
-- **SNSシェア機能**: X（Twitter）シェア、URLコピー対応
+- **夢占い辞典**: 100種類以上のシンボルを網羅したカテゴリ別辞典
+- **解説コンテンツ**: 「正夢」や「寝相と心理」など、夢に関する興味深いコラム
+- **SNSシェア機能**: X（Twitter）シェア、URLコピー対応（OGP画像生成対応）
 - **ユーザー認証**: Supabase Auth による Google / メールアドレスログイン
-- **夢日記（履歴保存）**: ログインユーザーは過去の診断結果をマイページからいつでも振り返れる
+- **夢日記（履歴保存）**: ログインユーザーは過去の診断結果をマイページからカレンダー形式で振り返れる
 - **お問い合わせ機能**: バリデーション付きのコンタクトフォーム
 
 ## 🛠️ 技術スタック
@@ -21,6 +22,7 @@ AI（Google Gemini）を活用した、神秘的で心温まる夢占いアプ�
 - **Framework**: Next.js 15 (App Router)
 - **AI**: Google Generative AI (Gemini API)
 - **Database/Auth**: Supabase
+- **Content**: MDX (next-mdx-remote)
 - **Forms**: React Hook Form, Zod
 - **Email**: Resend
 - **Styling**: Tailwind CSS v4
@@ -33,33 +35,35 @@ AI（Google Gemini）を活用した、神秘的で心温まる夢占いアプ�
 dream-analysis-app/
 ├── app/                    # Next.js App Router ページ
 │   ├── api/analyze/        # 夢占い API エンドポイント
-│   ├── dashboard/          # マイページ（夢の履歴）
+│   ├── dashboard/          # マイページ（夢の履歴・カレンダー）
 │   ├── result/[id]/        # 診断結果ページ
 │   ├── dictionary/         # 夢占い辞典
-│   │   └── category/       # カテゴリ別辞典ページ
+│   ├── prophetic-dream/    # 正夢の解説ページ
+│   ├── sleeping-positions/ # 寝相の解説ページ
 │   ├── approach/           # 診断アプローチの解説ページ
 │   ├── about/              # サイト紹介ページ
 │   ├── contact/            # お問い合わせページ
+│   ├── settings/           # 設定（プロフィール）ページ
 │   ├── privacy/            # プライバシーポリシー
 │   ├── terms/              # 利用規約
 │   └── auth/callback/      # 認証コールバック
 ├── components/             # 共通コンポーネント
-│   ├── GradientBackground.tsx  # 共通グラデーション背景
-│   ├── Header.tsx          # ヘッダー
+│   ├── Header.tsx          # ヘッダー（ナビゲーション）
 │   ├── Footer.tsx          # フッター
-│   ├── VoiceInput.tsx      # 音声入力コンポーネント
-│   ├── ShareButtons.tsx    # SNSシェアボタン
-│   ├── Logo.tsx            # ロゴコンポーネント
+│   ├── VoiceInput.tsx      # 音声入力
+│   ├── ShareButtons.tsx    # SNSシェア
+│   ├── AdsenseAd.tsx       # Google Adsense 広告
 │   └── ui/                 # shadcn/ui コンポーネント
+├── content/                # MDXコンテンツ
+│   └── dictionary/         # 夢占い辞典の個別データ
 ├── lib/                    # ユーティリティ・設定
 │   ├── constants.ts        # 定数・プロンプトテンプレート
-│   ├── types.ts            # 型定義
-│   ├── utils.ts            # ユーティリティ関数
-│   ├── supabase/           # Supabase クライアント
-│   └── data/               # 夢占い辞典データ
+│   ├── supabase/           # Supabase クライアント・SSR設定
+│   ├── mdx.ts              # MDX取得用ユーティリティ
+│   └── data/               # 辞書インデックスデータ
 ├── supabase/               # Supabase設定
 │   └── schema.sql          # データベーススキーマ
-└── public/                 # 静的ファイル
+└── public/                 # 静的ファイル（画像・アイコン）
 ```
 
 ## 🚀 セットアップ
@@ -88,10 +92,14 @@ GEMINI_API_KEY=your_gemini_api_key
 # Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
 
 # Resend (Optional for contact form)
 RESEND_API_KEY=your_resend_api_key
 ADMIN_EMAIL=your_admin_email
+
+# Site Configuration
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
 ```
 
 ### 4. データベースの準備
