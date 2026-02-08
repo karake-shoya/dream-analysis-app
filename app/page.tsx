@@ -142,6 +142,8 @@ export default function Home() {
             </p>
           </div>
         </div>
+        
+
 
         {/* Input Section */}
         <div className="space-y-6">
@@ -300,6 +302,23 @@ export default function Home() {
               </div>
             </div>
           )}
+        </div>
+        
+        {/* Site Description Section */}
+        <div className="mt-24 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 text-center space-y-6 mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+            Yume Insightについて
+          </h3>
+          <div className="space-y-4 text-gray-300 leading-relaxed">
+            <p className="text-base md:text-lg">
+              Yume Insight は、夢占い辞典とAI分析を通して、<br className="hidden md:block"/>
+              自分の心理状態や感情の傾向を整理するための情報サイトです。
+            </p>
+            <p className="text-sm md:text-base text-gray-400">
+              占いや断定ではなく、日常を見直すヒントとして<br className="hidden md:block"/>
+              夢の意味をやさしく解説しています。
+            </p>
+          </div>
         </div>
       </div>
     </main>

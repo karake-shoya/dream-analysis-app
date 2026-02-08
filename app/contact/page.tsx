@@ -73,10 +73,6 @@ export default function ContactPage() {
       <main className="container mx-auto px-6 py-12 flex flex-col items-center">
         <div className="w-full max-w-2xl space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="text-center space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm border border-primary/20">
-              <Mail className="w-4 h-4" />
-              <span>Contact</span>
-            </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight text-white">お問い合わせ</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               サービスに関するご質問やご相談など、<br className="hidden md:block" />
@@ -105,7 +101,7 @@ export default function ContactPage() {
                 <CardHeader className="bg-white/5 border-b border-border/40">
                   <CardTitle className="text-white">メッセージを送る</CardTitle>
                   <CardDescription>
-                    以下のフォームにご入力ください。通常2〜3営業日以内に返信いたします。
+                    お問い合わせ内容によっては返信にお時間をいただく場合があります。<br />確認次第、対応いたします。
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-8">
