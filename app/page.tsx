@@ -29,6 +29,7 @@ export default function Home() {
   const [moreInfo, setMoreInfo] = useState('');
   const moreInfoBaseTextRef = useRef('');
   const [resultId, setResultId] = useState<string | null>(null);
+  const [resultShareToken, setResultShareToken] = useState<string | null>(null);
   const questionsSectionRef = useRef<HTMLDivElement>(null);
   
   const [user, setUser] = useState<User | null>(null);
@@ -44,6 +45,14 @@ export default function Home() {
   }, [supabase]);
   
   const displayName = getDisplayName(user);
+
+  const buildResultPath = (id: string, shareToken?: string | null) => {
+    if (!shareToken) {
+      return `/result/${id}`;
+    }
+
+    return `/result/${id}?token=${encodeURIComponent(shareToken)}`;
+  };
 
   const handleAnalyze = async (isFollowUp = false) => {
     const inputText = isFollowUp ? `${dream}\n\n【追加情報】\n${moreInfo}` : dream;
@@ -68,7 +77,10 @@ export default function Home() {
       if (data.needsMoreInfo && !isFollowUp) {
         setNeedsMoreInfo(true);
         setQuestions(data.missingInfoQuestions || []);
-        if (data.id) setResultId(data.id);
+        if (data.id) {
+          setResultId(data.id);
+          setResultShareToken(data.shareToken || null);
+        }
         setLoading(false);
         
         setTimeout(() => {
@@ -83,8 +95,7 @@ export default function Home() {
       }
 
       if (data.id) {
-        // ページ遷移するまでローディング状態を維持
-        router.push(`/result/${data.id}`);
+        router.push(buildResultPath(data.id, data.shareToken));
       } else {
         setLoading(false);
         setError('解析は完了しましたが、結果の保存に失敗しました。もう一度お試しください。');
@@ -273,7 +284,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-between">
                 <button
-                  onClick={() => router.push(`/result/${resultId}`)}
+                  onClick={() => resultId && router.push(buildResultPath(resultId, resultShareToken))}
                   className="flex items-center justify-center px-6 py-3 font-medium text-gray-400 hover:text-white transition-colors border border-white/10 rounded-full hover:bg-white/5"
                 >
                   <SkipForward className="w-4 h-4 mr-2" />

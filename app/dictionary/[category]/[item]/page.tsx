@@ -10,9 +10,7 @@ import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
 import { getRelatedArticles } from '@/lib/data/relatedArticles';
-
-const AD_SLOT_ARTICLE_TOP = "6378422969";
-const AD_SLOT_ARTICLE_MIDDLE = "6378422969";
+import { siteConfig } from '@/lib/config';
 
 type Props = {
   params: Promise<{ category: string; item: string }>;
@@ -106,7 +104,7 @@ export default async function ItemPage({ params }: Props) {
 
             {/* 記事上広告 */}
             <div className="mb-10 bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_ARTICLE_TOP} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             {/* MDXコンテンツ */}
@@ -145,7 +143,7 @@ export default async function ItemPage({ params }: Props) {
 
             {/* 記事中広告 */}
             <div className="my-10 bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_ARTICLE_MIDDLE} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             <RelatedArticles articles={relatedArticles} />
