@@ -57,10 +57,13 @@ export default function Header() {
 
   const handleGoogleLogin = async () => {
     setLoading(true)
+    // Use the explicitly configured base URL, or fall back to the current origin
+    const baseUrl = siteConfig.baseUrl || (typeof window !== 'undefined' ? window.location.origin : '')
+    
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${siteConfig.baseUrl}/auth/callback`,
+        redirectTo: `${baseUrl}/auth/callback`,
       },
     })
   }
