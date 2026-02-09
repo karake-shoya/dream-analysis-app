@@ -5,7 +5,7 @@ import { consumeRateLimit } from "@/lib/rate-limit";
 import { cleanJsonText } from "@/lib/utils";
 import { ERROR_MESSAGES, AI_CONFIG, getDreamAnalysisPrompt } from "@/lib/constants";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 const MAX_DREAM_LENGTH = 2000;
 

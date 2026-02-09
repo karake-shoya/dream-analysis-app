@@ -10,7 +10,7 @@ import { createClient } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 import { getDisplayName } from '@/lib/user';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 interface Question {
   question: string;
