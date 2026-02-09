@@ -3,9 +3,7 @@ import { Heart, Users, Sparkles, Shield, TrendingUp, AlertCircle, Lightbulb } fr
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
 import AdsenseAd from "@/components/AdsenseAd";
-
-const AD_SLOT_TOP = "6378422969";
-const AD_SLOT_MIDDLE = "6378422969";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "カップルの寝方で分かる関係性と心理状態 | Yume Insight",
@@ -160,7 +158,7 @@ export default function SleepingPositionsPage() {
 
             {/* 広告（上部） */}
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_TOP} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             {/* Sleeping Positions Grid */}
@@ -265,7 +263,7 @@ export default function SleepingPositionsPage() {
 
             {/* 広告（中部） */}
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_MIDDLE} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             {/* Closing Note & Disclaimer */}

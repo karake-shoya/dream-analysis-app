@@ -1,14 +1,12 @@
 import { Metadata } from "next";
 import GradientBackground from "@/components/GradientBackground";
 import AdsenseAd from "@/components/AdsenseAd";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "夢占いの考え方｜Yume Insight",
   description: "当サイトの夢占いの考え方を解説。夢研究の見解を参考に、心身状態を振り返るヒントとして夢を読み解きます。",
 };
-
-const AD_SLOT_TOP = "6378422969";
-const AD_SLOT_MIDDLE = "6378422969";
 
 export default function ApproachPage() {
   return (
@@ -43,7 +41,7 @@ export default function ApproachPage() {
 
             {/* 広告（上部） */}
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_TOP} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             <section className="space-y-6">
@@ -117,7 +115,7 @@ export default function ApproachPage() {
 
             {/* 広告（中部） */}
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={AD_SLOT_MIDDLE} />
+              <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
             <section className="space-y-4">

@@ -3,9 +3,7 @@ import Link from 'next/link';
 import { Brain, Eye, Heart } from 'lucide-react';
 import GradientBackground from '@/components/GradientBackground';
 import AdsenseAd from '@/components/AdsenseAd';
-
-const AD_SLOT_TOP = "6378422969";
-const AD_SLOT_MIDDLE = "6378422969";
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: '正夢とは？｜夢が現実になる心理学的メカニズム',
@@ -63,7 +61,7 @@ export default function PropheticDreamPage() {
 
               {/* 広告（上部） */}
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-                <AdsenseAd slot={AD_SLOT_TOP} />
+                <AdsenseAd slot={siteConfig.adsenseSlot} />
               </div>
 
               {/* セクション1: 脳の予測機能 */}
@@ -98,7 +96,7 @@ export default function PropheticDreamPage() {
 
               {/* 広告（中部） */}
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-                <AdsenseAd slot={AD_SLOT_MIDDLE} />
+                <AdsenseAd slot={siteConfig.adsenseSlot} />
               </div>
 
               {/* セクション3: 選択的記憶 */}

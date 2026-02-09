@@ -100,6 +100,9 @@ ADMIN_EMAIL=your_admin_email
 
 # Site Configuration
 NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# AdSense Slot
+NEXT_PUBLIC_ADSENSE_SLOT=6378422969
 ```
 
 ### 4. データベースの準備
