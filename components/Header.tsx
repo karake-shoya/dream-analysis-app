@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Logo } from '@/components/Logo'
 import { getDisplayName, getAvatarUrl } from '@/lib/user'
+import { siteConfig } from '@/lib/config'
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null)
@@ -56,10 +57,13 @@ export default function Header() {
 
   const handleGoogleLogin = async () => {
     setLoading(true)
+    // Use the explicitly configured base URL, or fall back to the current origin
+    const baseUrl = siteConfig.baseUrl || (typeof window !== 'undefined' ? window.location.origin : '')
+    
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${location.origin}/auth/callback`,
+        redirectTo: `${baseUrl}/auth/callback`,
       },
     })
   }
