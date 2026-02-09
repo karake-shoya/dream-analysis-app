@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Logo } from '@/components/Logo'
 import { getDisplayName, getAvatarUrl } from '@/lib/user'
+import { siteConfig } from '@/lib/config'
 
 export default function Header() {
   const [user, setUser] = useState<User | null>(null)
@@ -59,7 +60,7 @@ export default function Header() {
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${location.origin}/auth/callback`,
+        redirectTo: `${siteConfig.baseUrl}/auth/callback`,
       },
     })
   }
