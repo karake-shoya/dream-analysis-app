@@ -146,13 +146,13 @@ export default function AboutPage() {
                       エンジニアと教育者、2つの視点を持って活動しています。テクノロジーで「気づき」の瞬間を作るのが好きです。
                     </p>
                     <div className="flex gap-4">
-                      <Link href="https://github.com/karake-shoya" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="GitHub">
+                      <Link href="https://github.com/karake-shoya" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="GitHub">
                         <FaGithub className="w-5 h-5" />
                       </Link>
-                      <Link href="https://x.com/naiawa1026" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="X (Twitter)">
+                      <Link href="https://x.com/naiawa1026" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="X (Twitter)">
                         <FaXTwitter className="w-5 h-5" />
                       </Link>
-                      <Link href="https://qiita.com/shoya_u" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="Qiita">
+                      <Link href="https://qiita.com/shoya_u" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="Qiita">
                         <img src="/images/qiita-icon.png" alt="Qiita" className="w-5 h-5 object-contain" />
                       </Link>
                     </div>
