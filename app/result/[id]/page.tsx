@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import {
   Sparkles,
   ArrowLeft,
@@ -29,6 +29,7 @@ type DreamRecord = {
   content: string;
   diagnosis_result: AnalysisResult;
   created_at: string;
+  share_token: string;
 };
 
 interface PageProps {
@@ -119,9 +120,14 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
     notFound();
   }
 
-  const fullUrl = token
-    ? `${siteConfig.baseUrl}/result/${id}?token=${encodeURIComponent(token)}`
-    : `${siteConfig.baseUrl}/result/${id}`;
+  // トークンがURLにないが、所有者としてアクセスできている場合はトークン付きURLへリダイレクト
+  // これにより、アドレスバーのURLをそのままコピーしても共有可能になる
+  if (!token && dream.share_token) {
+    redirect(`/result/${id}?token=${encodeURIComponent(dream.share_token)}`);
+  }
+
+  const shareToken = token || dream.share_token;
+  const fullUrl = `${siteConfig.baseUrl}/result/${id}?token=${encodeURIComponent(shareToken)}`;
 
   const result = dream.diagnosis_result as AnalysisResult;
   const summary = result.interpretations?.[0]?.summary || result.summary;
