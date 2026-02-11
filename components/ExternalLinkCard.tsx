@@ -24,6 +24,7 @@ export default function ExternalLinkCard({
     <Link
       href={href}
       target="_blank"
+      rel="noopener noreferrer"
       className="flex items-center justify-between p-5 rounded-2xl border border-white/10 bg-white/5 hover:border-purple-500/50 hover:bg-white/10 transition-all group shadow-sm"
     >
       <div className="flex items-center gap-4">
