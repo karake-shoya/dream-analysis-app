@@ -173,6 +173,14 @@ export default async function ItemPage({ params }: Props) {
                   li: ({ children }) => (
                     <li className="text-gray-300">{children}</li>
                   ),
+                  a: ({ href, children }) => (
+                    <Link
+                      href={href || '#'}
+                      className="text-indigo-400 hover:text-sky-300 underline decoration-sky-500/30 underline-offset-4 hover:decoration-sky-400 transition-all font-medium"
+                    >
+                      {children}
+                    </Link>
+                  ),
                 }}
               >
                 {content}
