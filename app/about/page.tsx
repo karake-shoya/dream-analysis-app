@@ -152,6 +152,9 @@ export default function AboutPage() {
                       <Link href="https://x.com/naiawa1026" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="X (Twitter)">
                         <FaXTwitter className="w-5 h-5" />
                       </Link>
+                      <Link href="https://qiita.com/shoya_u" target="_blank" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="Qiita">
+                        <img src="/images/qiita-icon.png" alt="Qiita" className="w-5 h-5 object-contain" />
+                      </Link>
                     </div>
                   </div>
                 </div>
