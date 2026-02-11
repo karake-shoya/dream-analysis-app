@@ -88,8 +88,13 @@ export default async function ItemPage({ params }: Props) {
                 <span>{categoryData.emojis}</span>
                 <span>{categoryData.name}の夢</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-white mb-4">
-                【夢占い】{frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動
+              <h1 className="text-3xl md:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+                <span className="block mb-2 md:mb-3">
+                  【夢占い】<span className="text-transparent bg-clip-text bg-linear-to-r from-white to-gray-400">{frontmatter.keyword}の夢の意味</span>
+                </span>
+                <span className="block text-xl md:text-2xl text-purple-400 font-bold opacity-90 tracking-normal">
+                  心理・暗示・今後の行動を詳しく解説
+                </span>
               </h1>
               <div className="flex items-center gap-4 text-xs text-gray-400 mb-6">
                 {frontmatter.updatedAt && (
@@ -103,7 +108,7 @@ export default async function ItemPage({ params }: Props) {
                   <Sparkles className="w-5 h-5 mr-2" />
                   暗示のまとめ
                 </h2>
-                <p className="text-xl text-white font-medium">
+                <p className="text-xl text-white font-medium whitespace-pre-wrap leading-relaxed">
                   {frontmatter.summary}
                 </p>
               </div>
@@ -172,6 +177,14 @@ export default async function ItemPage({ params }: Props) {
                   ),
                   li: ({ children }) => (
                     <li className="text-gray-300">{children}</li>
+                  ),
+                  a: ({ href, children }) => (
+                    <Link
+                      href={href || '#'}
+                      className="text-indigo-400 hover:text-sky-300 underline decoration-sky-500/30 underline-offset-4 hover:decoration-sky-400 transition-all font-medium"
+                    >
+                      {children}
+                    </Link>
                   ),
                 }}
               >
