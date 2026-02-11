@@ -49,4 +49,5 @@ export interface DreamRecord {
   content: string;
   diagnosis_result: AnalysisResult;
   created_at: string;
+  share_token: string;
 }

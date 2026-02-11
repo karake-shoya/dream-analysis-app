@@ -155,7 +155,7 @@ export default async function Dashboard({ searchParams }: Props) {
                                         return (
                                             <Link 
                                                 key={dream.id} 
-                                                href={`/result/${dream.id}`}
+                                                href={`/result/${dream.id}${dream.share_token ? `?token=${encodeURIComponent(dream.share_token)}` : ''}`}
                                                 className="block bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all group shadow-lg shadow-black/20"
                                             >
                                                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
