@@ -1,4 +1,4 @@
-import { ArrowLeft, Sparkles } from 'lucide-react';
+import { ArrowLeft, Sparkles, List } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -88,9 +88,16 @@ export default async function ItemPage({ params }: Props) {
                 <span>{categoryData.emojis}</span>
                 <span>{categoryData.name}の夢</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-white mb-6">
-                夢占い：{frontmatter.keyword}
+              <h1 className="text-3xl md:text-4xl font-black text-white mb-4">
+                【夢占い】{frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動
               </h1>
+              <div className="flex items-center gap-4 text-xs text-gray-400 mb-6">
+                {frontmatter.updatedAt && (
+                  <time dateTime={frontmatter.updatedAt}>
+                    更新日：{frontmatter.updatedAt.replace(/-/g, '.')}
+                  </time>
+                )}
+              </div>
               <div className="p-6 rounded-2xl bg-linear-to-r from-purple-900/40 to-indigo-900/40 border border-purple-500/20 backdrop-blur-md shadow-xl">
                 <h2 className="text-lg font-bold text-purple-200 mb-2 flex items-center">
                   <Sparkles className="w-5 h-5 mr-2" />
@@ -107,18 +114,49 @@ export default async function ItemPage({ params }: Props) {
               <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
 
+            {/* 状況別 早見表 */}
+            {frontmatter.situations && frontmatter.situations.length > 0 && (
+              <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-200">
+                <h2 className="text-xl font-bold text-white mb-6 flex items-center">
+                  <List className="w-5 h-5 mr-2 text-purple-400" />
+                  【状況別】夢の意味・暗示一覧
+                </h2>
+                <div className="grid gap-3">
+                  {frontmatter.situations.map((sit, index) => (
+                    <a 
+                      key={index} 
+                      href={`#${sit.title}`}
+                      className="p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/50 hover:bg-white/10 transition-all group shadow-sm active:scale-[0.98]"
+                    >
+                      <h3 className="text-purple-300 font-bold mb-1 flex items-baseline group-hover:text-purple-200 transition-colors">
+                        <span className="text-xs mr-2 opacity-50">#</span>
+                        {sit.title}
+                      </h3>
+                      <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                        {sit.meaning}
+                      </p>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* MDXコンテンツ */}
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
                 components={{
                   h1: () => null,
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold text-white mt-10 mb-4 border-l-4 border-purple-500 pl-4">
+                    <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-l-4 border-purple-500 pl-4 scroll-mt-24">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-xl font-bold text-purple-300 mt-6 mb-3">
+                    <h3 
+                      id={children?.toString()}
+                      className="text-xl font-bold text-purple-300 mt-10 mb-4 flex items-center scroll-mt-24"
+                    >
+                      <span className="w-1.5 h-6 bg-purple-500/30 rounded-full mr-3" />
                       {children}
                     </h3>
                   ),
