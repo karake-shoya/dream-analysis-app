@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 interface SleepingPosition {
   name: string;
-  emoji: string;
+  imageUrl: string;
   description: string;
   psychology: string;
   relationship: string;
@@ -38,7 +38,7 @@ interface FaqItem {
 const SLEEPING_POSITIONS: SleepingPosition[] = [
   {
     name: "スプーン（抱きしめる側）",
-    emoji: "🥄",
+    imageUrl: "/images/sleeping-positions/spoon.png",
     description: "後ろから相手を包み込むように抱きしめる姿勢。伝統的で最もポピュラーな寝方のひとつ。",
     psychology: "保護欲が強く、パートナーを守りたいという気持ちの表れ。リーダーシップを取りたい傾向がある。",
     relationship: "安定した関係性で、信頼と愛情が深い状態。相手への独占欲も含まれることがある。",
@@ -47,7 +47,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "スプーン（抱きしめられる側）",
-    emoji: "🫂",
+    imageUrl: "/images/sleeping-positions/spoon.png",
     description: "相手の腕の中で安心して眠る姿勢。受け入れる側の寝方。",
     psychology: "安心感を求めており、相手に信頼を寄せている。甘えたい気持ちや、守られたい願望。",
     relationship: "相手を信頼し、関係に安心感を感じている。心を開いている証拠。",
@@ -56,7 +56,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "向かい合って寝る",
-    emoji: "👫",
+    imageUrl: "/images/sleeping-positions/facing.png",
     description: "お互いの顔を見ながら眠る姿勢。手を繋いだり、足を絡めることも。",
     psychology: "相手への強い関心と愛情。コミュニケーションを大切にし、親密さを求めている。",
     relationship: "付き合い始めや情熱的な時期に多い。お互いをもっと知りたいという欲求の表れ。",
@@ -65,7 +65,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "背中合わせ（触れ合って）",
-    emoji: "🔙",
+    imageUrl: "/images/sleeping-positions/back-touching.png",
     description: "お互いの背中をくっつけて眠る姿勢。程よい距離感。",
     psychology: "お互いの存在を感じながらも、自立心を持っている。信頼があるからこそできる寝方。",
     relationship: "成熟した関係性の証。べったりしなくても繋がりを感じられる、安定したカップル。",
@@ -74,7 +74,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "背中合わせ（離れて）",
-    emoji: "↔️",
+    imageUrl: "/images/sleeping-positions/back-far.png",
     description: "お互いに背を向け、距離を取って眠る姿勢。",
     psychology: "独立心が強く、自分の空間を大切にする。または、関係にストレスを感じている可能性も。",
     relationship: "自立したカップルの場合は健全。ただし、急にこの姿勢になった場合は要注意。",
@@ -83,7 +83,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "絡み合い（タングル）",
-    emoji: "🪢",
+    imageUrl: "/images/sleeping-positions/tangle.png",
     description: "腕や足を絡め合い、体全体で密着して眠る姿勢。",
     psychology: "強い愛着と依存心。離れたくないという気持ちが強い。情熱的な感情。",
     relationship: "新しい関係や復縁後によく見られる。長期間続く場合は、過度な依存に注意。",
@@ -92,7 +92,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "仰向け＆頭を胸に",
-    emoji: "💑",
+    imageUrl: "/images/sleeping-positions/chest.png",
     description: "一方が仰向けになり、もう一方が胸に頭を乗せて眠る姿勢。",
     psychology: "胸を貸す側は保護者的な役割、寄りかかる側は安心と信頼を求めている。",
     relationship: "信頼関係がしっかり構築されている。ケアし合う気持ちが強いカップル。",
@@ -101,14 +101,15 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   },
   {
     name: "手だけ繋いで",
-    emoji: "🤝",
+    imageUrl: "/images/sleeping-positions/hand-holding.png",
     description: "体は離れているが、手だけを繋いで眠る姿勢。",
     psychology: "繋がりを感じたいが、個人の空間も大切にしたい。バランスの取れた考え方。",
     relationship: "お互いを尊重しながらも愛情を確認し合える、理想的な関係性。",
     dreamTendency:
-      "精神的な充足感が高く、直感的なメッセージ性の強い夢や、スピリチュアルな雰囲気の夢を見ることがあるかもしれません。",
+      "精神的な充足感が高高いため、直感的なメッセージ性の強い夢や、スピリチュアルな雰囲気の夢を見ることがあるかもしれません。",
   },
 ];
+
 
 const TIPS: Tip[] = [
   {
@@ -196,8 +197,12 @@ export default function SleepingPositionsPage() {
                   >
                     <div className="flex flex-col md:flex-row gap-6">
                       <div className="flex items-center justify-center md:justify-start">
-                        <div className="text-6xl md:text-7xl bg-white/5 w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center shadow-inner">
-                          {position.emoji}
+                        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-2xl border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent">
+                          <img
+                            src={position.imageUrl}
+                            alt={position.name}
+                            className="w-full h-full object-cover rounded-full opacity-90 transition-opacity group-hover:opacity-100"
+                          />
                         </div>
                       </div>
 
