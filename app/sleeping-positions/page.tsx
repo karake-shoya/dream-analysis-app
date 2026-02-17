@@ -163,16 +163,16 @@ export default function SleepingPositionsPage() {
         <main className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
             <section className="text-center space-y-6 pt-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-500/10 rounded-full border border-pink-500/20">
-                <Heart className="w-4 h-4 text-pink-400" />
-                <span className="text-sm font-medium text-pink-300">カップル向け</span>
-              </div>
               <h1 className="text-4xl md:text-6xl font-bold bg-linear-to-r from-pink-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent pb-2">
-                カップル寝相診断｜寝方でわかる相性と夢の傾向
+                カップル寝相診断<br />
+                <span className="text-xl md:text-2xl text-gray-400 font-medium block mt-2">
+                  寝方でわかる相性と夢の傾向
+                </span>
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
-                まずは5問の寝相診断で、今のふたりに合いやすい距離感をチェックしましょう。<br />
-                診断結果のあとに、8つの寝相カードとコラムを読むと、日々の過ごし方のヒントが見つけやすくなります。
+                まずは寝相診断で、今のふたりに合う距離感をチェックしてみましょう。<br />
+                診断結果のあとに、8つの寝相カードとコラムを読んでみましょう。<br />
+                過ごし方のヒントが見つるかもしれません。
               </p>
             </section>
 
