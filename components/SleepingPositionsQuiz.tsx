@@ -150,6 +150,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
   const [isMoving, setIsMoving] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
   const actionAreaRef = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const currentQuestion = QUIZ_QUESTIONS[currentStep];
   const allAnswered = answers.every(Boolean);
@@ -178,9 +179,10 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
     // 最後の質問でなければ自動で次へ
     if (currentStep < QUIZ_QUESTIONS.length - 1) {
       setIsMoving(true);
-      setTimeout(() => {
+      timerRef.current = setTimeout(() => {
         setCurrentStep((prev) => prev + 1);
         setIsMoving(false);
+        timerRef.current = null;
       }, 400);
     } else {
       // 最後の質問に回答したら、生成ボタンまでスクロール
@@ -219,6 +221,13 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
     setIsCompleted(true);
   };
 
+  // アンマウント時にタイマーをクリア
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
   // 結果が表示されたら自動スクロール
   useEffect(() => {
     if (isCompleted && resultRef.current) {
@@ -230,9 +239,14 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
   }, [isCompleted]);
 
   const handleReset = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
     setAnswers(Array(QUIZ_QUESTIONS.length).fill(""));
     setCurrentStep(0);
     setIsGenerating(false);
+    setIsMoving(false);
     setIsCompleted(false);
   };
 
