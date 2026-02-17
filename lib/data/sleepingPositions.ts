@@ -43,14 +43,14 @@ export const RESULTS: Record<ResultTypeId, ResultType> = {
   affection: {
     id: "affection",
     title: "愛情密着型",
-    description: "二人の距離はとても近く、安心感を強く求める関係。スキンシップが愛情表現の中心になりやすいタイプです。",
+    description: "ふたりの距離はとても近く、安心感を強く求める関係。スキンシップが愛情表現の中心になりやすいタイプです。",
     tendencies: ["不安はすぐ共有する", "一緒にいる時間が多い", "離れると少し寂しい"],
     caution: "依存が強くなりすぎると、相手の自由を奪ってしまうことも。",
     advice: "たまに“ひとり時間”を意識的に作ると、もっと健全に続きます。",
     sleepingPosition: "密着寝",
     imageUrl: "/images/sleeping-positions/affection.png",
     // 互換性データ
-    summary: "二人の距離はとても近く、安心感を強く求める関係。スキンシップが愛情表現の中心になりやすいタイプです。",
+    summary: "ふたりの距離はとても近く、安心感を強く求める関係。スキンシップが愛情表現の中心になりやすいタイプです。",
     cautions: "依存が強くなりすぎると、相手の自由を奪ってしまうことも。",
     recommendedPositionName: "密着寝",
     relationshipTrend: "不安を共有し、多くの時間を共に過ごす、親密度の高い関係です。",
@@ -69,7 +69,7 @@ export const RESULTS: Record<ResultTypeId, ResultType> = {
     cautions: "相手の反応に敏感になりすぎると疲れることも。",
     recommendedPositionName: "向き合い寝",
     relationshipTrend: "言葉によるコミュニケーションを重視し、常に意思疎通を図る安定した関係です。",
-    reasons: ["向き合うことで相手の表情や反応をダイレクトに感じられるため", "対話を大切にする二人のスタイルに合っているため"],
+    reasons: ["向き合うことで相手の表情や反応をダイレクトに感じられるため", "対話を大切にするふたりのスタイルに合っているため"],
   },
   gentleBond: {
     id: "gentleBond",
