@@ -5,6 +5,7 @@ import DictionarySearch from '@/components/DictionarySearch';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 import { getAllIndexItems, getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
 import GradientBackground from '@/components/GradientBackground';
+import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
   title: '夢占い辞典',
@@ -114,19 +115,7 @@ export default function Dictionary() {
               </div>
             )}
 
-            {/* AI診断への導線 */}
-            <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
-              <p className="text-lg text-gray-300 mb-6">
-                辞典で見つからない夢や、もっと詳しく知りたい場合は<br />
-                <span className="text-white font-bold">AI夢占いで個別に分析できます。</span>
-              </p>
-              <Link 
-                href="/"
-                className="inline-flex items-center px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-transform"
-              >
-                AIで夢を診断する
-              </Link>
-            </div>
+            <DreamAnalysisCTA />
           </div>
         </main>
       </div>

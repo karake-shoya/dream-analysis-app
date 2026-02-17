@@ -4,6 +4,7 @@ import { Brain, Eye, Heart } from 'lucide-react';
 import GradientBackground from '@/components/GradientBackground';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
+import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
   title: '正夢とは？｜夢が現実になる心理学的メカニズム',
@@ -150,19 +151,7 @@ export default function PropheticDreamPage() {
             </div>
           </article>
 
-            {/* CTA */}
-            <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
-              <p className="text-lg text-gray-300 mb-6">
-                あなたの夢にはどんな意味があるでしょうか？<br />
-                <span className="text-white font-bold">AI夢占いで詳しく分析してみましょう。</span>
-              </p>
-              <Link 
-                href="/"
-                className="inline-flex items-center px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-transform"
-              >
-                AIで夢を診断する
-              </Link>
-            </div>
+            <DreamAnalysisCTA />
           </div>
         </main>
       </div>
