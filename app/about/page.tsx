@@ -49,14 +49,14 @@ export default function AboutPage() {
                 
                 <section className="space-y-6">
                   <SectionHeader icon={Sparkles}>Yume Insightとは</SectionHeader>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
                     <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                      Yume Insight は、夢占い辞典とAI分析を通して、<br />
+                      Yume Insight は、夢占い辞典とAI分析を通して、<span className="hidden md:inline"><br /></span>
                       自分の心理状態や感情の傾向を整理するための情報サイトです。
                     </p>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                      夢を「当てる」「未来を予言する」ものとして扱うのではなく、<br />
-                      日常を振り返るヒントや、自分自身を理解するきっかけとして<br />
+                      夢を「当てる」「未来を予言する」ものとして扱うのではなく、<span className="hidden md:inline"><br /></span>
+                      日常を振り返るヒントや、自分自身を理解するきっかけとして<span className="hidden md:inline"><br /></span>
                       夢の意味をやさしく解説しています。
                     </p>
                   </div>
@@ -66,15 +66,15 @@ export default function AboutPage() {
                   <SectionHeader icon={Heart}>サイトの目的とスタンス</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
                     <p>
-                      本サイトの目的は、夢に表れるイメージや感情を通して、<br />
+                      本サイトの目的は、夢に表れるイメージや感情を通して、<span className="hidden md:inline"><br /></span>
                       今の自分の状態を見つめ直す手助けをすることです。
                     </p>
                     <p>
-                      掲載している内容は、夢に関する一般的な考え方や心理的な視点をもとにした情報であり、<br />
+                      掲載している内容は、夢に関する一般的な考え方や心理的な視点をもとにした情報であり、<span className="hidden md:inline"><br /></span>
                       <span className="text-purple-300 font-bold">医療・診断・治療・予言などを行うものではありません。</span>
                     </p>
                     <p>
-                      不安を煽る表現や、断定的な判断はできる限り避け、<br />
+                      不安を煽る表現や、断定的な判断はできる限り避け、<span className="hidden md:inline"><br /></span>
                       読み終えた後に少し気持ちが整理されるような内容を心がけています。
                     </p>
                   </div>
@@ -82,16 +82,16 @@ export default function AboutPage() {
 
                 <section className="space-y-6">
                   <SectionHeader icon={Sparkles}>AIの活用について</SectionHeader>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-sm">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
                     <p className="text-gray-300 leading-relaxed text-lg mb-6">
                       Yume Insight では、一部の機能にAIを活用しています。
                     </p>
                     <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                      ただし、AIによる分析結果は参考情報として提供しており、<br />
+                      ただし、AIによる分析結果は参考情報として提供しており、<span className="hidden md:inline"><br /></span>
                       <span className="text-purple-300 font-bold">最終的な内容の確認や編集は、人の視点で行っています。</span>
                     </p>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                      AIを「答えを出す存在」ではなく、<br />
+                      AIを「答えを出す存在」ではなく、<span className="hidden md:inline"><br /></span>
                       考えるきっかけを広げるための補助的なツールとして位置づけています。
                     </p>
                   </div>
@@ -115,12 +115,12 @@ export default function AboutPage() {
                 </section>
 
                 <section className="space-y-6">
-                  <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20 text-center">
+                  <div className="p-6 md:p-8 rounded-2xl bg-linear-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20 text-center">
                     <h3 className="text-xl font-bold text-white mb-4">最後に</h3>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                      夢はとても個人的で、正解が一つに決まるものではありません。<br /><br />
-                      Yume Insight が、<br />
-                      「少し立ち止まって自分を振り返る場所」<br />
+                      夢はとても個人的で、正解が一つに決まるものではありません。<span className="hidden md:inline"><br /><br /></span>
+                      Yume Insight が、<span className="hidden md:inline"><br /></span>
+                      「少し立ち止まって自分を振り返る場所」<span className="hidden md:inline"><br /></span>
                       として、あなたの日常に役立てば幸いです。
                     </p>
                   </div>

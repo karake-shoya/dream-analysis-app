@@ -163,7 +163,7 @@ export default function SleepingPositionsPage() {
                 </span>
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
-                5つの質問で、今のふたりにぴったりの寝相タイプをチェック。<br />
+                5つの質問で、今のふたりにぴったりの寝相タイプをチェック。<span className="hidden md:inline"><br /></span>
                 診断のあとは、8つの寝相カードで深層心理を探ってみましょう。
               </p>
             </section>

@@ -146,7 +146,7 @@ export default function Home() {
           </h2>
           <div className="space-y-4">
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-              夢の内容を入力するだけで、<br/>あなたの深層心理をAIが読み解きます
+              夢の内容を入力するだけで、<span className="hidden md:inline"><br/></span>あなたの深層心理をAIが読み解きます
             </p>
             <p className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
               AI夢占いサービス「Yume Insight」
@@ -322,11 +322,11 @@ export default function Home() {
           </h3>
           <div className="space-y-4 text-gray-300 leading-relaxed">
             <p className="text-base md:text-lg">
-              Yume Insight は、夢占い辞典とAI分析を通して、<br className="hidden md:block"/>
+              Yume Insight は、夢占い辞典とAI分析を通して、<span className="hidden md:inline"><br/></span>
               自分の心理状態や感情の傾向を整理するための情報サイトです。
             </p>
             <p className="text-sm md:text-base text-gray-400">
-              占いや断定ではなく、日常を見直すヒントとして<br className="hidden md:block"/>
+              占いや断定ではなく、日常を見直すヒントとして<span className="hidden md:inline"><br/></span>
               夢の意味をやさしく解説しています。
             </p>
           </div>

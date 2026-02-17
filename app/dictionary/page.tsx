@@ -48,7 +48,7 @@ export default function Dictionary() {
                   夢占い辞典
                 </h1>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                  キーワードから夢の意味を探してみましょう。<br />
+                  キーワードから夢の意味を探してみましょう。<span className="hidden md:inline"><br /></span>
                   よく見られる夢のシンボルをカテゴリー別にまとめています。
                 </p>
               </div>

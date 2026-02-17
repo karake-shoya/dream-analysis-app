@@ -230,7 +230,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
         </p>
         <h2 className="text-2xl md:text-3xl font-bold text-white">まずは相性タイプをチェック</h2>
         <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-          5つの質問に答えると、今のふたりに合いやすい寝方と、関係性・夢の傾向を確認できます。<br />
+          5つの質問に答えると、今のふたりに合いやすい寝方と、関係性・夢の傾向を確認できます。<span className="hidden md:inline"><br /></span>
           診断はローカルで完結し、入力内容は保存されません。
         </p>
       </div>
