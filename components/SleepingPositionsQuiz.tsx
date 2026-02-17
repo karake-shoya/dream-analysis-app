@@ -194,14 +194,31 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
 
 
 
-  const handleShareX = () => {
+  const handleShare = async () => {
     if (!result) return;
 
-    const text = `あなたたちにおすすめの寝相は「${result.sleepingPosition}」！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight\n`;
-    const url = `${window.location.origin}${window.location.pathname}?res=${result.id}`;
+    const shareText = `あなたたちにおすすめの寝相は「${result.sleepingPosition}」！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight`;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?res=${result.id}`;
 
-    const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
-    window.open(xUrl, "_blank", "noopener,noreferrer");
+    if (navigator.share) {
+      // Web Share API が使用可能な場合（主にモバイル）
+      try {
+        await navigator.share({
+          title: "カップル寝相診断の結果 | Yume Insight",
+          text: shareText,
+          url: shareUrl,
+        });
+      } catch (err) {
+        // ユーザーがキャンセルした場合は何もしない
+        if ((err as Error).name !== "AbortError") {
+          console.error("共有に失敗しました:", err);
+        }
+      }
+    } else {
+      // API非対応の場合（PCなど）は、既存のX（Twitter）シェアへのフォールバック
+      const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText + "\n")}&url=${encodeURIComponent(shareUrl)}`;
+      window.open(xUrl, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
@@ -343,11 +360,11 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
 
             <button
               type="button"
-              onClick={handleShareX}
+              onClick={handleShare}
               className="inline-flex items-center px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium transition-colors"
             >
               <Share2 className="w-4 h-4 mr-2" />
-              Xでシェアする
+              診断結果をシェアする
             </button>
           </div>
         </div>
