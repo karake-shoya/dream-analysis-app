@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { Share2, CheckCircle2, RefreshCcw } from "lucide-react";
 import { toPositionId } from "@/lib/utils";
 import { RESULTS, ResultTypeId, ScoreMap, QuizQuestion, Option, ResultType } from "@/lib/data/sleepingPositions";
+import DreamAnalysisCTA from "./DreamAnalysisCTA";
 
 export interface QuizPosition {
   name: string;
@@ -366,6 +367,10 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
               <Share2 className="w-4 h-4 mr-2" />
               診断結果をシェアする
             </button>
+          </div>
+
+          <div className="pt-4 border-t border-white/10">
+            <DreamAnalysisCTA />
           </div>
         </div>
       )}

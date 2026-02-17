@@ -5,6 +5,7 @@ import SectionHeader from "@/components/SectionHeader";
 import AdsenseAd from "@/components/AdsenseAd";
 import { siteConfig } from "@/lib/config";
 import SleepingPositionsQuiz from "@/components/SleepingPositionsQuiz";
+import DreamAnalysisCTA from "@/components/DreamAnalysisCTA";
 import { toPositionId } from "@/lib/utils";
 import { RESULTS, ResultTypeId } from "@/lib/data/sleepingPositions";
 
@@ -219,6 +220,8 @@ export default function SleepingPositionsPage() {
                 ))}
               </div>
             </section>
+
+            <DreamAnalysisCTA />
 
             <section className="space-y-8 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 rounded-3xl border border-white/5">
               <SectionHeader icon={Lightbulb}>睡眠姿勢と夢の不思議な関係</SectionHeader>
