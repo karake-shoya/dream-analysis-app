@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Share2, CheckCircle2, Clipboard, ClipboardCheck, RefreshCcw } from "lucide-react";
+import { Share2, CheckCircle2, RefreshCcw } from "lucide-react";
 import { toPositionId } from "@/lib/utils";
 import { RESULTS, ResultTypeId, ScoreMap, QuizQuestion, Option, ResultType } from "@/lib/data/sleepingPositions";
 
@@ -133,17 +133,7 @@ function getBestType(scores: ScoreMap, answers: string[]): ResultTypeId {
   return tied[0];
 }
 
-function buildCopyText(result: ResultType, dreamTendency: string) {
-  return [
-    `【カップル寝相診断】${result.title}`,
-    `おすすめ寝相: ${result.sleepingPosition}`,
-    `内容: ${result.description}`,
-    `特徴: ${result.tendencies.join("、")}`,
-    `注意点: ${result.caution}`,
-    `アドバイス: ${result.advice}`,
-    `見やすい夢の傾向: ${dreamTendency}`,
-  ].join("\n");
-}
+
 
 interface SleepingPositionsQuizProps {
   positions: QuizPosition[];
@@ -153,7 +143,6 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>(Array(QUIZ_QUESTIONS.length).fill(""));
   const [isCompleted, setIsCompleted] = useState(false);
-  const [copied, setCopied] = useState(false);
 
   const currentQuestion = QUIZ_QUESTIONS[currentStep];
   const allAnswered = answers.every(Boolean);
@@ -195,7 +184,6 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
     setAnswers(Array(QUIZ_QUESTIONS.length).fill(""));
     setCurrentStep(0);
     setIsCompleted(false);
-    setCopied(false);
   };
 
   const scrollToRecommended = () => {
@@ -204,17 +192,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const handleCopy = async () => {
-    if (!result || !recommendedPosition) return;
 
-    try {
-      await navigator.clipboard.writeText(buildCopyText(result, recommendedPosition.dreamTendency));
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
-    }
-  };
 
   const handleShareX = () => {
     if (!result) return;
@@ -362,14 +340,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
             >
               詳細カードへ移動
             </button>
-            <button
-              type="button"
-              onClick={handleCopy}
-              className="inline-flex items-center px-4 py-2 rounded-xl border border-white/20 text-gray-100"
-            >
-              {copied ? <ClipboardCheck className="w-4 h-4 mr-2" /> : <Clipboard className="w-4 h-4 mr-2" />}
-              結果をコピー
-            </button>
+
             <button
               type="button"
               onClick={handleShareX}
