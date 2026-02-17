@@ -27,7 +27,7 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     id: "q2",
-    question: "Q2. 普段の生活での二人の雰囲気（温度感）は？",
+    question: "Q2. 普段の生活でのふたりの雰囲気（温度感）は？",
     options: [
       { value: "a", label: "お互いへの想いが深く、とても親密", weights: { passion: 2, affection: 1 } },
       { value: "b", label: "穏やかで安定している", weights: { stable: 2, gentleBond: 1 } },
@@ -247,7 +247,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
   const handleShare = async () => {
     if (!result) return;
 
-    const shareText = `あなたたちにおすすめの寝相は「${result.sleepingPosition}」！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight`;
+    const shareText = `ふたりの寝相タイプは「${result.sleepingPosition}」タイプでした！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight`;
     const shareUrl = `${window.location.origin}${window.location.pathname}?res=${result.id}`;
 
     if (navigator.share) {
@@ -366,7 +366,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
             <AdModal
               slot={siteConfig.adsenseSlot}
               title="診断結果がまとまりました！"
-              description="ふたりの関係性と、おすすめの寝相をお伝えします"
+              description="ふたりの関係性と、今のふたりを象徴する寝相タイプをお伝えします"
               onReveal={handleShowResult}
             >
               <div 
@@ -390,7 +390,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
                       />
                     </div>
                     <div>
-                      <p className="text-xs text-purple-200 mb-1">おすすめ寝相</p>
+                      <p className="text-xs text-purple-200 mb-1">ふたりの寝相タイプ</p>
                       <p className="text-lg font-semibold text-white">{result.sleepingPosition}</p>
                     </div>
                   </div>
@@ -402,7 +402,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
 
                 <div className="space-y-4">
                   <div>
-                    <p className="text-white font-semibold mb-2">二人の傾向</p>
+                    <p className="text-white font-semibold mb-2">ふたりの傾向</p>
                     <ul className="space-y-2 text-sm text-gray-200 list-disc list-inside">
                       {result.tendencies.map((t) => (
                         <li key={t}>{t}</li>

@@ -72,7 +72,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
   {
     name: "密着寝",
     imageUrl: "/images/sleeping-positions/affection.png",
-    description: "どちらかが後ろから包み込む、あるいは密着して眠る姿勢。安心感を強く求める二人に最適。",
+    description: "どちらかが後ろから包み込む、あるいは密着して眠る姿勢。安心感を強く求めるふたりに最適。",
     psychology: "保護欲と被保護欲、そして強い親愛の証。お互いの温度を感じることでリラックスできます。",
     relationship: "非常に親密で、信頼関係が深い状態。スキンシップで絆を確認し合うカップルです。",
     dreamTendency: "安心感から深い眠りにつきやすく、温かい雰囲気の夢や達成感のある夢を見やすい傾向があります。",
