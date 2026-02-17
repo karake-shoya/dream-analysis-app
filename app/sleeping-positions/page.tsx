@@ -5,6 +5,8 @@ import SectionHeader from "@/components/SectionHeader";
 import AdsenseAd from "@/components/AdsenseAd";
 import { siteConfig } from "@/lib/config";
 import SleepingPositionsQuiz from "@/components/SleepingPositionsQuiz";
+import { toPositionId } from "@/lib/utils";
+
 
 export const metadata: Metadata = {
   title: "カップル寝相診断｜寝方でわかる相性と夢の傾向 | Yume Insight",
@@ -149,9 +151,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
 ];
 
-function toPositionId(name: string) {
-  return `position-${name.replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "").toLowerCase()}`;
-}
+
 
 // Approach B: ページはServer Componentのままにし、診断UIのみClient Componentへ分離。
 export default function SleepingPositionsPage() {
@@ -178,8 +178,8 @@ export default function SleepingPositionsPage() {
 
             <SleepingPositionsQuiz
               positions={SLEEPING_POSITIONS.map(({ name, dreamTendency }) => ({ name, dreamTendency }))}
-              getPositionId={toPositionId}
             />
+
 
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
               <AdsenseAd slot={siteConfig.adsenseSlot} />

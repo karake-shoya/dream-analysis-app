@@ -31,3 +31,10 @@ export function formatDate(dateString: string): string {
 export function cleanJsonText(text: string): string {
   return text.replace(/```json/g, "").replace(/```/g, "").trim();
 }
+
+/**
+ * 寝相の名前をID形式に変換（アンカーリンク用）
+ */
+export function toPositionId(name: string): string {
+  return `position-${name.replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "").toLowerCase()}`;
+}

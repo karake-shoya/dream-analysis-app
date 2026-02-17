@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { CheckCircle2, Clipboard, ClipboardCheck, RefreshCcw } from "lucide-react";
+import { toPositionId } from "@/lib/utils";
+
 
 export interface QuizPosition {
   name: string;
@@ -232,10 +234,10 @@ function buildCopyText(result: ResultType, dreamTendency: string) {
 
 interface SleepingPositionsQuizProps {
   positions: QuizPosition[];
-  getPositionId: (name: string) => string;
 }
 
-export default function SleepingPositionsQuiz({ positions, getPositionId }: SleepingPositionsQuizProps) {
+
+export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQuizProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>(Array(QUIZ_QUESTIONS.length).fill(""));
   const [isCompleted, setIsCompleted] = useState(false);
@@ -285,7 +287,7 @@ export default function SleepingPositionsQuiz({ positions, getPositionId }: Slee
 
   const scrollToRecommended = () => {
     if (!result) return;
-    const target = document.getElementById(getPositionId(result.recommendedPositionName));
+    const target = document.getElementById(toPositionId(result.recommendedPositionName));
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
