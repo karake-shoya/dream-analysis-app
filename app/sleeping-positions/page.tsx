@@ -178,7 +178,7 @@ export default function SleepingPositionsPage() {
             </section>
 
             <SleepingPositionsQuiz
-              positions={SLEEPING_POSITIONS.map(({ name, dreamTendency }) => ({ name, dreamTendency }))}
+              positions={SLEEPING_POSITIONS.map(({ name, dreamTendency, imageUrl }) => ({ name, dreamTendency, imageUrl }))}
             />
 
 

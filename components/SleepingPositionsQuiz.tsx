@@ -7,8 +7,10 @@ import { toPositionId } from "@/lib/utils";
 
 export interface QuizPosition {
   name: string;
+  imageUrl: string;
   dreamTendency: string;
 }
+
 
 type ResultTypeId =
   | "stable"
@@ -397,11 +399,21 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
           <p className="text-gray-200 leading-relaxed">{result.summary}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-              <p className="text-xs text-purple-200 mb-1">おすすめ寝相</p>
-              <p className="text-lg font-semibold text-white">{result.recommendedPositionName}</p>
+            <div className="rounded-2xl border border-white/10 bg-black/20 p-4 flex flex-col items-center md:items-start md:flex-row gap-4">
+              <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent shrink-0">
+                <img
+                  src={recommendedPosition.imageUrl}
+                  alt={result.recommendedPositionName}
+                  className="w-full h-full object-cover rounded-full opacity-90 transition-opacity"
+                />
+              </div>
+              <div>
+                <p className="text-xs text-purple-200 mb-1">おすすめ寝相</p>
+                <p className="text-lg font-semibold text-white">{result.recommendedPositionName}</p>
+              </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
+
               <p className="text-xs text-purple-200 mb-1">見やすい夢の傾向</p>
               <p className="text-sm text-gray-200 leading-relaxed">{recommendedPosition.dreamTendency}</p>
             </div>
