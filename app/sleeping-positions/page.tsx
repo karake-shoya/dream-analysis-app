@@ -8,12 +8,60 @@ import SleepingPositionsQuiz from "@/components/SleepingPositionsQuiz";
 import { toPositionId } from "@/lib/utils";
 
 
-export const metadata: Metadata = {
-  title: "カップル寝相診断｜寝方でわかる相性と夢の傾向 | Yume Insight",
-  description:
-    "カップル寝相診断（5問）で、ふたりの寝方タイプをチェック。おすすめ寝相・相性の傾向・注意点・夢の傾向をやさしく解説します。",
-  keywords: ["カップル 寝相診断", "寝方診断", "相性診断", "カップル", "寝相", "夢の傾向"],
-};
+import { RESULTS, ResultTypeId } from "@/lib/data/sleepingPositions";
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ res?: string }> }): Promise<Metadata> {
+  const { res } = await searchParams;
+  const baseUrl = siteConfig.baseUrl || "https://yume-insight.netlify.app"; // サイトのドメイン
+  
+  const baseTitle = "カップル寝相診断｜寝方でわかる相性と夢の傾向 | Yume Insight";
+  const baseDesc = "カップル寝相診断（5問）で、ふたりの寝方タイプをチェック。おすすめ寝相・相性の傾向・注意点・夢の傾向をやさしく解説します。";
+  
+  // 診断結果（?res=xxx）がある場合のカスタマイズ
+  if (res && RESULTS[res as ResultTypeId]) {
+    const result = RESULTS[res as ResultTypeId];
+    const shareTitle = `診断結果は「${result.title}」でした！ | カップル寝相診断`;
+    const shareDesc = `私たちのおすすめ寝相は「${result.recommendedPositionName}」！${result.summary}`;
+    const shareImage = `${baseUrl}${result.imageUrl}`;
+
+    return {
+      title: shareTitle,
+      description: shareDesc,
+      openGraph: {
+        title: shareTitle,
+        description: shareDesc,
+        url: `${baseUrl}/sleeping-positions?res=${res}`,
+        images: [{ url: shareImage, width: 1200, height: 1200 }],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: shareTitle,
+        description: shareDesc,
+        images: [shareImage],
+      },
+    };
+  }
+
+  // デフォルト
+  return {
+    title: baseTitle,
+    description: baseDesc,
+    keywords: ["カップル 寝相診断", "寝方診断", "相性診断", "カップル", "寝相", "夢の傾向"],
+    openGraph: {
+      title: baseTitle,
+      description: baseDesc,
+      images: [`${baseUrl}/images/sleeping-positions/spoon.png`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: baseTitle,
+      description: baseDesc,
+      images: [`${baseUrl}/images/sleeping-positions/spoon.png`],
+    },
+  };
+}
+
 
 interface SleepingPosition {
   name: string;
