@@ -5,86 +5,74 @@ import { Share2, CheckCircle2, Clipboard, ClipboardCheck, RefreshCcw } from "luc
 import { toPositionId } from "@/lib/utils";
 import { RESULTS, ResultTypeId, ScoreMap, QuizQuestion, Option, ResultType } from "@/lib/data/sleepingPositions";
 
-
 export interface QuizPosition {
   name: string;
   imageUrl: string;
   dreamTendency: string;
 }
 
-
-
-const RESULT_PRIORITY: ResultTypeId[] = [
-  "stable",
-  "protective",
-  "independent",
-  "passionate",
-  "close",
-  "recovery",
-];
-
-
-
 const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     id: "q1",
     question: "Q1. ふたりの距離感は？",
     options: [
-      { value: "a", label: "ずっとくっつきたい", weights: { close: 2, passionate: 1 } },
-      { value: "b", label: "触れていたい", weights: { protective: 2, stable: 1 } },
-      { value: "c", label: "手だけでOK", weights: { independent: 2, stable: 1 } },
-      { value: "d", label: "それぞれの空間が大事", weights: { recovery: 2, independent: 1 } },
+      { value: "a", label: "ずっとくっつきたい", weights: { affection: 2, passion: 1 } },
+      { value: "b", label: "触れていたい", weights: { stable: 2, support: 1 } },
+      { value: "c", label: "手だけでOK", weights: { gentleBond: 2 } },
+      { value: "d", label: "空間大事", weights: { independent: 2, selfTime: 1 } },
     ],
   },
   {
     id: "q2",
-    question: "Q2. 最近の関係の温度感は？",
+    question: "Q2. 最近の温度感は？",
     options: [
-      { value: "a", label: "かなり熱い", weights: { passionate: 2, close: 1 } },
-      { value: "b", label: "安定して心地いい", weights: { stable: 2, protective: 1 } },
-      { value: "c", label: "ちょい停滞", weights: { independent: 1, recovery: 2 } },
-      { value: "d", label: "すれ違い気味", weights: { recovery: 2, independent: 1 } },
+      { value: "a", label: "かなり熱い", weights: { passion: 2, affection: 1 } },
+      { value: "b", label: "安定して心地いい", weights: { stable: 2, gentleBond: 1 } },
+      { value: "c", label: "ちょい停滞", weights: { independent: 1, selfTime: 1 } },
+      { value: "d", label: "すれ違い気味", weights: { independent: 2 } },
     ],
   },
   {
     id: "q3",
     question: "Q3. 不安を感じる時の反応は？",
     options: [
-      { value: "a", label: "すぐ確認したい", weights: { close: 2, passionate: 1 } },
-      { value: "b", label: "そばにいたい", weights: { protective: 2, stable: 1 } },
-      { value: "c", label: "ひとりで整理する", weights: { independent: 2, recovery: 1 } },
-      { value: "d", label: "距離を取る", weights: { recovery: 2, independent: 1 } },
+      { value: "a", label: "すぐ確認したい", weights: { affection: 2 } },
+      { value: "b", label: "そばにいたい", weights: { support: 2, stable: 1 } },
+      { value: "c", label: "ひとりで整理する", weights: { independent: 2 } },
+      { value: "d", label: "距離を取る", weights: { selfTime: 2 } },
     ],
   },
   {
     id: "q4",
     question: "Q4. スキンシップの好みは？",
     options: [
-      { value: "a", label: "抱きしめたい / 抱かれたい", weights: { passionate: 2, close: 1 } },
-      { value: "b", label: "寄りかかる・支える", weights: { protective: 2, stable: 1 } },
-      { value: "c", label: "軽い接触で十分", weights: { stable: 2, independent: 1 } },
-      { value: "d", label: "ほぼ不要", weights: { recovery: 2, independent: 1 } },
+      { value: "a", label: "抱きしめたい / 抱かれたい", weights: { affection: 2 } },
+      { value: "b", label: "寄りかかる・支える", weights: { support: 2 } },
+      { value: "c", label: "軽い接触で十分", weights: { gentleBond: 2 } },
+      { value: "d", label: "ほぼ不要", weights: { selfTime: 2 } },
     ],
   },
   {
     id: "q5",
     question: "Q5. 眠る前の会話は？",
     options: [
-      { value: "a", label: "毎日いっぱい話す", weights: { passionate: 2, close: 1 } },
-      { value: "b", label: "ちょこっとで満足", weights: { stable: 2, protective: 1 } },
-      { value: "c", label: "気分による", weights: { independent: 2, stable: 1 } },
-      { value: "d", label: "あまり話さない", weights: { recovery: 2, independent: 1 } },
+      { value: "a", label: "毎日いっぱい話す", weights: { communication: 2 } },
+      { value: "b", label: "ちょこっとで満足", weights: { stable: 1 } },
+      { value: "c", label: "気分による", weights: { gentleBond: 1 } },
+      { value: "d", label: "あまり話さない", weights: { independent: 1 } },
     ],
   },
 ];
 
 const INITIAL_SCORE: ScoreMap = {
+  affection: 0,
+  communication: 0,
+  gentleBond: 0,
+  passion: 0,
   stable: 0,
   independent: 0,
-  passionate: 0,
-  close: 0,
-  recovery: 0,
-  protective: 0,
+  support: 0,
+  selfTime: 0,
 };
 
 function calculateScores(answers: string[]): ScoreMap {
@@ -101,18 +89,57 @@ function calculateScores(answers: string[]): ScoreMap {
   }, { ...INITIAL_SCORE });
 }
 
-function getBestType(scores: ScoreMap): ResultTypeId {
+function getBestType(scores: ScoreMap, answers: string[]): ResultTypeId {
   const maxScore = Math.max(...Object.values(scores));
-  const tied = RESULT_PRIORITY.filter((id) => scores[id] === maxScore);
+  const tied = (Object.keys(scores) as ResultTypeId[]).filter((id) => scores[id] === maxScore);
+
+  if (tied.length === 1) return tied[0];
+
+  // 同点処理 1: Q4の回答で優先決定
+  const q4Index = 3;
+  const q4Answer = answers[q4Index];
+  if (q4Answer) {
+    const q4Option = QUIZ_QUESTIONS[q4Index].options.find(o => o.value === q4Answer);
+    if (q4Option) {
+      const q4Tied = tied.filter(id => (q4Option.weights[id] ?? 0) > 0);
+      if (q4Tied.length === 1) return q4Tied[0];
+      if (q4Tied.length > 1) {
+        // さらに同点なら Q3 を見る
+        const q3Index = 2;
+        const q3Answer = answers[q3Index];
+        const q3Option = QUIZ_QUESTIONS[q3Index].options.find(o => o.value === q3Answer);
+        if (q3Option) {
+          const q3Tied = q4Tied.filter(id => (q3Option.weights[id] ?? 0) > 0);
+          if (q3Tied.length === 1) return q3Tied[0];
+        }
+      }
+    }
+  }
+
+  // 同点処理 2: Q3の回答で優先決定 (Q4で絞れなかった場合)
+  const q3Index = 2;
+  const q3Answer = answers[q3Index];
+  if (q3Answer) {
+    const q3Option = QUIZ_QUESTIONS[q3Index].options.find(o => o.value === q3Answer);
+    if (q3Option) {
+      const q3Tied = tied.filter(id => (q3Option.weights[id] ?? 0) > 0);
+      if (q3Tied.length === 1) return q3Tied[0];
+    }
+  }
+
+  // 同点処理 3: それでも同点なら stable を優先
+  if (tied.includes("stable")) return "stable";
+
   return tied[0];
 }
 
 function buildCopyText(result: ResultType, dreamTendency: string) {
   return [
     `【カップル寝相診断】${result.title}`,
-    `おすすめ寝相: ${result.recommendedPositionName}`,
-    `関係性の傾向: ${result.relationshipTrend}`,
-    `注意点: ${result.cautions}`,
+    `おすすめ寝相: ${result.sleepingPosition}`,
+    `内容: ${result.description}`,
+    `特徴: ${result.tendencies.join("、")}`,
+    `注意点: ${result.caution}`,
     `アドバイス: ${result.advice}`,
     `見やすい夢の傾向: ${dreamTendency}`,
   ].join("\n");
@@ -121,7 +148,6 @@ function buildCopyText(result: ResultType, dreamTendency: string) {
 interface SleepingPositionsQuizProps {
   positions: QuizPosition[];
 }
-
 
 export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQuizProps) {
   const [currentStep, setCurrentStep] = useState(0);
@@ -134,12 +160,13 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
 
   const result = useMemo(() => {
     if (!isCompleted || !allAnswered) return null;
-    const bestType = getBestType(calculateScores(answers));
+    const scores = calculateScores(answers);
+    const bestType = getBestType(scores, answers);
     return RESULTS[bestType];
   }, [answers, allAnswered, isCompleted]);
 
   const recommendedPosition = useMemo(
-    () => positions.find((position) => position.name === result?.recommendedPositionName),
+    () => positions.find((position) => position.name === result?.sleepingPosition),
     [positions, result],
   );
 
@@ -173,7 +200,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
 
   const scrollToRecommended = () => {
     if (!result) return;
-    const target = document.getElementById(toPositionId(result.recommendedPositionName));
+    const target = document.getElementById(toPositionId(result.sleepingPosition));
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
@@ -192,14 +219,12 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
   const handleShareX = () => {
     if (!result) return;
 
-    const text = `あなたたちにおすすめの寝相は「${result.recommendedPositionName}」！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight\n`;
-    // URLに結果IDを付与（メタデータがこれを読み取る）
+    const text = `あなたたちにおすすめの寝相は「${result.sleepingPosition}」！\n【${result.title}】\nカップルの深層心理をチェック 🌙\n\n#カップル寝相診断 #YumeInsight\n`;
     const url = `${window.location.origin}${window.location.pathname}?res=${result.id}`;
 
     const xUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
     window.open(xUrl, "_blank", "noopener,noreferrer");
   };
-
 
   return (
     <section className="space-y-6 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm">
@@ -292,42 +317,41 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
             <span className="text-sm font-semibold">診断結果</span>
           </div>
           <h3 className="text-2xl font-bold text-white">{result.title}</h3>
-          <p className="text-gray-200 leading-relaxed">{result.summary}</p>
+          <p className="text-gray-200 leading-relaxed">{result.description}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="rounded-2xl border border-white/10 bg-black/20 p-4 flex flex-col items-center md:items-start md:flex-row gap-4">
               <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent shrink-0">
                 <img
-                  src={recommendedPosition.imageUrl}
-                  alt={result.recommendedPositionName}
+                  src={result.imageUrl}
+                  alt={result.sleepingPosition}
                   className="w-full h-full object-cover rounded-full opacity-90 transition-opacity"
                 />
               </div>
               <div>
                 <p className="text-xs text-purple-200 mb-1">おすすめ寝相</p>
-                <p className="text-lg font-semibold text-white">{result.recommendedPositionName}</p>
+                <p className="text-lg font-semibold text-white">{result.sleepingPosition}</p>
               </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-
               <p className="text-xs text-purple-200 mb-1">見やすい夢の傾向</p>
               <p className="text-sm text-gray-200 leading-relaxed">{recommendedPosition.dreamTendency}</p>
             </div>
           </div>
 
-          <div className="space-y-3 text-sm text-gray-200 leading-relaxed">
-            <p><span className="text-white font-semibold">関係性の傾向：</span>{result.relationshipTrend}</p>
-            <p><span className="text-white font-semibold">注意点：</span>{result.cautions}</p>
-            <p><span className="text-white font-semibold">一言アドバイス：</span>{result.advice}</p>
-          </div>
-
-          <div>
-            <p className="text-white font-semibold mb-2">マッチ理由</p>
-            <ul className="space-y-2 text-sm text-gray-200 list-disc list-inside">
-              {result.reasons.map((reason) => (
-                <li key={reason}>{reason}</li>
-              ))}
-            </ul>
+          <div className="space-y-4">
+            <div>
+              <p className="text-white font-semibold mb-2">二人の傾向</p>
+              <ul className="space-y-2 text-sm text-gray-200 list-disc list-inside">
+                {result.tendencies.map((t) => (
+                  <li key={t}>{t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-2 text-sm text-gray-200 leading-relaxed">
+              <p><span className="text-white font-semibold">注意点：</span>{result.caution}</p>
+              <p><span className="text-white font-semibold">一言アドバイス：</span>{result.advice}</p>
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-3">
@@ -336,7 +360,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
               onClick={scrollToRecommended}
               className="px-4 py-2 rounded-xl bg-pink-500/80 hover:bg-pink-500 text-white"
             >
-              おすすめ寝相へ移動
+              詳細カードへ移動
             </button>
             <button
               type="button"
@@ -354,7 +378,6 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
               <Share2 className="w-4 h-4 mr-2" />
               Xでシェアする
             </button>
-
           </div>
         </div>
       )}
