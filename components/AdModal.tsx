@@ -7,27 +7,41 @@ import AdsenseAd from "./AdsenseAd";
 type Props = {
   slot: string;
   children: React.ReactNode;
+  title?: string;
+  description?: string;
+  onReveal?: () => void;
 };
 
-export default function AdModal({ slot, children }: Props) {
+export default function AdModal({ 
+  slot, 
+  children, 
+  title = "診断が完了しました！", 
+  description = "あなたの深層心理の解析結果をお届けします",
+  onReveal
+}: Props) {
   const [isRevealed, setIsRevealed] = useState(false);
+
+  const handleReveal = () => {
+    setIsRevealed(true);
+    onReveal?.();
+  };
 
   if (isRevealed) {
     return <>{children}</>;
   }
 
   return (
-    <div className="min-h-screen text-white flex items-center justify-center px-4">
+    <div className="py-12 text-white flex items-center justify-center px-4 min-h-[500px]">
       <div className="w-full max-w-xl text-center space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="space-y-4">
           <div className="inline-flex items-center justify-center p-4 rounded-full bg-purple-500/20 border border-purple-500/30 mb-2">
             <Sparkles className="w-8 h-8 text-purple-300" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-white">
-            診断が完了しました！
+            {title}
           </h2>
           <p className="text-gray-400">
-            あなたの深層心理の解析結果をお届けします
+            {description}
           </p>
         </div>
 
@@ -36,7 +50,7 @@ export default function AdModal({ slot, children }: Props) {
         </div>
 
         <button
-          onClick={() => setIsRevealed(true)}
+          onClick={handleReveal}
           className="group inline-flex flex-col items-center gap-2 px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/30 hover:scale-105 hover:shadow-purple-900/50 transition-all duration-300"
         >
           <span className="flex items-center gap-2">
