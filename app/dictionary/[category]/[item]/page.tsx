@@ -11,6 +11,7 @@ import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex'
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
 import { getRelatedArticles } from '@/lib/data/relatedArticles';
 import { siteConfig } from '@/lib/config';
+import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 type Props = {
   params: Promise<{ category: string; item: string }>;
@@ -201,18 +202,7 @@ export default async function ItemPage({ params }: Props) {
 
             {/* AI夢占いCTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">
-              <div className="p-8 rounded-2xl bg-linear-to-r from-purple-900/50 to-indigo-900/50 border border-purple-500/30 text-center">
-                <p className="text-lg text-gray-300 mb-6">
-                  この夢を見た理由や、あなた個人の状況を踏まえた意味は<br />
-                  <span className="text-white font-bold">AI夢占いで詳しく分析できます。</span>
-                </p>
-                <Link 
-                  href="/"
-                  className="inline-flex items-center px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-transform"
-                >
-                  AIで今の夢を詳しく診断する
-                </Link>
-              </div>
+              <DreamAnalysisCTA />
             </div>
           </article>
         </div>
