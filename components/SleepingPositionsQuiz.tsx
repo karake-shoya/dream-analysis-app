@@ -419,7 +419,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
                   <button
                     type="button"
                     onClick={scrollToRecommended}
-                    className="px-4 py-2 rounded-xl bg-pink-500/80 hover:bg-pink-500 text-white"
+                    className="px-4 py-2 rounded-xl bg-pink-500/80 hover:bg-pink-500 text-white font-medium transition-colors"
                   >
                     詳細カードへ移動
                   </button>
@@ -432,9 +432,18 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
                     <Share2 className="w-4 h-4 mr-2" />
                     診断結果をシェアする
                   </button>
+
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="inline-flex items-center px-4 py-2 rounded-xl border border-white/20 text-gray-400 hover:text-gray-200 transition-colors"
+                  >
+                    <RefreshCcw className="w-4 h-4 mr-2" />
+                    もう一度診断する
+                  </button>
                 </div>
 
-                <div className="pt-4 border-t border-white/10">
+                <div className="pt-6 border-t border-white/10">
                   <DreamAnalysisCTA />
                 </div>
               </div>
