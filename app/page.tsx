@@ -8,6 +8,7 @@ import VoiceInput from '@/components/VoiceInput';
 import { ERROR_MESSAGES } from '@/lib/constants';
 import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
+import HomeSeoSections from '@/components/HomeSeoSections';
 
 export const runtime = 'nodejs';
 
@@ -303,6 +304,8 @@ export default function Home() {
           )}
         </div>
         
+        <HomeSeoSections />
+
         {/* Site Description Section */}
         <div className="mt-24 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 text-center space-y-6 mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
           <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
@@ -317,6 +320,40 @@ export default function Home() {
               占いや断定ではなく、日常を見直すヒントとして<span className="hidden md:inline"><br/></span>
               夢の意味をやさしく解説しています。
             </p>
+          </div>
+        </div>
+
+        {/* カテゴリ導線セクション */}
+        <div className="mt-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-700">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-6 text-center">
+            夢占い辞典 ─ カテゴリから探す
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {[
+              { name: '動物・生き物', emoji: '🦊', href: '/dictionary/animals' },
+              { name: '自然・天候', emoji: '⛈️', href: '/dictionary/nature' },
+              { name: '場所・建物', emoji: '🏰', href: '/dictionary/places' },
+              { name: '行動・出来事', emoji: '🏃', href: '/dictionary/actions' },
+              { name: '感情', emoji: '💓', href: '/dictionary/emotions' },
+              { name: '人物・関係', emoji: '🧑‍🤝‍🧑', href: '/dictionary/person' },
+              { name: '状況・イベント', emoji: '📝', href: '/dictionary/situation' },
+            ].map((cat) => (
+              <a
+                key={cat.href}
+                href={cat.href}
+                className="group flex flex-col items-center gap-2 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all"
+              >
+                <span className="text-2xl group-hover:scale-110 transition-transform">{cat.emoji}</span>
+                <span className="text-sm text-gray-300 group-hover:text-purple-300 transition-colors font-medium">{cat.name}</span>
+              </a>
+            ))}
+            <a
+              href="/sitemap"
+              className="group flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/20 transition-all"
+            >
+              <span className="text-2xl">📖</span>
+              <span className="text-sm text-purple-300 group-hover:text-purple-200 transition-colors font-medium">全記事一覧</span>
+            </a>
           </div>
         </div>
       </div>

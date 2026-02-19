@@ -25,6 +25,9 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     return {
       title: shareTitle,
       description: shareDesc,
+      alternates: {
+        canonical: "/sleeping-positions",
+      },
       openGraph: {
         title: shareTitle,
         description: shareDesc,
@@ -44,6 +47,9 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   return {
     title: baseTitle,
     description: baseDesc,
+    alternates: {
+      canonical: "/sleeping-positions",
+    },
     keywords: ["カップル 寝相診断", "寝方診断", "相性診断", "カップル", "寝相", "夢の傾向"],
     openGraph: {
       title: baseTitle,

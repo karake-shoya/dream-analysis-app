@@ -24,7 +24,42 @@ const inter = Inter({
   variable: "--font-inter-base"
 });
 
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Yume Insight",
+    url: "https://yume-insight.com",
+    description: "AIを活用した夢占い・深層心理分析サービス",
+    applicationCategory: "LifestyleApplication",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "JPY",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Yume Insight",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI夢占い・深層心理分析",
+    provider: {
+      "@type": "Organization",
+      name: "Yume Insight",
+    },
+    areaServed: "JP",
+  },
+];
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yume-insight.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     template: '%s | Yume Insight',
     default: 'Yume Insight｜AI夢占い・深層心理分析',
@@ -82,6 +117,10 @@ export default function RootLayout({
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-TQDLXX30ZH"
           strategy="afterInteractive"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <Script id="google-analytics" strategy="afterInteractive">
           {`

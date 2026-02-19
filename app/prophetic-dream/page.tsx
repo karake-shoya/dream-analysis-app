@@ -9,6 +9,7 @@ import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 export const metadata: Metadata = {
   title: '正夢とは？｜夢が現実になる心理学的メカニズム',
   description: '正夢とは何か。心理学・精神分析の観点から、夢が現実と一致する現象のメカニズムを解説。脳の予測機能や選択的記憶など、科学的な視点で正夢を理解します。',
+  alternates: { canonical: '/prophetic-dream' },
   openGraph: {
     title: '正夢とは？｜夢が現実になる心理学的メカニズム | Yume Insight',
     description: '正夢とは何か。心理学・精神分析の観点から、夢が現実と一致する現象のメカニズムを解説。脳の予測機能や選択的記憶など、科学的な視点で正夢を理解します。',

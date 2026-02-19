@@ -4,6 +4,7 @@ import StaticPageLayout, { Section } from "@/components/StaticPageLayout";
 export const metadata: Metadata = {
   title: "プライバシーポリシー｜Yume Insight",
   description: "Yume Insightのプライバシーポリシー。個人情報の取り扱い、Cookie、広告配信について説明しています。",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPolicy() {
