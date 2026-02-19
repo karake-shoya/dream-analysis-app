@@ -255,7 +255,15 @@ export default function SleepingPositionsPage() {
               </div>
             </section>
 
-            <DreamAnalysisCTA />
+            <DreamAnalysisCTA 
+              description={
+                <>
+                  カップルの寝相には、日々の感情や潜在的な想いが現れています。
+                  <span className="hidden md:inline"><br /></span>
+                  昨夜見た夢も、実はあなたへの大切なメッセージかもしれません。
+                </>
+              }
+            />
 
             <div className="mt-12 p-6 bg-gray-900/50 rounded-xl border border-gray-800 text-sm text-gray-500 leading-relaxed">
               <p><span className="font-bold flex mb-2 text-gray-400 items-center"><AlertCircle className="w-4 h-4 mr-2" /> ご利用上の注意</span>本ページはエンターテインメントコンテンツです。寝相診断は科学的に断定されたものではなく、医学的なアドバイスでもありません。</p>
