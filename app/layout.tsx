@@ -115,10 +115,6 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-TQDLXX30ZH"
           strategy="afterInteractive"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -132,6 +128,10 @@ export default function RootLayout({
       <body
         className={`${fredoka.variable} ${zenGothic.variable} ${inter.variable} antialiased font-sans bg-[#0B0B10] min-h-screen flex flex-col`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <Header />
         <div className="flex-1">
           {children}
