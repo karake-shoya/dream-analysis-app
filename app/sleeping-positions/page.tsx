@@ -221,7 +221,7 @@ export default function SleepingPositionsPage() {
               </div>
             </section>
 
-            <DreamAnalysisCTA />
+
 
             <section className="space-y-8 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 rounded-3xl border border-white/5">
               <SectionHeader icon={Lightbulb}>睡眠姿勢と夢の不思議な関係</SectionHeader>
@@ -248,6 +248,8 @@ export default function SleepingPositionsPage() {
                 ))}
               </div>
             </section>
+
+            <DreamAnalysisCTA />
 
             <div className="mt-12 p-6 bg-gray-900/50 rounded-xl border border-gray-800 text-sm text-gray-500 leading-relaxed">
               <p><span className="font-bold flex mb-2 text-gray-400 items-center"><AlertCircle className="w-4 h-4 mr-2" /> ご利用上の注意</span>本ページはエンターテインメントコンテンツです。寝相診断は科学的に断定されたものではなく、医学的なアドバイスでもありません。</p>

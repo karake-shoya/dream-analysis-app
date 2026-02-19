@@ -29,6 +29,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
       description: frontmatter.description,
       type: 'article',
+      images: [`${siteConfig.baseUrl}/ogp.png`],
+    },
+    twitter: {
+      card: 'summary_large_image',
     },
   };
 }

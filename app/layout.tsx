@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     default: 'Yume Insight｜AI夢占い・深層心理分析',
   },
   description: "夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。",
-  keywords: ["夢占い", "夢占い", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
+  keywords: ["夢占い", "AI夢占い","夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
   icons: {
     icon: '/favicon.ico',
     apple: '/icon.png',
@@ -40,13 +40,19 @@ export const metadata: Metadata = {
     description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
     url: siteConfig.baseUrl,
     siteName: siteConfig.siteName,
+    images: [
+      {
+        url: `${siteConfig.baseUrl}/ogp.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Yume Insight｜AI夢占い・深層心理分析',
+      },
+    ],
     locale: 'ja_JP',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Yume Insight｜AI夢占い・深層心理分析',
-    description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。',
   },
   robots: {
     index: true,
