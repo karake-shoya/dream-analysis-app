@@ -10,6 +10,7 @@ import { siteConfig } from "@/lib/config";
 export const metadata: Metadata = {
   title: "About｜Yume Insightについて",
   description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About｜Yume Insightについて",
     description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",

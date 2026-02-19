@@ -4,6 +4,7 @@ import StaticPageLayout, { Section } from "@/components/StaticPageLayout";
 export const metadata: Metadata = {
   title: "利用規約｜Yume Insight",
   description: "Yume Insightの利用規約。サービス利用時の注意事項、免責事項について説明しています。",
+  alternates: { canonical: "/terms" },
 };
 
 export default function Terms() {
