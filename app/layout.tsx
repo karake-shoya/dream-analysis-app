@@ -57,9 +57,6 @@ const structuredData = [
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://yume-insight.com"),
-  alternates: {
-    canonical: "/",
-  },
   title: {
     template: '%s | Yume Insight',
     default: 'Yume Insight｜AI夢占い・深層心理分析',
