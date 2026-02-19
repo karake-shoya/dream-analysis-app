@@ -83,7 +83,7 @@ export default async function ItemPage({ params }: Props) {
           }}
         />
       
-        <div className="relative z-10 container mx-auto px-4 py-12 max-w-3xl">
+        <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
           <Breadcrumb
             items={[
               { label: 'ホーム', href: '/' },
