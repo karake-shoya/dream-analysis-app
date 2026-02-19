@@ -8,6 +8,7 @@ import VoiceInput from '@/components/VoiceInput';
 import { ERROR_MESSAGES } from '@/lib/constants';
 import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
+import HomeSeoSections from '@/components/HomeSeoSections';
 
 export const runtime = 'nodejs';
 
@@ -303,6 +304,8 @@ export default function Home() {
           )}
         </div>
         
+        <HomeSeoSections />
+
         {/* Site Description Section */}
         <div className="mt-24 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 text-center space-y-6 mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
           <h3 className="text-xl md:text-2xl font-bold text-white mb-4">

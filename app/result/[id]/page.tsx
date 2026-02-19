@@ -99,6 +99,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   return {
     title: result.title ? `${result.title} | Yume Insight` : "夢占い結果 | Yume Insight",
     description: summary || "AIによる深層心理の解析結果です。",
+    alternates: {
+      canonical: `/result/${id}`,
+    },
     openGraph: {
       title: result.title ? `${result.title} | Yume Insight` : "夢占い結果 | Yume Insight",
       description: summary || "AIによる深層心理の解析結果です。",

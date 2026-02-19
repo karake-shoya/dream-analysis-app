@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://dream-oracle-app.vercel.app/sitemap.xml', // TODO: 実際のドメインに変更
+    sitemap: 'https://yume-insight.com/sitemap.xml'
   };
 }

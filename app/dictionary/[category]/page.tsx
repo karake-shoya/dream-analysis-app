@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${categoryData.name}の夢占い一覧`,
     description: `${categoryData.name}に関連する夢の意味を詳しく解説。${items.map(i => i.title).slice(0, 5).join('、')}など、よく見る夢のシンボルを網羅。`,
+    alternates: {
+      canonical: `/dictionary/${category}`,
+    },
   };
 }
 
