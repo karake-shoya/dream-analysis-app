@@ -4,10 +4,20 @@ import { User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
+import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "About｜Yume Insightについて",
   description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+  openGraph: {
+    title: "About｜Yume Insightについて",
+    description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+    type: "website",
+    images: [`${siteConfig.baseUrl}/ogp.png`],
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
 };
 
 

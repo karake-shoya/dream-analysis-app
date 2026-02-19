@@ -108,6 +108,14 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   return {
     title: result.title ? `${result.title} | Yume Insight` : "夢占い結果 | Yume Insight",
     description: summary || "AIによる深層心理の解析結果です。",
+    openGraph: {
+      title: result.title ? `${result.title} | Yume Insight` : "夢占い結果 | Yume Insight",
+      description: summary || "AIによる深層心理の解析結果です。",
+      images: [`${siteConfig.baseUrl}/ogp.png`],
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
   };
 }
 
