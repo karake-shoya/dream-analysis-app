@@ -20,17 +20,8 @@ import { ShareButtons } from "@/components/ShareButtons";
 import ResultSectionCard from "@/components/ResultSectionCard";
 import AdModal from "@/components/AdModal";
 import AdsenseAd from "@/components/AdsenseAd";
-import type { AnalysisResult } from "@/lib/types";
+import type { AnalysisResult, DreamRecord } from "@/lib/types";
 import { siteConfig } from "@/lib/config";
-
-type DreamRecord = {
-  id: string;
-  user_id: string | null;
-  content: string;
-  diagnosis_result: AnalysisResult;
-  created_at: string;
-  share_token: string;
-};
 
 interface PageProps {
   params: Promise<{ id: string }>;
