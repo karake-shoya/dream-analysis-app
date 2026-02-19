@@ -1,4 +1,4 @@
-import { ArrowLeft, Sparkles, List } from 'lucide-react';
+import { Sparkles, List, BookOpen } from 'lucide-react';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
 import RelatedArticles from '@/components/RelatedArticles';
+import Breadcrumb from '@/components/Breadcrumb';
 import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
@@ -83,12 +84,14 @@ export default async function ItemPage({ params }: Props) {
         />
       
         <div className="relative z-10 container mx-auto px-4 py-12 max-w-3xl">
-          <div className="mb-8">
-            <Link href={`/dictionary/${categoryData.slug}`} className="inline-flex items-center text-purple-300 hover:text-purple-200 transition-colors">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              {categoryData.name}の一覧に戻る
-            </Link>
-          </div>
+          <Breadcrumb
+            items={[
+              { label: 'ホーム', href: '/' },
+              { label: '夢占い辞典', href: '/dictionary' },
+              { label: categoryData.name, href: `/dictionary/${categoryData.slug}` },
+              { label: `${frontmatter.keyword}の夢` },
+            ]}
+          />
 
           <article className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             <header className="mb-12">
@@ -206,6 +209,17 @@ export default async function ItemPage({ params }: Props) {
             </div>
 
             <RelatedArticles articles={relatedArticles} />
+
+            {/* 全記事一覧への導線 */}
+            <div className="mt-10 text-center">
+              <Link
+                href="/sitemap"
+                className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-200 transition-colors text-sm border border-purple-500/20 rounded-full px-5 py-2.5 hover:bg-purple-500/10"
+              >
+                <BookOpen className="w-4 h-4" />
+                全記事一覧を見る
+              </Link>
+            </div>
 
             {/* AI夢占いCTA - 最重要導線 */}
             <div className="mt-16 pt-12 border-t border-white/10">

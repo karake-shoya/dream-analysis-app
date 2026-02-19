@@ -1,9 +1,8 @@
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug, DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
+import Breadcrumb from '@/components/Breadcrumb';
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -55,12 +54,13 @@ export default async function CategoryPage({ params }: Props) {
       />
       
       <div className="relative z-10 container mx-auto px-4 py-12 max-w-5xl">
-        <div className="mb-8">
-          <Link href="/dictionary" className="inline-flex items-center text-purple-300 hover:text-purple-200 transition-colors">
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            辞典のトップに戻る
-          </Link>
-        </div>
+          <Breadcrumb
+            items={[
+              { label: 'ホーム', href: '/' },
+              { label: '夢占い辞典', href: '/dictionary' },
+              { label: categoryData.name },
+            ]}
+          />
 
         <div className="text-center mb-16">
           <div className="inline-flex items-center justify-center p-3 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-4 text-purple-300">
@@ -79,7 +79,7 @@ export default async function CategoryPage({ params }: Props) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {items.map((item) => (
-            <Link 
+            <a 
               href={`/dictionary/${categoryData.slug}/${item.slug}`} 
               key={item.slug}
               className="group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300"
@@ -95,7 +95,7 @@ export default async function CategoryPage({ params }: Props) {
                   続きを読む →
                 </span>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </div>
