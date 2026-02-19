@@ -1,13 +1,12 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
 import VoiceInput from '@/components/VoiceInput';
 import { ERROR_MESSAGES } from '@/lib/constants';
-import { createClient } from '@/lib/supabase/client';
-import { User } from '@supabase/supabase-js';
+import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
 
 export const runtime = 'nodejs';
@@ -19,6 +18,7 @@ interface Question {
 
 export default function Home() {
   const router = useRouter();
+  const { user } = useAuth();
   const [dream, setDream] = useState('');
   const baseTextRef = useRef('');
   
@@ -31,18 +31,6 @@ export default function Home() {
   const [resultId, setResultId] = useState<string | null>(null);
   const [resultShareToken, setResultShareToken] = useState<string | null>(null);
   const questionsSectionRef = useRef<HTMLDivElement>(null);
-  
-  const [user, setUser] = useState<User | null>(null);
-  const supabase = createClient();
-  
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-      }
-    );
-    return () => subscription.unsubscribe();
-  }, [supabase]);
   
   const displayName = getDisplayName(user);
 

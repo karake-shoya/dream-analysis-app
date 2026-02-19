@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { Brain, Eye, Heart } from 'lucide-react';
-import GradientBackground from '@/components/GradientBackground';
+import ContentPageLayout from '@/components/ContentPageLayout';
+import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
@@ -22,33 +22,11 @@ export const metadata: Metadata = {
 
 export default function PropheticDreamPage() {
   return (
-    <div className="relative">
-      <GradientBackground />
-
-      <div className="relative z-10">
-        <main className="container mx-auto px-6 py-16 max-w-5xl">
-          <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <section className="text-center space-y-8 pt-8 relative">
-              {/* 背景アイコン */}
-              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
-                  <img 
-                    src="/icon.png" 
-                    alt="" 
-                    className="w-40 h-40 opacity-10"
-                  />
-                </div>
-              </div>
-              <div className="relative space-y-4">
-                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  正夢とは？
-                </h1>
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                  夢が現実になる現象の心理学的メカニズム
-                </p>
-              </div>
-            </section>
+    <ContentPageLayout>
+            <PageHero
+              title="正夢とは？"
+              subtitle="夢が現実になる現象の心理学的メカニズム"
+            />
 
           <article>
             <div className="prose prose-invert prose-purple max-w-none space-y-12">
@@ -161,9 +139,6 @@ export default function PropheticDreamPage() {
           </article>
 
             <DreamAnalysisCTA />
-          </div>
-        </main>
-      </div>
-    </div>
+    </ContentPageLayout>
   );
 }

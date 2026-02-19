@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import type { DreamRecord } from "@/lib/types";
 import DreamCalendar from "@/components/DreamCalendar";
+import GradientBackground from "@/components/GradientBackground";
 
 export const runtime = "edge";
 
@@ -74,8 +75,9 @@ export default async function Dashboard({ searchParams }: Props) {
   };
 
   return (
-    <div className="min-h-screen text-white p-4 pt-24 bg-[#0f172a]">
-        <div className="max-w-5xl mx-auto">
+    <div className="relative min-h-screen text-white p-4 pt-24">
+        <GradientBackground />
+        <div className="relative z-10 max-w-5xl mx-auto">
             <div className="flex items-center justify-between mb-8">
                 <h1 className="text-2xl md:text-3xl font-bold flex items-center gap-3">
                     <Moon className="w-8 h-8 text-purple-300" />

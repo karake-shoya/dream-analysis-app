@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { User, Heart, Sparkles } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
-import GradientBackground from "@/components/GradientBackground";
+import ContentPageLayout from "@/components/ContentPageLayout";
+import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { siteConfig } from "@/lib/config";
 
@@ -23,35 +24,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="relative">
-      <GradientBackground />
-
-      <div className="relative z-10">
-        <main className="container mx-auto px-6 py-16 max-w-5xl">
-          <div className="space-y-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            
-            {/* Hero Section */}
-            <div className="text-center space-y-8 pt-8 relative">
-              {/* 背景アイコン */}
-              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
-                  <img 
-                    src="/icon.png" 
-                    alt="" 
-                    className="w-40 h-40 opacity-10"
-                  />
-                </div>
-              </div>
-              <div className="relative space-y-4">
-                <h1 className="text-3xl md:text-5xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.2]">
-                  Yume Insightについて
-                </h1>
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                  このページでは、Yume Insight の考え方や運営方針についてご紹介します。
-                </p>
-              </div>
-            </div>
+    <ContentPageLayout spacing="lg">
+            <PageHero
+              title="Yume Insightについて"
+              subtitle="このページでは、Yume Insight の考え方や運営方針についてご紹介します。"
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
               {/* Main Content */}
@@ -170,9 +147,6 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </main>
-      </div>
-    </div>
+    </ContentPageLayout>
   );
 }
