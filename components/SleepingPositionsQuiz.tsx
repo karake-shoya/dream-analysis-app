@@ -458,7 +458,15 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
                 </div>
 
                 <div className="pt-6 border-t border-white/10">
-                  <DreamAnalysisCTA />
+                  <DreamAnalysisCTA 
+                    description={
+                      <>
+                        カップルの寝相には、日々の感情や潜在的な想いが現れています。
+                        <span className="hidden md:inline"><br /></span>
+                        昨夜見た夢も、実はあなたへの大切なメッセージかもしれません。
+                      </>
+                    }
+                  />
                 </div>
               </div>
             </AdModal>
