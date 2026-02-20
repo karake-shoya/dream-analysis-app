@@ -345,12 +345,15 @@ export default function Home() {
                 <span className="text-sm text-gray-300 group-hover:text-purple-300 transition-colors font-medium">{cat.name}</span>
               </a>
             ))}
+          </div>
+          
+          <div className="mt-8 text-center">
             <a
               href="/sitemap"
-              className="group flex flex-col items-center justify-center gap-2 p-4 rounded-xl bg-purple-500/10 border border-purple-500/20 hover:border-purple-500/40 hover:bg-purple-500/20 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-200 hover:bg-purple-500/20 hover:border-purple-500/40 transition-all font-medium group"
             >
-              <span className="text-2xl">📖</span>
-              <span className="text-sm text-purple-300 group-hover:text-purple-200 transition-colors font-medium">全記事一覧</span>
+              <span>📖 すべてのキーワードを一覧で見る</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
