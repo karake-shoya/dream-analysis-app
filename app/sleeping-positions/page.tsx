@@ -1,3 +1,4 @@
+import React from "react";
 import { Metadata } from "next";
 import { Heart, Users, Sparkles, Shield, TrendingUp, AlertCircle, Lightbulb, MessageCircleQuestion } from "lucide-react";
 import GradientBackground from "@/components/GradientBackground";
@@ -185,44 +186,55 @@ export default function SleepingPositionsPage() {
             <section className="space-y-8">
               <SectionHeader icon={Users}>8つの寝相が教える相性と夢模様</SectionHeader>
               <div className="grid grid-cols-1 gap-6">
-                {SLEEPING_POSITIONS.map((position) => (
-                  <article
-                    key={position.name}
-                    id={toPositionId(position.name)}
-                    className="group relative scroll-mt-28 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm hover:bg-white/[0.07] transition-all duration-300"
-                  >
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="flex items-center justify-center md:justify-start">
-                        <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-2xl border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent">
-                          <img
-                            src={position.imageUrl}
-                            alt={position.name}
-                            className="w-full h-full object-cover rounded-full opacity-90 transition-opacity group-hover:opacity-100"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex-1 space-y-4">
-                        <div>
-                          <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{position.name}</h2>
-                          <p className="text-gray-400 leading-relaxed">{position.description}</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
-                          <div className="space-y-2">
-                            <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-pink-500/10 text-pink-300 border border-pink-500/20">
-                              <Heart className="w-3 h-3 mr-1" /> 相性と心理
-                            </span>
-                            <p className="text-sm text-gray-300 leading-relaxed">{position.relationship} <br /><span className="text-gray-400 text-xs mt-1 block">({position.psychology})</span></p>
-                          </div>
-                          <div className="space-y-2">
-                            <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                              <Sparkles className="w-3 h-3 mr-1" /> 見やすい夢の傾向
-                            </span>
-                            <p className="text-sm text-gray-200 leading-relaxed">{position.dreamTendency}</p>
+                {SLEEPING_POSITIONS.map((position, index) => (
+                  <React.Fragment key={position.name}>
+                    <article
+                      id={toPositionId(position.name)}
+                      className="group relative scroll-mt-28 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur-sm hover:bg-white/[0.07] transition-all duration-300"
+                    >
+                      <div className="flex flex-col md:flex-row gap-6">
+                        <div className="flex items-center justify-center md:justify-start">
+                          <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-2xl border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent">
+                            <img
+                              src={position.imageUrl}
+                              alt={position.name}
+                              className="w-full h-full object-cover rounded-full opacity-90 transition-opacity group-hover:opacity-100"
+                            />
                           </div>
                         </div>
+                        <div className="flex-1 space-y-4">
+                          <div>
+                            <h2 className="text-xl md:text-2xl font-bold text-white mb-2">{position.name}</h2>
+                            <p className="text-gray-400 leading-relaxed">{position.description}</p>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                            <div className="space-y-2">
+                              <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-pink-500/10 text-pink-300 border border-pink-500/20">
+                                <Heart className="w-3 h-3 mr-1" /> 相性と心理
+                              </span>
+                              <p className="text-sm text-gray-300 leading-relaxed">{position.relationship} <br /><span className="text-gray-400 text-xs mt-1 block">({position.psychology})</span></p>
+                            </div>
+                            <div className="space-y-2">
+                              <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                <Sparkles className="w-3 h-3 mr-1" /> 見やすい夢の傾向
+                              </span>
+                              <p className="text-sm text-gray-200 leading-relaxed">{position.dreamTendency}</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </article>
+                    </article>
+
+                    {/* 4つの項目の後に中間CTAを挿入 */}
+                    {index === 3 && (
+                      <div className="py-4">
+                        <DreamAnalysisCTA 
+                          title="寝相だけでなく、昨夜見た夢も診断しませんか？"
+                          description="寝相が今の関係性を映すなら、夢はあなたの心の奥底にある「本当の願い」を教えてくれるかもしれません。"
+                        />
+                      </div>
+                    )}
+                  </React.Fragment>
                 ))}
               </div>
             </section>
