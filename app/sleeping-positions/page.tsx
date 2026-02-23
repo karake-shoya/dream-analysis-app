@@ -15,7 +15,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const baseUrl = siteConfig.baseUrl || "https://yume-insight.com";
   
   const baseTitle = "カップル・夫婦の寝方でわかる深層心理　8つの寝相と相性診断 | Yume Insight";
-  const baseDesc = "カップルや夫婦の寝る体勢から、ふたりの深層心理や現在の関係性を解説します。背中合わせ、密着寝など8つの寝方パターンからわかる相性診断（5問）付き。昨夜の寝相が教えるふたりの本音とは？";
+  const baseDesc = "カップルや夫婦の寝る体勢から、ふたりの深層心理や現在の関係性を解説します。背中合わせ、密着寝など15の寝方パターンからわかる相性診断（10問）付き。昨夜の寝相が教えるふたりの本音とは？";
   
   if (res && RESULTS[res as ResultTypeId]) {
     const result = RESULTS[res as ResultTypeId];
@@ -227,7 +227,7 @@ export default function SleepingPositionsPage() {
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
                 普段の寝方には、言葉にできないふたりの関係性や本音が隠されています。<span className="hidden md:inline"><br /></span>
-                5つの質問でいまの寝相タイプをチェックし、15のパターンから深層心理を探ってみましょう。
+                10の質問でいまの寝相タイプをチェックし、15のパターンから深層心理を探ってみましょう。
               </p>
             </section>
 
