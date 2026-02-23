@@ -19,50 +19,100 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     id: "q1",
     question: "Q1. 眠っているときの、理想的な距離感は？",
     options: [
-      { value: "a", label: "ずっとくっついていたい", weights: { affection: 2, passion: 1 } },
-      { value: "b", label: "どこか一部が触れていたい", weights: { stable: 2, support: 1 } },
-      { value: "c", label: "指先や手足だけでOK", weights: { gentleBond: 2 } },
-      { value: "d", label: "それぞれの空間を確保したい", weights: { independent: 2, selfTime: 1 } },
+      { value: "a", label: "ずっとくっついていたい", weights: { affection: 2, passion: 2, armPillow: 2 } },
+      { value: "b", label: "どこか一部が触れていたい", weights: { stable: 2, support: 2, footTouch: 2 } },
+      { value: "c", label: "指先や頭など、限定的なつながりでOK", weights: { gentleBond: 2, headCloseTogether: 2 } },
+      { value: "d", label: "それぞれの空間をしっかり確保したい", weights: { independent: 2, selfTime: 2, backToBackParallel: 2 } },
     ],
   },
   {
     id: "q2",
     question: "Q2. 普段の生活でのふたりの雰囲気（温度感）は？",
     options: [
-      { value: "a", label: "お互いへの想いが深く、とても親密", weights: { passion: 2, affection: 1 } },
-      { value: "b", label: "穏やかで安定している", weights: { stable: 2, gentleBond: 1 } },
-      { value: "c", label: "少し距離やマンネリを感じる", weights: { independent: 1, selfTime: 1 } },
-      { value: "d", label: "今は自分のペースや時間を優先したい", weights: { independent: 2 } },
+      { value: "a", label: "熱量が高く、とても親密（ロマンチック）", weights: { passion: 2, armPillow: 2 } },
+      { value: "b", label: "穏やかで安定している、深い信頼感", weights: { stable: 2, support: 2, footTouch: 2 } },
+      { value: "c", label: "思いやりに溢れ、精神的なシンクロ率が高い", weights: { communication: 2, headCloseTogether: 2 } },
+      { value: "d", label: "自由で縛られない（たまにプレッシャーもある）", weights: { selfTime: 2, diagonalCrossing: 2, faceDown: 1 } },
     ],
   },
   {
     id: "q3",
-    question: "Q3. 心理的な不安があるとき、お互いにどう接したい？",
+    question: "Q3. パートナーとの関係性における「役割」は？",
     options: [
-      { value: "a", label: "すぐに話し合って解決したい", weights: { affection: 2 } },
-      { value: "b", label: "言葉よりも、ただそばにいてほしい", weights: { support: 2, stable: 1 } },
-      { value: "c", label: "まずは自分一人で整理したい", weights: { independent: 2 } },
-      { value: "d", label: "あまり踏み込まずにいてほしい", weights: { selfTime: 2 } },
+      { value: "a", label: "相手を守りたい・包み込みたい", weights: { support: 2, armPillow: 2 } },
+      { value: "b", label: "甘えたい・受け止めてほしい", weights: { partialEmbrace: 2, support: 1 } },
+      { value: "c", label: "対等でフラットな関係でいたい", weights: { communication: 2, stable: 2, backToBackParallel: 1 } },
+      { value: "d", label: "お互いに自立して干渉しないのが一番", weights: { independent: 2, selfTime: 2 } },
     ],
   },
   {
     id: "q4",
-    question: "Q4. 眠るときの、スキンシップの好みは？",
+    question: "Q4. ストレスや疲れを感じたとき、どうする？",
     options: [
-      { value: "a", label: "しっかり抱きしめたい / 抱かれたい", weights: { affection: 2 } },
-      { value: "b", label: "寄りかかったり、支えられたい", weights: { support: 2 } },
-      { value: "c", label: "安心できる程度の軽い接触で十分", weights: { gentleBond: 2 } },
-      { value: "d", label: "眠るときは基本的に不要", weights: { selfTime: 2 } },
+      { value: "a", label: "スキンシップで癒されたい", weights: { affection: 2, passion: 2, armPillow: 1 } },
+      { value: "b", label: "言葉で話を聞いてほしい", weights: { communication: 2, partialEmbrace: 1 } },
+      { value: "c", label: "自分の殻にこもって一人で休みたい", weights: { faceDown: 2, independent: 2 } },
+      { value: "d", label: "好きなことをしてマイペースに発散する", weights: { selfTime: 2, diagonalCrossing: 2 } },
     ],
   },
   {
     id: "q5",
-    question: "Q5. 寝室に入ってから眠りにつくまでのコミュニケーションは？",
+    question: "Q5. パートナーの睡眠やスペースへの配慮は？",
     options: [
-      { value: "a", label: "今日あったことを毎日たくさん話す", weights: { communication: 2 } },
-      { value: "b", label: "「おやすみ」など、短い挨拶で満足", weights: { stable: 1 } },
-      { value: "c", label: "その時の気分や疲れ具合による", weights: { gentleBond: 1 } },
-      { value: "d", label: "静かに自分のペースで過ごしたい", weights: { independent: 1 } },
+      { value: "a", label: "自分の睡眠が浅くなってもくっついていたい", weights: { passion: 2, affection: 2, armPillow: 2 } },
+      { value: "b", label: "相手の熟睡を邪魔しないよう、一番気を使う", weights: { headCloseTogether: 2, backToBackParallel: 2 } },
+      { value: "c", label: "適度に気を使うが、自分の快適さも大事", weights: { stable: 2, footTouch: 2 } },
+      { value: "d", label: "あまり気にせず、自分が楽な寝方を優先する", weights: { diagonalCrossing: 2, selfTime: 2, faceDown: 1 } },
+    ],
+  },
+  {
+    id: "q6",
+    question: "Q6. 最近のふたりのコミュニケーション量は？",
+    options: [
+      { value: "a", label: "言葉やスキンシップが非常に多い", weights: { communication: 2, passion: 2, armPillow: 1 } },
+      { value: "b", label: "言葉は少ないが、無意識の安心感・ボディタッチがある", weights: { stable: 2, footTouch: 2, gentleBond: 2 } },
+      { value: "c", label: "どちらか一方が話しかけることが多い（非対称）", weights: { partialEmbrace: 2 } },
+      { value: "d", label: "会話も接触も少なめで、それぞれの時間を過ごしている", weights: { independent: 2, backToBackParallel: 2, faceDown: 1 } },
+    ],
+  },
+  {
+    id: "q7",
+    question: "Q7. 睡眠の質（よく眠れるか）についてどう感じている？",
+    options: [
+      { value: "a", label: "毎日ぐっすり、幸せな気分で眠れている", weights: { support: 2, stable: 2, armPillow: 1 } },
+      { value: "b", label: "寝相や相手の動きで時々目が覚める", weights: { affection: 1, passion: 1, partialEmbrace: 1 } },
+      { value: "c", label: "睡眠の質を最優先にして環境を整えている", weights: { backToBackParallel: 2, independent: 2 } },
+      { value: "d", label: "なんとなく息苦しさやプレッシャーを感じることがある", weights: { faceDown: 2 } },
+    ],
+  },
+  {
+    id: "q8",
+    question: "Q8. ふたりの関係を「形」に例えるなら？",
+    options: [
+      { value: "a", label: "隙間なくピッタリ合わさるジグソーパズル", weights: { affection: 2, passion: 2 } },
+      { value: "b", label: "根元で繋がっている二本の大きな木", weights: { stable: 2, footTouch: 2, headCloseTogether: 2 } },
+      { value: "c", label: "風通しが良く、自由に交差する風", weights: { diagonalCrossing: 2, selfTime: 2 } },
+      { value: "d", label: "並行して走る二つのレール", weights: { backToBackParallel: 2, independent: 2 } },
+    ],
+  },
+  {
+    id: "q9",
+    question: "Q9. あなたの「自立心（一人で生きていける度）」はどのくらい？",
+    options: [
+      { value: "a", label: "相手がいないと生きていけない（依存気味）", weights: { partialEmbrace: 2, passion: 1 } },
+      { value: "b", label: "一人でも大丈夫だが、守られたい/守りたい", weights: { armPillow: 2, support: 2 } },
+      { value: "c", label: "精神的には自立しているが、存在は感じていたい", weights: { gentleBond: 2, footTouch: 2, headCloseTogether: 1 } },
+      { value: "d", label: "完全に自立しており、一人で楽しめる力がある", weights: { backToBackParallel: 2, independent: 2, diagonalCrossing: 1 } },
+    ],
+  },
+  {
+    id: "q10",
+    question: "Q10. 今、パートナーに一番伝えたいことは？",
+    options: [
+      { value: "a", label: "もっと私を見て、もっと近くにいてほしい", weights: { partialEmbrace: 2, passion: 1 } },
+      { value: "b", label: "いつも味方でいてくれて、安心をありがとう", weights: { footTouch: 2, support: 2, armPillow: 2 } },
+      { value: "c", label: "考えや価値観を理解してくれてありがとう", weights: { headCloseTogether: 2, communication: 2 } },
+      { value: "d", label: "過度な干渉をせず、自由にさせてくれて助かる", weights: { diagonalCrossing: 2, backToBackParallel: 2, faceDown: 1 } },
     ],
   },
 ];
@@ -76,6 +126,13 @@ const INITIAL_SCORE: ScoreMap = {
   independent: 0,
   support: 0,
   selfTime: 0,
+  partialEmbrace: 0,
+  footTouch: 0,
+  backToBackParallel: 0,
+  faceDown: 0,
+  headCloseTogether: 0,
+  armPillow: 0,
+  diagonalCrossing: 0,
 };
 
 function calculateScores(answers: string[]): ScoreMap {
@@ -98,41 +155,35 @@ function getBestType(scores: ScoreMap, answers: string[]): ResultTypeId {
 
   if (tied.length === 1) return tied[0];
 
-  // 同点処理 1: Q4の回答で優先決定
-  const q4Index = 3;
-  const q4Answer = answers[q4Index];
-  if (q4Answer) {
-    const q4Option = QUIZ_QUESTIONS[q4Index].options.find(o => o.value === q4Answer);
-    if (q4Option) {
-      const q4Tied = tied.filter(id => (q4Option.weights[id] ?? 0) > 0);
-      if (q4Tied.length === 1) return q4Tied[0];
-      if (q4Tied.length > 1) {
-        // さらに同点なら Q3 を見る
-        const q3Index = 2;
-        const q3Answer = answers[q3Index];
-        const q3Option = QUIZ_QUESTIONS[q3Index].options.find(o => o.value === q3Answer);
-        if (q3Option) {
-          const q3Tied = q4Tied.filter(id => (q3Option.weights[id] ?? 0) > 0);
-          if (q3Tied.length === 1) return q3Tied[0];
-        }
-      }
+  // 同点処理：10問目に強く影響されたものを優先する
+  const q10Index = 9;
+  const q10Answer = answers[q10Index];
+  if (q10Answer) {
+    const q10Option = QUIZ_QUESTIONS[q10Index].options.find(o => o.value === q10Answer);
+    if (q10Option) {
+      const q10Tied = tied.filter(id => (q10Option.weights[id] ?? 0) > 0);
+      if (q10Tied.length === 1) return q10Tied[0];
+      if (q10Tied.length > 1) tied.length = 0; tied.push(...q10Tied); // 絞り込めたら絞り込む
     }
   }
 
-  // 同点処理 2: Q3の回答で優先決定 (Q4で絞れなかった場合)
-  const q3Index = 2;
-  const q3Answer = answers[q3Index];
-  if (q3Answer) {
-    const q3Option = QUIZ_QUESTIONS[q3Index].options.find(o => o.value === q3Answer);
-    if (q3Option) {
-      const q3Tied = tied.filter(id => (q3Option.weights[id] ?? 0) > 0);
-      if (q3Tied.length === 1) return q3Tied[0];
+  // 同点処理：Q9での自立心・依存心
+  const q9Index = 8;
+  const q9Answer = answers[q9Index];
+  if (q9Answer) {
+    const q9Option = QUIZ_QUESTIONS[q9Index].options.find(o => o.value === q9Answer);
+    if (q9Option) {
+      const q9Tied = tied.filter(id => (q9Option.weights[id] ?? 0) > 0);
+      if (q9Tied.length === 1) return q9Tied[0];
+      if (q9Tied.length > 1) tied.length = 0; tied.push(...q9Tied);
     }
   }
 
-  // 同点処理 3: それでも同点なら stable を優先
+  // 同点処理：それでも同点なら stable や footTouch など無難なものを優先
+  if (tied.includes("footTouch")) return "footTouch";
   if (tied.includes("stable")) return "stable";
 
+  // それでも決まらなければ最初のキー
   return tied[0];
 }
 
@@ -292,7 +343,7 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
       <div className="space-y-3">
         <h2 className="text-2xl md:text-3xl font-bold text-white">まずは相性タイプをチェック</h2>
         <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-          5つの質問に答えると、今のふたりに合いやすい寝方と、関係性・夢の傾向を確認できます。<span className="hidden md:inline"><br /></span>
+          10の質問に答えると、今のふたりに合いやすい寝方と、関係性・夢の傾向を確認できます。<span className="hidden md:inline"><br /></span>
           診断はローカルで完結し、入力内容は保存されません。
         </p>
       </div>
