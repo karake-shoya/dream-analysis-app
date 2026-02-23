@@ -1,2 +1,9 @@
 [build]
   command = "npm run build"
+
+# NetlifyのデプロイプレビューURLからカスタムドメインにリダイレクト
+[[redirects]]
+  from = "https://:deploy_id--dream-analysis-app.netlify.app/*"
+  to = "https://yume-insight.com/:splat"
+  status = 301
+  force = true
