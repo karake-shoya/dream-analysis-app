@@ -14,7 +14,7 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const { res } = await searchParams;
   const baseUrl = siteConfig.baseUrl || "https://yume-insight.com";
   
-  const baseTitle = "カップル・夫婦の寝方でわかる深層心理　8つの寝相と相性診断 | Yume Insight";
+  const baseTitle = "カップルの寝方・寝る体勢でわかる深層心理｜夫婦の寝相15パターンと相性診断 | Yume Insight";
   const baseDesc = "カップルや夫婦の寝る体勢から、ふたりの深層心理や現在の関係性を解説します。背中合わせ、密着寝など15の寝方パターンからわかる相性診断（10問）付き。昨夜の寝相が教えるふたりの本音とは？";
   
   if (res && RESULTS[res as ResultTypeId]) {
@@ -51,7 +51,15 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
     alternates: {
       canonical: "/sleeping-positions",
     },
-    keywords: ["カップル 寝相診断", "寝方診断", "相性診断", "カップル", "寝相", "夢の傾向"],
+    keywords: [
+      "カップル 寝方",
+      "カップル 寝る体勢",
+      "カップル 寝相",
+      "夫婦 寝方 心理",
+      "カップル寝方 心理",
+      "寝相診断",
+      "相性診断"
+    ],
     openGraph: {
       title: baseTitle,
       description: baseDesc,
@@ -219,10 +227,10 @@ export default function SleepingPositionsPage() {
         <main className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
             <section className="text-center space-y-6 pt-8">
-              <h1 className="text-4xl md:text-6xl font-bold bg-linear-to-r from-pink-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent pb-2">
-                カップル・夫婦の寝方でわかる深層心理　<br />
-                <span className="text-xl md:text-2xl text-gray-400 font-medium block mt-2">
-                  15の寝相と相性診断
+              <h1 className="text-4xl md:text-5xl font-bold bg-linear-to-r from-pink-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent pb-2 leading-tight">
+                カップル・夫婦の寝方・寝る体勢でわかる深層心理<br />
+                <span className="text-2xl md:text-3xl text-gray-400 font-medium block mt-4">
+                  15の寝相パターンと相性診断
                 </span>
               </h1>
               <p className="text-gray-300 text-lg leading-relaxed max-w-4xl mx-auto">
