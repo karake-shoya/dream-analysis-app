@@ -19,7 +19,9 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
 
   const handleGoogleLogin = async () => {
     setLoading(true)
-    const baseUrl = siteConfig.baseUrl || (typeof window !== 'undefined' ? window.location.origin : '')
+    // 現在アクセスしているURLのorigin（ドメイン）を優先してリダイレクト先に設定する
+    // これにより、NetlifyのURLでもyume-insight.comでもPKCEのCookieエラーを防ぎます
+    const baseUrl = typeof window !== 'undefined' ? window.location.origin : (siteConfig.baseUrl || '')
 
     await supabase.auth.signInWithOAuth({
       provider: 'google',
