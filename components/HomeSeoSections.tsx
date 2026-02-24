@@ -46,6 +46,21 @@ export default function HomeSeoSections() {
             </div>
             <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
           </Link>
+          <Link
+            href="/column/prophetic-dream"
+            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-purple-400 font-medium mb-1">夢の心理学</p>
+              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
+                正夢とは？
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                夢で見た出来事が現実になる「正夢」。脳の予測機能・選択的記憶・無意識の洞察——心理学の視点からそのメカニズムを解説します。
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+          </Link>
         </div>
       </div>
 

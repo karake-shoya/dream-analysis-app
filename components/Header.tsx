@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { name: 'About', href: '/about' },
   { name: '夢占い辞典', href: '/dictionary' },
   { name: '夢占いの考え方', href: '/approach' },
-  { name: '正夢とは？', href: '/prophetic-dream' },
   { name: 'カップル寝相診断', href: '/sleeping-positions' },
 ] as const
 
