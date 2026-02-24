@@ -14,9 +14,16 @@ export default function HomeSeoSections() {
     <section className="mt-16 space-y-8">
       <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
         <h3 className="text-2xl font-bold text-white mb-4">AI夢占いの仕組み</h3>
-        <p className="text-gray-300 leading-relaxed">
+        <p className="text-gray-300 leading-relaxed mb-5">
           Yume InsightのAI夢占いは、入力された夢の内容をそのまま断定的に判断するのではなく、夢に出てきた人物・場所・行動・感情の要素を丁寧に分解し、文脈を読み取りながら心理傾向を整理する設計になっています。プロンプト設計では「怖い夢＝悪い未来」のような短絡的な結論を避けるため、夢研究の一般的な見解やセルフケアの観点を組み合わせています。分析には最新世代のAIモデルを活用しつつ、日常生活に活かせるヒントとして受け取れる表現を重視しています。
         </p>
+        <Link
+          href="/approach"
+          className="inline-flex items-center gap-1.5 text-sm text-purple-400 hover:text-purple-300 transition-colors"
+        >
+          詳しい考え方を見る
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
 
       <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
