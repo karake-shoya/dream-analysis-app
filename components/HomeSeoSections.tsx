@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const categoryLinks = [
   { href: "/dictionary/animals/snake", label: "蛇の夢" },
@@ -23,6 +24,29 @@ export default function HomeSeoSections() {
         <p className="text-gray-300 leading-relaxed">
           夢占いは、当たり外れを競うためではなく、自分の心身の状態に気づくための記録ツールとして使うと効果的です。たとえば、同じ種類の夢を繰り返し見る時期は、仕事や人間関係のストレスが高まっているサインかもしれません。見た夢と起きた直後の感情を短くメモし、1週間単位で振り返るだけでも、思考のクセや疲れの傾向が見えてきます。気づいた内容を睡眠習慣の見直しや休息の取り方に反映することで、セルフケアとして無理なく活用できます。
         </p>
+      </div>
+
+      {/* コラムセクション */}
+      <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
+        <h3 className="text-2xl font-bold text-white mb-2">コラム</h3>
+        <p className="text-gray-400 text-sm mb-6">夢と心理に関するコラムをお届けします</p>
+        <div className="space-y-3">
+          <Link
+            href="/column/repeating-dreams"
+            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-purple-400 font-medium mb-1">夢の心理学</p>
+              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
+                同じ夢を何度も見る意味とは？
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                繰り返す夢は「未解決の葛藤」の表れ。追いかけられる夢・試験の夢・歯が抜ける夢……心がまだ話し終えていないサインかもしれません。
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+          </Link>
+        </div>
       </div>
 
       <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">

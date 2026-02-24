@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/dictionary',
     '/approach',
     '/prophetic-dream',
+    '/column/repeating-dreams',
     '/sleeping-positions',
     '/about',
     '/contact',
