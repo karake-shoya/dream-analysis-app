@@ -68,6 +68,36 @@ export default function HomeSeoSections() {
             </div>
             <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
           </Link>
+          <Link
+            href="/column/dream-memory"
+            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-purple-400 font-medium mb-1">夢の心理学</p>
+              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
+                夢を覚えていない人と覚えている人の違いは何？
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                記憶力の差ではなく、睡眠のタイミングや目覚め方が鍵。「夢を見ない人」ではなく「夢を覚えていない人」——その理由をわかりやすく解説します。
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+          </Link>
+          <Link
+            href="/column/dream-self-care"
+            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-purple-400 font-medium mb-1">夢の活かし方</p>
+              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
+                夢をセルフケアに活かす3つの方法
+              </h4>
+              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
+                夢日記・感情の読み解き・繰り返す夢への向き合い方。占いとしてだけでなく、自分の心を知るツールとして夢を活用する方法を紹介します。
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+          </Link>
         </div>
       </div>
 
