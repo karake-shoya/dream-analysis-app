@@ -22,6 +22,7 @@ export default function Footer() {
               <li><Link href="/approach" className="hover:text-purple-300 transition-colors">夢占いの考え方</Link></li>
               <li><Link href="/column/prophetic-dream" className="hover:text-purple-300 transition-colors">正夢とは？</Link></li>
               <li><Link href="/column/repeating-dreams" className="hover:text-purple-300 transition-colors">同じ夢を何度も見る意味</Link></li>
+              <li><Link href="/column/dream-memory" className="hover:text-purple-300 transition-colors">夢を覚えている人・いない人の違い</Link></li>
               <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
               <li><Link href="/sitemap" className="hover:text-purple-300 transition-colors">全記事一覧</Link></li>
             </ul>

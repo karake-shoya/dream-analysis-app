@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/approach',
     '/column/prophetic-dream',
     '/column/repeating-dreams',
+    '/column/dream-memory',
     '/sleeping-positions',
     '/about',
     '/contact',
