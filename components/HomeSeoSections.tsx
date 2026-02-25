@@ -12,6 +12,31 @@ const categoryLinks = [
 export default function HomeSeoSections() {
   return (
     <section className="mt-16 space-y-8">
+      {/* コラムセクション */}
+      <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
+        <h3 className="text-2xl font-bold text-white mb-2">コラム</h3>
+        <p className="text-gray-400 text-sm mb-6">夢と心理に関するコラムをお届けします</p>
+        <ul className="space-y-1">
+          {[
+            { href: '/column/repeating-dreams', label: '同じ夢を何度も見る意味とは？' },
+            { href: '/column/prophetic-dream', label: '正夢とは？' },
+            { href: '/column/dream-memory', label: '夢を覚えていない人と覚えている人の違いは何？' },
+            { href: '/column/dream-self-care', label: '夢をセルフケアに活かす3つの方法' },
+            { href: '/column/nightmare', label: '怖い夢・悪夢を見やすい人の特徴と対処法' },
+          ].map(({ href, label }) => (
+            <li key={href}>
+              <Link
+                href={href}
+                className="group flex items-center justify-between px-4 py-3 rounded-xl border border-transparent hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
+              >
+                <span className="text-base text-gray-200 group-hover:text-purple-200 transition-colors">{label}</span>
+                <ArrowRight className="w-4 h-4 text-gray-600 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 ml-3" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
         <h3 className="text-2xl font-bold text-white mb-4">AI夢占いの仕組み</h3>
         <p className="text-gray-300 leading-relaxed mb-5">
@@ -31,44 +56,6 @@ export default function HomeSeoSections() {
         <p className="text-gray-300 leading-relaxed">
           夢占いは、当たり外れを競うためではなく、自分の心身の状態に気づくための記録ツールとして使うと効果的です。たとえば、同じ種類の夢を繰り返し見る時期は、仕事や人間関係のストレスが高まっているサインかもしれません。見た夢と起きた直後の感情を短くメモし、1週間単位で振り返るだけでも、思考のクセや疲れの傾向が見えてきます。気づいた内容を睡眠習慣の見直しや休息の取り方に反映することで、セルフケアとして無理なく活用できます。
         </p>
-      </div>
-
-      {/* コラムセクション */}
-      <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
-        <h3 className="text-2xl font-bold text-white mb-2">コラム</h3>
-        <p className="text-gray-400 text-sm mb-6">夢と心理に関するコラムをお届けします</p>
-        <div className="space-y-3">
-          <Link
-            href="/column/repeating-dreams"
-            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
-          >
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-purple-400 font-medium mb-1">夢の心理学</p>
-              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
-                同じ夢を何度も見る意味とは？
-              </h4>
-              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
-                繰り返す夢は「未解決の葛藤」の表れ。追いかけられる夢・試験の夢・歯が抜ける夢……心がまだ話し終えていないサインかもしれません。
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-          </Link>
-          <Link
-            href="/column/prophetic-dream"
-            className="group flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-purple-500/5 transition-all"
-          >
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-purple-400 font-medium mb-1">夢の心理学</p>
-              <h4 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors leading-snug">
-                正夢とは？
-              </h4>
-              <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
-                夢で見た出来事が現実になる「正夢」。脳の予測機能・選択的記憶・無意識の洞察——心理学の視点からそのメカニズムを解説します。
-              </p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-purple-400 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
-          </Link>
-        </div>
       </div>
 
       <div className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10">
