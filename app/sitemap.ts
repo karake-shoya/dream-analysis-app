@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/column/repeating-dreams',
     '/column/dream-memory',
     '/column/dream-self-care',
+    '/column/nightmare',
     '/sleeping-positions',
     '/about',
     '/contact',
