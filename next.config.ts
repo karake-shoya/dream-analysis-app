@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
         destination: "/dictionary/:category/:item",
         permanent: true,
       },
+      {
+        source: "/prophetic-dream",
+        destination: "/column/prophetic-dream",
+        permanent: true,
+      },
     ];
   },
 

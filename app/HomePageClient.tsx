@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
@@ -18,6 +18,13 @@ interface Question {
 export default function Home() {
   const router = useRouter();
   const { user } = useAuth();
+
+  // Supabase認証後のURLに残る?codeパラメータを除去
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.search.includes('code=')) {
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+  }, []);
   const [dream, setDream] = useState('');
   const baseTextRef = useRef('');
   
