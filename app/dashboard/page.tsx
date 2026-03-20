@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Moon, Calendar, List, ChevronLeft, ChevronRight, X } from "lucide-react";
@@ -6,6 +7,11 @@ import { formatDate } from "@/lib/utils";
 import type { DreamRecord } from "@/lib/types";
 import DreamCalendar from "@/components/DreamCalendar";
 import GradientBackground from "@/components/GradientBackground";
+
+export const metadata: Metadata = {
+  title: 'マイダッシュボード',
+  description: 'これまでに記録した夢の一覧をカレンダーとリスト形式で確認できます。',
+};
 
 export const runtime = "edge";
 
