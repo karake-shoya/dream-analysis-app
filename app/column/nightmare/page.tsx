@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Frown, ShieldCheck, BookOpen } from 'lucide-react';
+import { Frown, ShieldCheck, BookOpen, Brain } from 'lucide-react';
 import ContentPageLayout from '@/components/ContentPageLayout';
 import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
@@ -38,8 +38,11 @@ export default function NightmarePage() {
             <p className="mb-4">
               目が覚めた瞬間、胸がどきどきしている。夢の内容は薄れていくのに、あの怖さだけがしばらく残っている——悪夢を見た朝の、あの後味の悪さは独特です。
             </p>
-            <p>
+            <p className="mb-4">
               悪夢は誰でも見ることがありますが、「自分はやたら怖い夢を見る気がする」と感じている人もいます。それはたまたまではなく、<span className="text-purple-300 font-bold">悪夢を見やすい状態というのが実際にあります。</span>特徴を知っておくと、対処もしやすくなります。
+            </p>
+            <p>
+              さらに、ユング心理学の視点から見ると、悪夢には「なぜ繰り返し見るのか」という問いに対する、もうひとつの答えが隠れています。怖い夢を「ただの不快な体験」としてではなく、<span className="text-purple-300 font-bold">心の深層からのメッセージ</span>として受け取る視点を持つと、悪夢との付き合い方が根本から変わってきます。
             </p>
           </div>
 
@@ -105,7 +108,59 @@ export default function NightmarePage() {
             <AdsenseAd slot={siteConfig.adsenseSlot} />
           </div>
 
-          {/* セクション2: 対処法 */}
+          {/* セクション2: ユング心理学とシャドウ */}
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+              <Brain className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
+              ユング心理学で解釈する：悪夢とシャドウの遭遇
+            </h2>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+              スイスの心理学者カール・グスタフ・ユングは、夢を「無意識からの手紙」と捉えました。その視点から悪夢を見ると、単なる不快な体験ではなく、心の深層が何かを伝えようとしているサインとして読み解けます。
+            </p>
+
+            <div className="p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20 mb-6">
+              <h3 className="text-xl font-bold text-purple-200 mb-3">シャドウ（Shadow）とは何か</h3>
+              <p className="text-gray-300 leading-relaxed">
+                ユングが提唱した「シャドウ」とは、自分が意識的に認めたくない側面——怒り、嫉妬、恐れ、弱さ、欲望など——が無意識の領域に押し込められた人格の一部です。「こんな感情を持ってはいけない」「自分はそういう人間じゃない」と抑圧された感情が積み重なると、それはシャドウとして無意識に沈殿していきます。
+              </p>
+            </div>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-5">
+              悪夢に登場する恐ろしい人物、怪物、あるいは自分を追いかける存在——これらはしばしば、<span className="text-purple-300 font-bold">シャドウが意識化を求めて夢の舞台に現れたもの</span>とユング派の心理学では解釈します。夢の中で自分を脅かすものが実は「自分の一部」だとしたら、悪夢の見方がまったく変わってくるはずです。
+            </p>
+
+            <div className="space-y-4 mb-6">
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">追いかけてくる存在の意味</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  誰かに追いかけられる悪夢は、非常によく見られるパターンです。ユング的には、追いかけてくる存在は「向き合うことを避けている自分の感情やテーマ」を象徴していると考えます。逃げ続けているということは、まだそれと向き合う準備ができていないということ。逆に言えば、「そろそろ向き合う時が来ている」というサインでもあります。
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">繰り返し見る悪夢はより強いサイン</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  同じ悪夢を何度も見る場合、ユング的には「シャドウがより強く意識化を求めている」状態と解釈できます。夢が繰り返されるのは、その問いかけが未解決のまま残っているから。逆に、そのテーマに意識的に向き合えたとき、繰り返しの悪夢が自然に止まることがあります。
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">シャドウを統合するということ</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  ユングが提唱した「個性化（Individuation）」のプロセスでは、シャドウを否定せず、自分の一部として受け入れることが成長の鍵とされています。悪夢を見たとき、「あの怖い存在は何を象徴しているだろう？」と少し立ち止まって考えることが、シャドウとの対話の第一歩になります。これは難しい作業ではなく、「最近何を避けているか」「どんな感情を押し込めているか」を素直に問いかけることから始まります。
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <p className="text-gray-400 leading-relaxed text-sm">
+                <span className="text-purple-300 font-bold">積極的想像法（Active Imagination）</span>という技法では、目を閉じて悪夢のシーンを意識的に再現し、夢の中の存在に語りかけたり、逃げずに向き合ったりするイメージワークを行います。これはユングが開発したセルフワークで、繰り返す悪夢への対処として実際に活用されています。深刻なトラウマがある場合は専門家の指導のもとで行うことを推奨しますが、「怖い夢の場面を昼間に想像し直す」程度なら日常でも試せます。
+              </p>
+            </div>
+          </section>
+
+          {/* セクション3: 対処法 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
               <ShieldCheck className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
@@ -137,30 +192,17 @@ export default function NightmarePage() {
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                 <h3 className="text-lg font-bold text-purple-200 mb-2">悪夢を見たら、内容を書き留めてみる</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  怖い夢を見た後、記憶が残っているうちに内容と感情を書き出してみてください。書くことで夢を「客観的に見る」距離ができ、怖さが少し和らぐことがあります。また、繰り返し見る悪夢があれば、どんな状況のときに見やすいかのパターンが見えてきます。
+                  怖い夢を見た後、記憶が残っているうちに内容と感情を書き出してみてください。書くことで夢を「客観的に見る」距離ができ、怖さが少し和らぐことがあります。また、ユング的な視点で「夢に出てきた怖い存在は何の象徴だろう？」と考えてみると、夢が自分の心の状態を映した鏡として機能し始めます。
                 </p>
               </div>
 
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                 <h3 className="text-lg font-bold text-purple-200 mb-2">誰かに話す</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  怖い夢を見たら、信頼できる人に話してみるのもひとつの方法です。「こんな夢を見て怖かった」と口に出すだけで、気持ちが整理されることがあります。夢の内容を言語化することで、怖さの輪郭がはっきりし、逆に距離を置きやすくなります。
+                  怖い夢を見たら、信頼できる人に話してみるのもひとつの方法です。「こんな夢を見て怖かった」と口に出すだけで、気持ちが整理されることがあります。夢の内容を言語化することで、怖さの輪郭がはっきりし、逆に距離を置きやすくなります。ユング的に言えば、「シャドウを言葉にすること自体が、シャドウの力を弱める」のです。
                 </p>
               </div>
             </div>
-          </section>
-
-          {/* セクション3: 悪夢は心の声 */}
-          <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
-              悪夢は「心の声」でもある
-            </h2>
-            <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              悪夢は不快な体験ですが、あなたの心が何かを伝えようとしているサインとして受け取ることもできます。怖い夢が続くときは、日常のどこかに無視できないストレスや不安が積み重なっているかもしれません。
-            </p>
-            <p className="text-gray-300 leading-relaxed text-lg">
-              夢そのものを怖がるより、「今の自分の状態を確認するきっかけ」として使えると、悪夢との付き合い方が少し変わってきます。
-            </p>
           </section>
 
           {/* まとめ */}
@@ -169,8 +211,11 @@ export default function NightmarePage() {
               <BookOpen className="w-6 h-6 mr-2 text-purple-400" />
               おわりに
             </h2>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              悪夢は不快な体験ですが、ユングの言葉を借りれば「無意識があなたに伝えようとしているメッセージの最前線」とも言えます。怖い夢が続くときは、日常のどこかに無視できないストレスや、向き合えていない感情が積み重なっているかもしれません。
+            </p>
             <p className="text-gray-300 leading-relaxed text-lg">
-              悪夢があまりにも頻繁で、日常生活に支障が出るほどであれば、睡眠の専門家や心療内科への相談を検討してみてください。一人で抱え込まなくていいことも、覚えておいてほしいと思います。
+              夢そのものを怖がるより、「今の自分の状態を確認するきっかけ」として使えると、悪夢との付き合い方が少し変わってきます。悪夢があまりにも頻繁で、日常生活に支障が出るほどであれば、睡眠の専門家や心療内科への相談を検討してみてください。
             </p>
           </section>
 

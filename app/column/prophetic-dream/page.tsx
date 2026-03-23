@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Brain, Eye, Heart, Sparkles, CheckCircle, HelpCircle } from 'lucide-react';
+import { Brain, Eye, Zap, CheckCircle, HelpCircle, Infinity } from 'lucide-react';
 import ContentPageLayout from '@/components/ContentPageLayout';
 import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
@@ -31,7 +31,7 @@ const faqStructuredData = {
       name: '正夢とは何ですか？',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '正夢（まさゆめ）とは、夢で見た出来事がその後現実に起こる現象のことです。心理学的には、脳の予測機能・無意識の洞察・選択的記憶などのメカニズムによって説明されます。',
+        text: '正夢（まさゆめ）とは、夢で見た出来事がその後現実に起こる現象のことです。心理学的には、脳の予測機能・無意識の洞察・選択的記憶などのメカニズムによって説明されます。ユング心理学では「共時性（シンクロニシティ）」という概念でも捉えられます。',
       },
     },
     {
@@ -55,7 +55,7 @@ const faqStructuredData = {
       name: '正夢になりやすくする方法はありますか？',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '夢日記をつけて夢を意識する習慣をつける、就寝前に実現させたいシーンを鮮明にイメージする、睡眠の質を上げてレム睡眠を増やす、強い感情を持ちながら眠るといった方法が効果的とされています。',
+        text: '夢日記をつけて夢を意識する習慣をつける、就寝前に意識したいテーマを明確に思い描く（認知的プライミング）、睡眠の質を上げてレム睡眠を増やす、感情と記憶の統合を深めて夢の定着率を高めるといった方法が効果的とされています。',
       },
     },
     {
@@ -63,7 +63,7 @@ const faqStructuredData = {
       name: '正夢の意味は何ですか？',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '正夢は、あなたの脳が環境の変化を感じ取っているサイン、または心の深層にある強い願いや不安が反映されたものと考えられます。「直感が鋭くなっている」「本当の気持ちに気づくタイミング」として受け取ることができます。',
+        text: '正夢は、あなたの脳が環境の変化を感じ取っているサイン、または無意識が現実への備えを整えていたと考えられます。ユング心理学では「共時性（意味のある偶然の一致）」として捉えることもできます。直感や観察力が鋭くなっているタイミングとして受け取ることができます。',
       },
     },
   ],
@@ -95,10 +95,10 @@ export default function PropheticDreamPage() {
               夢で見た出来事がその後現実に起こる現象は「正夢（まさゆめ）」と呼ばれ、古くから多くの人を惹きつけてきました。
             </p>
             <p className="mt-4">
-              予知能力のように感じられるかもしれませんが、心理学や脳科学の視点から見ると、これは私たちの<span className="text-purple-300 font-bold">脳の働きや心のメカニズム</span>として説明ができる、とても興味深い現象なんです。
+              予知能力のように感じられるかもしれませんが、心理学や脳科学の視点から見ると、これは私たちの<span className="text-purple-300 font-bold">脳の働きや心のメカニズム</span>として説明ができる、とても興味深い現象です。
             </p>
             <p className="mt-4">
-              このページでは、正夢の意味・なぜ起きるのか・本当にあるのかという疑問に答えたうえで、<span className="text-purple-300 font-bold">正夢になりやすくする方法</span>まで詳しく解説します。
+              このページでは、正夢の意味・なぜ起きるのか・本当にあるのかという疑問に答えたうえで、ユング心理学が提唱した「共時性」という視点も加えて深く解説します。さらに、<span className="text-purple-300 font-bold">正夢になりやすくする方法</span>まで詳しく紹介します。
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function PropheticDreamPage() {
             </p>
             <div className="mt-6 p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20">
               <p className="text-gray-200 leading-relaxed text-lg">
-                「科学的に説明できる＝信じなくていい」ではありません。正夢を体験したとき、それはあなたの<span className="text-purple-300 font-bold">直感や観察力が高まっているサイン</span>かもしれないのです。
+                「科学的に説明できる＝信じなくていい」ではありません。正夢を体験したとき、それはあなたの<span className="text-purple-300 font-bold">直感や無意識の観察力が機能しているサイン</span>かもしれないのです。
               </p>
             </div>
           </section>
@@ -136,14 +136,14 @@ export default function PropheticDreamPage() {
             </p>
             <p className="text-gray-300 leading-relaxed text-lg">
               この時、脳は過去のデータをもとにして「これから何が起こるか？」という予測も行っています。まるで高度なシミュレーションを行っているような状態です。<span className="hidden md:inline"><br /></span>
-              この<span className="text-purple-300 font-bold">脳内シミュレーションの結果が、偶然現実の出来事とピタリと一致したとき</span>、私たちはそれを「正夢」として認識するのです。つまり、あなたの脳が優秀な予測器として働いた証拠とも言えるかもしれませんね。
+              この<span className="text-purple-300 font-bold">脳内シミュレーションの結果が、偶然現実の出来事とピタリと一致したとき</span>、私たちはそれを「正夢」として認識するのです。あなたの脳が精緻な予測器として働いた結果とも言えます。
             </p>
           </section>
 
           {/* セクション2: 無意識の洞察 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
-              <Heart className="w-8 h-8 mr-3 text-purple-400" />
+              <Zap className="w-8 h-8 mr-3 text-purple-400" />
               無意識がキャッチした「小さなサイン」
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
@@ -175,28 +175,51 @@ export default function PropheticDreamPage() {
             </p>
           </section>
 
-          {/* セクション4: 感情と願望 */}
+          {/* セクション4: ユングの共時性（新設） */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
-              あなたの願いや不安が映し出される
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+              <Infinity className="w-8 h-8 mr-3 text-purple-400" />
+              ユング心理学が捉える正夢：共時性という視点
             </h2>
+
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              また、正夢はあなたの強い「願い」や「不安」を反映していることもよくあります。<span className="hidden md:inline"><br /></span>
-              「試験に合格したい」「あの人に会いたい」といった強い思いや、「失敗したらどうしよう」という不安は、夢のシナリオを作り出す強力な材料になります。
+              正夢を心理学的に最も深く論じたのが、スイスの心理学者カール・グスタフ・ユングです。ユングは「共時性（Synchronicity：シンクロニシティ）」という概念を提唱しました。
             </p>
-            <p className="text-gray-300 leading-relaxed text-lg">
-              その願いが叶ったり、心配事が現実になったりした時、それは予知というよりも、あなたの<span className="text-purple-300 font-bold">心の深層にある思いが現実に引き寄せられた</span>、あるいはその心の準備ができていた、と捉えることもできるでしょう。
+
+            <div className="p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20 mb-5">
+              <h3 className="text-xl font-bold text-purple-200 mb-3">共時性（Synchronicity）とは</h3>
+              <p className="text-gray-300 leading-relaxed">
+                共時性とは、「因果関係はないが、意味のある偶然の一致」として起きる現象のことです。夢で見た出来事が翌日現実に起きる、誰かのことを考えていたら突然連絡が来る——これらをユングは「意味を持つ偶然の一致」として捉え、心の深層と外界との不思議なつながりとして論じました。
+              </p>
+            </div>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-5">
+              共時性は、スピリチュアルな「予知」ではありません。ユングは心理学者として、この現象を「無意識が外界の変化を先取りして知覚している」状態、あるいは「心と外界の間に意味のある連関が生じている」現象として考察しました。
             </p>
+
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">正夢を「共時性」として受け取るとき</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  正夢のような体験をしたとき、ユング的な見方では「あなたの無意識が、意識より先に何かを感じ取っていた」と解釈できます。それは直感が冴えているサインであり、心の深層と日常の現実がつながっている瞬間とも言えます。「なぜこの夢を見て、こんなことが起きたのか」を考えることが、自己理解の入口になります。
+                </p>
+              </div>
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">正夢が続くときのユング的解釈</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  正夢のような体験が続くとき、それはあなたの無意識が特定の何か——人間関係、仕事の変化、体調の変化——を鋭く察知しているサインかもしれません。夢日記をつけて記録しておくと、どんなテーマに無意識が敏感に反応しているかが見えてきます。
+                </p>
+              </div>
+            </div>
           </section>
 
           {/* 正夢になる方法 */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
-              <Sparkles className="w-8 h-8 mr-3 text-purple-400" />
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
               正夢になりやすくする方法
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg mb-8">
-              正夢は「たまたま起こるもの」ではなく、<span className="text-purple-300 font-bold">意識的に起きやすくすることができる</span>と言われています。夢と現実をつなぐ脳のメカニズムをうまく活用してみましょう。
+              正夢は「たまたま起こるもの」ではなく、<span className="text-purple-300 font-bold">夢と現実のつながりに気づきやすくする状態を整えること</span>で、体験しやすくなると言われています。脳の情報処理と無意識の観察力を高めるアプローチを紹介します。
             </p>
 
             <div className="space-y-6">
@@ -206,7 +229,7 @@ export default function PropheticDreamPage() {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-2">夢日記をつける</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    起きたらすぐにその日の夢をノートやスマホにメモする習慣をつけましょう。夢を「記録する対象」として意識することで、脳が夢の内容をより鮮明に覚えようとするようになります。続けることで、夢と現実のつながりを自分で発見しやすくなります。
+                    起きたらすぐにその日の夢をノートやスマホにメモする習慣をつけましょう。夢を「記録する対象」として意識することで、脳が夢の内容をより鮮明に覚えようとするようになります。続けることで、夢と現実のつながりを自分で発見しやすくなります。ユングも夢日記を生涯続け、無意識との対話を深めました。
                   </p>
                 </div>
               </div>
@@ -215,9 +238,9 @@ export default function PropheticDreamPage() {
               <div className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
                 <CheckCircle className="w-7 h-7 text-purple-400 shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">就寝前に鮮明にイメージする</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">認知的プライミング（脳への予告）を活用する</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    眠る前に、実現させたい場面や出来事を目を閉じて映像として思い浮かべてみましょう。五感（音・香り・触感）を加えるほど効果的です。脳はその情報を材料として夢のシナリオを作りやすくなります。スポーツ選手がイメージトレーニングを行うのと同じ原理です。
+                    眠る前に、意識したいテーマや解決したい問いを明確に思い描いてみましょう。「この問題についてのヒントが欲しい」と意識して眠ることで、脳はその情報を材料として夢のシナリオに組み込みやすくなります。これは「プライミング効果」と呼ばれる心理学的な仕組みで、スポーツ選手のメンタルトレーニングでも活用されています。
                   </p>
                 </div>
               </div>
@@ -237,9 +260,9 @@ export default function PropheticDreamPage() {
               <div className="flex gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
                 <CheckCircle className="w-7 h-7 text-purple-400 shrink-0 mt-0.5" />
                 <div>
-                  <h3 className="text-xl font-bold text-white mb-2">強い感情・願いを持って眠る</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">感情と記憶の統合を深める</h3>
                   <p className="text-gray-300 leading-relaxed">
-                    脳は感情と結びついた記憶・情報を優先して処理します。「どうしても叶えたい」「絶対に会いたい」といった強い気持ちを持って眠ることで、その思いが夢の素材として使われやすくなります。感謝の気持ちや高揚感を感じながら眠りにつくのが効果的です。
+                    脳は感情と結びついた情報を優先して処理します。眠る前に、その日の出来事を振り返り、感情をしっかり言語化することで、脳内の情報整理が深まります。日記に感情を書き出したり、深呼吸でその日の緊張を解いてから眠ることが、夢の定着率と質の向上につながります。
                   </p>
                 </div>
               </div>
@@ -255,12 +278,12 @@ export default function PropheticDreamPage() {
           <section className="p-8 rounded-3xl bg-linear-to-r from-purple-900/30 to-indigo-900/30 border border-purple-500/20">
             <h2 className="text-2xl font-bold text-white mb-4">おわりに</h2>
             <p className="text-gray-300 leading-relaxed text-lg mb-6">
-              正夢は、決して怖い現象や単なるオカルトではありません。<span className="hidden md:inline"><br /></span>
-              それは、あなたの脳が情報を処理する過程や、無意識が感じ取っている世界、そしてあなたの心の奥底にある願いが織りなす、とても人間らしい現象です。
+              正夢は、単なるオカルトでも、科学的に否定すべき迷信でもありません。<span className="hidden md:inline"><br /></span>
+              それは、あなたの脳が情報を処理する過程、無意識が感じ取っている世界、そしてユングが「共時性」と呼んだ心と外界のつながりが織りなす、非常に人間らしい現象です。
             </p>
             <p className="text-gray-300 leading-relaxed text-lg">
-              もし正夢のような体験をしたら、それは自分の直感や観察力が冴えているサインかもしれませんし、自分の本当の気持ちに気づくチャンスかもしれません。<span className="hidden md:inline"><br /></span>
-              夢を記録し、イメージを磨くことで、正夢はより身近な体験になっていくでしょう。
+              もし正夢のような体験をしたら、それは自分の直感や無意識の観察力が機能しているサインかもしれません。<span className="hidden md:inline"><br /></span>
+              夢を記録し、無意識が何に反応しているかを観察することで、正夢はより身近で意味のある体験になっていくでしょう。
             </p>
           </section>
 
@@ -274,7 +297,7 @@ export default function PropheticDreamPage() {
               {[
                 {
                   q: '正夢とは何ですか？',
-                  a: '正夢（まさゆめ）とは、夢で見た出来事がその後現実に起こる現象のことです。心理学的には、脳の予測機能・無意識の洞察・選択的記憶などのメカニズムによって説明されます。',
+                  a: '正夢（まさゆめ）とは、夢で見た出来事がその後現実に起こる現象のことです。心理学的には、脳の予測機能・無意識の洞察・選択的記憶などのメカニズムによって説明されます。ユング心理学では「共時性（シンクロニシティ）」という概念でも捉えられます。',
                 },
                 {
                   q: '正夢は本当にあるのですか？',
@@ -286,11 +309,11 @@ export default function PropheticDreamPage() {
                 },
                 {
                   q: '正夢になりやすくする方法はありますか？',
-                  a: '夢日記をつけて夢を意識する習慣をつける、就寝前に実現させたいシーンを鮮明にイメージする、睡眠の質を上げてレム睡眠を増やす、強い感情を持ちながら眠るといった方法が効果的とされています。',
+                  a: '夢日記をつけて夢を意識する習慣をつける、就寝前に意識したいテーマを明確に思い描く（認知的プライミング）、睡眠の質を上げてレム睡眠を増やす、感情と記憶の統合を深めて夢の定着率を高めるといった方法が効果的とされています。',
                 },
                 {
                   q: '正夢の意味は何ですか？',
-                  a: '正夢は、あなたの脳が環境の変化を感じ取っているサイン、または心の深層にある強い願いや不安が反映されたものと考えられます。「直感が鋭くなっている」「本当の気持ちに気づくタイミング」として受け取ることができます。',
+                  a: '正夢は、あなたの脳が環境の変化を感じ取っているサイン、または無意識が現実への準備を整えていたと考えられます。ユング心理学では「共時性（意味のある偶然の一致）」として捉えることもできます。直感や観察力が鋭くなっているタイミングとして受け取ることができます。',
                 },
               ].map(({ q, a }, i) => (
                 <details
