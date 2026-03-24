@@ -102,11 +102,6 @@ export default function PropheticDreamPage() {
             </p>
           </div>
 
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
           {/* 正夢は本当にあるのか */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
@@ -139,6 +134,11 @@ export default function PropheticDreamPage() {
               この<span className="text-purple-300 font-bold">脳内シミュレーションの結果が、偶然現実の出来事とピタリと一致したとき</span>、私たちはそれを「正夢」として認識するのです。あなたの脳が精緻な予測器として働いた結果とも言えます。
             </p>
           </section>
+
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション2: 無意識の洞察 */}
           <section>

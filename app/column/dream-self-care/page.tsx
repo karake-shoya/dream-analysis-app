@@ -46,11 +46,6 @@ export default function DreamSelfCarePage() {
             </p>
           </div>
 
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
           {/* セクション1: 夢日記 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
@@ -70,6 +65,11 @@ export default function DreamSelfCarePage() {
               ユングも夢日記を非常に重視し、自身の夢を長年にわたって記録し続けました。夢日記の目的は、夢を解読することではありません。夢を記録することで、自分のコンディションの変化に早めに気づくための<span className="text-purple-300 font-bold">「心のモニタリングツール」</span>として使うのが、いちばん実用的な活用法です。
             </p>
           </section>
+
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション2: ユング式・感情から読む */}
           <section>

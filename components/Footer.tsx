@@ -25,6 +25,9 @@ export default function Footer() {
               <li><Link href="/column/dream-memory" className="hover:text-purple-300 transition-colors">夢を覚えている人・いない人の違い</Link></li>
               <li><Link href="/column/dream-self-care" className="hover:text-purple-300 transition-colors">夢をセルフケアに活かす3つの方法</Link></li>
               <li><Link href="/column/nightmare" className="hover:text-purple-300 transition-colors">怖い夢・悪夢を見やすい人の特徴と対処法</Link></li>
+              <li><Link href="/column/lucid-dream" className="hover:text-purple-300 transition-colors">明晰夢（ルシッドドリーム）の見方と練習法</Link></li>
+              <li><Link href="/column/dream-diary" className="hover:text-purple-300 transition-colors">夢日記の始め方と効果的な続け方</Link></li>
+              <li><Link href="/column/dream-color" className="hover:text-purple-300 transition-colors">夢の中の色が持つ心理的な意味</Link></li>
               <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
               <li><Link href="/sitemap" className="hover:text-purple-300 transition-colors">全記事一覧</Link></li>
             </ul>

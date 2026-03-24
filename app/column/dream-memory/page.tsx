@@ -46,11 +46,6 @@ export default function DreamMemoryPage() {
             </p>
           </div>
 
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
           {/* セクション1: そもそも夢は誰でも見ている */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
@@ -64,6 +59,11 @@ export default function DreamMemoryPage() {
               つまり「夢を見ない人」ではなく、正確には<span className="text-purple-300 font-bold">「夢を覚えていない人」</span>なのです。これはけっして悪いことではなく、睡眠の質や生活スタイルによって起こる自然な差です。
             </p>
           </section>
+
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション2: ユング的視点（新設） */}
           <section>

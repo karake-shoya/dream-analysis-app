@@ -49,11 +49,6 @@ export default function RepeatingDreamsPage() {
             </p>
           </div>
 
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
           {/* セクション1: 処理中の感情 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
@@ -70,6 +65,11 @@ export default function RepeatingDreamsPage() {
               心理学の世界では、繰り返し夢は<span className="text-purple-300 font-bold">「未解決の葛藤」の表れ</span>として語られることがあります。この「未解決」という点こそ、ユング心理学が特に深く掘り下げたテーマです。
             </p>
           </section>
+
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション2: よくある繰り返しの夢 */}
           <section>

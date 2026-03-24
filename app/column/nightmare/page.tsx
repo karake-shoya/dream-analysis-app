@@ -46,11 +46,6 @@ export default function NightmarePage() {
             </p>
           </div>
 
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
           {/* セクション1: 悪夢を見やすい人の特徴 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
@@ -103,7 +98,7 @@ export default function NightmarePage() {
             </div>
           </section>
 
-          {/* 広告（中部） */}
+          {/* 広告（上部） */}
           <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
             <AdsenseAd slot={siteConfig.adsenseSlot} />
           </div>
@@ -159,6 +154,11 @@ export default function NightmarePage() {
               </p>
             </div>
           </section>
+
+          {/* 広告（中部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション3: 対処法 */}
           <section>
