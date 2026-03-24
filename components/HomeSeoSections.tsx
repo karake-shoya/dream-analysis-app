@@ -23,6 +23,9 @@ export default function HomeSeoSections() {
             { href: '/column/dream-memory', label: '夢を覚えていない人と覚えている人の違いは何？' },
             { href: '/column/dream-self-care', label: '夢をセルフケアに活かす3つの方法' },
             { href: '/column/nightmare', label: '怖い夢・悪夢を見やすい人の特徴と対処法' },
+            { href: '/column/lucid-dream', label: '明晰夢（ルシッドドリーム）の見方と練習法' },
+            { href: '/column/dream-diary', label: '夢日記の始め方と効果的な続け方' },
+            { href: '/column/dream-color', label: '夢の中の色が持つ心理的な意味' },
           ].map(({ href, label }) => (
             <li key={href}>
               <Link

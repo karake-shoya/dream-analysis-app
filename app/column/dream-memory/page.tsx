@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { Brain, Moon, Clock, Lightbulb, BookOpen } from 'lucide-react';
+import { Brain, Moon, Clock, Lightbulb, BookOpen, MessageSquare } from 'lucide-react';
 import ContentPageLayout from '@/components/ContentPageLayout';
 import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
@@ -41,11 +41,9 @@ export default function DreamMemoryPage() {
             <p className="mb-4">
               実は、夢を覚えているかどうかは記憶力の良し悪しとはほとんど関係がありません。夢の記憶には、睡眠のタイミングや目覚め方、日常の習慣など、もっと別の要素が大きく絡んでいます。
             </p>
-          </div>
-
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
+            <p>
+              そしてもうひとつ。ユング心理学の視点から見ると、夢を覚えていること自体に、<span className="text-purple-300 font-bold">心の深層と意識が対話する大切な意味</span>が宿っています。「覚えていない」ことをただの睡眠の問題として片付けるのではなく、夢の記憶を持つことの価値から考えてみましょう。
+            </p>
           </div>
 
           {/* セクション1: そもそも夢は誰でも見ている */}
@@ -62,7 +60,55 @@ export default function DreamMemoryPage() {
             </p>
           </section>
 
-          {/* セクション2: 夢を覚えやすい人の特徴 */}
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
+
+          {/* セクション2: ユング的視点（新設） */}
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+              <MessageSquare className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
+              なぜ夢を記憶することに価値があるのか
+            </h2>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              スイスの心理学者カール・グスタフ・ユングは、夢を「無意識からの手紙」と呼びました。この表現は詩的に聞こえますが、実は非常に実践的な意味を持っています。
+            </p>
+
+            <div className="p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20 mb-5">
+              <h3 className="text-xl font-bold text-purple-200 mb-3">意識と無意識の「対話の記録」</h3>
+              <p className="text-gray-300 leading-relaxed">
+                ユングの考えでは、人間の心は意識と無意識の2つの層でできており、夢は無意識が意識に向けて送るメッセージの場です。日中の意識では抑えられている感情、気づいていない欲求、解決されていない葛藤——これらが夢という形をとって浮かび上がってきます。夢を記憶するということは、この「無意識からの手紙」を受け取ることに他なりません。
+              </p>
+            </div>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-5">
+              夢を覚えていないとき、その「手紙」は届いても読まれないまま消えていきます。繰り返し似たような夢を見るのに覚えていない場合、無意識が何度も同じメッセージを送り続けているのかもしれません。夢を記憶する習慣を持つことは、自分の内面との対話の窓を開けておくことでもあるのです。
+            </p>
+
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">感情の整理と自己理解が深まる</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  夢を記録して振り返ることで、「最近こういう感情を抱えていたんだ」と気づくことがあります。言語化しにくかった不安や違和感が、夢というイメージを通じて理解しやすい形になることがあるのです。ユング派の心理療法でも、夢の記録と分析が治療の重要な柱として位置づけられています。
+                </p>
+              </div>
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">心の「盲点」に気づくきっかけになる</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  私たちは日常の中で「見たくないもの」を無意識に避けています。しかし夢の中では、そうした防衛が緩み、普段は意識に上らないテーマが姿を現します。夢を記憶することは、自分の「心の盲点」に気づくための数少ない機会のひとつです。
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* 広告（中部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
+
+          {/* セクション3: 夢を覚えやすい人の特徴 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
               <Brain className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
@@ -83,20 +129,20 @@ export default function DreamMemoryPage() {
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                 <h3 className="text-lg font-bold text-purple-200 mb-2">感情が動く夢は残りやすい</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  怖い夢や、強く感情が揺れた夢は覚えていやすいと感じたことはないでしょうか。これは、感情と記憶の定着が脳の中で深く結びついているからです。感受性が豊かな人や、日頃から感情の動きに敏感な人は、夢の記憶も残りやすい傾向があると言われています。
+                  怖い夢や、強く感情が揺れた夢は覚えていやすいと感じたことはないでしょうか。これは、感情と記憶の定着が脳の中で深く結びついているからです。ユング的に言えば、感情を強く動かす夢ほど「無意識のメッセージ」の重要度が高く、覚えていてほしいという無意識の意図が働いている可能性もあります。
                 </p>
               </div>
 
               <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
                 <h3 className="text-lg font-bold text-purple-200 mb-2">夢に関心がある人ほど覚えやすい</h3>
                 <p className="text-gray-300 leading-relaxed">
-                  「夢を覚えたい」と意識するだけでも、記憶の定着率が上がることがあります。夢日記をつけている人が夢をよく覚えているのは、習慣によって「夢を記録しようとする意識」が強まっているからです。注意を向けるものに対して、脳は情報を拾いやすくなります。
+                  「夢を覚えたい」と意識するだけでも、記憶の定着率が上がることがあります。夢日記をつけている人が夢をよく覚えているのは、習慣によって「夢を記録しようとする意識」が強まっているからです。注意を向けるものに対して、脳は情報を拾いやすくなります。これはユングが夢に積極的に関心を向けることを推奨した理由とも重なります。
                 </p>
               </div>
             </div>
           </section>
 
-          {/* セクション3: 夢を覚えにくい人の特徴 */}
+          {/* セクション4: 夢を覚えにくい人の特徴 */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
               <Clock className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
@@ -130,12 +176,7 @@ export default function DreamMemoryPage() {
             </div>
           </section>
 
-          {/* 広告（中部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
-          </div>
-
-          {/* セクション4: 夢を覚えたいなら */}
+          {/* セクション5: 夢を覚えたいなら */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
               <Lightbulb className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
@@ -147,12 +188,15 @@ export default function DreamMemoryPage() {
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
               起きてすぐスマートフォンを見たり、すぐ動き始めたりすると、夢の記憶はあっという間に上書きされてしまいます。目が覚めたら少しの間そのまま横になって、夢の内容を頭の中でなぞってみる——たったそれだけで、記憶に残る量がかなり変わります。
             </p>
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
               枕元にメモ帳を置いておいて、断片だけでもすぐ書き留める習慣をつけると、数週間後には自分の夢のパターンが見えてきます。「また似たような場所に行く夢だった」「知らない人が出てくることが多い」——そういった気づきが、自分の心の状態を振り返るきっかけになることがあります。
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              ユングが夢日記を重視したのも、まさにこの「パターンを見つける」ためでした。無意識は同じテーマを何度も繰り返す傾向があります。記録を続けることで、その「くり返し送られてくる手紙の内容」が少しずつ見えてくるのです。
             </p>
           </section>
 
-          {/* セクション5: 優劣はない */}
+          {/* セクション6: 優劣はない */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
               「覚えている・いない」に優劣はない
@@ -172,7 +216,7 @@ export default function DreamMemoryPage() {
               おわりに
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg">
-              夢は、見るだけでも、覚えていなくても、あなたの心と体が毎晩それなりに仕事をしている証拠です。覚えていたときはぜひAI夢占いで深層心理を覗いてみてください。
+              夢は、見るだけでも、覚えていなくても、あなたの心と体が毎晩それなりに仕事をしている証拠です。ユングの言う「無意識からの手紙」を受け取るためには、夢を覚えようとする小さな意志が第一歩になります。覚えていたときはぜひAI夢占いで深層心理を覗いてみてください。
             </p>
           </section>
 

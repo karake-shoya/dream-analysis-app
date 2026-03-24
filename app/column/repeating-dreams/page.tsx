@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { BookOpen, Brain, RefreshCw, Lightbulb } from 'lucide-react';
+import { BookOpen, Brain, RefreshCw, Lightbulb, Layers } from 'lucide-react';
 import ContentPageLayout from '@/components/ContentPageLayout';
 import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
@@ -45,13 +45,8 @@ export default function RepeatingDreamsPage() {
               繰り返す夢を見ると、「何か悪いことが起きる前兆？」「病気のサイン？」と不安になることもあるかもしれません。でも、まずひとつ伝えておくと、繰り返し夢を見ること自体はとても一般的な現象で、特別なことではありません。
             </p>
             <p>
-              むしろ、<span className="text-purple-300 font-bold">心がある種のメッセージを送り続けているサイン</span>として受け取るほうが、ずっと建設的です。
+              むしろ、<span className="text-purple-300 font-bold">心がある種のメッセージを送り続けているサイン</span>として受け取るほうが、ずっと建設的です。ユング心理学はこの点について、他の心理学的アプローチとは一線を画した深い洞察を提供しています。
             </p>
-          </div>
-
-          {/* 広告（上部） */}
-          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
-            <AdsenseAd slot={siteConfig.adsenseSlot} />
           </div>
 
           {/* セクション1: 処理中の感情 */}
@@ -67,9 +62,14 @@ export default function RepeatingDreamsPage() {
               同じ夢を繰り返し見るのは、脳がある感情や出来事をうまく処理しきれていないとき、繰り返し「再処理」しようとしているからだと考えられています。終わっていない仕事のタスクが頭の片隅に残り続けるように、整理できていない感情も夢の中に何度でも出てくるわけです。
             </p>
             <p className="text-gray-300 leading-relaxed text-lg">
-              心理学の世界では、繰り返し夢は<span className="text-purple-300 font-bold">「未解決の葛藤」の表れ</span>として語られることがあります。フロイト的には抑圧された欲求、ユング的には自分の内面が気づかせようとしているテーマ——と解釈の角度はさまざまですが、共通しているのは「夢は今の自分の心の状態を反映している」という視点です。
+              心理学の世界では、繰り返し夢は<span className="text-purple-300 font-bold">「未解決の葛藤」の表れ</span>として語られることがあります。この「未解決」という点こそ、ユング心理学が特に深く掘り下げたテーマです。
             </p>
           </section>
+
+          {/* 広告（上部） */}
+          <div className="bg-white/5 rounded-2xl p-4 border border-white/10 my-8">
+            <AdsenseAd slot={siteConfig.adsenseSlot} />
+          </div>
 
           {/* セクション2: よくある繰り返しの夢 */}
           <section>
@@ -121,7 +121,46 @@ export default function RepeatingDreamsPage() {
             <AdsenseAd slot={siteConfig.adsenseSlot} />
           </div>
 
-          {/* セクション3: 繰り返す夢が止まるとき */}
+          {/* セクション3: ユング心理学の深読み（新設） */}
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+              <Layers className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
+              ユング心理学で深読みする：コンプレックスとアーキタイプ
+            </h2>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+              繰り返す夢に対して、ユング心理学はひときわ豊かな解釈の枠組みを提供しています。その中心となる2つの概念を紹介します。
+            </p>
+
+            <div className="p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20 mb-6">
+              <h3 className="text-xl font-bold text-purple-200 mb-3">コンプレックス（Complex）：感情に帯電した観念の塊</h3>
+              <p className="text-gray-300 leading-relaxed mb-3">
+                ユングは「コンプレックス」を、強い感情と結びついた記憶・観念の塊として定義しました。これは劣等感だけを指すのではなく、怒り・悲しみ・恐れ・罪悪感なども含む、無意識に蓄積された感情の固まりです。
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                繰り返す夢は、このコンプレックスが活性化しているサインとして読めます。同じシナリオが何度も夢に現れるということは、そのテーマに紐づいたコンプレックスがまだ解消されていない状態を示しているのです。「また追いかけられる夢を見た」という体験は、「まだそのコンプレックスに気づいてほしい」という無意識からの繰り返しのノックとも言えます。
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-purple-900/20 border border-purple-500/20 mb-6">
+              <h3 className="text-xl font-bold text-purple-200 mb-3">集合的無意識とアーキタイプ：なぜ世界中で似た夢が見られるのか</h3>
+              <p className="text-gray-300 leading-relaxed mb-3">
+                ユングはさらに、個人の無意識を超えた「集合的無意識」という領域を提唱しました。これは人類が長い歴史の中で共有してきた、普遍的なイメージや象徴の貯蔵庫です。そこに含まれる象徴的なパターンを「アーキタイプ（元型）」と呼びます。
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                「追いかけられる夢」「歯が抜ける夢」「空を飛ぶ夢」が世界中の人々に普遍的に見られるのは偶然ではありません。これらはアーキタイプ的なテーマ——危険からの逃走、喪失への恐れ、自由への憧れ——として人類の集合的無意識に刻まれたパターンなのです。あなたが見る繰り返しの夢は、個人的な体験であると同時に、人類が古来から抱えてきた普遍的なテーマとつながっている可能性があります。
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+              <h3 className="text-lg font-bold text-purple-200 mb-2">繰り返す夢は「個性化」のプロセス途中かもしれない</h3>
+              <p className="text-gray-300 leading-relaxed">
+                ユングが生涯をかけて探求した「個性化（Individuation）」とは、意識と無意識が統合されて本来の自己に近づいていくプロセスです。繰り返す夢はこのプロセスの途中——まだ統合されていないテーマや感情——として位置づけることができます。怖い夢が繰り返されるとき、それはあなたの心が「この部分をそろそろ見つめてほしい」と訴え続けているのかもしれません。
+              </p>
+            </div>
+          </section>
+
+          {/* セクション4: 繰り返す夢が止まるとき */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 border-l-4 border-purple-500 pl-4">
               繰り返す夢が止まるとき
@@ -129,12 +168,15 @@ export default function RepeatingDreamsPage() {
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
               同じ夢を見なくなるのは、多くの場合、ストレスの原因が解消されたときや、気持ちの整理がついたタイミングです。悩んでいた問題に決着がついた、誰かに話して楽になった、生活習慣が変わって睡眠の質が上がった——そういった変化がきっかけになることが多いようです。
             </p>
+            <p className="text-gray-300 leading-relaxed text-lg mb-4">
+              ユング的に言えば、コンプレックスが意識化され、統合されたとき、夢はそのテーマを繰り返し送る必要がなくなります。「あの繰り返しの夢、最近見なくなった」という気づきは、心の整理が進んだサインとして受け取れるのです。
+            </p>
             <p className="text-gray-300 leading-relaxed text-lg">
-              逆に言えば、繰り返す夢は<span className="text-purple-300 font-bold">「まだここが引っかかっているよ」という心からのお知らせ</span>とも言えます。夢を「厄介なもの」ではなく、「自分を知るヒント」として受け取れると、少し気持ちが楽になると思います。
+              繰り返す夢は<span className="text-purple-300 font-bold">「まだここが引っかかっているよ」という心からのお知らせ</span>。夢を「厄介なもの」ではなく、「自分を知るヒント」として受け取れると、少し気持ちが楽になると思います。
             </p>
           </section>
 
-          {/* セクション4: セルフケアに活かすヒント */}
+          {/* セクション5: セルフケアに活かすヒント */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
               <Lightbulb className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
@@ -144,7 +186,10 @@ export default function RepeatingDreamsPage() {
               繰り返し見る夢があるなら、試してみてほしいのが<span className="text-purple-300 font-bold">「夢日記」</span>です。朝起きたらすぐ、夢の内容と目覚めたときの感情を短くメモするだけ。1〜2週間続けると、夢のパターンと自分のコンディションのつながりが見えてきます。
             </p>
             <p className="text-gray-300 leading-relaxed text-lg mb-4">
-              「なぜこの夢を見たんだろう？」と自分に問いかけることで、今の自分が何を気にしているか、どこに疲れているかに気づけることがあります。占いのように「答え」を求めるものではなく、自分の心の状態を可視化するツールとして使うのがいちばんしっくりくる使い方だと思います。
+              さらに一歩進めて、「この夢に登場する人物や場所は、自分の何を象徴しているだろう？」とユング的な問いを加えてみると、単なる「睡眠の記録」を超えた深みが生まれます。追いかけてくる存在は「自分が避けている感情」かもしれない。知らない場所は「まだ踏み込んでいない自分の領域」かもしれない——そうした視点が、夢を内省のツールに変えてくれます。
+            </p>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              「なぜこの夢を見たんだろう？」と自分に問いかけることで、今の自分が何を気にしているか、どこに疲れているかに気づけることがあります。占いのように「答え」を求めるものではなく、自分の心の状態を可視化するツールとして使うのがいちばんしっくりくる使い方です。
             </p>
           </section>
 
@@ -155,7 +200,7 @@ export default function RepeatingDreamsPage() {
               おわりに
             </h2>
             <p className="text-gray-300 leading-relaxed text-lg">
-              繰り返す夢は、怖いものでも不吉なものでもありません。ただ、あなたの心がまだ話し終えていないだけです。
+              繰り返す夢は、怖いものでも不吉なものでもありません。ユングの言葉を借りれば、それはあなたの無意識がまだ話し終えていないことのサインです。コンプレックスやアーキタイプという概念は難しく聞こえるかもしれませんが、要は「まだ気づいていない自分の一部が、夢というかたちで手を振っている」ということ。その声に少しだけ耳を傾けてみると、繰り返しの夢との付き合い方が変わってくるはずです。
             </p>
           </section>
 
