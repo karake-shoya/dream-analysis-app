@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
 
-    const rateLimitResult = consumeRateLimit({
+    const rateLimitResult = await consumeRateLimit({
       key: user ? `analyze:user:${user.id}` : `analyze:ip:${getClientIp(req)}`,
       limit: user ? 60 : 20,
       windowMs: 10 * 60 * 1000,
