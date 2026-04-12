@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Salesforce CLI（VSCode拡張が自動生成するため除外）
+.sfdx/
