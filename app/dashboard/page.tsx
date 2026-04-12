@@ -7,6 +7,7 @@ import { formatDate } from "@/lib/utils";
 import type { DreamRecord } from "@/lib/types";
 import DreamCalendar from "@/components/DreamCalendar";
 import DashboardFilters from "@/components/DashboardFilters";
+import DreamTrendAnalysis from "@/components/DreamTrendAnalysis";
 import GradientBackground from "@/components/GradientBackground";
 
 export const metadata: Metadata = {
@@ -85,6 +86,51 @@ export default async function Dashboard({ searchParams }: Props) {
     .map(([tag, count]) => ({ tag, count }))
     .sort((a, b) => b.count - a.count);
 
+  // keywords Top5
+  const keywordCountMap = new Map<string, number>();
+  for (const dream of dreams) {
+    for (const kw of dream.diagnosis_result.keywords ?? []) {
+      keywordCountMap.set(kw, (keywordCountMap.get(kw) ?? 0) + 1);
+    }
+  }
+  const topKeywords = Array.from(keywordCountMap.entries())
+    .map(([keyword, count]) => ({ keyword, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
+  // emotions Top5
+  const emotionCountMap = new Map<string, number>();
+  for (const dream of dreams) {
+    for (const em of dream.diagnosis_result.emotions ?? []) {
+      emotionCountMap.set(em, (emotionCountMap.get(em) ?? 0) + 1);
+    }
+  }
+  const topEmotions = Array.from(emotionCountMap.entries())
+    .map(([emotion, count]) => ({ emotion, count }))
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5);
+
+  // 月別記録数（直近6ヶ月）
+  const monthlyCountMap = new Map<string, number>();
+  const now = new Date();
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    monthlyCountMap.set(key, 0);
+  }
+  for (const dream of dreams) {
+    const d = new Date(dream.created_at);
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    if (monthlyCountMap.has(key)) {
+      monthlyCountMap.set(key, (monthlyCountMap.get(key) ?? 0) + 1);
+    }
+  }
+  const monthlyCounts = Array.from(monthlyCountMap.entries()).map(([month, count]) => ({
+    month,
+    label: `${parseInt(month.split('-')[1])}月`,
+    count,
+  }));
+
   // ページネーション
   const currentPage = parseInt(params.page || '1', 10);
   const totalItems = filteredDreams.length;
@@ -128,6 +174,17 @@ export default async function Dashboard({ searchParams }: Props) {
                     </span>
                 </h1>
             </div>
+
+            {/* 傾向分析セクション */}
+            {dreams.length >= 3 && (
+              <div className="mb-8">
+                <DreamTrendAnalysis
+                  topKeywords={topKeywords}
+                  topEmotions={topEmotions}
+                  monthlyCounts={monthlyCounts}
+                />
+              </div>
+            )}
 
             {/* 検索・タグフィルター */}
             {dreams.length > 0 && (

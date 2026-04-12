@@ -32,7 +32,7 @@ export async function submitContact(data: ContactFormData) {
 
   const { name, email, subject, message } = validatedFields.data
 
-  const rateLimitResult = consumeRateLimit({
+  const rateLimitResult = await consumeRateLimit({
     key: `contact:${email.toLowerCase()}`,
     limit: 3,
     windowMs: 10 * 60 * 1000,
