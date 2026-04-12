@@ -105,6 +105,30 @@ export const getDictionaryItemsByCategory = cache((category: string): Dictionary
   return getAllDictionaryItems().filter((item) => item.category === category);
 });
 
+// 日本語キーワード → { category, slug } の逆引きマップ（結果ページの内部リンク用）
+export const getDictionaryKeywordMap = cache((): Map<string, { category: string; slug: string }> => {
+  const map = new Map<string, { category: string; slug: string }>();
+
+  if (!fs.existsSync(CONTENT_PATH)) return map;
+
+  const categories = fs.readdirSync(CONTENT_PATH);
+  for (const category of categories) {
+    const categoryPath = path.join(CONTENT_PATH, category);
+    if (!fs.statSync(categoryPath).isDirectory()) continue;
+
+    const files = fs.readdirSync(categoryPath).filter((f) => f.endsWith('.mdx'));
+    for (const file of files) {
+      const slug = file.replace('.mdx', '');
+      const frontmatter = getArticleFrontmatter(category, slug);
+      if (frontmatter?.keyword) {
+        map.set(frontmatter.keyword, { category, slug });
+      }
+    }
+  }
+
+  return map;
+});
+
 // 全カテゴリを取得（MDXファイルから動的に）
 export const getAllCategories = cache((): string[] => {
   if (!fs.existsSync(CONTENT_PATH)) {

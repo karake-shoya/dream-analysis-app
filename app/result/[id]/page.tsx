@@ -20,8 +20,10 @@ import { ShareButtons } from "@/components/ShareButtons";
 import ResultSectionCard from "@/components/ResultSectionCard";
 import AdModal from "@/components/AdModal";
 import AdsenseAd from "@/components/AdsenseAd";
+import DreamMemo from "@/components/DreamMemo";
 import type { AnalysisResult, DreamRecord } from "@/lib/types";
 import { siteConfig } from "@/lib/config";
+import { getDictionaryKeywordMap } from "@/lib/mdx";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -132,6 +134,11 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
   // アプリ内遷移（分析直後）のみ広告を表示。共有URLからの直接アクセスはスキップ
   const showAd = ref === 'app';
 
+  // 所有者判定（メモ・タグ編集UIの表示制御）
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  const isOwner = !!user && user.id === dream.user_id;
+
   const shareToken = token || dream.share_token;
   const fullUrl = `${siteConfig.baseUrl}/result/${id}?token=${encodeURIComponent(shareToken)}`;
 
@@ -143,6 +150,9 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
       ? [{ summary, confidence: 1, evidence: [] }]
       : [];
   const { facts = [], emotions = [], symbols = [], nextActions = [] } = result;
+
+  // 辞典の逆引きマップ（日本語キーワード → カテゴリ/スラグ）
+  const dictMap = getDictionaryKeywordMap();
 
   return (
     <AdModal slot={siteConfig.adsenseSlot} showAd={showAd}>
@@ -186,11 +196,25 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                 </h2>
               )}
               <div className="flex flex-wrap gap-2 justify-center">
-                {result.keywords?.map((keyword, i) => (
-                  <span key={i} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-purple-200 text-sm font-medium backdrop-blur-sm">
-                    #{keyword}
-                  </span>
-                ))}
+                {result.keywords?.map((keyword, i) => {
+                  const dictEntry = dictMap.get(keyword);
+                  if (dictEntry) {
+                    return (
+                      <Link
+                        key={i}
+                        href={`/dictionary/${dictEntry.category}/${dictEntry.slug}`}
+                        className="px-4 py-2 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-200 text-sm font-medium backdrop-blur-sm hover:bg-purple-500/25 hover:border-purple-400/50 transition-colors"
+                      >
+                        #{keyword}
+                      </Link>
+                    );
+                  }
+                  return (
+                    <span key={i} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-purple-200 text-sm font-medium backdrop-blur-sm">
+                      #{keyword}
+                    </span>
+                  );
+                })}
               </div>
             </div>
 
@@ -239,14 +263,38 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                   夢の中の象徴
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  {symbols.map((symbol, i) => (
-                    <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                      <div className="font-bold text-amber-200 mb-1">{symbol.symbol}</div>
-                      <p className="text-xs text-gray-400 leading-relaxed">
-                        {symbol.meaningCandidates?.join(" / ")}
-                      </p>
-                    </div>
-                  ))}
+                  {symbols.map((symbol, i) => {
+                    const dictEntry = dictMap.get(symbol.symbol);
+                    const inner = (
+                      <>
+                        <div className="font-bold text-amber-200 mb-1 flex items-center gap-1.5">
+                          {symbol.symbol}
+                          {dictEntry && (
+                            <span className="text-[10px] text-amber-400/60 font-normal">辞典を見る →</span>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-400 leading-relaxed">
+                          {symbol.meaningCandidates?.join(" / ")}
+                        </p>
+                      </>
+                    );
+                    if (dictEntry) {
+                      return (
+                        <Link
+                          key={i}
+                          href={`/dictionary/${dictEntry.category}/${dictEntry.slug}`}
+                          className="p-4 rounded-2xl bg-white/5 border border-amber-500/15 hover:bg-amber-500/5 hover:border-amber-500/30 transition-colors block"
+                        >
+                          {inner}
+                        </Link>
+                      );
+                    }
+                    return (
+                      <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                        {inner}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -321,6 +369,14 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                   )}
                 </div>
               </div>
+            )}
+
+            {isOwner && (
+              <DreamMemo
+                dreamId={dream.id}
+                initialNotes={dream.notes ?? ''}
+                initialTags={dream.user_tags ?? []}
+              />
             )}
 
             <div className="pt-8 border-t border-white/10">

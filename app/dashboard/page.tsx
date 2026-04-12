@@ -289,7 +289,17 @@ export default async function Dashboard({ searchParams }: Props) {
                                                 </h3>
                                                 
                                                 <p className="text-gray-400 text-sm italic line-clamp-2">&quot;{dream.content}&quot;</p>
-                                                
+
+                                                {dream.user_tags?.length > 0 && (
+                                                    <div className="flex flex-wrap gap-1 mt-2">
+                                                        {dream.user_tags.map((tag: string, i: number) => (
+                                                            <span key={i} className="text-xs px-2 py-0.5 bg-emerald-500/15 rounded-full text-emerald-300 border border-emerald-500/20">
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+
                                                 <div className="mt-3 text-xs text-purple-400 group-hover:text-purple-300 transition-colors">
                                                     詳細を見る →
                                                 </div>
