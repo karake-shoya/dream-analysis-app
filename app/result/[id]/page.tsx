@@ -25,7 +25,7 @@ import { siteConfig } from "@/lib/config";
 
 interface PageProps {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ token?: string }>;
+  searchParams: Promise<{ token?: string; ref?: string }>;
 }
 
 function getAdminClient() {
@@ -115,7 +115,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
 export default async function ResultPage({ params, searchParams }: PageProps) {
   const { id } = await params;
-  const { token } = await searchParams;
+  const { token, ref } = await searchParams;
 
   const dream = await getAccessibleDream(id, token);
   if (!dream) {
@@ -125,8 +125,12 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
   // トークンがURLにないが、所有者としてアクセスできている場合はトークン付きURLへリダイレクト
   // これにより、アドレスバーのURLをそのままコピーしても共有可能になる
   if (!token && dream.share_token) {
-    redirect(`/result/${id}?token=${encodeURIComponent(dream.share_token)}`);
+    const refParam = ref ? `&ref=${ref}` : '';
+    redirect(`/result/${id}?token=${encodeURIComponent(dream.share_token)}${refParam}`);
   }
+
+  // アプリ内遷移（分析直後）のみ広告を表示。共有URLからの直接アクセスはスキップ
+  const showAd = ref === 'app';
 
   const shareToken = token || dream.share_token;
   const fullUrl = `${siteConfig.baseUrl}/result/${id}?token=${encodeURIComponent(shareToken)}`;
@@ -141,7 +145,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
   const { facts = [], emotions = [], symbols = [], nextActions = [] } = result;
 
   return (
-    <AdModal slot={siteConfig.adsenseSlot}>
+    <AdModal slot={siteConfig.adsenseSlot} showAd={showAd}>
       <main className="min-h-screen text-white selection:bg-purple-500/30">
         <GradientBackground />
 

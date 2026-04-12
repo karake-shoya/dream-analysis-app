@@ -7,19 +7,22 @@ import AdsenseAd from "./AdsenseAd";
 type Props = {
   slot: string;
   children: React.ReactNode;
+  showAd?: boolean;
   title?: string;
   description?: string;
   onReveal?: () => void;
 };
 
-export default function AdModal({ 
-  slot, 
-  children, 
-  title = "診断が完了しました！", 
+export default function AdModal({
+  slot,
+  children,
+  showAd = false,
+  title = "診断が完了しました！",
   description = "あなたの深層心理の解析結果をお届けします",
   onReveal
 }: Props) {
-  const [isRevealed, setIsRevealed] = useState(false);
+  // showAd=false（共有URLからの直接アクセス）の場合は最初からコンテンツを表示
+  const [isRevealed, setIsRevealed] = useState(!showAd);
 
   const handleReveal = () => {
     setIsRevealed(true);
