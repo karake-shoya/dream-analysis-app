@@ -1,23 +1,29 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import GradientBackground from '@/components/GradientBackground';
 import VoiceInput from '@/components/VoiceInput';
-import { ERROR_MESSAGES } from '@/lib/constants';
 import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
 import HomeSeoSections from '@/components/HomeSeoSections';
-
-interface Question {
-  question: string;
-  options: string[];
-}
+import { useAnalyze } from '@/hooks/useAnalyze';
 
 export default function Home() {
   const router = useRouter();
   const { user } = useAuth();
+  const {
+    dream, setDream, baseTextRef,
+    loading, error,
+    needsMoreInfo, questions,
+    moreInfo, setMoreInfo, moreInfoBaseTextRef,
+    resultId, resultShareToken,
+    questionsSectionRef,
+    handleAnalyze, handleAddOption, handleKeyDown,
+  } = useAnalyze();
+
+  const displayName = getDisplayName(user);
 
   // Supabase認証後のURLに残る?codeパラメータを除去
   useEffect(() => {
@@ -25,96 +31,12 @@ export default function Home() {
       window.history.replaceState({}, '', window.location.pathname);
     }
   }, []);
-  const [dream, setDream] = useState('');
-  const baseTextRef = useRef('');
-  
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-  const [needsMoreInfo, setNeedsMoreInfo] = useState(false);
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [moreInfo, setMoreInfo] = useState('');
-  const moreInfoBaseTextRef = useRef('');
-  const [resultId, setResultId] = useState<string | null>(null);
-  const [resultShareToken, setResultShareToken] = useState<string | null>(null);
-  const questionsSectionRef = useRef<HTMLDivElement>(null);
-  
-  const displayName = getDisplayName(user);
 
   const buildResultPath = (id: string, shareToken?: string | null) => {
     const params = new URLSearchParams();
     if (shareToken) params.set('token', shareToken);
     params.set('ref', 'app');
     return `/result/${id}?${params.toString()}`;
-  };
-
-  const handleAnalyze = async (isFollowUp = false) => {
-    const inputText = isFollowUp ? `${dream}\n\n【追加情報】\n${moreInfo}` : dream;
-    if (!inputText.trim()) return;
-
-    setLoading(true);
-    setError('');
-
-    try {
-      const res = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ dream: inputText }),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || ERROR_MESSAGES.ANALYSIS_FAILED);
-      }
-
-      if (data.needsMoreInfo && !isFollowUp) {
-        setNeedsMoreInfo(true);
-        setQuestions(data.missingInfoQuestions || []);
-        if (data.id) {
-          setResultId(data.id);
-          setResultShareToken(data.shareToken || null);
-        }
-        setLoading(false);
-        
-        setTimeout(() => {
-          if (questionsSectionRef.current) {
-            const yOffset = -80;
-            const element = questionsSectionRef.current;
-            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }
-        }, 150);
-        return;
-      }
-
-      if (data.id) {
-        router.push(buildResultPath(data.id, data.shareToken));
-      } else {
-        setLoading(false);
-        setError('解析は完了しましたが、結果の保存に失敗しました。もう一度お試しください。');
-      }
-    } catch (err: unknown) {
-      setLoading(false);
-      const errorMessage = err instanceof Error ? err.message : ERROR_MESSAGES.UNEXPECTED_ERROR;
-      setError(errorMessage);
-    }
-  };
-
-  const handleAddOption = (option: string) => {
-    setMoreInfo(prev => {
-      const trimmed = prev.trim();
-      if (!trimmed) return option;
-      if (/[、。]$/.test(trimmed)) return trimmed + option;
-      return trimmed + '、' + option;
-    });
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent, isFollowUp: boolean) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
-      if (!isFollowUp && needsMoreInfo) return;
-      e.preventDefault();
-      handleAnalyze(isFollowUp);
-    }
   };
 
   return (
@@ -127,13 +49,13 @@ export default function Home() {
           {/* Logo */}
           <div className="relative inline-block">
             <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
-            <img 
-              src="/icon.png" 
-              alt="Yume Insight Logo" 
+            <img
+              src="/icon.png"
+              alt="Yume Insight Logo"
               className="relative w-28 h-28 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
             />
           </div>
-          
+
           <h2 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 font-display">
             Your Dreams, Decoded.
           </h2>
@@ -146,8 +68,6 @@ export default function Home() {
             </p>
           </div>
         </div>
-        
-
 
         {/* Input Section */}
         <div className="space-y-6">
@@ -162,7 +82,7 @@ export default function Home() {
                 )}
               </span>
             </label>
-            
+
             <div className="relative">
               <textarea
                 id="dream-input"
@@ -172,13 +92,13 @@ export default function Home() {
                 className="w-full h-48 bg-black/20 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all resize-none pr-14"
                 placeholder="例：広い草原で、白いウサギを追いかけている夢を見ました。空は不思議な紫色をしていて..."
               />
-              <VoiceInput 
+              <VoiceInput
                 onStart={() => { baseTextRef.current = dream; }}
                 onTranscript={(transcript) => setDream(baseTextRef.current + (baseTextRef.current ? ' ' : '') + transcript)}
                 className="absolute bottom-4 right-4"
               />
             </div>
-            
+
             {!needsMoreInfo && (
               <div className="mt-6 flex justify-end">
                 <button
@@ -204,7 +124,7 @@ export default function Home() {
                 </button>
               </div>
             )}
-            
+
             {error && !needsMoreInfo && (
               <div className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-200 text-sm">
                 {error}
@@ -214,7 +134,7 @@ export default function Home() {
 
           {/* Additional Questions Section */}
           {needsMoreInfo && (
-            <div 
+            <div
               ref={questionsSectionRef}
               className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 md:p-8 border border-indigo-500/30 shadow-2xl animate-in fade-in slide-in-from-top-8 duration-700"
             >
@@ -222,7 +142,7 @@ export default function Home() {
                 <MessageCircleQuestion className="w-6 h-6 mr-3 text-indigo-400" />
                 詳細診断のためのヒント
               </div>
-              
+
               <p className="text-gray-300 mb-6 leading-relaxed">
                 AIがあなたの夢をさらに深く紐解くために、いくつか気になる点を見つけました。
                 当てはまるものを選んだり、自由に書き足してみてください。
@@ -262,7 +182,7 @@ export default function Home() {
                   className="w-full h-32 bg-black/40 border border-white/10 rounded-xl p-4 text-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all resize-none pr-14"
                   placeholder="追加の内容をこちらに入力（ボタンで選択した内容もここに反映されます）"
                 />
-                <VoiceInput 
+                <VoiceInput
                   onStart={() => { moreInfoBaseTextRef.current = moreInfo; }}
                   onTranscript={(transcript) => setMoreInfo(moreInfoBaseTextRef.current + (moreInfoBaseTextRef.current ? ' ' : '') + transcript)}
                   className="absolute bottom-4 right-4"
@@ -307,7 +227,7 @@ export default function Home() {
             </div>
           )}
         </div>
-        
+
         <HomeSeoSections />
 
         {/* Site Description Section */}
@@ -352,7 +272,7 @@ export default function Home() {
               </a>
             ))}
           </div>
-          
+
           <div className="mt-8 text-center">
             <a
               href="/sitemap"
