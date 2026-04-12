@@ -41,11 +41,10 @@ export default function Home() {
   const displayName = getDisplayName(user);
 
   const buildResultPath = (id: string, shareToken?: string | null) => {
-    if (!shareToken) {
-      return `/result/${id}`;
-    }
-
-    return `/result/${id}?token=${encodeURIComponent(shareToken)}`;
+    const params = new URLSearchParams();
+    if (shareToken) params.set('token', shareToken);
+    params.set('ref', 'app');
+    return `/result/${id}?${params.toString()}`;
   };
 
   const handleAnalyze = async (isFollowUp = false) => {
