@@ -3,11 +3,11 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { Moon, Calendar, List, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
-import { formatDate } from "@/lib/utils";
 import type { DreamRecord } from "@/lib/types";
 import DreamCalendar from "@/components/DreamCalendar";
 import DashboardFilters from "@/components/DashboardFilters";
 import DreamTrendAnalysis from "@/components/DreamTrendAnalysis";
+import DashboardDreamCard from "@/components/DashboardDreamCard";
 import GradientBackground from "@/components/GradientBackground";
 
 export const metadata: Metadata = {
@@ -261,51 +261,9 @@ export default async function Dashboard({ searchParams }: Props) {
                                 </p>
 
                                 <div className="grid gap-4">
-                                    {paginatedDreams.map((dream) => {
-                                        const result = dream.diagnosis_result;
-                                        
-                                        return (
-                                            <Link 
-                                                key={dream.id} 
-                                                href={`/result/${dream.id}${dream.share_token ? `?token=${encodeURIComponent(dream.share_token)}` : ''}`}
-                                                className="block bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 hover:border-purple-500/30 transition-all group shadow-lg shadow-black/20"
-                                            >
-                                                <div className="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
-                                                    <div className="flex items-center text-sm text-purple-300">
-                                                        <Calendar className="w-4 h-4 mr-2" />
-                                                        {formatDate(dream.created_at)}
-                                                    </div>
-                                                    <div className="flex flex-wrap gap-2">
-                                                        {result.keywords?.slice(0, 3).map((k: string, i: number) => (
-                                                            <span key={i} className="text-xs px-2 py-1 bg-purple-500/20 rounded-full text-purple-200 border border-purple-500/30">
-                                                                #{k}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                                
-                                                <h3 className="text-lg font-bold text-indigo-200 mb-2 group-hover:text-purple-300 transition-colors">
-                                                    {result.title || result.interpretations?.[0]?.summary || result.summary || "夢占い結果"}
-                                                </h3>
-                                                
-                                                <p className="text-gray-400 text-sm italic line-clamp-2">&quot;{dream.content}&quot;</p>
-
-                                                {dream.user_tags?.length > 0 && (
-                                                    <div className="flex flex-wrap gap-1 mt-2">
-                                                        {dream.user_tags.map((tag: string, i: number) => (
-                                                            <span key={i} className="text-xs px-2 py-0.5 bg-emerald-500/15 rounded-full text-emerald-300 border border-emerald-500/20">
-                                                                {tag}
-                                                            </span>
-                                                        ))}
-                                                    </div>
-                                                )}
-
-                                                <div className="mt-3 text-xs text-purple-400 group-hover:text-purple-300 transition-colors">
-                                                    詳細を見る →
-                                                </div>
-                                            </Link>
-                                        )
-                                    })}
+                                    {paginatedDreams.map((dream) => (
+                                        <DashboardDreamCard key={dream.id} dream={dream} />
+                                    ))}
                                 </div>
 
                                 {/* ページネーション */}
