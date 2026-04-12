@@ -6,6 +6,7 @@ import Link from "next/link";
 import { formatDate } from "@/lib/utils";
 import type { DreamRecord } from "@/lib/types";
 import DreamCalendar from "@/components/DreamCalendar";
+import DashboardFilters from "@/components/DashboardFilters";
 import GradientBackground from "@/components/GradientBackground";
 
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export const runtime = "edge";
 const ITEMS_PER_PAGE = 10;
 
 type Props = {
-  searchParams: Promise<{ month?: string; page?: string }>;
+  searchParams: Promise<{ month?: string; page?: string; q?: string; tag?: string }>;
 };
 
 export default async function Dashboard({ searchParams }: Props) {
@@ -41,15 +42,48 @@ export default async function Dashboard({ searchParams }: Props) {
 
   // 月フィルタリング
   const selectedMonth = params.month;
+  const currentQ = params.q?.trim() || undefined;
+  const currentTag = params.tag?.trim() || undefined;
   let filteredDreams = dreams;
-  
+
   if (selectedMonth) {
     const [filterYear, filterMonth] = selectedMonth.split('-').map(Number);
-    filteredDreams = dreams.filter((dream) => {
+    filteredDreams = filteredDreams.filter((dream) => {
       const date = new Date(dream.created_at);
       return date.getFullYear() === filterYear && date.getMonth() + 1 === filterMonth;
     });
   }
+
+  // テキスト検索（content / title / keywords の部分一致）
+  if (currentQ) {
+    const q = currentQ.toLowerCase();
+    filteredDreams = filteredDreams.filter((dream) => {
+      const result = dream.diagnosis_result;
+      return (
+        dream.content.toLowerCase().includes(q) ||
+        result.title?.toLowerCase().includes(q) ||
+        result.keywords?.some((k) => k.toLowerCase().includes(q))
+      );
+    });
+  }
+
+  // タグ絞り込み（keywords の完全一致）
+  if (currentTag) {
+    filteredDreams = filteredDreams.filter((dream) =>
+      dream.diagnosis_result.keywords?.includes(currentTag)
+    );
+  }
+
+  // タグ候補（出現回数でソート）
+  const tagCountMap = new Map<string, number>();
+  for (const dream of dreams) {
+    for (const tag of dream.diagnosis_result.keywords ?? []) {
+      tagCountMap.set(tag, (tagCountMap.get(tag) ?? 0) + 1);
+    }
+  }
+  const tagCounts = Array.from(tagCountMap.entries())
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
 
   // ページネーション
   const currentPage = parseInt(params.page || '1', 10);
@@ -67,10 +101,12 @@ export default async function Dashboard({ searchParams }: Props) {
 
   // ページネーションリンク生成
   const createPageUrl = (page: number) => {
-    const params = new URLSearchParams();
-    if (selectedMonth) params.set('month', selectedMonth);
-    if (page > 1) params.set('page', page.toString());
-    const query = params.toString();
+    const p = new URLSearchParams();
+    if (selectedMonth) p.set('month', selectedMonth);
+    if (currentQ) p.set('q', currentQ);
+    if (currentTag) p.set('tag', currentTag);
+    if (page > 1) p.set('page', page.toString());
+    const query = p.toString();
     return `/dashboard${query ? `?${query}` : ''}`;
   };
 
@@ -92,6 +128,17 @@ export default async function Dashboard({ searchParams }: Props) {
                     </span>
                 </h1>
             </div>
+
+            {/* 検索・タグフィルター */}
+            {dreams.length > 0 && (
+              <div className="mb-8">
+                <DashboardFilters
+                  tagCounts={tagCounts}
+                  currentQ={currentQ}
+                  currentTag={currentTag}
+                />
+              </div>
+            )}
 
             {dreams.length === 0 ? (
                 <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
