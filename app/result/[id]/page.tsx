@@ -20,6 +20,7 @@ import { ShareButtons } from "@/components/ShareButtons";
 import ResultSectionCard from "@/components/ResultSectionCard";
 import AdModal from "@/components/AdModal";
 import AdsenseAd from "@/components/AdsenseAd";
+import DreamMemo from "@/components/DreamMemo";
 import type { AnalysisResult, DreamRecord } from "@/lib/types";
 import { siteConfig } from "@/lib/config";
 
@@ -131,6 +132,11 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
 
   // アプリ内遷移（分析直後）のみ広告を表示。共有URLからの直接アクセスはスキップ
   const showAd = ref === 'app';
+
+  // 所有者判定（メモ・タグ編集UIの表示制御）
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  const isOwner = !!user && user.id === dream.user_id;
 
   const shareToken = token || dream.share_token;
   const fullUrl = `${siteConfig.baseUrl}/result/${id}?token=${encodeURIComponent(shareToken)}`;
@@ -321,6 +327,14 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
                   )}
                 </div>
               </div>
+            )}
+
+            {isOwner && (
+              <DreamMemo
+                dreamId={dream.id}
+                initialNotes={dream.notes ?? ''}
+                initialTags={dream.user_tags ?? []}
+              />
             )}
 
             <div className="pt-8 border-t border-white/10">

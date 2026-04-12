@@ -50,4 +50,6 @@ export interface DreamRecord {
   diagnosis_result: AnalysisResult;
   created_at: string;
   share_token: string;
+  notes?: string;
+  user_tags: string[];
 }
