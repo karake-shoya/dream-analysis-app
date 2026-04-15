@@ -30,6 +30,7 @@ export default function Footer() {
               <li><Link href="/column/dream-color" className="hover:text-purple-300 transition-colors">夢の中の色が持つ心理的な意味</Link></li>
               <li><Link href="/sleeping-positions" className="hover:text-purple-300 transition-colors">寝相でわかる相性診断</Link></li>
               <li><Link href="/sitemap" className="hover:text-purple-300 transition-colors">全記事一覧</Link></li>
+              <li><Link href="/updates" className="hover:text-purple-300 transition-colors">更新情報</Link></li>
             </ul>
           </div>
 

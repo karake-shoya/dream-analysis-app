@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Toaster } from "sonner";
 import { siteConfig } from "@/lib/config";
+import NextTopLoader from "nextjs-toploader";
 
 const fredoka = Fredoka({ 
   subsets: ["latin"], 
@@ -132,6 +133,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <NextTopLoader color="#a855f7" shadow="0 0 10px #a855f7,0 0 5px #a855f7" height={3} showSpinner={false} />
         <Header />
         <div className="flex-1">
           {children}
