@@ -9,6 +9,10 @@ export type UpdateEntry = {
 export const UPDATES: UpdateEntry[] = [
   {
     date: '2026-04-15',
+    label: 'ページ読み込み中の表示を改善しました',
+  },
+  {
+    date: '2026-04-15',
     label: '更新情報の掲載を開始しました',
   },
   {
