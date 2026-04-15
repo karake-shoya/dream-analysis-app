@@ -9,6 +9,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
 import HomeSeoSections from '@/components/HomeSeoSections';
 import { useAnalyze } from '@/hooks/useAnalyze';
+import UpdateTimeline from '@/components/UpdateTimeline';
 
 export default function Home() {
   const router = useRouter();
@@ -68,6 +69,9 @@ export default function Home() {
             </p>
           </div>
         </div>
+
+        {/* 更新情報タイムライン */}
+        <UpdateTimeline />
 
         {/* Input Section */}
         <div className="space-y-6">
