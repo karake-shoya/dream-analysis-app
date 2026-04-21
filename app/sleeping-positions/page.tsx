@@ -219,9 +219,26 @@ const FAQ_ITEMS = [
   { question: "診断結果がしっくりこない時は？", answer: "この診断はエンタメ要素を含む傾向診断です。ふたりの会話のきっかけとして楽しんでください。" },
 ];
 
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
 export default function SleepingPositionsPage() {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <GradientBackground variant="mystical" intensity="strong" animated={true} />
       <div className="relative z-10 pt-20 pb-16">
         <main className="container mx-auto px-4">
