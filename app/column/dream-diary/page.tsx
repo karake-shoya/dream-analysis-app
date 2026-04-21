@@ -321,6 +321,23 @@ export default function DreamDiaryPage() {
         </div>
       </article>
 
+      <div className="px-0">
+        <a
+          href="/sleeping-positions"
+          className="group flex items-center justify-between gap-4 p-5 rounded-2xl bg-pink-500/5 border border-pink-500/20 hover:bg-pink-500/10 hover:border-pink-500/40 transition-all"
+        >
+          <div className="flex items-center gap-4">
+            <span className="text-3xl">💑</span>
+            <div>
+              <p className="text-xs font-bold text-pink-300 uppercase tracking-wider mb-0.5">関連コンテンツ</p>
+              <p className="font-bold text-white text-sm md:text-base">眠っている間の深層心理も確認しませんか？</p>
+              <p className="text-xs text-gray-400 mt-0.5">カップルの寝る体勢でわかる深層心理 ─ 15パターン＋相性診断</p>
+            </div>
+          </div>
+          <svg className="w-5 h-5 text-pink-300 shrink-0 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
       <DreamAnalysisCTA
         title="今日見た夢を分析してみよう"
         description="夢日記と合わせて、AI夢占いを使うと夢の意味がより深く読み解けます。夢の内容を入力するだけで、あなたの心の状態をAIが分析します。"
