@@ -29,6 +29,14 @@ const faqStructuredData = {
   mainEntity: [
     {
       '@type': 'Question',
+      name: '同じ夢を何度も見るのはなぜですか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ユング心理学では、繰り返し見る夢は「無意識が未解決のテーマを意識に届けようとしている」サインとして解釈されます。感情的に解消されていない体験、避け続けている問題、強く抑圧された感情が夢として繰り返されます。夢日記でそのテーマを記録・言語化することが、繰り返しの夢を止める第一歩になることがあります。',
+      },
+    },
+    {
+      '@type': 'Question',
       name: '夢日記はどんなノートに書けばいいですか？',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -97,6 +105,34 @@ export default function DreamDiaryPage() {
               このコラムでは、夢日記を始めるための具体的な方法、続けるためのコツ、そしてユング心理学の観点から夢記録がなぜ意味を持つのかまでを解説します。
             </p>
           </div>
+
+          {/* 同じ夢を何度も見る理由 */}
+          <section>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center">
+              <Brain className="w-8 h-8 mr-3 text-purple-400 shrink-0" />
+              同じ夢を何度も見るのはなぜ？
+            </h2>
+
+            <p className="text-gray-300 leading-relaxed text-lg mb-6">
+              「同じシチュエーションの夢を繰り返し見る」という経験は、多くの人に共通しています。ユング心理学では、この<span className="text-purple-300 font-bold">反復夢（Recurring Dreams）</span>を「無意識が未解決のテーマを意識に届けようとしているサイン」として解釈します。
+            </p>
+
+            <div className="space-y-4">
+              <div className="p-5 rounded-2xl bg-purple-900/20 border border-purple-500/20">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">未解決の心理的テーマが繰り返させる</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  ユングによれば、夢は無意識が意識に何かを伝えようとする場です。感情的に解消されていない体験、避け続けている問題、強く抑圧された感情は、夢という形で繰り返し表面化しようとします。「逃げ続ける夢」「試験に遅刻する夢」「知らない家を探索する夢」——これらが繰り返すとき、夢はそのテーマとの対話を求めているのです。
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+                <h3 className="text-lg font-bold text-purple-200 mb-2">夢日記が繰り返しの夢を止める理由</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  繰り返す夢を記録し、言語化することは、無意識との対話の第一歩です。「この夢はどんな感情を伴っているか？」「最近の自分の状況と重なる部分はあるか？」と問いかけることで、夢が伝えようとしているテーマが意識に上ってきます。ユング派の臨床でも、夢の言語化・分析によって反復夢が自然に減少するケースが報告されています。
+                </p>
+              </div>
+            </div>
+          </section>
 
           {/* セクション1: 夢日記の効果 */}
           <section>
@@ -272,6 +308,10 @@ export default function DreamDiaryPage() {
             <div className="space-y-4">
               {[
                 {
+                  q: '同じ夢を何度も見るのはなぜですか？',
+                  a: 'ユング心理学では、繰り返し見る夢は「無意識が未解決のテーマを意識に届けようとしているサイン」として解釈されます。感情的に解消されていない体験や避け続けている問題が夢として繰り返されます。夢日記でそのテーマを記録・言語化することが、繰り返しの夢を止める第一歩になることがあります。',
+                },
+                {
                   q: '夢日記はどんなノートに書けばいいですか？',
                   a: '形式は自由です。枕元に置けるサイズのノートとペン、またはスマートフォンのメモアプリで構いません。大切なのは「起きた直後にすぐ書ける環境」を整えることです。筆記は記憶定着に効果的とされていますが、続けることを最優先に、自分に合った方法を選んでください。',
                 },
@@ -310,6 +350,17 @@ export default function DreamDiaryPage() {
                 </details>
               ))}
             </div>
+          </section>
+
+          {/* 参考文献 */}
+          <section className="space-y-4">
+            <h2 className="text-lg font-bold text-gray-400">参考文献</h2>
+            <ul className="space-y-2 text-sm text-gray-500">
+              <li>▸ C.G. Jung, <em>Dreams</em>, Princeton University Press</li>
+              <li>▸ C.G. Jung, <em>Memories, Dreams, Reflections</em>（日本語版：『ユング自伝』みすず書房）</li>
+              <li>▸ Stephen LaBerge, <em>Lucid Dreaming</em>, Ballantine Books</li>
+              <li>▸ Calvin S. Hall, <em>The Meaning of Dreams</em></li>
+            </ul>
           </section>
 
           {/* 免責事項 */}
