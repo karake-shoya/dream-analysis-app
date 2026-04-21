@@ -6,6 +6,37 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '怖い夢を見た朝はどうすればいいですか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '内容と感情を簡単に書き留めてみてください。書くことで夢を客観視する距離ができ、怖さが和らぎます。ユング心理学的には「夢の怖い存在が何を象徴しているか」を考えることで、深層心理のサインとして受け取ることができます。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '悪夢は病気のサインですか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '単発の悪夢はストレスや疲労の反応として誰でも起こります。ただし、同じ悪夢が繰り返されたり、日常生活に支障が出るほど頻繁な場合は、PTSDや睡眠障害の可能性もあります。その場合は睡眠専門医や心療内科への相談を検討してください。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '悪夢を繰り返し見るのはなぜですか？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ユング心理学では、繰り返す悪夢は「シャドウ（無意識に抑圧された感情）が意識化を強く求めている状態」として解釈されます。向き合えていない感情やテーマが解消されないまま残っているため、夢が繰り返されます。そのテーマに意識的に向き合えたとき、繰り返しの悪夢が自然に止まることがあります。',
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: '怖い夢を見る理由とは？深層心理が示す不安のサインと対処法',
   description:
@@ -26,6 +57,10 @@ export const metadata: Metadata = {
 export default function NightmarePage() {
   return (
     <ContentPageLayout>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
       <PageHero
         title="怖い夢・悪夢を見やすい人の特徴と対処法"
         subtitle="悪夢が続くとき、心は何かを伝えようとしている"
@@ -217,6 +252,35 @@ export default function NightmarePage() {
             <p className="text-gray-300 leading-relaxed text-lg">
               夢そのものを怖がるより、「今の自分の状態を確認するきっかけ」として使えると、悪夢との付き合い方が少し変わってきます。悪夢があまりにも頻繁で、日常生活に支障が出るほどであれば、睡眠の専門家や心療内科への相談を検討してみてください。
             </p>
+          </section>
+
+          {/* FAQセクション */}
+          <section className="space-y-6 bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center">
+              <BookOpen className="w-7 h-7 mr-3 text-purple-400 shrink-0" />
+              よくある質問
+            </h2>
+            <div className="space-y-4">
+              {faqStructuredData.mainEntity.map((item) => (
+                <details key={item.name} className="rounded-2xl border border-white/10 bg-black/20 p-4 group">
+                  <summary className="cursor-pointer font-semibold text-white list-none flex justify-between items-center">
+                    {item.name}
+                    <span className="transition-transform group-open:rotate-180 text-purple-400 shrink-0 ml-3">▼</span>
+                  </summary>
+                  <p className="mt-3 text-sm text-gray-300 leading-relaxed">{item.acceptedAnswer.text}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          {/* 参考文献 */}
+          <section className="space-y-4">
+            <h2 className="text-lg font-bold text-gray-400">参考文献</h2>
+            <ul className="space-y-2 text-sm text-gray-500">
+              <li>▸ C.G. Jung, <em>Dreams</em>, Princeton University Press</li>
+              <li>▸ C.G. Jung, <em>The Archetypes and the Collective Unconscious</em>, Princeton University Press</li>
+              <li>▸ Sigmund Freud, <em>The Interpretation of Dreams</em></li>
+            </ul>
           </section>
 
           {/* 免責事項 */}
