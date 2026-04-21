@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { User, Heart, Sparkles } from "lucide-react";
+import { User, Heart, Sparkles, BookOpen } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import ContentPageLayout from "@/components/ContentPageLayout";
 import PageHero from "@/components/PageHero";
@@ -9,11 +9,11 @@ import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "About｜Yume Insightについて",
-  description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+  description: "Yume Insightは、ユング心理学をベースに夢の意味を解説する情報サイトです。深層心理の観点から夢を読み解き、自己理解のきっかけを提供します。サイトの考え方と開発者情報。",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About｜Yume Insightについて",
-    description: "Yume InsightはAIがあなたの夢を分析し、潜在意識からのメッセージをお届けする夢占いアプリです。サイトの紹介と開発者情報。",
+    description: "Yume Insightは、ユング心理学をベースに夢の意味を解説する情報サイトです。深層心理の観点から夢を読み解き、自己理解のきっかけを提供します。サイトの考え方と開発者情報。",
     type: "website",
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
@@ -86,6 +86,42 @@ export default function AboutPage() {
                 </section>
 
                 <section className="space-y-6">
+                  <SectionHeader icon={BookOpen}>コンテンツの参照軸について</SectionHeader>
+                  <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
+                    <p>
+                      本サイトのコンテンツは、<span className="text-purple-300 font-bold">ユング心理学・深層心理学</span>を主な参照軸として構成しています。
+                    </p>
+                    <p>
+                      カール・グスタフ・ユングが提唱した「無意識」「シャドウ（影）」「元型（アーキタイプ）」などの概念をもとに、夢に現れるイメージの心理的意味を解説しています。
+                    </p>
+                    <p>
+                      コンテンツ作成にあたって参照している主な文献は以下の通りです。
+                    </p>
+                    <ul className="space-y-2 text-base">
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
+                        <span>C.G. Jung 著『夢分析』（<em>Dreams</em>, Princeton University Press）</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
+                        <span>C.G. Jung 著『無意識の心理』（<em>Psychology of the Unconscious</em>）</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
+                        <span>Sigmund Freud 著『夢判断』（<em>The Interpretation of Dreams</em>）</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
+                        <span>Calvin S. Hall 著『夢の意味』（<em>The Meaning of Dreams</em>）</span>
+                      </li>
+                    </ul>
+                    <p>
+                      これらの理論はあくまで解釈の枠組みであり、特定の夢の意味を断定・予言するものではありません。
+                    </p>
+                  </div>
+                </section>
+
+                <section className="space-y-6">
                   <SectionHeader icon={User}>運営について</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
                     <p>
@@ -131,7 +167,7 @@ export default function AboutPage() {
                     <h3 className="text-2xl font-bold mb-1 text-white">Shoya Ueno</h3>
                     <p className="text-sm text-purple-300 font-medium mb-6 uppercase tracking-wider">Software Developer / Educator</p>
                     <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                      エンジニアと教育者、2つの視点を持って活動しています。テクノロジーで「気づき」の瞬間を作るのが好きです。
+                      ユング心理学と教育心理学に関心を持ち、夢が持つ自己理解への可能性をテクノロジーで広げることをテーマに Yume Insight を開発・運営しています。エンジニアと教育者、2つの視点から「気づき」の瞬間を届けることを大切にしています。
                     </p>
                     <div className="flex gap-4">
                       <Link href="https://github.com/karake-shoya" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="GitHub">
