@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '正夢とは？本当にある？なる方法まで心理学で解説',
-  description: '正夢とは何か、なぜ起きるのか、本当にあるのかを心理学・脳科学で解説。正夢になりやすい方法（夢日記・イメージング）も紹介。よくある疑問をFAQ形式でまとめました。',
+  title: '正夢はなぜ起きる？科学的根拠と心理学的メカニズムを解説',
+  description: '正夢が実際に起きる理由を、記憶の先行処理・REM睡眠・確証バイアスの観点から解説。「本当にある？」という疑問に科学的根拠で答え、深層心理が夢に未来を予測させる仕組みをユング心理学を交えて紹介します。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
-    title: '正夢とは？本当にある？なる方法まで心理学で解説 | Yume Insight',
-    description: '正夢とは何か、なぜ起きるのか、本当にあるのかを心理学・脳科学で解説。正夢になりやすい方法（夢日記・イメージング）も紹介。よくある疑問をFAQ形式でまとめました。',
+    title: '正夢はなぜ起きる？科学的根拠と心理学的メカニズムを解説 | Yume Insight',
+    description: '正夢が実際に起きる理由を、記憶の先行処理・REM睡眠・確証バイアスの観点から解説。「本当にある？」という疑問に科学的根拠で答え、深層心理が夢に未来を予測させる仕組みをユング心理学を交えて紹介します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
