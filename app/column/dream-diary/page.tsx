@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '夢日記の始め方と効果的な続け方——夢を記録する意味と方法',
+  title: '同じ夢を何度も見る理由とは？夢日記でわかる深層心理の読み方',
   description:
-    '夢日記は夢の想起力を高め、自己理解を深める効果があります。正しい書き方・続けるコツ・ユング心理学的な活用法まで、夢日記の始め方を詳しく解説します。',
+    '同じ夢を繰り返し見るのは、深層心理が解決を求めているサインです。ユング心理学的な反復夢の意味と、夢日記を使って自分の無意識にアプローチする具体的な方法を解説します。',
   alternates: { canonical: '/column/dream-diary' },
   openGraph: {
-    title: '夢日記の始め方と効果的な続け方 | Yume Insight',
+    title: '同じ夢を何度も見る理由とは？夢日記でわかる深層心理の読み方 | Yume Insight',
     description:
-      '夢日記は夢の想起力を高め、自己理解を深める効果があります。正しい書き方・続けるコツ・ユング心理学的な活用法まで、夢日記の始め方を詳しく解説します。',
+      '同じ夢を繰り返し見るのは、深層心理が解決を求めているサインです。ユング心理学的な反復夢の意味と、夢日記を使って自分の無意識にアプローチする具体的な方法を解説します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },

@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '怖い夢・悪夢を見やすい人の特徴と対処法',
+  title: '怖い夢を見る理由とは？深層心理が示す不安のサインと対処法',
   description:
-    '悪夢を見やすい人には共通した特徴があります。ストレス・感受性・睡眠リズムの乱れなど、その原因と、悪夢を減らすための具体的な対処法をわかりやすく解説します。',
+    '怖い夢・悪夢を繰り返し見るのはなぜか。ユング心理学では、悪夢は深層心理が発する「無視できないサイン」として解釈されます。怖い夢を見た朝にすべき対処法と、悪夢を減らすための習慣を心理学的根拠とともに解説します。',
   alternates: { canonical: '/column/nightmare' },
   openGraph: {
-    title: '怖い夢・悪夢を見やすい人の特徴と対処法 | Yume Insight',
+    title: '怖い夢を見る理由とは？深層心理が示す不安のサインと対処法 | Yume Insight',
     description:
-      '悪夢を見やすい人には共通した特徴があります。ストレス・感受性・睡眠リズムの乱れなど、その原因と、悪夢を減らすための具体的な対処法をわかりやすく解説します。',
+      '怖い夢・悪夢を繰り返し見るのはなぜか。ユング心理学では、悪夢は深層心理が発する「無視できないサイン」として解釈されます。怖い夢を見た朝にすべき対処法と、悪夢を減らすための習慣を心理学的根拠とともに解説します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
