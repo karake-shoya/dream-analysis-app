@@ -286,6 +286,20 @@ export default function Home() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
+
+          <a
+            href="/sleeping-positions"
+            className="group mt-6 flex items-center justify-between gap-4 p-5 rounded-2xl bg-pink-500/5 border border-pink-500/20 hover:bg-pink-500/10 hover:border-pink-500/40 transition-all"
+          >
+            <div className="flex items-center gap-4">
+              <span className="text-3xl">💑</span>
+              <div>
+                <p className="font-bold text-white text-sm md:text-base">カップル寝相診断</p>
+                <p className="text-xs text-gray-400 mt-0.5">寝る体勢でわかるふたりの深層心理 ─ 15パターン＋相性診断</p>
+              </div>
+            </div>
+            <ArrowRight className="w-5 h-5 text-pink-300 shrink-0 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
     </main>

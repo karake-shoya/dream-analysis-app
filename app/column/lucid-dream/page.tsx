@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '明晰夢（ルシッドドリーム）とは？見方と練習法を解説',
+  title: '明晰夢（ルシッドドリーム）とは？見られる人の特徴と習得法',
   description:
-    '明晰夢とは夢の中で「これは夢だ」と気づいた状態のこと。なぜ起きるのか、どうすれば見られるのか、科学的根拠とユング心理学の視点から練習法まで詳しく解説します。',
+    '明晰夢とは「夢の中で夢と気づいた状態」のこと。見られる人に共有される深層心理的特徴と、ユング心理学が解説する自己観察力との関係を解説。科学的に実証された習得練習法も紹介します。',
   alternates: { canonical: '/column/lucid-dream' },
   openGraph: {
-    title: '明晰夢（ルシッドドリーム）とは？見方と練習法を解説 | Yume Insight',
+    title: '明晰夢（ルシッドドリーム）とは？見られる人の特徴と習得法 | Yume Insight',
     description:
-      '明晰夢とは夢の中で「これは夢だ」と気づいた状態のこと。なぜ起きるのか、どうすれば見られるのか、科学的根拠とユング心理学の視点から練習法まで詳しく解説します。',
+      '明晰夢とは「夢の中で夢と気づいた状態」のこと。見られる人に共有される深層心理的特徴と、ユング心理学が解説する自己観察力との関係を解説。科学的に実証された習得練習法も紹介します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
