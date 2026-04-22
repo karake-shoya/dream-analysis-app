@@ -3,9 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
 import RelatedArticles from '@/components/RelatedArticles';
+import ColumnLinks from '@/components/ColumnLinks';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
@@ -160,7 +162,28 @@ export default async function ItemPage({ params }: Props) {
             {/* MDXコンテンツ */}
             <div className="prose prose-invert prose-purple max-w-none">
               <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                 components={{
+                  table: ({ children }) => (
+                    <div className="overflow-x-auto my-6">
+                      <table className="w-full text-sm border-collapse">{children}</table>
+                    </div>
+                  ),
+                  thead: ({ children }) => (
+                    <thead className="bg-purple-900/40">{children}</thead>
+                  ),
+                  tbody: ({ children }) => (
+                    <tbody className="divide-y divide-white/10">{children}</tbody>
+                  ),
+                  tr: ({ children }) => (
+                    <tr className="border-b border-white/10">{children}</tr>
+                  ),
+                  th: ({ children }) => (
+                    <th className="px-4 py-2 text-left text-purple-200 font-bold">{children}</th>
+                  ),
+                  td: ({ children }) => (
+                    <td className="px-4 py-2 text-gray-300">{children}</td>
+                  ),
                   h1: () => null,
                   h2: ({ children }) => (
                     <h2 className="text-2xl font-bold text-white mt-12 mb-6 border-l-4 border-purple-500 pl-4 scroll-mt-24">
@@ -209,6 +232,8 @@ export default async function ItemPage({ params }: Props) {
             </div>
 
             <RelatedArticles articles={relatedArticles} />
+
+            <ColumnLinks />
 
             {/* 全記事一覧への導線 */}
             <div className="mt-10 text-center">

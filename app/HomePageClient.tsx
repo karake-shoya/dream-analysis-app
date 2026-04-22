@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import GradientBackground from '@/components/GradientBackground';
 import VoiceInput from '@/components/VoiceInput';
 import { useAuth } from '@/hooks/useAuth';
@@ -85,6 +86,15 @@ export default function Home() {
                   <span>どんな夢を見ましたか？</span>
                 )}
               </span>
+              {user && (
+                <a
+                  href="/dashboard"
+                  className="text-xs text-gray-400 hover:text-purple-300 transition-colors flex items-center gap-1 shrink-0 ml-2"
+                >
+                  過去の診断を見る
+                  <ArrowRight className="w-3 h-3" />
+                </a>
+              )}
             </label>
 
             <div className="relative">
@@ -232,27 +242,65 @@ export default function Home() {
           )}
         </div>
 
-        <HomeSeoSections />
+        {/* フォーム直下：出口リンク */}
+        <div className="mt-4 text-center text-sm text-gray-500">
+          または →{' '}
+          <Link href="/dictionary" className="text-purple-300 hover:text-purple-200 underline underline-offset-2 transition-colors">夢占い辞典で調べる</Link>
+          {' '}/{' '}
+          <Link href="/sleeping-positions" className="text-pink-300 hover:text-pink-200 underline underline-offset-2 transition-colors">カップル寝相診断</Link>
+        </div>
 
-        {/* Site Description Section */}
-        <div className="mt-24 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 text-center space-y-6 mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
-          <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
-            Yume Insightについて
-          </h3>
-          <div className="space-y-4 text-gray-300 leading-relaxed">
-            <p className="text-base md:text-lg">
-              Yume Insight は、夢占い辞典とAI分析を通して、<span className="hidden md:inline"><br/></span>
-              自分の心理状態や感情の傾向を整理するための情報サイトです。
-            </p>
-            <p className="text-sm md:text-base text-gray-400">
-              占いや断定ではなく、日常を見直すヒントとして<span className="hidden md:inline"><br/></span>
-              夢の意味をやさしく解説しています。
-            </p>
+        {/* 人気コンテンツ3枚カード */}
+        <div className="mt-8 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">人気コンテンツ</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              {
+                href: '/sleeping-positions',
+                emoji: '💑',
+                title: 'カップル寝相診断',
+                desc: '15パターン＋相性診断',
+                color: 'pink',
+              },
+              {
+                href: '/column/repeating-dreams',
+                emoji: '🔁',
+                title: '繰り返し夢の意味',
+                desc: '何度も同じ夢を見るのはなぜ？',
+                color: 'indigo',
+              },
+              {
+                href: '/dictionary/person/deceased',
+                emoji: '🌙',
+                title: '亡くなった人の夢',
+                desc: '怖い予兆？それとも心の対話？',
+                color: 'purple',
+              },
+            ].map((card) => (
+              <a
+                key={card.href}
+                href={card.href}
+                className={`group flex items-center gap-4 p-4 rounded-2xl border transition-all
+                  ${card.color === 'pink'
+                    ? 'bg-pink-500/5 border-pink-500/20 hover:bg-pink-500/10 hover:border-pink-500/40'
+                    : card.color === 'indigo'
+                    ? 'bg-indigo-500/5 border-indigo-500/20 hover:bg-indigo-500/10 hover:border-indigo-500/40'
+                    : 'bg-purple-500/5 border-purple-500/20 hover:bg-purple-500/10 hover:border-purple-500/40'
+                  }`}
+              >
+                <span className="text-3xl shrink-0 group-hover:scale-110 transition-transform">{card.emoji}</span>
+                <div className="min-w-0">
+                  <p className="font-bold text-white text-sm">{card.title}</p>
+                  <p className="text-xs text-gray-400 mt-0.5 truncate">{card.desc}</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-gray-500 shrink-0 ml-auto group-hover:translate-x-1 transition-transform" />
+              </a>
+            ))}
           </div>
         </div>
 
         {/* カテゴリ導線セクション */}
-        <div className="mt-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-700">
+        <div className="mt-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
           <h3 className="text-lg md:text-xl font-bold text-white mb-6 text-center">
             夢占い辞典 ─ カテゴリから探す
           </h3>
@@ -286,20 +334,25 @@ export default function Home() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
+        </div>
 
-          <a
-            href="/sleeping-positions"
-            className="group mt-6 flex items-center justify-between gap-4 p-5 rounded-2xl bg-pink-500/5 border border-pink-500/20 hover:bg-pink-500/10 hover:border-pink-500/40 transition-all"
-          >
-            <div className="flex items-center gap-4">
-              <span className="text-3xl">💑</span>
-              <div>
-                <p className="font-bold text-white text-sm md:text-base">カップル寝相診断</p>
-                <p className="text-xs text-gray-400 mt-0.5">寝る体勢でわかるふたりの深層心理 ─ 15パターン＋相性診断</p>
-              </div>
-            </div>
-            <ArrowRight className="w-5 h-5 text-pink-300 shrink-0 group-hover:translate-x-1 transition-transform" />
-          </a>
+        <HomeSeoSections />
+
+        {/* Site Description Section */}
+        <div className="mt-16 bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/10 text-center space-y-6 mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+            Yume Insightについて
+          </h3>
+          <div className="space-y-4 text-gray-300 leading-relaxed">
+            <p className="text-base md:text-lg">
+              Yume Insight は、夢占い辞典とAI分析を通して、<span className="hidden md:inline"><br/></span>
+              自分の心理状態や感情の傾向を整理するための情報サイトです。
+            </p>
+            <p className="text-sm md:text-base text-gray-400">
+              占いや断定ではなく、日常を見直すヒントとして<span className="hidden md:inline"><br/></span>
+              夢の意味をやさしく解説しています。
+            </p>
+          </div>
         </div>
       </div>
     </main>
