@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import AdsenseAd from '@/components/AdsenseAd';
 import FaqSchema from '@/components/FaqSchema';
 import RelatedArticles from '@/components/RelatedArticles';
+import ColumnLinks from '@/components/ColumnLinks';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
@@ -209,6 +210,8 @@ export default async function ItemPage({ params }: Props) {
             </div>
 
             <RelatedArticles articles={relatedArticles} />
+
+            <ColumnLinks />
 
             {/* 全記事一覧への導線 */}
             <div className="mt-10 text-center">
