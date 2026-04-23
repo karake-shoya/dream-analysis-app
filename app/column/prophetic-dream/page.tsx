@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '正夢はなぜ起きる？科学的根拠と心理学的メカニズムを解説',
-  description: '正夢が実際に起きる理由を、記憶の先行処理・REM睡眠・確証バイアスの観点から解説。「本当にある？」という疑問に科学的根拠で答え、深層心理が夢に未来を予測させる仕組みをユング心理学を交えて紹介します。',
+  title: '予知夢とは？ユング心理学が解き明かす潜在意識からのメッセージ | Yume Insight',
+  description: '繰り返し見る予知夢の意味を深層心理から解説。特徴やメッセージを読み解き、あなたの未来へのヒントを見つけましょう。ユング心理学の視点で奥深く紐解きます。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
-    title: '正夢はなぜ起きる？科学的根拠と心理学的メカニズムを解説 | Yume Insight',
-    description: '正夢が実際に起きる理由を、記憶の先行処理・REM睡眠・確証バイアスの観点から解説。「本当にある？」という疑問に科学的根拠で答え、深層心理が夢に未来を予測させる仕組みをユング心理学を交えて紹介します。',
+    title: '予知夢とは？ユング心理学が解き明かす潜在意識からのメッセージ | Yume Insight',
+    description: '繰り返し見る予知夢の意味を深層心理から解説。特徴やメッセージを読み解き、あなたの未来へのヒントを見つけましょう。ユング心理学の視点で奥深く紐解きます。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
