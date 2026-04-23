@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Claude Code
 .claude/
+
+# SEO automation（ローカル実行スクリプト。デプロイ不要）
+seo-automation/

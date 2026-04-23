@@ -9,6 +9,7 @@ export type ArticleFrontmatter = {
   keyword: string;
   slug: string;
   category: string;
+  title?: string;
   summary: string;
   description: string;
   createdAt?: string;
