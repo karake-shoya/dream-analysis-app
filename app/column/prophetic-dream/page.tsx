@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '予知夢とは？ユング心理学が解き明かす潜在意識からのメッセージ | Yume Insight',
-  description: '繰り返し見る予知夢の意味を深層心理から解説。特徴やメッセージを読み解き、あなたの未来へのヒントを見つけましょう。ユング心理学の視点で奥深く紐解きます。',
+  title: '【夢占い】予知夢を見たらどうなる？本当に起こる？予知夢が伝えるメッセージと種類を徹底解説 | Yume Insight',
+  description: '未来を予知する夢は単なる偶然ではありません。予知夢が持つスピリチュアルな意味や、それが暗示する未来について、ユング心理学の視点から深く分析。夢からのメッセージを紐解きましょう。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
-    title: '予知夢とは？ユング心理学が解き明かす潜在意識からのメッセージ | Yume Insight',
-    description: '繰り返し見る予知夢の意味を深層心理から解説。特徴やメッセージを読み解き、あなたの未来へのヒントを見つけましょう。ユング心理学の視点で奥深く紐解きます。',
+    title: '【夢占い】予知夢を見たらどうなる？本当に起こる？予知夢が伝えるメッセージと種類を徹底解説 | Yume Insight',
+    description: '未来を予知する夢は単なる偶然ではありません。予知夢が持つスピリチュアルな意味や、それが暗示する未来について、ユング心理学の視点から深く分析。夢からのメッセージを紐解きましょう。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },

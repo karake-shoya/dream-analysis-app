@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '明晰夢とは？夢をコントロールする意味と潜在能力の目覚め | Yume Insight',
-  description: '明晰夢を見る方法から、夢が示す深層心理まで徹底解説。意識的な夢体験で新たな自己を発見し、現実世界にも活かしましょう。',
+  title: '【夢占い】明晰夢とは？見る方法や意味、危険性までユング心理学で徹底解説 | Yume Insight',
+  description: '夢を自由に操れる「明晰夢」。その魅力的な体験の裏側にある深層心理や意味、安全に見るための方法、そして潜在的な危険性まで、ユング心理学の観点から詳しく解説します。',
   alternates: { canonical: '/column/lucid-dream' },
   openGraph: {
-    title: '明晰夢とは？夢をコントロールする意味と潜在能力の目覚め | Yume Insight',
-    description: '明晰夢を見る方法から、夢が示す深層心理まで徹底解説。意識的な夢体験で新たな自己を発見し、現実世界にも活かしましょう。',
+    title: '【夢占い】明晰夢とは？見る方法や意味、危険性までユング心理学で徹底解説 | Yume Insight',
+    description: '夢を自由に操れる「明晰夢」。その魅力的な体験の裏側にある深層心理や意味、安全に見るための方法、そして潜在的な危険性まで、ユング心理学の観点から詳しく解説します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
