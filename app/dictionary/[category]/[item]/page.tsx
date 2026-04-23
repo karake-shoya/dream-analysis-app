@@ -25,14 +25,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const frontmatter = getArticleFrontmatter(category, item);
   if (!frontmatter) return {};
 
+  const title = frontmatter.title ?? `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`;
   return {
-    title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+    title,
     description: frontmatter.description,
     alternates: {
       canonical: `/dictionary/${category}/${item}`,
     },
     openGraph: {
-      title: `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`,
+      title,
       description: frontmatter.description,
       type: 'article',
       images: [`${siteConfig.baseUrl}/ogp.png`],
