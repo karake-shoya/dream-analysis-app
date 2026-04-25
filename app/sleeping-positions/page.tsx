@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
-import { Heart, Users, Sparkles, Shield, TrendingUp, AlertCircle, Lightbulb, MessageCircleQuestion } from "lucide-react";
+import { Heart, Users, Sparkles, Shield, TrendingUp, AlertCircle, Lightbulb, MessageCircleQuestion, BookOpen, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
 import AdsenseAd from "@/components/AdsenseAd";
@@ -13,10 +14,10 @@ import { RESULTS, ResultTypeId } from "@/lib/data/sleepingPositions";
 export async function generateMetadata({ searchParams }: { searchParams: Promise<{ res?: string }> }): Promise<Metadata> {
   const { res } = await searchParams;
   const baseUrl = siteConfig.baseUrl || "https://yume-insight.com";
-  
+
   const baseTitle = "カップルの寝方・寝る体勢でわかる心理｜寝相15パターンと相性診断 | Yume Insight";
   const baseDesc = "カップルの寝方・寝る体勢・寝相には深層心理が表れます。背中合わせ・密着・足が触れるなど15パターンの心理的意味を解説し、ふたりの関係性がわかる相性診断（10問）も収録。夫婦・彼氏彼女の寝相から本音を読み解きます。";
-  
+
   if (res && RESULTS[res as ResultTypeId]) {
     const result = RESULTS[res as ResultTypeId];
     const shareTitle = `診断結果は「${result.title}」でした！ | カップル寝相診断`;
@@ -55,10 +56,12 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
       "カップル 寝方",
       "カップル 寝る体勢",
       "カップル 寝相",
+      "夫婦 寝相 心理",
       "夫婦 寝方 心理",
+      "夫婦 寝相",
       "カップル寝方 心理",
       "寝相診断",
-      "相性診断"
+      "相性診断",
     ],
     openGraph: {
       title: baseTitle,
@@ -81,6 +84,7 @@ interface SleepingPosition {
   psychology: string;
   relationship: string;
   dreamTendency: string;
+  coupleContext: string;
 }
 
 const SLEEPING_POSITIONS: SleepingPosition[] = [
@@ -91,6 +95,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "保護欲と被保護欲、そして強い親愛の証。お互いの温度を感じることでリラックスできます。",
     relationship: "非常に親密で、信頼関係が深い状態。スキンシップで絆を確認し合うカップルです。",
     dreamTendency: "安心感から深い眠りにつきやすく、温かい雰囲気の夢や達成感のある夢を見やすい傾向があります。",
+    coupleContext: "付き合いたてに多い姿勢ですが、夫婦歴が長くてもこの寝方を続けているカップルは「言葉より体温で安心を確かめ合う」深い絆の持ち主です。",
   },
   {
     name: "向き合い寝",
@@ -99,6 +104,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "相手への強い関心と愛情。言葉を超えた意思疎通を求めている心理の表れです。",
     relationship: "対等で、何でも話し合えるオープンな関係。お互いをもっと知りたいという欲求があります。",
     dreamTendency: "対人関係への関心が高く、会話を楽しむ夢や人と協力する夢を見やすい状態です。",
+    coupleContext: "交際初期に多く見られる姿勢ですが、夫婦間では「まだ相手のことをもっと知りたい」というポジティブな関心の表れでもあります。",
   },
   {
     name: "手つなぎ寝",
@@ -107,6 +113,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "個人の空間を大切にしながら、繋がりを失いたくないという控えめながら確かな愛着。",
     relationship: "お互いを尊重しつつ愛情を確認し合える、大人な理想的関係性です。",
     dreamTendency: "精神的な充足感が高いため、直感的なメッセージ性の強い夢や穏やかな夢を見ることがあります。",
+    coupleContext: "夫婦歴が長いカップルにとくに多い寝方です。無意識のうちに手を求め合えるのは、言葉で確認しなくても愛情が成熟した証とも言えます。",
   },
   {
     name: "絡み合い寝",
@@ -115,6 +122,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "強い愛着と、一時も離れたくないという情熱的な感情。お互いへの依存心も含まれます。",
     relationship: "感情が高まっており、強い一体感を感じている状態。非常にロマンチックな関係です。",
     dreamTendency: "エネルギーが強く、ドラマチックな展開や情熱的なロマンスの夢、あるいは束縛を象徴する夢を見ることも。",
+    coupleContext: "付き合いたてや記念日の後などに多い姿勢です。長年連れ添った夫婦でもこの寝方が続いている場合、感情の高まりが維持されている非常に良いサインです。",
   },
   {
     name: "背中接触寝",
@@ -123,6 +131,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "お互いの存在を感じることで安心しつつ、個々の眠りやすさも尊重する合理的な愛情。",
     relationship: "成熟した信頼関係。べったりしなくても繋がっている実感が持てる安定カップルです。",
     dreamTendency: "自立心のバランスが良く、現実に即した整理整頓の夢や、穏やかな日常の夢を見やすいでしょう。",
+    coupleContext: "夫婦に最も多いとされる寝方のひとつです。背中で存在を確かめ合える安心感は、長年の信頼関係が育んだ「無言の絆」です。",
   },
   {
     name: "背中きょり寝",
@@ -131,6 +140,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "独立心が強く、良質な睡眠を重視する姿勢。相手への深い信頼があるからこそ可能な形。",
     relationship: "互いの個性を認め合う健全な関係。ただし、あえて取っている距離であればポジティブな証拠です。",
     dreamTendency: "自分の世界に没頭しやすく、趣味や仕事に集中する夢を見ることが多いようです。",
+    coupleContext: "夫婦歴が長くなると、睡眠の質を優先してこの寝方になるケースが増えます。「離れているから冷めた」ではなく「信頼があるから距離を取れる」と捉えましょう。",
   },
   {
     name: "胸まくら寝",
@@ -139,6 +149,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "守る側は包容力を示し、委ねる側は絶対的な安心感を得ている心理バランス。",
     relationship: "ケアし合う気持ちが強く、信頼関係が強固に構築されたカップルです。",
     dreamTendency: "安全が確保されているため、美しい風景の夢や解放感のある夢を見やすいと言われています。",
+    coupleContext: "この姿勢が自然にできるのは、高い信頼の証です。夫婦間でどちらが「委ねる側」かは日によって入れ替わることも多く、その柔軟さが関係の健全さを示します。",
   },
   {
     name: "スペース大きめ寝",
@@ -147,6 +158,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "形式にとらわれず、自分たちが一番快適でいられる状態を好む自由な精神。",
     relationship: "友達のような気軽さがあり、干渉しすぎない風通しの良い関係性です。",
     dreamTendency: "自由奔放な発想が夢に出やすく、冒険の夢やクリエイティブな夢を見る傾向があります。",
+    coupleContext: "育児期の夫婦でよく見られます。子育てや仕事で疲弊している時期に自然と広がる距離で、関係の冷めを意味するものではありません。",
   },
   {
     name: "片方だけ向いて寝る",
@@ -155,6 +167,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "向いている側が相手への関心や愛情を強く求め、仰向け側は自立心と精神的な安定感を持つ状態。",
     relationship: "バランスが非対称ながらも、お互いの違いを受け入れている成熟した関係。",
     dreamTendency: "向いている側は対人関係や感情に関わる夢を、仰向け側は仕事や目標に関連した夢を見る傾向があります。",
+    coupleContext: "夫婦間でこの姿勢が固定化している場合、向いている側が「もう少し向き合いたい」と感じているサインのことも。日中の会話量を増やすことで変化が生まれやすいです。",
   },
   {
     name: "足だけ触れる寝方",
@@ -163,6 +176,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "つながっていたい気持ちと、それぞれの空間も大切にしたいというバランス感覚。",
     relationship: "無意識の感情が出やすい足で触れ合う、本音の愛情表現ができる長く付き合ったカップル。",
     dreamTendency: "心地よい安心感の中で眠れるため、穏やかで日常的な夢を見やすい状態です。",
+    coupleContext: "長年連れ添った夫婦ほど自然に出やすい姿勢です。就寝中に無意識で足を絡めているなら、言葉では照れくさくて言えない愛情が体に出ていると言えます。",
   },
   {
     name: "仰向け並び寝",
@@ -171,6 +185,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "お互いの個を強く尊重している自立した心理。",
     relationship: "一緒にいるけれど干渉しないという信頼関係。急になった場合は距離ができたサインの可能性も。",
     dreamTendency: "自分の内面と向き合う夢や、仕事・趣味に関連した夢を見やすい傾向があります。",
+    coupleContext: "夫婦の寝相として定着しているなら安定した信頼の表れです。しかし「最近急にこうなった」と感じる場合は、日中のコミュニケーションを振り返るきっかけにしてみてください。",
   },
   {
     name: "うつ伏せ寝",
@@ -179,6 +194,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "自分の世界を守りたいという防衛本能や、ストレス・不安を感じているサイン。",
     relationship: "プレッシャーを感じている可能性があり、さりげない思いやりや声かけが求められる状態。",
     dreamTendency: "体への圧迫感が夢に影響しやすく、追われる夢や閉塞感のある夢を見ることがあると言われています。",
+    coupleContext: "仕事のストレスや疲労が蓄積しているとうつ伏せ寝になりやすいです。夫婦どちらかが続けてうつ伏せで眠っているなら、日中に「最近どう？」と一言かけるだけで変化が生まれることがあります。",
   },
   {
     name: "枕元に寄り添う寝方",
@@ -187,6 +203,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "相手の存在を感じたいけれど、窮屈にはしたくないという思いやり。",
     relationship: "精神的なつながりも相手の睡眠も尊重できる、非常にバランス感覚の良いカップル。",
     dreamTendency: "安心感と適度な刺激のバランスが取れており、印象的で感情豊かな夢を見やすい傾向があります。",
+    coupleContext: "相手の眠りを邪魔しないよう気を遣いながらも、そばにいたいという優しさが表れた姿勢です。夫婦間でこれが自然に生まれているなら、相互尊重が根付いている関係といえます。",
   },
   {
     name: "腕枕寝",
@@ -195,6 +212,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "差し出す側は強い保護欲と独占欲、委ねる側は絶対的な信頼と安心感。",
     relationship: "付き合いたての頃に多く見られる、非常にロマンチックな関係性。",
     dreamTendency: "差し出す側は守る夢や達成感のある夢を、委ねる側は安心感に包まれた温かい夢を見やすいとされています。",
+    coupleContext: "長年の夫婦でこれが自然にできているなら、関係の新鮮さが保たれているサインです。腕がしびれてもそのままにしてあげる優しさが、深い愛情の表れでもあります。",
   },
   {
     name: "対角線寝",
@@ -203,6 +221,7 @@ const SLEEPING_POSITIONS: SleepingPosition[] = [
     psychology: "自分の快適さを優先しながらも、どこかでつながりを求めている自由な精神。",
     relationship: "型にはまらず、お互いのスタイルを尊重できる風通しの良い関係。",
     dreamTendency: "自由な発想が夢に出やすく、冒険や旅をテーマにしたクリエイティブな夢を見る傾向があります。",
+    coupleContext: "夫婦間でも「好きにしよう」と自然にこうなっているなら、お互いへの過干渉がない健全な関係の証です。",
   },
 ];
 
@@ -217,6 +236,11 @@ const FAQ_ITEMS = [
   { question: "寝相は毎日変わっても大丈夫？", answer: "大丈夫です。体調や気温でも変わります。ふたりが無理なく眠れているかが目安です。" },
   { question: "急に距離が空いたら問題？", answer: "必ずしも問題ではありません。疲れている時は距離を欲することがあります。日中の会話で安心感を補いましょう。" },
   { question: "診断結果がしっくりこない時は？", answer: "この診断はエンタメ要素を含む傾向診断です。ふたりの会話のきっかけとして楽しんでください。" },
+  { question: "夫婦で急に寝相が変わったのはなぜ？", answer: "体調の変化・季節・仕事のストレスなど、さまざまな要因が影響します。急激な変化が続く場合は、日中のコミュニケーションを意識的に増やしてみましょう。" },
+  { question: "長年の夫婦は寝相が似てくるって本当？", answer: "一緒に過ごす時間が長くなると、体内リズムや睡眠習慣が自然と近づく傾向があります。寝相が似てくるのは、深い信頼関係と生活リズムが合ってきたサインとも言えます。" },
+  { question: "寝相でパートナーの本音がわかる？", answer: "就寝中は防衛本能が緩むため、日中の言動よりも素直な感情が体に出やすいと言われています。ただし、あくまでひとつの参考指標として捉えてください。" },
+  { question: "理想的な夫婦・カップルの寝相はある？", answer: "「理想」はありません。ふたりが心地よく眠れている状態が最も良い寝相です。密着でも距離があっても、どちらかが強要されていなければ問題ありません。" },
+  { question: "子どもが生まれると夫婦の寝相はどう変わる？", answer: "育児期は睡眠の質を優先するため、距離が広がりやすい時期です。これは関係性の悪化ではなく、生活状況への適応です。子どもが成長すると元のパターンに戻るカップルも多いです。" },
 ];
 
 const faqStructuredData = {
@@ -231,6 +255,55 @@ const faqStructuredData = {
     },
   })),
 };
+
+const COUPLE_STAGES = [
+  {
+    stage: "付き合いたて〜1年",
+    description: "感情や情熱が体に直接出やすい時期。密着寝・絡み合い寝・向き合い寝など、積極的にふれ合う姿勢が多く見られます。",
+    color: "from-pink-500/20 to-rose-500/20",
+    border: "border-pink-500/30",
+    dot: "bg-pink-400",
+  },
+  {
+    stage: "交際1〜3年",
+    description: "信頼が深まるにつれ、少し距離があっても不安を感じなくなる時期。手つなぎ寝や背中接触寝が自然に増え始めます。",
+    color: "from-purple-500/20 to-indigo-500/20",
+    border: "border-purple-500/30",
+    dot: "bg-purple-400",
+  },
+  {
+    stage: "同居・入籍直後",
+    description: "生活習慣のすり合わせが始まる時期。就寝環境や体温感覚のちがいが寝相に現れやすくなります。慣れるまで少し距離が生まれることも自然なことです。",
+    color: "from-indigo-500/20 to-blue-500/20",
+    border: "border-indigo-500/30",
+    dot: "bg-indigo-400",
+  },
+  {
+    stage: "夫婦歴5年以上",
+    description: "言葉がなくても安心できる「無意識の信頼」が最も色濃く寝相に反映されます。適度な距離を保てているカップルは、精神的な成熟度が高いサインです。",
+    color: "from-blue-500/20 to-cyan-500/20",
+    border: "border-blue-500/30",
+    dot: "bg-blue-400",
+  },
+];
+
+const RELATED_LINKS = [
+  {
+    href: "/dictionary",
+    label: "夢占い辞典",
+    description: "夢に出てきたものの意味を調べる",
+  },
+  {
+    href: "/column/dream-diary",
+    label: "夢日記のすすめ",
+    description: "夢を記録して自己理解を深める方法",
+  },
+  {
+    href: "/column/lucid-dream",
+    label: "明晰夢とは",
+    description: "夢の中で意識を保つ方法を解説",
+  },
+];
 
 export default function SleepingPositionsPage() {
   return (
@@ -263,6 +336,25 @@ export default function SleepingPositionsPage() {
             <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
               <AdsenseAd slot={siteConfig.adsenseSlot} />
             </div>
+
+            {/* 夫婦・カップル段階別セクション */}
+            <section className="space-y-8">
+              <SectionHeader icon={Heart}>カップルと夫婦で違う？寝相が示す関係性の深さ</SectionHeader>
+              <p className="text-gray-400 leading-relaxed">
+                寝相の意味は、ふたりの関係の段階によって読み方が変わります。同じ「背中合わせ」でも、付き合いたてと夫婦歴10年では全く異なるサインです。
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {COUPLE_STAGES.map((item) => (
+                  <div key={item.stage} className={`bg-linear-to-br ${item.color} border ${item.border} rounded-2xl p-6`}>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className={`w-3 h-3 rounded-full ${item.dot} shrink-0`} />
+                      <h3 className="font-bold text-white">{item.stage}</h3>
+                    </div>
+                    <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
             <section className="space-y-8">
               <SectionHeader icon={Users}> 15の寝相が教える相性と夢模様</SectionHeader>
@@ -302,14 +394,19 @@ export default function SleepingPositionsPage() {
                               <p className="text-sm text-gray-200 leading-relaxed">{position.dreamTendency}</p>
                             </div>
                           </div>
+                          <div className="pt-3 border-t border-white/5">
+                            <span className="inline-flex items-center text-xs font-bold px-2 py-1 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 mb-2">
+                              <Users className="w-3 h-3 mr-1" /> 夫婦・カップル別の読み方
+                            </span>
+                            <p className="text-sm text-gray-300 leading-relaxed">{position.coupleContext}</p>
+                          </div>
                         </div>
                       </div>
                     </article>
 
-                    {/* 5個目の後と10個目の後に中間CTAを挿入 */}
                     {(index === 4 || index === 9) && (
                       <div className="py-4">
-                        <DreamAnalysisCTA 
+                        <DreamAnalysisCTA
                           title="寝相だけでなく、昨夜見た夢も診断しませんか？"
                           description="寝相が今の関係性を映すなら、夢はあなたの心の奥底にある「本当の願い」を教えてくれるかもしれません。"
                         />
@@ -319,8 +416,6 @@ export default function SleepingPositionsPage() {
                 ))}
               </div>
             </section>
-
-
 
             <section className="space-y-8 bg-linear-to-br from-indigo-900/20 to-purple-900/20 p-8 rounded-3xl border border-white/5">
               <SectionHeader icon={Lightbulb}>睡眠姿勢と夢の不思議な関係</SectionHeader>
@@ -348,7 +443,27 @@ export default function SleepingPositionsPage() {
               </div>
             </section>
 
-            <DreamAnalysisCTA 
+            {/* 関連コンテンツ */}
+            <section className="space-y-6">
+              <SectionHeader icon={BookOpen}>関連コンテンツ</SectionHeader>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {RELATED_LINKS.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="group flex flex-col gap-2 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/30 rounded-2xl p-5 transition-all duration-200"
+                  >
+                    <span className="font-bold text-white group-hover:text-purple-300 transition-colors flex items-center gap-2">
+                      {link.label}
+                      <ExternalLink className="w-3 h-3 opacity-50" />
+                    </span>
+                    <span className="text-sm text-gray-400">{link.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
+            <DreamAnalysisCTA
               description={
                 <>
                   カップルの寝相には、日々の感情や潜在的な想いが現れています。
