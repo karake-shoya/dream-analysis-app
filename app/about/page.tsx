@@ -110,10 +110,6 @@ export default function AboutPage() {
                         <span className="text-purple-400 mt-1 shrink-0">▸</span>
                         <span>Sigmund Freud 著『夢判断』（<em>The Interpretation of Dreams</em>）</span>
                       </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
-                        <span>Calvin S. Hall 著『夢の意味』（<em>The Meaning of Dreams</em>）</span>
-                      </li>
                     </ul>
                     <p>
                       これらの理論はあくまで解釈の枠組みであり、特定の夢の意味を断定・予言するものではありません。
