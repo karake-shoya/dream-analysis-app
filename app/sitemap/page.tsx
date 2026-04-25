@@ -10,9 +10,13 @@ import SitemapFilter from '@/components/SitemapFilter';
 export const metadata: Metadata = {
   title: '全記事一覧（サイトマップ）',
   description: 'Yume Insightの夢占い辞典に収録されている全記事の一覧ページです。動物・自然・場所・行動・感情・人物・状況の7カテゴリに分類された約100件の夢占い記事をご覧いただけます。',
+  alternates: { canonical: '/sitemap' },
   openGraph: {
     title: '全記事一覧（サイトマップ）| Yume Insight',
     description: 'Yume Insightの夢占い辞典に収録されている全記事の一覧ページです。約100件の夢占い記事をカテゴリ別にご覧いただけます。',
+    url: 'https://yume-insight.com/sitemap',
+    siteName: 'Yume Insight',
+    images: [{ url: 'https://yume-insight.com/ogp.png', width: 1200, height: 630 }],
     type: 'website',
   },
 };
