@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.siteName,
     images: [
       {
-        url: `${siteConfig.baseUrl}/ogp.png`,
+        url: `${siteConfig.baseUrl}/ogp.png?v=2`,
         width: 1200,
         height: 630,
         alt: 'Yume Insight｜AI夢占い・深層心理分析',
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    images: [`${siteConfig.baseUrl}/ogp.png`],
+    images: [`${siteConfig.baseUrl}/ogp.png?v=2`],
   },
 };
 
