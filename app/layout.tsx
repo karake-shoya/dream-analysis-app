@@ -86,6 +86,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
+    images: [`${siteConfig.baseUrl}/ogp.png`],
   },
   robots: {
     index: true,
