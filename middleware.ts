@@ -1,7 +1,13 @@
-import { type NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { updateSession } from '@/lib/supabase/middleware'
 
+const SOCIAL_CRAWLERS = /facebookexternalhit|Twitterbot|LinkedInBot|Slackbot|TelegramBot|WhatsApp|Discordbot|Pinterest/i
+
 export async function middleware(request: NextRequest) {
+  const ua = request.headers.get('user-agent') ?? ''
+  if (SOCIAL_CRAWLERS.test(ua)) {
+    return NextResponse.next()
+  }
   return await updateSession(request)
 }
 
