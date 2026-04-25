@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: '夢占い辞典 | Yume Insight',
     description: '夢占いの意味を50音・カテゴリ別に検索。追いかけられる夢、落ちる夢、動物の夢など、よく見る夢のシンボルを詳しく解説。AI夢占いで個別分析も可能。',
+    url: 'https://yume-insight.com/dictionary',
+    siteName: 'Yume Insight',
+    images: [{ url: 'https://yume-insight.com/ogp.png', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: {
