@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '【夢占い】予知夢を見たらどうなる？本当に起こる？予知夢が伝えるメッセージと種類を徹底解説 | Yume Insight',
-  description: '未来を予知する夢は単なる偶然ではありません。予知夢が持つスピリチュアルな意味や、それが暗示する未来について、ユング心理学の視点から深く分析。夢からのメッセージを紐解きましょう。',
+  title: '【夢占い】予知夢（正夢）とは？心理学・ユング共時性で偶然の一致を徹底解説 | Yume Insight',
+  description: '予知夢（正夢）が起きるのはなぜ？心理学・脳科学・ユング共時性（シンクロニシティ）の視点から「偶然の一致」を徹底解説。正夢になりやすくする方法や、繰り返し見る正夢の意味も詳しく紹介します。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
-    title: '【夢占い】予知夢を見たらどうなる？本当に起こる？予知夢が伝えるメッセージと種類を徹底解説 | Yume Insight',
-    description: '未来を予知する夢は単なる偶然ではありません。予知夢が持つスピリチュアルな意味や、それが暗示する未来について、ユング心理学の視点から深く分析。夢からのメッセージを紐解きましょう。',
+    title: '【夢占い】予知夢（正夢）とは？心理学・ユング共時性で偶然の一致を徹底解説 | Yume Insight',
+    description: '予知夢（正夢）が起きるのはなぜ？心理学・脳科学・ユング共時性（シンクロニシティ）の視点から「偶然の一致」を徹底解説。正夢になりやすくする方法や、繰り返し見る正夢の意味も詳しく紹介します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },

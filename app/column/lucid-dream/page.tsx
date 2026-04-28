@@ -7,12 +7,12 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '【夢占い】明晰夢とは？見る方法や意味、危険性までユング心理学で徹底解説 | Yume Insight',
-  description: '夢を自由に操れる「明晰夢」。その魅力的な体験の裏側にある深層心理や意味、安全に見るための方法、そして潜在的な危険性まで、ユング心理学の観点から詳しく解説します。',
+  title: '明晰夢（ルシッドドリーム）とは？見る方法・練習法をユング心理学で解説 | Yume Insight',
+  description: 'ルシッドドリーム（明晰夢）とは、夢の中で「これは夢だ」と気づいた状態のこと。誰でも練習で体験できます。MILD法・WBTB法などの具体的な見る方法、ユング心理学的な意味、悪夢を変容させる活用法まで丁寧に解説します。',
   alternates: { canonical: '/column/lucid-dream' },
   openGraph: {
-    title: '【夢占い】明晰夢とは？見る方法や意味、危険性までユング心理学で徹底解説 | Yume Insight',
-    description: '夢を自由に操れる「明晰夢」。その魅力的な体験の裏側にある深層心理や意味、安全に見るための方法、そして潜在的な危険性まで、ユング心理学の観点から詳しく解説します。',
+    title: '明晰夢（ルシッドドリーム）とは？見る方法・練習法をユング心理学で解説 | Yume Insight',
+    description: 'ルシッドドリーム（明晰夢）とは、夢の中で「これは夢だ」と気づいた状態のこと。誰でも練習で体験できます。MILD法・WBTB法などの具体的な見る方法、ユング心理学的な意味、悪夢を変容させる活用法まで丁寧に解説します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
