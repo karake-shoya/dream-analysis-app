@@ -34,3 +34,28 @@ create policy "Anyone can insert dreams" on public.dreams
 create policy "Users can view their own dreams" on public.dreams
   for select
   using (auth.uid() = user_id);
+
+-- お問い合わせフォームのテーブル
+create table if not exists public.contacts (
+  id uuid not null default gen_random_uuid(),
+  created_at timestamp with time zone not null default now(),
+  name text not null,
+  email text not null,
+  subject text not null,
+  message text not null,
+  status text,
+  constraint contacts_pkey primary key (id)
+);
+
+alter table public.contacts enable row level security;
+
+drop policy if exists "Anyone can insert contacts" on public.contacts;
+
+-- メール形式・必須項目のバリデーションを WITH CHECK に明記（WITH CHECK (true) 回避）
+create policy "Anyone can insert contacts" on public.contacts
+  for insert
+  with check (
+    email ~* '^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$'
+    and length(name) > 0
+    and length(message) > 0
+  );
