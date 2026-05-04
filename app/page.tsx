@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import HomePageClient from './HomePageClient';
+import UpdateTimeline from '@/components/UpdateTimeline';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
@@ -31,5 +32,5 @@ export const metadata: Metadata = {
 export const runtime = 'nodejs';
 
 export default function HomePage() {
-  return <HomePageClient />;
+  return <HomePageClient updateTimeline={<UpdateTimeline />} />;
 }

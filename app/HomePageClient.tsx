@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -10,9 +10,8 @@ import { useAuth } from '@/hooks/useAuth';
 import { getDisplayName } from '@/lib/user';
 import HomeSeoSections from '@/components/HomeSeoSections';
 import { useAnalyze } from '@/hooks/useAnalyze';
-import UpdateTimeline from '@/components/UpdateTimeline';
 
-export default function Home() {
+export default function Home({ updateTimeline }: { updateTimeline?: ReactNode }) {
   const router = useRouter();
   const { user } = useAuth();
   const {
@@ -72,7 +71,7 @@ export default function Home() {
         </div>
 
         {/* 更新情報タイムライン */}
-        <UpdateTimeline />
+        {updateTimeline}
 
         {/* Input Section */}
         <div className="space-y-6">
