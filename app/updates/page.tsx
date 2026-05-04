@@ -1,6 +1,6 @@
 import { Sparkles } from 'lucide-react';
-import { UPDATES } from '@/lib/data/updates';
 import GradientBackground from '@/components/GradientBackground';
+import { createClient } from '@/lib/supabase/server';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -8,7 +8,14 @@ export const metadata: Metadata = {
   description: 'Yume Insight の機能追加・改善履歴をまとめた更新情報ページです。',
 };
 
-export default function UpdatesPage() {
+export default async function UpdatesPage() {
+  const supabase = await createClient();
+  const { data: updates } = await supabase
+    .from('site_updates')
+    .select('date, label')
+    .order('date', { ascending: false })
+    .order('created_at', { ascending: false });
+
   return (
     <main className="min-h-screen text-white">
       <GradientBackground />
@@ -25,7 +32,7 @@ export default function UpdatesPage() {
 
         <div className="bg-white/5 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/10">
           <ol className="relative border-l border-white/10 ml-1 space-y-7">
-            {UPDATES.map((item, index) => (
+            {updates?.map((item, index) => (
               <li key={index} className="pl-6 relative">
                 <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-purple-500/60 border border-purple-400/40" />
                 <time className="text-xs text-gray-500 font-mono">{item.date}</time>
