@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '夢の中の色が持つ心理的な意味——色夢と無色夢の違いも解説',
+  title: '夢に出てくる色の意味｜赤・青・黒・白・緑の色別夢占いと深層心理',
   description:
-    '夢の中で印象的な色を見たことはありますか？赤・青・黒・白など、夢に現れる色には心理学的な意味があります。カラー夢とモノクロ夢の違いから各色の象徴まで詳しく解説します。',
+    '夢の中で見た色には心理学的な意味があります。赤・青・黒・白・緑など色別の夢占いの意味を解説。カラー夢とモノクロ夢の違い、印象的な色を繰り返し見る理由まで、夢の色が示す深層心理をわかりやすく紹介します。',
   alternates: { canonical: '/column/dream-color' },
   openGraph: {
-    title: '夢の中の色が持つ心理的な意味 | Yume Insight',
+    title: '夢に出てくる色の意味｜赤・青・黒・白・緑の色別夢占いと深層心理 | Yume Insight',
     description:
-      '夢の中で印象的な色を見たことはありますか？赤・青・黒・白など、夢に現れる色には心理学的な意味があります。カラー夢とモノクロ夢の違いから各色の象徴まで詳しく解説します。',
+      '夢の中で見た色には心理学的な意味があります。赤・青・黒・白・緑など色別の夢占いの意味を解説。カラー夢とモノクロ夢の違い、印象的な色を繰り返し見る理由まで、夢の色が示す深層心理をわかりやすく紹介します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },

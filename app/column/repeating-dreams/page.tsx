@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '同じ夢を何度も見る意味とは？｜繰り返す夢が伝えようとしていること',
+  title: '何度も同じ夢を見る意味とは｜繰り返す夢の心理学的な理由と止め方',
   description:
-    '追いかけられる夢、試験に間に合わない夢、歯が抜ける夢——同じ夢を繰り返し見るのはなぜ？心理学的な背景とセルフケアへの活かし方をわかりやすく解説します。',
+    '何度も同じ夢を見るのはなぜ？追いかけられる夢・試験の夢・歯が抜ける夢など、繰り返す夢の心理学的な意味とユング心理学の解釈、繰り返し夢が止まる理由をわかりやすく解説します。',
   alternates: { canonical: '/column/repeating-dreams' },
   openGraph: {
-    title: '同じ夢を何度も見る意味とは？｜繰り返す夢が伝えようとしていること | Yume Insight',
+    title: '何度も同じ夢を見る意味とは｜繰り返す夢の心理学的な理由と止め方 | Yume Insight',
     description:
-      '追いかけられる夢、試験に間に合わない夢、歯が抜ける夢——同じ夢を繰り返し見るのはなぜ？心理学的な背景とセルフケアへの活かし方をわかりやすく解説します。',
+      '何度も同じ夢を見るのはなぜ？追いかけられる夢・試験の夢・歯が抜ける夢など、繰り返す夢の心理学的な意味とユング心理学の解釈、繰り返し夢が止まる理由をわかりやすく解説します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
