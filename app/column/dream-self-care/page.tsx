@@ -7,14 +7,14 @@ import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 
 export const metadata: Metadata = {
-  title: '見た夢を人に話すと良い？心理的な効果｜夢をセルフケアに活かす3つの方法',
+  title: '夢をセルフケアに活かす4つの方法｜悪夢・繰り返す夢の心理的な向き合い方',
   description:
-    '夢を占いとしてだけでなく、セルフケアのツールとして活用する方法を紹介します。夢日記・感情の読み解き・繰り返す夢への向き合い方——特別な知識なしで今日から始められます。',
+    '見た夢をセルフケアに役立てる方法を解説。夢日記のつけ方・感情の読み解き・積極的想像法・夢を人に話す効果など、特別な知識なしで今日から始められる4つのアプローチを紹介します。',
   alternates: { canonical: '/column/dream-self-care' },
   openGraph: {
-    title: '見た夢を人に話すと良い？心理的な効果｜夢をセルフケアに活かす3つの方法 | Yume Insight',
+    title: '夢をセルフケアに活かす4つの方法｜悪夢・繰り返す夢の心理的な向き合い方 | Yume Insight',
     description:
-      '夢を占いとしてだけでなく、セルフケアのツールとして活用する方法を紹介します。夢日記・感情の読み解き・繰り返す夢への向き合い方——特別な知識なしで今日から始められます。',
+      '見た夢をセルフケアに役立てる方法を解説。夢日記のつけ方・感情の読み解き・積極的想像法・夢を人に話す効果など、特別な知識なしで今日から始められる4つのアプローチを紹介します。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
