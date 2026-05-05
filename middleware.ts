@@ -8,6 +8,17 @@ export async function middleware(request: NextRequest) {
   if (SOCIAL_CRAWLERS.test(ua)) {
     return NextResponse.next()
   }
+
+  // Supabase が redirectTo を無視して Site URL に code を送るケースに対応。
+  // /auth/callback 以外のページに ?code= が来たら /auth/callback に転送する
+  const { pathname, searchParams } = request.nextUrl
+  const code = searchParams.get('code')
+  if (code && !pathname.startsWith('/auth/')) {
+    const callbackUrl = request.nextUrl.clone()
+    callbackUrl.pathname = '/auth/callback'
+    return NextResponse.redirect(callbackUrl)
+  }
+
   return await updateSession(request)
 }
 
