@@ -1,14 +1,21 @@
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { UPDATES } from '@/lib/data/updates';
+import { createClient } from '@/lib/supabase/server';
 
 type Props = {
   limit?: number;
 };
 
-export default function UpdateTimeline({ limit = 5 }: Props) {
-  const items = UPDATES.slice(0, limit);
-  if (items.length === 0) return null;
+export default async function UpdateTimeline({ limit = 5 }: Props) {
+  const supabase = await createClient();
+  const { data: items } = await supabase
+    .from('site_updates')
+    .select('date, label')
+    .order('date', { ascending: false })
+    .order('created_at', { ascending: false })
+    .limit(limit);
+
+  if (!items || items.length === 0) return null;
 
   return (
     <div className="bg-white/5 backdrop-blur-md rounded-3xl px-5 py-4 border border-white/10 mb-8">

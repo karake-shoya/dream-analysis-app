@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState, useRef } from 'react'
-import { LogOut, Menu, User as UserIcon, Settings, ChevronDown, BookOpen } from 'lucide-react'
+import { LogOut, Menu, User as UserIcon, Settings, ChevronDown, BookOpen, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { Logo } from '@/components/Logo'
@@ -122,6 +122,17 @@ export default function Header() {
                         <Settings className="w-4 h-4 text-purple-400" />
                         セキュリティ設定
                       </Link>
+                      {user.app_metadata?.is_admin && (
+                        <Link
+                          href="/admin/updates"
+                          onClick={() => setIsUserMenuOpen(false)}
+                          className="flex items-center gap-3 px-4 py-2.5 text-sm text-amber-300 hover:bg-amber-500/10 hover:text-amber-200 transition-colors"
+                        >
+                          <ShieldCheck className="w-4 h-4 text-amber-400" />
+                          管理ページ
+                          <span className="ml-auto text-xs text-amber-500/70">更新情報</span>
+                        </Link>
+                      )}
                     </div>
                     <div className="border-t border-white/10 py-1">
                       <button
@@ -182,6 +193,15 @@ export default function Header() {
                   >
                     セキュリティ設定
                   </Link>
+                  {user.app_metadata?.is_admin && (
+                    <Link
+                      href="/admin/updates"
+                      className={`block text-lg font-medium hover:text-amber-300 ${pathname === '/admin/updates' ? 'text-amber-300' : 'text-amber-400/70'}`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      管理ページ
+                    </Link>
+                  )}
                 </>
               )}
             </div>
