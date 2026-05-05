@@ -1,3 +1,5 @@
-export function isAdmin(email: string | undefined | null): boolean {
-  return !!email && email === process.env.ADMIN_EMAIL;
+import type { User } from '@supabase/supabase-js';
+
+export function isAdmin(user: User | null | undefined): boolean {
+  return user?.app_metadata?.is_admin === true;
 }

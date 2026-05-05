@@ -51,7 +51,7 @@ export default function Home({ updateTimeline }: { updateTimeline?: ReactNode })
           <div className="relative inline-block">
             <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
             <img
-              src="/icon.png"
+              src="/logo.png"
               alt="Yume Insight Logo"
               className="relative w-28 h-28 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
             />

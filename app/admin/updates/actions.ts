@@ -7,7 +7,7 @@ import { isAdmin } from '@/lib/admin';
 async function getAdminUser() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user || !isAdmin(user.email)) {
+  if (!user || !isAdmin(user)) {
     throw new Error('Unauthorized');
   }
   return { supabase, user };

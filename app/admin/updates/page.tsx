@@ -16,7 +16,7 @@ export default async function AdminUpdatesPage() {
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) redirect('/login');
-  if (!isAdmin(user.email)) {
+  if (!isAdmin(user)) {
     return (
       <main className="min-h-screen text-white flex items-center justify-center">
         <GradientBackground />
