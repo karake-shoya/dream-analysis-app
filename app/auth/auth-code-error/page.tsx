@@ -1,6 +1,23 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { createClient } from '@/lib/supabase/client'
 
 export default function AuthCodeErrorPage() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // セッションが確立されていれば（exchangeCodeForSession のエラーにもかかわらず）ホームに戻す
+    const supabase = createClient()
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace('/')
+      }
+    })
+  }, [router])
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-[#1e293b] border border-white/10 rounded-2xl p-8 w-full max-w-md text-center shadow-2xl">
