@@ -9,9 +9,19 @@ export function useAuth() {
   const supabase = createClient();
 
   useEffect(() => {
+    // JWTキャッシュではなくサーバーから最新のapp_metadataを取得
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setUser(session?.user ?? null);
+      async (_event, session) => {
+        if (session) {
+          const { data: { user } } = await supabase.auth.getUser();
+          setUser(user);
+        } else {
+          setUser(null);
+        }
       }
     );
     return () => subscription.unsubscribe();
