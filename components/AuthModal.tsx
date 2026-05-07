@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { X } from 'lucide-react'
 import { SupabaseClient } from '@supabase/supabase-js'
-import { siteConfig } from '@/lib/config'
 
 interface AuthModalProps {
   supabase: SupabaseClient
@@ -14,26 +13,22 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
   const [isLoginMode, setIsLoginMode] = useState(true)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState('')
 
-  const handleGoogleLogin = async () => {
-    setLoading(true)
-    // 現在アクセスしているURLのorigin（ドメイン）を優先してリダイレクト先に設定する
-    // これにより、NetlifyのURLでもyume-insight.comでもPKCEのCookieエラーを防ぎます
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : (siteConfig.baseUrl || '')
-
-    await supabase.auth.signInWithOAuth({
+  const handleGoogleLogin = () => {
+    setIsLoading(true)
+    supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${baseUrl}/auth/callback`,
+        redirectTo: `${window.location.origin}/auth/callback`,
       },
     })
   }
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault()
-    setLoading(true)
+    setIsLoading(true)
     setMessage('')
 
     try {
@@ -47,10 +42,9 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
         setMessage('確認メールを送信しました。メールボックスを確認してください。')
       }
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'エラーが発生しました'
-      setMessage(errorMessage)
+      setMessage(err instanceof Error ? err.message : 'エラーが発生しました')
     } finally {
-      setLoading(false)
+      setIsLoading(false)
     }
   }
 
@@ -67,8 +61,8 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
 
         <button
           onClick={handleGoogleLogin}
-          className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors mb-6 shadow-sm"
-          disabled={loading}
+          disabled={isLoading}
+          className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 py-3 rounded-xl font-bold hover:bg-gray-100 transition-colors mb-6 shadow-sm disabled:opacity-60"
         >
           <svg className="w-5 h-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -89,27 +83,23 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
         </div>
 
         <form onSubmit={handleEmailAuth} className="space-y-4">
-          <div>
-            <input
-              type="email"
-              placeholder="メールアドレス"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-              required
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              placeholder="パスワード"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-              className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
-              required
-              minLength={6}
-            />
-          </div>
+          <input
+            type="email"
+            placeholder="メールアドレス"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+            required
+          />
+          <input
+            type="password"
+            placeholder="パスワード"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            className="w-full bg-black/20 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+            required
+            minLength={6}
+          />
 
           {message && (
             <p className="text-sm text-center text-amber-200 bg-amber-900/20 p-2 rounded-lg">{message}</p>
@@ -117,10 +107,10 @@ export default function AuthModal({ supabase, onClose }: AuthModalProps) {
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10"
+            disabled={isLoading}
+            className="w-full py-3 rounded-xl font-bold bg-white/10 text-white hover:bg-white/20 transition-colors border border-white/10 disabled:opacity-60"
           >
-            {loading ? '処理中...' : (isLoginMode ? 'ログイン' : 'アカウント作成')}
+            {isLoading ? '処理中...' : (isLoginMode ? 'ログイン' : 'アカウント作成')}
           </button>
         </form>
 

@@ -4,7 +4,6 @@ import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AuthCodeHandler } from "@/components/AuthCodeHandler";
 import { Toaster } from "sonner";
 import { siteConfig } from "@/lib/config";
 import NextTopLoader from "nextjs-toploader";
@@ -136,7 +135,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <NextTopLoader color="#a855f7" shadow="0 0 10px #a855f7,0 0 5px #a855f7" height={3} showSpinner={false} />
-        <AuthCodeHandler />
         <Header />
         <div className="flex-1">
           {children}
