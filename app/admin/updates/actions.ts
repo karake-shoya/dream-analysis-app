@@ -38,3 +38,19 @@ export async function deleteUpdate(id: string) {
   revalidatePath('/updates');
   revalidatePath('/admin/updates');
 }
+
+export async function updateUpdate(id: string, formData: FormData) {
+  const date = formData.get('date') as string;
+  const label = formData.get('label') as string;
+
+  if (!date || !label?.trim()) return;
+  if (label.trim().length > 200) return;
+
+  const { supabase } = await getAdminUser();
+
+  await supabase.from('site_updates').update({ date, label: label.trim() }).eq('id', id);
+
+  revalidatePath('/');
+  revalidatePath('/updates');
+  revalidatePath('/admin/updates');
+}

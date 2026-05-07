@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { isAdmin } from '@/lib/admin';
 import GradientBackground from '@/components/GradientBackground';
 import { addUpdate, deleteUpdate } from './actions';
+import { EditUpdateForm } from './EditUpdateForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -83,8 +84,7 @@ export default async function AdminUpdatesPage() {
           <ol className="space-y-2">
             {updates?.map((item) => (
               <li key={item.id} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group">
-                <time className="shrink-0 text-[11px] text-gray-500 font-mono pt-1">{item.date}</time>
-                <p className="flex-1 text-sm text-gray-200 leading-relaxed">{item.label}</p>
+                <EditUpdateForm id={item.id} date={item.date} label={item.label} />
                 <form action={deleteUpdate.bind(null, item.id)}>
                   <button
                     type="submit"
