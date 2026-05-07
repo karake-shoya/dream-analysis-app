@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { LogOut, Menu, User as UserIcon, Settings, ChevronDown, BookOpen, ShieldCheck } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
+import { User } from '@supabase/supabase-js'
 import { Logo } from '@/components/Logo'
 import AuthModal from '@/components/AuthModal'
 import { useAuth } from '@/hooks/useAuth'
@@ -22,21 +23,19 @@ export default function Header() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
 
   const userMenuRef = useRef<HTMLDivElement>(null)
+  const prevUserRef = useRef<User | null | undefined>(undefined)
   const router = useRouter()
   const pathname = usePathname()
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event) => {
-        if (event === 'SIGNED_IN') router.refresh()
-        if (event === 'SIGNED_OUT') {
-          router.push('/')
-          router.refresh()
-        }
-      }
-    )
-    return () => subscription.unsubscribe()
-  }, [supabase, router])
+    if (prevUserRef.current === undefined) {
+      prevUserRef.current = user
+      return
+    }
+    if (user && !prevUserRef.current) router.refresh()
+    if (!user && prevUserRef.current) { router.push('/'); router.refresh() }
+    prevUserRef.current = user
+  }, [user, router])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
