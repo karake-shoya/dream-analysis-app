@@ -15,8 +15,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   const { res } = await searchParams;
   const baseUrl = siteConfig.baseUrl || "https://yume-insight.com";
 
-  const baseTitle = "カップルの寝方・寝る体勢でわかる心理｜寝相15パターンと相性診断 | Yume Insight";
-  const baseDesc = "カップルの寝方・寝る体勢・寝相には深層心理が表れます。背中合わせ・密着・足が触れるなど15パターンの心理的意味を解説し、ふたりの関係性がわかる相性診断（10問）も収録。夫婦・彼氏彼女の寝相から本音を読み解きます。";
+  const baseTitle = "カップルの寝方・寝る体勢でわかる心理15選｜寝相診断で相性チェック | Yume Insight";
+  const baseDesc = "カップルの寝方・寝る体勢・寝相には深層心理が表れます。背中合わせ・密着・足が触れるなど15パターンの心理を詳しく解説。10問の相性診断つきで、夫婦・彼氏彼女の本音を今すぐ確認できます。";
 
   if (res && RESULTS[res as ResultTypeId]) {
     const result = RESULTS[res as ResultTypeId];
