@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '夢をセルフケアに活かす4つの方法｜悪夢・繰り返す夢の心理的な向き合い方',
@@ -30,6 +31,7 @@ export default function DreamSelfCarePage() {
         title="夢をセルフケアに活かす方法"
         subtitle="見た夢を人に話すと良い？心理的な効果"
       />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

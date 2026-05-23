@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '明晰夢（ルシッドドリーム）とは？見る方法・練習法をユング心理学で解説 | Yume Insight',
@@ -80,6 +81,7 @@ export default function LucidDreamPage() {
         title="明晰夢（ルシッドドリーム）とは？見方と練習法を解説"
         subtitle="夢の中で「これは夢だ」と気づいたとき、何が変わるのか"
       />
+      <ColumnArticleMeta publishedAt="2026-05-23" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

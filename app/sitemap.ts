@@ -7,20 +7,49 @@ import { siteConfig } from '@/lib/config';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.baseUrl;
 
+  // コラム記事メタデータ
+  const columnMeta: Record<string, { lastModified: Date; priority: number }> = {
+    'dream-memory':       { lastModified: new Date('2026-04-16'), priority: 0.8 },
+    'nightmare':          { lastModified: new Date('2026-04-23'), priority: 0.8 },
+    'prophetic-dream':    { lastModified: new Date('2026-04-28'), priority: 0.8 },
+    'dream-color':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'dream-diary':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'dream-self-care':    { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'repeating-dreams':   { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'chased-dream':       { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'death-dream':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'ex-dream':           { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'falling-teeth-dream':{ lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'flying-dream':       { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'baby-dream':         { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'falling-dream':      { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'fire-dream':         { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'late-dream':         { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'lost-dream':         { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'naked-dream':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'pregnancy-dream':    { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'school-dream':       { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'snake-dream':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'unknown-house-dream':{ lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'water-dream':        { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'work-dream':         { lastModified: new Date('2026-05-04'), priority: 0.8 },
+    'lucid-dream':        { lastModified: new Date('2026-05-23'), priority: 0.8 },
+  };
+
+  // コラム記事ページ
+  const columnRoutes = Object.entries(columnMeta).map(([slug, meta]) => ({
+    url: `${baseUrl}/column/${slug}`,
+    lastModified: meta.lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: meta.priority,
+  }));
+
   // 静的ページの定義
   const staticRoutes = [
     '',
     '/dictionary',
     '/approach',
     '/column',
-    '/column/prophetic-dream',
-    '/column/repeating-dreams',
-    '/column/dream-memory',
-    '/column/dream-self-care',
-    '/column/nightmare',
-    '/column/lucid-dream',
-    '/column/dream-diary',
-    '/column/dream-color',
     '/sleeping-positions',
     '/about',
     '/contact',
@@ -53,5 +82,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...staticRoutes, ...categoryRoutes, ...articleRoutes];
+  return [...staticRoutes, ...columnRoutes, ...categoryRoutes, ...articleRoutes];
 }
