@@ -19,8 +19,8 @@ export default function ColumnArticleMeta({ publishedAt, updatedAt }: ColumnArti
           <img src="/profile-image.png" alt="上野 翔也" className="w-full h-full object-contain" />
         </div>
         <span>
-          著者：<span className="text-gray-300 font-medium">上野 翔也</span>
-          <span className="ml-1 text-xs text-gray-500">（ユング心理学研究者・エンジニア）</span>
+          著者：<span className="text-gray-300 font-medium">Shoya Ueno</span>
+          <span className="ml-1 text-xs text-gray-500">（教育心理学・中学校理科教員）</span>
         </span>
       </Link>
       <div className="flex items-center gap-1.5">
