@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,6 +74,7 @@ export default function FallingDreamPage() {
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <PageHero title="落ちる夢の意味とは" subtitle="コントロールを失う感覚——深層心理が伝えるもの" />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '何度も同じ夢を見る意味とは｜繰り返す夢の心理学的な理由と止め方',
@@ -30,6 +31,7 @@ export default function RepeatingDreamsPage() {
         title="同じ夢を何度も見る意味とは？"
         subtitle="繰り返す夢が伝えようとしていること"
       />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

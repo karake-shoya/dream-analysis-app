@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { User, Heart, Sparkles, BookOpen } from "lucide-react";
+import { User, Heart, Sparkles, BookOpen, Lightbulb } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import ContentPageLayout from "@/components/ContentPageLayout";
 import PageHero from "@/components/PageHero";
@@ -51,6 +51,21 @@ export default function AboutPage() {
                 </section>
 
                 <section className="space-y-6">
+                  <SectionHeader icon={Lightbulb}>このサイトを作ったきっかけ</SectionHeader>
+                  <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
+                    <p>
+                      きっかけは、知人が夢占いに熱中しているのを見たことでした。
+                    </p>
+                    <p>
+                      「夢の意味が気になる」という気持ちは多くの人が持っているのに、既存の夢占いサイトの多くは「吉夢・凶夢」の二択や、根拠の薄い断定が多い印象がありました。
+                    </p>
+                    <p>
+                      大学で教育心理学を学んだ経験と、中学校で理科を教えてきた「わかりやすく正確に伝える」という視点を活かして、<span className="text-purple-300 font-bold">心理学的な根拠を持ちながら、断定せず・不安を煽らない</span>夢解説サイトを作れないかと思い、Yume Insight を開発しました。
+                    </p>
+                  </div>
+                </section>
+
+                <section className="space-y-6">
                   <SectionHeader icon={Heart}>サイトの目的とスタンス</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
                     <p>
@@ -70,17 +85,28 @@ export default function AboutPage() {
 
                 <section className="space-y-6">
                   <SectionHeader icon={Sparkles}>AIの活用について</SectionHeader>
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm">
-                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                      Yume Insight では、一部の機能にAIを活用しています。
-                    </p>
-                    <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                      ただし、AIによる分析結果は参考情報として提供しており、<span className="hidden md:inline"><br /></span>
-                      <span className="text-purple-300 font-bold">最終的な内容の確認や編集は、人の視点で行っています。</span>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 backdrop-blur-sm space-y-6">
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      Yume Insight では、夢占い辞典・コラムの作成と、AI夢分析機能にAI技術を活用しています。
                     </p>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                      AIを「答えを出す存在」ではなく、<span className="hidden md:inline"><br /></span>
-                      考えるきっかけを広げるための補助的なツールとして位置づけています。
+                      コンテンツ作成においては、AIが生成した初稿を運営者が以下の観点で確認・修正しています。
+                    </p>
+                    <ul className="space-y-3">
+                      {[
+                        "心理学的に根拠のない断定・「必ずこうなる」という表現の除去",
+                        "不安を煽る・過度にネガティブな表現の言い換え",
+                        "参考文献・心理学理論との整合性の確認",
+                        "医療・診断・予言に踏み込む表現が含まれていないかのチェック",
+                      ].map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-gray-300">
+                          <span className="text-purple-400 mt-1 shrink-0">✓</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-gray-300 leading-relaxed text-lg">
+                      AIを「答えを出す存在」ではなく、考えるきっかけを広げるための補助ツールと位置づけており、最終的な判断は人の目で行っています。
                     </p>
                   </div>
                 </section>
@@ -89,10 +115,10 @@ export default function AboutPage() {
                   <SectionHeader icon={BookOpen}>コンテンツの参照軸について</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
                     <p>
-                      本サイトのコンテンツは、<span className="text-purple-300 font-bold">ユング心理学・深層心理学</span>を主な参照軸として構成しています。
+                      本サイトのコンテンツは、<span className="text-purple-300 font-bold">ユング心理学・深層心理学・教育心理学</span>を主な参照軸として構成しています。
                     </p>
                     <p>
-                      カール・グスタフ・ユングが提唱した「無意識」「シャドウ（影）」「元型（アーキタイプ）」などの概念をもとに、夢に現れるイメージの心理的意味を解説しています。
+                      カール・グスタフ・ユングが提唱した「無意識」「シャドウ（影）」「元型（アーキタイプ）」などの概念をもとに、夢に現れるイメージの心理的意味を解説しています。また、教育心理学の観点から「どう伝えれば読者が誤解なく理解できるか」という表現設計を重視しています。
                     </p>
                     <p>
                       コンテンツ作成にあたって参照している主な文献は以下の通りです。
@@ -110,6 +136,10 @@ export default function AboutPage() {
                         <span className="text-purple-400 mt-1 shrink-0">▸</span>
                         <span>Sigmund Freud 著『夢判断』（<em>The Interpretation of Dreams</em>）</span>
                       </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 mt-1 shrink-0">▸</span>
+                        <span>David Fontana 著『The Secret Language of Dreams』（Chronicle Books）</span>
+                      </li>
                     </ul>
                     <p>
                       これらの理論はあくまで解釈の枠組みであり、特定の夢の意味を断定・予言するものではありません。
@@ -121,12 +151,22 @@ export default function AboutPage() {
                   <SectionHeader icon={User}>運営について</SectionHeader>
                   <div className="prose prose-invert max-w-none text-gray-300 text-lg leading-relaxed space-y-4">
                     <p>
-                      Yume Insight は、個人開発者によって運営されている情報サイトです。
+                      Yume Insight は、Shoya Ueno（個人）が開発・運営している情報サイトです。
                     </p>
+                    <div className="grid grid-cols-3 gap-4 not-prose my-2">
+                      {[
+                        { label: "辞典記事", value: "101記事" },
+                        { label: "コラム", value: "25記事" },
+                        { label: "辞典カテゴリ", value: "7分野" },
+                      ].map(({ label, value }) => (
+                        <div key={label} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
+                          <p className="text-2xl font-bold text-purple-300">{value}</p>
+                          <p className="text-xs text-gray-400 mt-1">{label}</p>
+                        </div>
+                      ))}
+                    </div>
                     <p>
-                      個人での運営ではありますが、<br />
-                      コンテンツの品質や表現には責任を持ち、<br />
-                      安心して利用できるサイトであることを大切にしています。
+                      個人での運営ではありますが、コンテンツの品質・表現・事実確認には責任を持ち、安心してご利用いただけるサイトであることを大切にしています。
                     </p>
                     <p>
                       ご意見・ご質問がある場合は、<Link href="/contact" className="text-purple-400 hover:text-purple-300 underline underline-offset-4">お問い合わせページ</Link>よりご連絡ください。
@@ -161,9 +201,9 @@ export default function AboutPage() {
                       <img src="/profile-image.png" alt="Developer" className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
                     </div>
                     <h3 className="text-2xl font-bold mb-1 text-white">Shoya Ueno</h3>
-                    <p className="text-sm text-purple-300 font-medium mb-6 uppercase tracking-wider">Software Developer / Educator</p>
+                    <p className="text-sm text-purple-300 font-medium mb-6 uppercase tracking-wider">Software Developer / Science Teacher</p>
                     <p className="text-sm text-gray-400 leading-relaxed mb-6">
-                      ユング心理学と教育心理学に関心を持ち、夢が持つ自己理解への可能性をテクノロジーで広げることをテーマに Yume Insight を開発・運営しています。エンジニアと教育者、2つの視点から「気づき」の瞬間を届けることを大切にしています。
+                      大学で教育心理学を修め、現在は中学校理科教員として勤務するかたわら、ソフトウェア開発も行っています。知人の夢占いへの関心をきっかけに Yume Insight を開発。「心理学的に正しく、わかりやすく伝える」という教育者の視点でコンテンツ監修を行っています。
                     </p>
                     <div className="flex gap-4">
                       <Link href="https://github.com/karake-shoya" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="GitHub">

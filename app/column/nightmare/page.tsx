@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -65,6 +66,7 @@ export default function NightmarePage() {
         title="怖い夢・悪夢を見やすい人の特徴と対処法"
         subtitle="悪夢が続くとき、心は何かを伝えようとしている"
       />
+      <ColumnArticleMeta publishedAt="2026-04-23" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

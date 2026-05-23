@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -81,6 +82,7 @@ export default function DeathDreamPage() {
         title="死ぬ夢の意味とは"
         subtitle="終わりではなく変容のサイン——深層心理が告げること"
       />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

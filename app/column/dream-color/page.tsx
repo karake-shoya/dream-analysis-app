@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '夢に出てくる色の意味｜赤・青・黒・白・緑の色別夢占いと深層心理',
@@ -82,6 +83,7 @@ export default function DreamColorPage() {
         title="夢の中の色が持つ心理的な意味"
         subtitle="印象に残った色は、心の深層からのメッセージかもしれない"
       />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

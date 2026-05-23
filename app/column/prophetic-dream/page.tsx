@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '【夢占い】予知夢（正夢）とは？心理学・ユング共時性で偶然の一致を徹底解説 | Yume Insight',
@@ -82,6 +83,7 @@ export default function PropheticDreamPage() {
         title="正夢とは？"
         subtitle="本当にある？なる方法まで心理学で解説"
       />
+      <ColumnArticleMeta publishedAt="2026-04-28" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

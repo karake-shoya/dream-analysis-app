@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
   title: '夢を覚えていない人と覚えている人の違いは何？',
@@ -30,6 +31,7 @@ export default function DreamMemoryPage() {
         title="夢を覚えていない人と覚えている人の違いは何？"
         subtitle="記憶力の差ではなく、睡眠と習慣の話"
       />
+      <ColumnArticleMeta publishedAt="2026-04-16" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

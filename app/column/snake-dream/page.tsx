@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,6 +74,7 @@ export default function SnakeDreamPage() {
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
       <PageHero title="蛇が出てくる夢の意味とは" subtitle="変容・本能・再生——蛇が告げる深層心理のメッセージ" />
+      <ColumnArticleMeta publishedAt="2026-05-04" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">
