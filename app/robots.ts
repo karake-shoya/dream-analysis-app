@@ -18,7 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/private/', '/_next/static/media/', '/result/', '/dashboard/', '/admin/'],
+        disallow: ['/private/', '/result/', '/dashboard/', '/admin/'],
       },
     ],
     sitemap: 'https://yume-insight.com/sitemap.xml',
