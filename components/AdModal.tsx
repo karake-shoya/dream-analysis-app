@@ -48,10 +48,6 @@ export default function AdModal({
           </p>
         </div>
 
-        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-          <AdsenseAd slot={slot} />
-        </div>
-
         <button
           onClick={handleReveal}
           className="group inline-flex flex-col items-center gap-2 px-8 py-4 bg-linear-to-r from-purple-600 to-indigo-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/30 hover:scale-105 hover:shadow-purple-900/50 transition-all duration-300"
@@ -61,6 +57,10 @@ export default function AdModal({
           </span>
           <ChevronDown className="w-5 h-5 animate-bounce" />
         </button>
+
+        <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10 w-full">
+          <AdsenseAd slot={slot} />
+        </div>
       </div>
     </div>
   );
