@@ -18,11 +18,6 @@ export default function ApproachPage() {
               subtitle={<>当サイトは「夢＝未来の予言」として断定するものではありません。<br/>夢研究の見解を参考に、心身状態を振り返るヒントとして夢を読み解きます。</>}
             />
 
-            {/* 広告（上部） */}
-            <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={siteConfig.adsenseSlot} />
-            </div>
-
             <section className="space-y-6">
               <h2 className="text-2xl md:text-3xl font-bold text-purple-200">
                 このサイトが参照している主要な考え方

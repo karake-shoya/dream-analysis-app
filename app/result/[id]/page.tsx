@@ -155,7 +155,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
   const dictMap = getDictionaryKeywordMap();
 
   return (
-    <AdModal slot={siteConfig.adsenseSlot} showAd={showAd}>
+    <AdModal slot={siteConfig.adsenseSlots.result} showAd={showAd}>
       <main className="min-h-screen text-white selection:bg-purple-500/30">
         <GradientBackground />
 
@@ -389,7 +389,7 @@ export default async function ResultPage({ params, searchParams }: PageProps) {
             </div>
 
             <div className="mt-12 bg-white/5 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
-              <AdsenseAd slot={siteConfig.adsenseSlot} />
+              <AdsenseAd slot={siteConfig.adsenseSlots.result} />
             </div>
           </div>
         </div>
