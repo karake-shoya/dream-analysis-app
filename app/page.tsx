@@ -5,11 +5,11 @@ import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: 'Yume Insight｜AI夢占い・深層心理分析',
-  description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。無料で使えるAI夢占い・深層心理分析サービス。',
+  description: '夢の内容を入力するだけでAIが深層心理を分析。試験・追いかけられる夢・好きな人・亡くなった人の夢など、あらゆる夢に対応。毎日無料で使えるAI夢占いサービス。',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Yume Insight｜AI夢占い・深層心理分析',
-    description: '夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。無料で使えるAI夢占い・深層心理分析サービス。',
+    description: '夢の内容を入力するだけでAIが深層心理を分析。試験・追いかけられる夢・好きな人・亡くなった人の夢など、あらゆる夢に対応。毎日無料で使えるAI夢占いサービス。',
     url: siteConfig.baseUrl,
     siteName: siteConfig.siteName,
     images: [
