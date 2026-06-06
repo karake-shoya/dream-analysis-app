@@ -57,12 +57,12 @@ const faqStructuredData = {
 export const metadata: Metadata = {
   title: '道に迷う夢の意味とは？方向性・アイデンティティの迷いをユング心理学で解説',
   description:
-    '道に迷う夢の意味を心理学的に解説。迷子になる夢・知らない場所を彷徨う夢・目的地にたどり着けない夢など状況別の意味、ユング心理学における「個性化の旅」との関係まで詳しく紹介します。',
+    '道に迷う夢の意味を場面別に解説。知らない街で迷う夢・目的地にたどり着けない夢・地図があっても役に立たない夢など、シーン別の心理と対処法をわかりやすくまとめています。',
   alternates: { canonical: '/column/lost-dream' },
   openGraph: {
     title: '道に迷う夢の意味とは？方向性・アイデンティティの迷いをユング心理学で解説 | Yume Insight',
     description:
-      '道に迷う夢の意味を心理学的に解説。迷子になる夢・知らない場所を彷徨う夢・目的地にたどり着けない夢など状況別の意味、ユング心理学における「個性化の旅」との関係まで詳しく紹介します。',
+      '道に迷う夢の意味を場面別に解説。知らない街で迷う夢・目的地にたどり着けない夢・地図があっても役に立たない夢など、シーン別の心理と対処法をわかりやすくまとめています。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
@@ -78,6 +78,24 @@ export default function LostDreamPage() {
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">
+          <div className="overflow-x-auto rounded-2xl border border-white/10 mb-6">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-white/10 text-purple-200">
+                <tr>
+                  <th className="px-4 py-3 font-semibold">夢の場面</th>
+                  <th className="px-4 py-3 font-semibold">主な意味</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/5 text-gray-300">
+                <tr><td className="px-4 py-3">知らない街・場所で迷う</td><td className="px-4 py-3">新しい環境への不安・適応困難</td></tr>
+                <tr><td className="px-4 py-3">目的地がわかっているのに着けない</td><td className="px-4 py-3">目標はあるが前進できない閉塞感</td></tr>
+                <tr><td className="px-4 py-3">地図があっても役に立たない</td><td className="px-4 py-3">知識はあるが行動に移せない状態</td></tr>
+                <tr><td className="px-4 py-3">迷いながら探索を楽しんでいる</td><td className="px-4 py-3">不確実性への耐性が育っているサイン</td></tr>
+                <tr><td className="px-4 py-3">助けてくれる人が現れる</td><td className="px-4 py-3">内なる知恵・メンターとの出会い</td></tr>
+              </tbody>
+            </table>
+          </div>
+
           <div className="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 leading-relaxed text-lg text-gray-300">
             <p className="mb-4">知らない街をひたすら歩き続けるが目的地にたどり着けない、地図を持っているのに道がわからない——道に迷う夢は、多くの人が繰り返し見る普遍的なテーマのひとつです。</p>
             <p className="mb-4">ユング心理学では、「旅・道」は個性化のプロセス（本来の自己へ向かう旅）の象徴です。道に迷う夢は、その旅の途中で<span className="text-purple-300 font-bold">方向性・目的・アイデンティティへの問い</span>が生じていることを示しています。「今自分はどこへ向かっているのか」という内なる問いかけが夢として現れています。</p>
