@@ -8,12 +8,12 @@ import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
 
 export const metadata: Metadata = {
-  title: '【夢占い】予知夢（正夢）とは？心理学・ユング共時性で偶然の一致を徹底解説 | Yume Insight',
-  description: '予知夢（正夢）が起きるのはなぜ？心理学・脳科学・ユング共時性（シンクロニシティ）の視点から「偶然の一致」を徹底解説。正夢になりやすくする方法や、繰り返し見る正夢の意味も詳しく紹介します。',
+  title: '正夢とは？本当にあるの？心理学・脳科学・ユング共時性で解説 | Yume Insight',
+  description: '正夢（予知夢）は本当にあるのか？心理学では脳の予測機能・無意識の洞察・選択的記憶の3メカニズムで説明できます。ユング共時性（シンクロニシティ）の視点も加え、正夢になりやすくする方法まで徹底解説。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
-    title: '【夢占い】予知夢（正夢）とは？心理学・ユング共時性で偶然の一致を徹底解説 | Yume Insight',
-    description: '予知夢（正夢）が起きるのはなぜ？心理学・脳科学・ユング共時性（シンクロニシティ）の視点から「偶然の一致」を徹底解説。正夢になりやすくする方法や、繰り返し見る正夢の意味も詳しく紹介します。',
+    title: '正夢とは？本当にあるの？心理学・脳科学・ユング共時性で解説 | Yume Insight',
+    description: '正夢（予知夢）は本当にあるのか？心理学では脳の予測機能・無意識の洞察・選択的記憶の3メカニズムで説明できます。ユング共時性（シンクロニシティ）の視点も加え、正夢になりやすくする方法まで徹底解説。',
     type: 'article',
     images: [`${siteConfig.baseUrl}/ogp.png`],
   },
