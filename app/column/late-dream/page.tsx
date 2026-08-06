@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,8 +74,9 @@ export default function LateDreamPage() {
   return (
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <ColumnBreadcrumb slug="late-dream" />
       <PageHero title="遅刻する夢の意味とは" subtitle="焦り・準備不足・時間へのプレッシャー——深層心理が映すもの" />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="late-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

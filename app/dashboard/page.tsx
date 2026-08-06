@@ -13,6 +13,7 @@ import GradientBackground from "@/components/GradientBackground";
 export const metadata: Metadata = {
   title: 'マイダッシュボード',
   description: 'これまでに記録した夢の一覧をカレンダーとリスト形式で確認できます。',
+  robots: { index: false, follow: false },
 };
 
 export const runtime = "edge";

@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,8 +74,9 @@ export default function UnknownHouseDreamPage() {
   return (
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <ColumnBreadcrumb slug="unknown-house-dream" />
       <PageHero title="知らない家・部屋が出てくる夢の意味とは" subtitle="家は自己の鏡——内面の探索が始まるとき" />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="unknown-house-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

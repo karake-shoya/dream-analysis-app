@@ -4,8 +4,9 @@ import { createClient } from '@/lib/supabase/server';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '更新情報 | Yume Insight',
+  title: '更新情報',
   description: 'Yume Insight の機能追加・改善履歴をまとめた更新情報ページです。',
+  alternates: { canonical: '/updates' },
 };
 
 export default async function UpdatesPage() {

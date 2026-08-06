@@ -6,9 +6,10 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 export const metadata: Metadata = {
-  title: 'ルシードドリーム（明晰夢・ルシッドドリーム）とは？見る方法と練習法を解説 | Yume Insight',
+  title: 'ルシードドリーム（明晰夢・ルシッドドリーム）とは？見る方法と練習法を解説',
   description: 'ルシードドリーム・ルシッドドリーム（明晰夢）とは、夢の中で「これは夢だ」と気づいた状態のこと。誰でも練習で体験できます。MILD法・WBTB法などの具体的な見る方法、ユング心理学的な意味、悪夢を変容させる活用法まで丁寧に解説します。',
   alternates: { canonical: '/column/lucid-dream' },
   openGraph: {
@@ -77,11 +78,12 @@ export default function LucidDreamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
 
+      <ColumnBreadcrumb slug="lucid-dream" />
       <PageHero
         title="明晰夢（ルシッドドリーム）とは？見方と練習法を解説"
         subtitle="夢の中で「これは夢だ」と気づいたとき、何が変わるのか"
       />
-      <ColumnArticleMeta publishedAt="2026-05-23" />
+      <ColumnArticleMeta slug="lucid-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,8 +74,9 @@ export default function BabyDreamPage() {
   return (
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <ColumnBreadcrumb slug="baby-dream" />
       <PageHero title="赤ちゃん・子供が出てくる夢の意味とは" subtitle="新しい始まり・純粋さ・可能性——深層心理が育てるもの" />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="baby-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

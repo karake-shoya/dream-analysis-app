@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,8 +74,9 @@ export default function SchoolDreamPage() {
   return (
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <ColumnBreadcrumb slug="school-dream" />
       <PageHero title="学校の夢の意味とは" subtitle="試練・評価・成長——学校という場が映す深層心理" />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="school-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

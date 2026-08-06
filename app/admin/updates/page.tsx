@@ -8,7 +8,7 @@ import { EditUpdateForm } from './EditUpdateForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '更新情報の管理 | Yume Insight',
+  title: '更新情報の管理',
   robots: 'noindex',
 };
 

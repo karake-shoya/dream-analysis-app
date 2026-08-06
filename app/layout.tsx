@@ -26,44 +26,74 @@ const inter = Inter({
 });
 
 
+const organizationId = `${siteConfig.baseUrl}/#organization`;
+
 const structuredData = [
   {
     "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationId,
+    name: siteConfig.siteName,
+    url: siteConfig.baseUrl,
+    description: "AIを活用した夢占い・深層心理分析サービス",
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.baseUrl}${siteConfig.logo}`,
+    },
+    founder: {
+      "@type": "Person",
+      name: siteConfig.author.name,
+      jobTitle: siteConfig.author.jobTitle,
+      url: `${siteConfig.baseUrl}${siteConfig.author.url}`,
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.baseUrl}/#website`,
+    name: siteConfig.siteName,
+    url: siteConfig.baseUrl,
+    inLanguage: "ja",
+    publisher: { "@id": organizationId },
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Yume Insight",
-    url: "https://yume-insight.com",
+    name: siteConfig.siteName,
+    url: siteConfig.baseUrl,
     description: "AIを活用した夢占い・深層心理分析サービス",
     applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    inLanguage: "ja",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "JPY",
     },
-    provider: {
-      "@type": "Organization",
-      name: "Yume Insight",
-    },
+    provider: { "@id": organizationId },
   },
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "AI夢占い・深層心理分析",
-    provider: {
-      "@type": "Organization",
-      name: "Yume Insight",
-    },
+    provider: { "@id": organizationId },
     areaServed: "JP",
   },
 ];
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://yume-insight.com"),
+  metadataBase: new URL(siteConfig.baseUrl),
   title: {
-    template: '%s | Yume Insight',
+    template: `%s | ${siteConfig.siteName}`,
     default: 'Yume Insight｜AI夢占い・深層心理分析',
   },
   description: "夢を入力するだけで、今のあなたの深層心理をAIが読み解きます。",
   keywords: ["夢占い", "AI夢占い","夢診断", "AI", "夢", "心理学", "スピリチュアル", "深層心理", "Yume Insight"],
+  applicationName: siteConfig.siteName,
+  authors: [{ name: siteConfig.author.name, url: `${siteConfig.baseUrl}${siteConfig.author.url}` }],
+  creator: siteConfig.author.name,
+  publisher: siteConfig.siteName,
+  formatDetection: { telephone: false, address: false, email: false },
   icons: {
     icon: '/favicon.ico',
     apple: '/icon.png',
@@ -91,6 +121,14 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      // 画像付きの大きなプレビューとスニペット全文を許可（Discover掲載の前提条件）
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
 };
 

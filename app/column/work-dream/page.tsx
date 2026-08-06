@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -73,8 +74,9 @@ export default function WorkDreamPage() {
   return (
     <ContentPageLayout>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
+      <ColumnBreadcrumb slug="work-dream" />
       <PageHero title="仕事・職場の夢の意味とは" subtitle="休日にも仕事の夢を見るとき、深層心理は何を伝えているのか" />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="work-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

@@ -6,6 +6,7 @@ import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 import GradientBackground from '@/components/GradientBackground';
 import Breadcrumb from '@/components/Breadcrumb';
 import SitemapFilter from '@/components/SitemapFilter';
+import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
   title: '全記事一覧（サイトマップ）',
@@ -14,9 +15,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: '全記事一覧（サイトマップ）| Yume Insight',
     description: 'Yume Insightの夢占い辞典に収録されている全記事の一覧ページです。約100件の夢占い記事をカテゴリ別にご覧いただけます。',
-    url: 'https://yume-insight.com/sitemap',
+    url: `${siteConfig.baseUrl}/sitemap`,
     siteName: 'Yume Insight',
-    images: [{ url: 'https://yume-insight.com/ogp.png', width: 1200, height: 630 }],
+    images: [{ url: `${siteConfig.baseUrl}/ogp.png`, width: 1200, height: 630 }],
     type: 'website',
   },
 };
