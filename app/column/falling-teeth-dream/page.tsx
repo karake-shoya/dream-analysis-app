@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -78,11 +79,12 @@ export default function FallingTeethDreamPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
+      <ColumnBreadcrumb slug="falling-teeth-dream" />
       <PageHero
         title="歯が抜ける夢の意味とは"
         subtitle="自信・変化・コミュニケーション——深層心理が映し出すもの"
       />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="falling-teeth-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -78,11 +79,12 @@ export default function ChasedDreamPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
+      <ColumnBreadcrumb slug="chased-dream" />
       <PageHero
         title="追いかけられる夢の意味とは"
         subtitle="逃げ続けるとき、深層心理は何を伝えようとしているのか"
       />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="chased-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

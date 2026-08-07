@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 const faqStructuredData = {
   '@context': 'https://schema.org',
@@ -78,11 +79,12 @@ export default function DeathDreamPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
+      <ColumnBreadcrumb slug="death-dream" />
       <PageHero
         title="死ぬ夢の意味とは"
         subtitle="終わりではなく変容のサイン——深層心理が告げること"
       />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="death-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

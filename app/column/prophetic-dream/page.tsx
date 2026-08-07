@@ -6,9 +6,10 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 export const metadata: Metadata = {
-  title: '正夢とは？本当にあるの？心理学・脳科学・ユング共時性で解説 | Yume Insight',
+  title: '正夢とは？本当にあるの？心理学・脳科学・ユング共時性で解説',
   description: '正夢（予知夢）は本当にあるのか？心理学では脳の予測機能・無意識の洞察・選択的記憶の3メカニズムで説明できます。ユング共時性（シンクロニシティ）の視点も加え、正夢になりやすくする方法まで徹底解説。',
   alternates: { canonical: '/column/prophetic-dream' },
   openGraph: {
@@ -79,11 +80,12 @@ export default function PropheticDreamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
 
+      <ColumnBreadcrumb slug="prophetic-dream" />
       <PageHero
         title="正夢とは？"
         subtitle="本当にある？なる方法まで心理学で解説"
       />
-      <ColumnArticleMeta publishedAt="2026-04-28" />
+      <ColumnArticleMeta slug="prophetic-dream" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

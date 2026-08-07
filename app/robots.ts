@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { siteConfig } from '@/lib/config';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -18,9 +19,18 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/private/', '/result/', '/dashboard/', '/admin/'],
+        disallow: [
+          '/private/',
+          '/result/',
+          '/dashboard/',
+          '/admin/',
+          '/settings/',
+          '/auth/',
+          '/api/',
+        ],
       },
     ],
-    sitemap: 'https://yume-insight.com/sitemap.xml',
+    sitemap: `${siteConfig.baseUrl}/sitemap.xml`,
+    host: siteConfig.baseUrl,
   };
 }

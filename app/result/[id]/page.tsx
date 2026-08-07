@@ -93,14 +93,18 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const { token } = await searchParams;
   const dream = await getAccessibleDream(id, token);
 
-  if (!dream) return { title: "夢占い結果" };
+  if (!dream) return { title: "夢占い結果", robots: { index: false, follow: false } };
 
   const result = dream.diagnosis_result as AnalysisResult;
   const summary = result.interpretations?.[0]?.summary || result.summary;
 
   return {
-    title: result.title ? `${result.title} | Yume Insight` : "夢占い結果 | Yume Insight",
+    // サイト名はルート layout の title テンプレートが付与する
+    title: result.title || "夢占い結果",
     description: summary || "AIによる深層心理の解析結果です。",
+    // 個人の診断結果は検索結果に出さない（robots.txt の Disallow と揃える）。
+    // SNSのOGPカードは noindex の影響を受けないため共有機能はそのまま動作する。
+    robots: { index: false, follow: false },
     alternates: {
       canonical: `/result/${id}`,
     },

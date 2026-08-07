@@ -4,7 +4,8 @@ import UpdateTimeline from '@/components/UpdateTimeline';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: 'Yume Insight｜AI夢占い・深層心理分析',
+  // ルート layout の title テンプレート（%s | Yume Insight）を適用させない
+  title: { absolute: 'Yume Insight｜AI夢占い・深層心理分析' },
   description: '夢の内容を入力するだけでAIが深層心理を分析。試験・追いかけられる夢・好きな人・亡くなった人の夢など、あらゆる夢に対応。毎日無料で使えるAI夢占いサービス。',
   alternates: { canonical: '/' },
   openGraph: {

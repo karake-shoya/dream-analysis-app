@@ -6,6 +6,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import ColumnArticleMeta from '@/components/ColumnArticleMeta';
+import ColumnBreadcrumb from '@/components/ColumnBreadcrumb';
 
 export const metadata: Metadata = {
   title: '夢日記の書き方と効果｜夢をよく覚える方法・続けるコツを徹底解説',
@@ -87,11 +88,12 @@ export default function DreamDiaryPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
       />
 
+      <ColumnBreadcrumb slug="dream-diary" />
       <PageHero
         title="夢日記の始め方と効果的な続け方"
         subtitle="夢を書き留めることで、自分の内面が少しずつ見えてくる"
       />
-      <ColumnArticleMeta publishedAt="2026-05-04" />
+      <ColumnArticleMeta slug="dream-diary" />
 
       <article>
         <div className="prose prose-invert prose-purple max-w-none space-y-12">

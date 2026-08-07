@@ -13,8 +13,9 @@ import { getArticle, getArticleFrontmatter } from '@/lib/mdx';
 import { getAllIndexItems, getIndexItem } from '@/lib/data/dreamDictionaryIndex';
 import { getCategoryBySlug } from '@/lib/data/dictionaryCategories';
 import { getRelatedArticles } from '@/lib/data/relatedArticles';
-import { siteConfig } from '@/lib/config';
+import { siteConfig, stripSiteName } from '@/lib/config';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
+import ArticleSchema from '@/components/ArticleSchema';
 
 type Props = {
   params: Promise<{ category: string; item: string }>;
@@ -25,7 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const frontmatter = getArticleFrontmatter(category, item);
   if (!frontmatter) return {};
 
-  const title = frontmatter.title ?? `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`;
+  const title = stripSiteName(
+    frontmatter.title ?? `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`
+  );
   return {
     title,
     description: frontmatter.description,
@@ -74,6 +77,17 @@ export default async function ItemPage({ params }: Props) {
 
   return (
     <>
+      {frontmatter.createdAt && (
+        <ArticleSchema
+          headline={stripSiteName(
+            frontmatter.title ?? `【夢占い】${frontmatter.keyword}の夢の意味｜心理・暗示・今後の行動`
+          )}
+          description={frontmatter.description}
+          path={`/dictionary/${category}/${item}`}
+          publishedAt={frontmatter.createdAt}
+          updatedAt={frontmatter.updatedAt}
+        />
+      )}
       {faqs && faqs.length > 0 && <FaqSchema faqs={faqs} />}
       <div className="min-h-screen bg-[#0f172a] text-gray-300 font-sans">
         <div className="fixed inset-0 z-0 pointer-events-none" 

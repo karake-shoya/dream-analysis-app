@@ -8,7 +8,7 @@ import AdsenseAd from '@/components/AdsenseAd';
 import { siteConfig } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: '夢分析コラム一覧｜夢占いの心理学的な読み解き方 | Yume Insight',
+  title: '夢分析コラム一覧｜夢占いの心理学的な読み解き方',
   description:
     'ユング心理学をベースに、よく見る夢のテーマ（追いかけられる・歯が抜ける・空を飛ぶ・蛇など）や夢日記・明晰夢・予知夢などを解説するコラム一覧です。',
   alternates: { canonical: '/column' },
