@@ -44,7 +44,7 @@ next-env.d.ts
 .sfdx/
 
 # Claude Code
-.claude/
+.claude/settings.local.json
 
 # SEO automation（ローカル実行スクリプト。デプロイ不要）
 seo-automation/
