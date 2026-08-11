@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from 'react';
 import { Sparkles, ArrowRight, Loader2, MessageCircleQuestion, SkipForward } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import GradientBackground from '@/components/GradientBackground';
 import VoiceInput from '@/components/VoiceInput';
 import { useAuth } from '@/hooks/useAuth';
@@ -50,9 +51,13 @@ export default function Home({ updateTimeline }: { updateTimeline?: ReactNode })
           {/* Logo */}
           <div className="relative inline-block">
             <div className="absolute -inset-4 bg-purple-500/20 rounded-full blur-2xl animate-pulse" />
-            <img
+            {/* ファーストビューのLCP要素なので priority で先読みする */}
+            <Image
               src="/logo.png"
               alt="Yume Insight Logo"
+              width={112}
+              height={112}
+              priority
               className="relative w-28 h-28 mx-auto drop-shadow-2xl animate-in zoom-in duration-1000"
             />
           </div>

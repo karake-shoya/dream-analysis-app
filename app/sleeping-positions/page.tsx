@@ -2,6 +2,7 @@ import React from "react";
 import { Metadata } from "next";
 import { Heart, Users, Sparkles, Shield, TrendingUp, AlertCircle, Lightbulb, MessageCircleQuestion, BookOpen, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import GradientBackground from "@/components/GradientBackground";
 import SectionHeader from "@/components/SectionHeader";
 import AdsenseAd from "@/components/AdsenseAd";
@@ -368,9 +369,12 @@ export default function SleepingPositionsPage() {
                       <div className="flex flex-col md:flex-row gap-6">
                         <div className="flex items-center justify-center md:justify-start">
                           <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden shadow-2xl border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent">
-                            <img
+                            {/* 15枚とも約1MBのPNG。next/image で表示サイズ相当まで縮小配信する */}
+                            <Image
                               src={position.imageUrl}
                               alt={position.name}
+                              width={112}
+                              height={112}
                               className="w-full h-full object-cover rounded-full opacity-90 transition-opacity group-hover:opacity-100"
                             />
                           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useMemo, useState, useEffect } from "react";
+import Image from "next/image";
 import { Share2, CheckCircle2, RefreshCcw, ArrowRight, Sparkles } from "lucide-react";
 import { toPositionId } from "@/lib/utils";
 import { RESULTS, ResultTypeId, ScoreMap, QuizQuestion, Option, ResultType } from "@/lib/data/sleepingPositions";
@@ -448,9 +449,12 @@ export default function SleepingPositionsQuiz({ positions }: SleepingPositionsQu
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="rounded-2xl border border-white/10 bg-black/20 p-4 flex flex-col items-center md:items-start md:flex-row gap-4">
                     <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border border-white/10 p-0.5 bg-linear-to-b from-white/10 to-transparent shrink-0">
-                      <img
+                      {/* 元画像は約1MBのPNG。next/image で表示サイズ相当まで縮小配信する */}
+                      <Image
                         src={result.imageUrl}
                         alt={result.sleepingPosition}
+                        width={96}
+                        height={96}
                         className="w-full h-full object-cover rounded-full opacity-90 transition-opacity"
                       />
                     </div>
