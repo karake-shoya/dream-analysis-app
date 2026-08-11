@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { User, Heart, Sparkles, BookOpen, Lightbulb } from "lucide-react";
 import { FaGithub, FaXTwitter } from "react-icons/fa6";
 import ContentPageLayout from "@/components/ContentPageLayout";
@@ -198,7 +199,13 @@ export default function AboutPage() {
                   <div className="absolute -inset-1 bg-linear-to-r from-purple-600 to-indigo-500 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000" />
                   <div className="relative bg-white/5 border border-white/10 p-8 rounded-3xl flex flex-col items-center text-center backdrop-blur-xl">
                     <div className="w-24 h-24 rounded-2xl bg-white/5 flex items-center justify-center mb-6 border border-white/10 group-hover:scale-105 transition-transform duration-500 overflow-hidden">
-                      <img src="/profile-image.png" alt="Developer" className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity" />
+                      <Image
+                        src="/profile-image.png"
+                        alt="Developer"
+                        width={96}
+                        height={96}
+                        className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
+                      />
                     </div>
                     <h3 className="text-2xl font-bold mb-1 text-white">Shoya Ueno</h3>
                     <p className="text-sm text-purple-300 font-medium mb-6 uppercase tracking-wider">Software Developer / Science Teacher</p>
@@ -213,7 +220,13 @@ export default function AboutPage() {
                         <FaXTwitter className="w-5 h-5" />
                       </Link>
                       <Link href="https://qiita.com/shoya_u" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all shadow-sm" title="Qiita">
-                        <img src="/images/qiita-icon.png" alt="Qiita" className="w-5 h-5 object-contain" />
+                        <Image
+                          src="/images/qiita-icon.png"
+                          alt="Qiita"
+                          width={20}
+                          height={20}
+                          className="w-5 h-5 object-contain"
+                        />
                       </Link>
                     </div>
                   </div>

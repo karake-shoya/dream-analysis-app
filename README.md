@@ -38,7 +38,7 @@ dream-analysis-app/
 │   ├── dashboard/          # マイページ（夢の履歴・カレンダー）
 │   ├── result/[id]/        # 診断結果ページ
 │   ├── dictionary/         # 夢占い辞典
-│   ├── prophetic-dream/    # 正夢の解説ページ
+│   ├── column/             # 夢分析コラム（25記事＋一覧）
 │   ├── sleeping-positions/ # 寝相の解説ページ
 │   ├── approach/           # 診断アプローチの解説ページ
 │   ├── about/              # サイト紹介ページ
@@ -53,6 +53,9 @@ dream-analysis-app/
 │   ├── VoiceInput.tsx      # 音声入力
 │   ├── ShareButtons.tsx    # SNSシェア
 │   ├── AdsenseAd.tsx       # Google Adsense 広告
+│   ├── ArticleSchema.tsx   # Article 構造化データ
+│   ├── FaqSchema.tsx       # FAQPage 構造化データ
+│   ├── column/             # コラム記事の共通骨格（後述）
 │   └── ui/                 # shadcn/ui コンポーネント
 ├── content/                # MDXコンテンツ
 │   └── dictionary/         # 夢占い辞典の個別データ
@@ -60,11 +63,33 @@ dream-analysis-app/
 │   ├── constants.ts        # 定数・プロンプトテンプレート
 │   ├── supabase/           # Supabase クライアント・SSR設定
 │   ├── mdx.ts              # MDX取得用ユーティリティ
-│   └── data/               # 辞書インデックスデータ
+│   ├── seo.ts              # コラムの Metadata 生成
+│   └── data/               # 辞書インデックス・コラムのレジストリ
 ├── supabase/               # Supabase設定
 │   └── schema.sql          # データベーススキーマ
 └── public/                 # 静的ファイル（画像・アイコン）
 ```
+
+## 🧩 コラム記事の書き方
+
+コラム記事（`app/column/<slug>/page.tsx`）は共通骨格 `components/column/ColumnArticleShell.tsx` に本文を差し込む形で書く。パンくず・ヒーロー・記事メタ・FAQ・参考文献・免責・関連コラム・CTA は骨格側が並べるため、ページは本文と差分データだけを持つ。
+
+新しい記事を追加する手順:
+
+1. `lib/data/columnArticles.ts` の `COLUMN_ARTICLES` に `slug` / `title` / `description` / `breadcrumbLabel` / `publishedAt` を追加する
+2. `app/column/<slug>/page.tsx` を作り、`buildColumnMetadata('<slug>')` を `metadata` に設定する
+3. `ColumnArticleShell` に本文を渡す。本文中の広告位置は `<InContentAd />` を置く
+
+重要な制約:
+
+- **`title` と `description` は `COLUMN_ARTICLES` だけを正とする。** ページ側に metadata をベタ書きすると `<title>` と Article 構造化データの `headline` が食い違う
+- **FAQ は `faqs` 配列だけを正とする。** アコーディオン表示と FAQPage 構造化データを同じ配列から生成しているため、表示と構造化データが乖離しない
+
+## 🖼️ 画像
+
+画像はすべて `next/image` を経由させる。生の `<img>` を使うと表示サイズと無関係な原寸を配信してしまい、LCP を悪化させる。例外は OAuth プロバイダが返すユーザーアバターのみ（任意ホストのため `remotePatterns` に載せられない。該当箇所に理由をコメントしてある）。
+
+`public/` に画像を追加するときは、実寸を最大表示サイズの2倍程度に収めてから置く。
 
 ## 🚀 セットアップ
 

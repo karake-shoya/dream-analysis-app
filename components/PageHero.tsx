@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface PageHeroProps {
   title: string;
@@ -11,9 +12,12 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
       <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
         <div className="relative">
           <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
-          <img
+          {/* 装飾のみ。alt を空にして支援技術から除外する */}
+          <Image
             src="/icon.png"
             alt=""
+            width={160}
+            height={160}
             className="w-40 h-40 opacity-10"
           />
         </div>

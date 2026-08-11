@@ -1,5 +1,6 @@
 import { Calendar, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ArticleSchema from '@/components/ArticleSchema';
 import { getColumnArticle } from '@/lib/data/columnArticles';
 import { siteConfig } from '@/lib/config';
@@ -44,7 +45,13 @@ export default function ColumnArticleMeta({
           className="flex items-center gap-2 hover:text-purple-300 transition-colors"
         >
           <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20 shrink-0">
-            <img src="/profile-image.png" alt="上野 翔也" className="w-full h-full object-contain" />
+            <Image
+              src="/profile-image.png"
+              alt="上野 翔也"
+              width={24}
+              height={24}
+              className="w-full h-full object-contain"
+            />
           </div>
           <span>
             著者：<span className="text-gray-300 font-medium">{siteConfig.author.name}</span>

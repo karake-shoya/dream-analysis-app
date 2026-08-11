@@ -175,6 +175,9 @@ export default function SettingsPage() {
 
             <div className="flex items-center gap-4 mb-4">
               {avatarUrl ? (
+                // OAuthプロバイダ側の任意ホストを指すため next/image の remotePatterns に載せられない。
+                // ログイン後にだけ出る画像なので、最適化の対象からは外す。
+                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={avatarUrl}
                   alt={displayName}

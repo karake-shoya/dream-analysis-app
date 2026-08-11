@@ -5,6 +5,7 @@ import DictionarySearch from '@/components/DictionarySearch';
 import { DICTIONARY_CATEGORIES } from '@/lib/data/dictionaryCategories';
 import { getAllIndexItems, getIndexByCategory } from '@/lib/data/dreamDictionaryIndex';
 import GradientBackground from '@/components/GradientBackground';
+import PageHero from '@/components/PageHero';
 import DreamAnalysisCTA from '@/components/DreamAnalysisCTA';
 import Breadcrumb from '@/components/Breadcrumb';
 import { siteConfig } from '@/lib/config';
@@ -69,28 +70,15 @@ export default function Dictionary() {
           />
 
           <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-            <div className="text-center space-y-8 pt-8 relative">
-              {/* 背景アイコン */}
-              <div className="absolute inset-0 flex items-start justify-center pointer-events-none">
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-purple-500/10 rounded-full blur-3xl" />
-                  <img 
-                    src="/icon.png" 
-                    alt="" 
-                    className="w-40 h-40 opacity-10"
-                  />
-                </div>
-              </div>
-              <div className="relative space-y-4">
-                <h1 className="text-4xl md:text-6xl font-black tracking-tight bg-clip-text text-transparent bg-linear-to-r from-purple-200 via-indigo-200 to-blue-200 leading-[1.12]">
-                  夢占い辞典
-                </h1>
-                <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <PageHero
+              title="夢占い辞典"
+              subtitle={
+                <>
                   キーワードから夢の意味を探してみましょう。<span className="hidden md:inline"><br /></span>
                   よく見られる夢のシンボルをカテゴリー別にまとめています。
-                </p>
-              </div>
-            </div>
+                </>
+              }
+            />
 
             {/* キーワード検索 */}
             <DictionarySearch items={allItems} />

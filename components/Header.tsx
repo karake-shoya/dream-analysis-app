@@ -87,6 +87,9 @@ export default function Header() {
                   className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium transition-all border border-white/10 shadow-sm"
                 >
                   {avatarUrl ? (
+                    // OAuthプロバイダ側の任意ホストを指すため next/image の remotePatterns に載せられない。
+                    // ログイン後にだけ出る24pxの画像なので、最適化の対象からは外す。
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img src={avatarUrl} alt={displayName} className="w-6 h-6 rounded-full object-cover" />
                   ) : (
                     <div className="w-6 h-6 rounded-full bg-purple-500/30 flex items-center justify-center">
