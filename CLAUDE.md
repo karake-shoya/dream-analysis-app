@@ -96,4 +96,4 @@ Supabase AuthによるGoogle OAuthとメールマジックリンク。認証状�
 
 - **poporu 側に専用メモリは無い。** 進捗・設計・調査の正は**このリポ**。台帳の1行は `~/poporu/repos.md` の yume-insight 行。
 - **journal の領域名**: `yume-insight`
-- 🔴 **作業を終えたら poporu の当日 journal へ1ファイル書く。書式と規則の正はグローバル `~/.claude/CLAUDE.md` の「薄いポポル」節。** ここには写さない（写すと腐る）。⚠ **スマホ（クラウド）では `~/.claude/` が読まれないので、`poporu` も一緒に選ぶ**（そのときの正は `poporu/CLAUDE.md` の横断メカニズム8）。
+- 🔴 **作業を終えたら poporu の当日 journal へ1ファイル書く。書式と規則の正はグローバル `~/.claude/CLAUDE.md` の「薄いポポル」節。** ここには写さない（写すと腐る）。⚠ **スマホ（クラウド）では `~/.claude/` が読まれないので、`poporu` も一緒に選ぶ**（そのときの正は `poporu/CLAUDE.md` の横断メカニズム「定時ルーチンと薄いポポル」節）。
