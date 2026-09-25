@@ -4,6 +4,7 @@ import InContentAd from '@/components/InContentAd';
 import { buildColumnMetadata } from '@/lib/seo';
 
 const FAQS = [
+  { q: 'ルシッドドリーム・ルシードドリーム・ルーシッドドリームは違うものですか？', a: 'すべて同じものです。英語の lucid dream（明晰夢）をカタカナにしたときの表記ゆれで、意味に違いはありません。日本語では「明晰夢」と呼ばれます。' },
   { q: '明晰夢とは何ですか？', a: '夢を見ている最中に「これは夢だ」と自覚した状態を明晰夢（ルシッドドリーム）といいます。通常は不活性な前頭前野が部分的に再活性化しており、ドイツのマックス・プランク研究所の研究（2012年）など複数の神経科学研究によって実在が確認されています。' },
   { q: '明晰夢は誰でも見ることができますか？', a: '条件を整えれば誰でも体験できます。成人の約20%が月に1回以上経験しているという調査があり、特別な才能は必要ありません。夢日記の習慣化とリアリティチェックを継続することが最初のステップです。' },
   { q: '明晰夢を見るためにまず何から始めればいいですか？', a: '最初のステップは夢日記です。起床直後に夢をメモする習慣をつけることで夢想起力が上がり、夢の中で「夢だ」と気づきやすくなります。次に、日中のリアリティチェック（手のひらを確認するなど）を1日10回程度行う習慣を加えてください。' },
@@ -17,7 +18,7 @@ export default function LucidDreamPage() {
   return (
     <ColumnArticleShell
       slug="lucid-dream"
-      heroTitle="明晰夢（ルシッドドリーム）とは？見方と練習法を解説"
+      heroTitle="ルシッドドリーム（明晰夢）とは？意味と見る方法を解説"
       heroSubtitle="夢の中で「これは夢だ」と気づいたとき、何が変わるのか"
       faqs={FAQS}
       faqVariant="qa"
@@ -27,6 +28,25 @@ export default function LucidDreamPage() {
         description: 'AI夢占いで深層心理を分析してみてください。夢の内容を入力するだけで、あなたの心の状態をAIが読み解きます。',
       }}
     >
+      {/* 定義と早見表（「〜とは」で検索した読者に最初の画面で答える） */}
+      <div className="p-6 md:p-8 rounded-3xl bg-purple-900/20 border border-purple-500/20 mb-6">
+        <p className="text-lg text-gray-200 leading-relaxed mb-5">
+          <span className="text-purple-300 font-bold">ルシッドドリーム（明晰夢）とは、夢を見ている最中に「これは夢だ」と自覚している夢のことです。</span>
+          英語の lucid dream に由来し、ルシードドリーム・ルーシッドドリームとも表記されます。
+        </p>
+        <div className="overflow-x-auto rounded-2xl border border-white/10">
+          <table className="w-full text-sm text-left">
+            <tbody className="divide-y divide-white/5 text-gray-300">
+              <tr><th className="px-4 py-3 font-semibold text-purple-200 whitespace-nowrap">意味</th><td className="px-4 py-3">夢の中で夢だと気づいている状態。夢の展開を自分で動かせることもある</td></tr>
+              <tr><th className="px-4 py-3 font-semibold text-purple-200 whitespace-nowrap">別の呼び方</th><td className="px-4 py-3">明晰夢・ルシードドリーム・ルーシッドドリーム（すべて同じ意味）</td></tr>
+              <tr><th className="px-4 py-3 font-semibold text-purple-200 whitespace-nowrap">見る人の割合</th><td className="px-4 py-3">成人の約20%が月1回以上経験するという調査がある</td></tr>
+              <tr><th className="px-4 py-3 font-semibold text-purple-200 whitespace-nowrap">脳の状態</th><td className="px-4 py-3">レム睡眠中に、自己認識を担う前頭前野が部分的に働いている</td></tr>
+              <tr><th className="px-4 py-3 font-semibold text-purple-200 whitespace-nowrap">見る方法</th><td className="px-4 py-3">夢日記・リアリティチェック・MILD法・WBTB法</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {/* 導入 */}
       <div className="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 leading-relaxed text-lg text-gray-300">
         <p className="mb-4">
