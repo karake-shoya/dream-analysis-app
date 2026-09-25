@@ -47,6 +47,8 @@ export default function LostDreamPage() {
             <tr><td className="px-4 py-3">知らない街・場所で迷う</td><td className="px-4 py-3">新しい環境への不安・適応困難</td></tr>
             <tr><td className="px-4 py-3">目的地がわかっているのに着けない</td><td className="px-4 py-3">目標はあるが前進できない閉塞感</td></tr>
             <tr><td className="px-4 py-3">地図があっても役に立たない</td><td className="px-4 py-3">知識はあるが行動に移せない状態</td></tr>
+            <tr><td className="px-4 py-3">家に帰れない・帰り道がわからない</td><td className="px-4 py-3">安心できる居場所を見失いかけている</td></tr>
+            <tr><td className="px-4 py-3">車・電車で道に迷う</td><td className="px-4 py-3">人生のペースや進め方への迷い</td></tr>
             <tr><td className="px-4 py-3">迷いながら探索を楽しんでいる</td><td className="px-4 py-3">不確実性への耐性が育っているサイン</td></tr>
             <tr><td className="px-4 py-3">助けてくれる人が現れる</td><td className="px-4 py-3">内なる知恵・メンターとの出会い</td></tr>
           </tbody>
@@ -99,6 +101,14 @@ export default function LostDreamPage() {
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
             <h3 className="text-lg font-bold text-purple-200 mb-2">地図があるのに役に立たない夢</h3>
             <p className="text-gray-300 leading-relaxed">情報・計画・ノウハウを持っているのに、現実に適用できないというフラストレーションを反映します。「頭ではわかっているけど行動できない」という状態、または理論と現実のギャップを感じているときに出やすいパターンです。</p>
+          </div>
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 className="text-lg font-bold text-purple-200 mb-2">家に帰れない・帰り道がわからない夢</h3>
+            <p className="text-gray-300 leading-relaxed">「家」は夢の中で自分の心の拠り所を象徴します。帰り道がわからない夢は、職場・家庭・人間関係のどこにも安心できる居場所がないと感じているサインです。忙しさで自分を後回しにしているときにも出やすいため、一人で落ち着ける時間を意識的に確保することが回復の第一歩になります。</p>
+          </div>
+          <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
+            <h3 className="text-lg font-bold text-purple-200 mb-2">車・電車で道に迷う夢</h3>
+            <p className="text-gray-300 leading-relaxed">乗り物は人生を進める手段やペースの象徴です。自分で運転する車で迷う夢は、主体的に選んだ道に自信が持てなくなっている状態を示します。電車やバスで迷う夢は、周囲の決めた流れに乗っているうちに、自分の目的を見失いかけていることを反映しやすいパターンです。</p>
           </div>
           <div className="p-5 rounded-2xl bg-white/5 border border-white/10">
             <h3 className="text-lg font-bold text-purple-200 mb-2">迷いながらも探索を楽しんでいる夢</h3>

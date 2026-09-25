@@ -27,6 +27,30 @@ export default function DreamColorPage() {
         description: 'AI夢占いで、夢の詳細な意味を読み解いてみましょう。色・場所・人物など、夢の要素をまとめて入力することで、より深い分析が得られます。',
       }}
     >
+      {/* 色別早見表（結論を先に示し、特定の色を調べに来た読者の離脱を防ぐ） */}
+      <div className="overflow-x-auto rounded-2xl border border-white/10 mb-6">
+        <table className="w-full text-sm text-left">
+          <thead className="bg-white/10 text-purple-200">
+            <tr>
+              <th className="px-4 py-3 font-semibold">夢の色</th>
+              <th className="px-4 py-3 font-semibold">主な意味</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-white/5 text-gray-300">
+            <tr><td className="px-4 py-3">赤</td><td className="px-4 py-3">情熱・怒り・生命力</td></tr>
+            <tr><td className="px-4 py-3">青</td><td className="px-4 py-3">静けさ・孤独・内省</td></tr>
+            <tr><td className="px-4 py-3">黒</td><td className="px-4 py-3">恐怖・未知・変容</td></tr>
+            <tr><td className="px-4 py-3">白</td><td className="px-4 py-3">純粋・空白・新たな始まり</td></tr>
+            <tr><td className="px-4 py-3">緑</td><td className="px-4 py-3">成長・癒し・均衡</td></tr>
+            <tr><td className="px-4 py-3">黄色・金色</td><td className="px-4 py-3">知性・希望・高揚</td></tr>
+            <tr><td className="px-4 py-3">紫</td><td className="px-4 py-3">神秘・変容・直感</td></tr>
+            <tr><td className="px-4 py-3">オレンジ</td><td className="px-4 py-3">創造性・活力・社交性</td></tr>
+            <tr><td className="px-4 py-3">ピンク</td><td className="px-4 py-3">愛情・優しさ・感受性</td></tr>
+            <tr><td className="px-4 py-3">グレー</td><td className="px-4 py-3">不確かさ・中立・移行期</td></tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* 導入 */}
       <div className="p-6 md:p-8 rounded-3xl bg-white/5 border border-white/10 leading-relaxed text-lg text-gray-300">
         <p className="mb-4">

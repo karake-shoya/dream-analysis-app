@@ -48,7 +48,8 @@ export async function generateMetadata({ searchParams }: { searchParams: Promise
   }
 
   return {
-    title: baseTitle,
+    // baseTitle はサイト名込みなので、layout の title テンプレートで二重付与させない
+    title: { absolute: baseTitle },
     description: baseDesc,
     alternates: {
       canonical: "/sleeping-positions",

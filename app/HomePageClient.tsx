@@ -69,9 +69,10 @@ export default function Home({ updateTimeline }: { updateTimeline?: ReactNode })
             <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
               夢の内容を入力するだけで、<span className="hidden md:inline"><br/></span>あなたの深層心理をAIが読み解きます
             </p>
-            <p className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
-              AI夢占いサービス「Yume Insight」
-            </p>
+            {/* ページ内に h1 が無かったため、主要キーワード「AI夢占い」を含むこの行を h1 にする */}
+            <h1 className="text-indigo-100 text-base md:text-lg font-bold tracking-widest font-inter">
+              無料のAI夢占い・夢診断サービス「Yume Insight」
+            </h1>
           </div>
         </div>
 
