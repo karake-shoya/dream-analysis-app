@@ -79,6 +79,18 @@ Supabase AuthによるGoogle OAuthとメールマジックリンク。認証状�
 - `NEXT_PUBLIC_BASE_URL` — サイトURL
 - `NEXT_PUBLIC_ADSENSE_SLOT` — AdSense
 
+🔴 **秘密の値（APIキー・GA4 プロパティID・Search Console の URL など）をコードに直書きしない。** `.env.local` に書き、`os.environ.get()` や dotenv で読む。
+- ローカルだけで動くツールのディレクトリ（`seo-automation` など）は、ディレクトリごと `.gitignore` に入れる。
+- `export SECRET=xxx` のようなインラインの export はシェル履歴に残るので使わない。
+
+## 本番の配信ホスト＝Netlify
+
+🔴 **本番は Netlify。Vercel ではない**（2026-08-11 に Shoya 確認）。
+- 現役の設定＝`netlify.toml` と `public/_redirects`（www→apex の 301）。消さない。
+- `.vercel/` は遺物（gitignore 済み・git 未追跡）。
+- PR の CI は Netlify のチェックだけが走る。`next/image` は Netlify の Image Optimization で WebP 配信される。
+- ⚠ セッション開始時に入る Vercel プラグインの文脈は、このリポでは当てにしない。デプロイ・リダイレクト・ヘッダー・環境変数の話は Netlify を前提にする（2026-08-11 に Netlify 設定を「遺物」と誤って Issue に起票した）。
+
 ## ブランチ運用
 
 - `main` — 本番環境（featureブランチから直接PR）
